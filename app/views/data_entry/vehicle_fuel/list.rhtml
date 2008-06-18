@@ -1,0 +1,53 @@
+<% content_for('optionbar') do %>
+  <%= pagination_links(@vehicle_fuel_purchase_pages) %>
+  <div class="option">
+    <%= image_tag_with_tooltip 'new.png' %>
+    <%= link_to 'Enter new purchase', :action => 'edit', :vehicle => params[:vehicle] %>
+  </div>
+  <%= option "back_to_add_data" %>
+  <div class="option">
+    <%= image_tag_with_tooltip 'edit.png' %>
+    <%= link_to 'Edit account details', :controller => '/vehicles', :action => 'edit', :id => params[:vehicle] %>
+  </div>
+  <div class="option" %>
+    <%= image_tag_with_tooltip('export.png') %>
+    <%= link_to 'Export Data', { :action => 'export', :vehicle => params[:vehicle]} %>  
+  </div>
+  <% if @vehicle_fuel_purchases.size > 1 %>
+    <%= option "analysis" %>
+  <% end %>
+<% end %>
+
+<div class="pagecontent">
+<% if @vehicle_fuel_purchases.empty? %>
+  <%= tip_box("You don't have any data in this account yet! When you next buy fuel, enter it here so we can proceed.") %>
+<% elsif @vehicle_fuel_purchases.size == 1 %>
+  <%= tip_box("You need two readings in order for us to analyse your data! When you next buy fuel, enter it here so we can proceed.") %>
+<% else %>
+  <%= tip_box(@tip) %>
+<% end %>
+<p>
+NOTE: If the units are wrong for your vehicle, you can change them in the <%= link_to 'edit account details', :controller => '/vehicles', :action => 'edit', :id => params[:vehicle] %> section.
+</p>
+<table>
+  <tr>
+  <th>Date</th>
+  <th>Amount (<%=h @vehicle.vehicle_fuel_unit.abbreviation %>)</th>
+  <th>Type</th>
+  <th>Odometer Reading (<%=h @vehicle.vehicle_distance_unit.abbreviation %>)</th>
+  <th></th>
+  <th></th>
+  </tr>
+  
+<% for purchase in @vehicle_fuel_purchases %>
+  <tr id="purchase<%= purchase.id %>">
+  <td><%=h purchase.purchased_on.strftime("%d %b %y") %></td>
+  <td><%=h purchase.amount %></td>
+  <td><%=h purchase.vehicle_fuel_type.name %></td>
+  <td><%=h purchase.distance.nil? ? "--" : purchase.distance %></td>
+  <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => purchase, :vehicle => params[:vehicle] %></td>
+  <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => purchase, :vehicle => params[:vehicle] }, :confirm => 'Delete this purchase?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+</div>

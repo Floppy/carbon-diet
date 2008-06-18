@@ -1,0 +1,43 @@
+<% content_for('optionbar') do %>
+  <%= pagination_links(@gas_reading_pages) %>
+  <%= option "new_reading", { :account => params[:account] } %>
+  <%= option "back_to_add_data" %>
+  <%= option "edit_gas_account", { :account => params[:account] } %>
+  <div class="option" %>
+    <%= image_tag_with_tooltip('export.png') %>
+    <%= link_to 'Export Data', { :action => 'export', :account => params[:account]} %>  
+  </div>
+  <% if @gas_readings.size > 1 %>
+    <%= option "analysis" %>
+  <% end %>
+<% end %>
+
+<div class="pagecontent">
+<% if @gas_readings.empty? %>
+  <%= tip_box("You don't have any data in this account yet! Take a gas reading and enter it here so we can proceed.") %>
+<% elsif @gas_readings.size == 1 %>
+  <%= tip_box("You need two readings in order for us to analyse your data! Take another gas reading (a few days after the first) and enter it here so we can proceed.") %>
+<% else %>
+  <%= tip_box(@tip) %>
+<% end %>
+<p>
+NOTE: If the units are wrong for your meter, you can change them in the <%= link_to 'edit account details', :controller => '/gas_accounts', :action => 'edit', :id => params[:account] %> section.
+</p>
+<table>
+  <tr>
+  <th>Date</th>
+  <th>Reading (<%=h @account.gas_unit.abbreviation %>)</th>
+  <th></th>
+  <th></th>
+  </tr>
+  
+<% for reading in @gas_readings %>
+  <tr id="reading<%= reading.id %>">
+  <td><%=h reading.taken_on.strftime("%d %b %y") %></td>
+  <td><%=h reading.reading %></td>
+  <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => reading, :account => params[:account] %></td>
+  <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => reading, :account => params[:account] }, :confirm => 'Delete this reading?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+</div>

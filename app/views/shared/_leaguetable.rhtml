@@ -1,0 +1,29 @@
+<div class="sectiontitle peekaboofix">Rankings</div>
+<div>
+<div class="leftcolumn">
+<table>
+<% i = 0 %>
+<% for entry in @leaguetable %>
+  <tr>
+  <td><%= i = i.next %></td>
+  <td><%= entry[:user].public ? link_to(h(entry[:user].name), :controller => "/profile", :login => entry[:user].login) : h(entry[:user].name) %></td>
+  <td>
+  <% if entry[:total] < 9e99 %>
+    <%= tonnes(entry[:total], 2) %> / year
+  <% elsif not entry[:user].public %>
+    <em>private</em>
+  <% else %>
+    <em>no data</em>
+  <% end %>
+  </td>
+  </tr>
+<% end %>
+</table>
+</div>
+<div class="rightcolumn">
+<%= render :partial => "shared/xmlswfcharts", 
+           :locals => { :data_url => @pie_url, :width => "100%", :height => "200" } %>
+</div>
+<div class="clear">&nbsp;</div>
+</div>
+

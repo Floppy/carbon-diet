@@ -1,0 +1,23 @@
+<div>
+<div class="sectiontitle"><%= link_to h(supplier.name), :action => "show", :id => supplier %></div>
+<%= render :partial => "shared/xmlswfcharts",
+           :locals => { :width => "50%", :height => "250",
+                        :data_url => url_for(:controller => "xml_chart", 
+                                             :action => "elec_supplier_pie",
+                                             :id => supplier.id) } %>
+<ul>
+<li>Total: <%= kg(supplier.kg_per_kWh,2) %> / kWh</li>
+<% unless supplier.company_url.blank? %>
+<li>Homepage: <a href="http://<%=h supplier.company_url %>">http://<%=h supplier.company_url %></a></li>
+<% end %>
+<% unless supplier.info_url.blank? %>
+<li>Source: <a href="http://<%=h supplier.info_url %>">http://<%=h supplier.info_url %></a></li>
+<% end %>
+</ul>
+<% unless supplier.aliases.blank? %>
+<p>
+Also provides electricity for <%=h supplier.aliases %>.
+</p>
+<% end %>
+
+</div>

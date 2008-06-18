@@ -1,0 +1,12 @@
+<% pagetitle("Supplier data for " + h(@country.name), "electricity.png") %>
+
+<% content_for "optionbar" do %>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+<% for supplier in @suppliers %>
+<%= render :partial => "supplier", 
+           :locals => { :supplier => supplier } %>
+<% end %>
+</div>

@@ -1,0 +1,10 @@
+<% if pages.current.previous %>
+  <div class='option'>
+  <%= link_to(image_tag_with_tooltip('prev.png') + " Newer", { :page => pages.current.previous }) %>
+  </div>
+<% end %>
+<% if pages.current.next %>
+  <div class='option'>
+  <%= link_to(image_tag_with_tooltip('next.png') + " Older", { :page => pages.current.next }) %>
+  </div>
+<% end %>

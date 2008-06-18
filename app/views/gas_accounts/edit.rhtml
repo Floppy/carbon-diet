@@ -1,0 +1,65 @@
+<% content_for('start_form') do %>
+  <%= start_form_tag :action => 'edit', :id => @gas_account %>
+<% end %>
+ 
+<% content_for('optionbar') do %>
+  <%= option "save" %>
+  <%= option "cancel" %>
+  <div class="option" %>
+    <%= image_tag_with_tooltip('delete.png') %>
+    <%= link_to 'Delete Account', { :action => 'destroy', :id => @gas_account}, :confirm => 'Delete this account and all associated data, forever?', :method => :post %>  
+  </div>
+<% end %>
+
+  <div class="pagecontent">
+  <%= error_messages_for 'gas_account' %>
+
+  <!--[form:gas_account]-->
+  <table class="form">
+    <tr>
+      <td><label for="gas_account_name">Name</label></td>
+      <td><%= text_field 'gas_account', 'name' %></td>
+    </tr>
+    <tr>
+      <td><label for="gas_account_gas_supplier_id">Supplier</label></td>
+      <td>
+        <%= collection_select :gas_account, :gas_supplier_id, @gas_suppliers, :id, :name %>
+        <%= help("If your supplier is not in the list, choose the 'Standard' option.")%>
+			</td>
+    </tr>
+    <tr>
+      <td><label for="gas_account_gas_unit_id">Units</label></td>
+      <td>
+        <%= collection_select :gas_account, :gas_unit_id, @gas_units, :id, :name_with_abbreviation %>
+        <%= help("The correct units will be written somewhere on your meter.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="gas_account_used_for_heating">Used for heating?</label></td>
+      <td>
+        <%= check_box 'gas_account', 'used_for_heating' %>
+        <%= help("If you use gas to heat your house, check this box.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="gas_account_used_for_water">Used for hot water?</label></td>
+      <td>
+        <%= check_box 'gas_account', 'used_for_water' %>
+        <%= help("If you use gas to heat your water, check this box.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="gas_account_current">Current?</label></td>
+      <td>
+        <%= check_box 'gas_account', 'current' %>
+        <%= help("If this account is no longer in use, uncheck this box.")%>
+      </td>
+    </tr>
+  </table>
+  </div>
+
+  <!--[eoform:gas_account]-->
+
+<% content_for('end_form') do %>
+  <%= end_form_tag %>
+<% end %>

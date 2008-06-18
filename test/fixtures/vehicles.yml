@@ -1,0 +1,209 @@
+--- 
+vehicles_020: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "3"
+  id: "20"
+  vehicle_fuel_class_id: "5"
+  user_id: "38"
+vehicles_019: 
+  name: Astra
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "19"
+  vehicle_fuel_class_id: "1"
+  user_id: "35"
+vehicles_008: 
+  name: Jazz
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "8"
+  vehicle_fuel_class_id: "1"
+  user_id: "1"
+vehicles_021: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "3"
+  id: "21"
+  vehicle_fuel_class_id: "5"
+  user_id: "41"
+vehicles_010: 
+  name: Car
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "10"
+  vehicle_fuel_class_id: "1"
+  user_id: "19"
+vehicles_009: 
+  name: Car
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "9"
+  vehicle_fuel_class_id: "2"
+  user_id: "18"
+vehicles_022: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "3"
+  id: "22"
+  vehicle_fuel_class_id: "5"
+  user_id: "43"
+vehicles_011: 
+  name: Seat Ibiza
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "11"
+  vehicle_fuel_class_id: "1"
+  user_id: "5"
+vehicles_023: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "3"
+  id: "23"
+  vehicle_fuel_class_id: "5"
+  user_id: "44"
+vehicles_012: 
+  name: Jazz
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "12"
+  vehicle_fuel_class_id: "1"
+  user_id: "8"
+vehicles_001: 
+  name: MX-5
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "1"
+  vehicle_fuel_class_id: "1"
+  user_id: "1"
+vehicles_024: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "3"
+  id: "24"
+  vehicle_fuel_class_id: "5"
+  user_id: "45"
+vehicles_013: 
+  name: Saturn
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "13"
+  vehicle_fuel_class_id: "5"
+  user_id: "25"
+vehicles_002: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "2"
+  vehicle_fuel_class_id: "1"
+  user_id: "4"
+vehicles_025: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "25"
+  vehicle_fuel_class_id: "1"
+  user_id: "46"
+vehicles_014: 
+  name: Dodge Minivan
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "14"
+  vehicle_fuel_class_id: "5"
+  user_id: "25"
+vehicles_003: 
+  name: Car
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "3"
+  vehicle_fuel_class_id: "1"
+  user_id: "2"
+vehicles_026: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "26"
+  vehicle_fuel_class_id: "2"
+  user_id: "47"
+vehicles_015: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "15"
+  vehicle_fuel_class_id: "2"
+  user_id: "30"
+vehicles_004: 
+  name: Alfa
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "4"
+  vehicle_fuel_class_id: "1"
+  user_id: "11"
+vehicles_016: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "2"
+  id: "16"
+  vehicle_fuel_class_id: "3"
+  user_id: "31"
+vehicles_005: 
+  name: Golf
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "5"
+  vehicle_fuel_class_id: "1"
+  user_id: "11"
+vehicles_017: 
+  name: Car
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "17"
+  vehicle_fuel_class_id: "1"
+  user_id: "32"
+vehicles_006: 
+  name: Nissan Micra
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "6"
+  vehicle_fuel_class_id: "1"
+  user_id: "3"
+vehicles_018: 
+  name: BMW 328i Coupe
+  vehicle_distance_unit_id: "2"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "18"
+  vehicle_fuel_class_id: "1"
+  user_id: "37"
+vehicles_007: 
+  name: Honda S2000
+  vehicle_distance_unit_id: "1"
+  current: "1"
+  vehicle_fuel_unit_id: "1"
+  id: "7"
+  vehicle_fuel_class_id: "1"
+  user_id: "15"

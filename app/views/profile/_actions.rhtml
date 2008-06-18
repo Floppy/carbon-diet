@@ -1,0 +1,12 @@
+<% if @profile == @current_user %>
+
+<div class="sectiontitle">Top Actions</div>
+<ol>
+<% for action in @actions %>
+  <li>
+  <%= link_to action.title, :controller => 'actions' %>
+  </li>
+<% end %>
+</ol>
+
+<% end %>

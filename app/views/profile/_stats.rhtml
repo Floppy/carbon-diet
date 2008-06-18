@@ -1,0 +1,19 @@
+<div class="sectiontitle">Carbon footprint</div>
+<table>
+<% for type in @totals %>
+<tr>
+<td><%= image_tag type[:image] unless type[:image].nil?%></td>
+<td><%=h type[:name] %></td>
+<td>=</td>
+<td>
+<% if @profile.people_in_household > 1 %>
+<%= tonnes(type[:data][:perannum]/@profile.people_in_household, 2) %>
+<% else %>
+<%= tonnes(type[:data][:perannum], 2) %>
+<% end %>
+</td>
+</tr>
+<% end %>
+</table>
+<span class="smalltext"><em>figures are per person per year</em></span>
+

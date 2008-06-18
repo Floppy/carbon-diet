@@ -1,0 +1,15 @@
+<% content_for('optionbar') do %>
+  <% unless @current_user.nil? %>
+    <%= option "action" %>
+  <% end %>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+<p>
+<%= @action.content %>
+</p>
+<p>
+<% @action.level.times { %><%= image_tag 'level.png' %><% } %>
+</p>
+</div>

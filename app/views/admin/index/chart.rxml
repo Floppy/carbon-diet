@@ -1,0 +1,30 @@
+xml.chart do
+  
+  xml.chart_type "line"
+  
+  xml.chart_pref :line_thickness=>'2',:point_shape=>'none',:fill_shape=>'false'
+
+  xml.chart_value :decimals=>'0',:position=>'cursor',:size=>'12',:color=>'000000',:background_color=>'ffffff',:alpha=>'75'
+
+  xml.axis_category :skip=>'7'
+
+  xml.chart_data do
+    xml.row do
+      xml.null
+      for value in @data
+        xml.string value[:date].to_date.strftime("%b %d")   
+      end
+    end
+    xml.row do
+      xml.string "Signup Rate"
+      for value in @data
+        xml.number value[:count]   
+      end
+    end
+  end
+
+  xml.series_color do
+    xml.color "ff0000"
+  end
+
+end

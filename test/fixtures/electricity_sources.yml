@@ -1,0 +1,51 @@
+--- 
+electricity_sources_005: 
+  country_id: "1"
+  id: "5"
+  g_per_kWh: "530"
+  source: Other
+electricity_sources_006: 
+  country_id: "2"
+  id: "6"
+  g_per_kWh: "890"
+  source: Coal
+electricity_sources_007: 
+  country_id: "2"
+  id: "7"
+  g_per_kWh: "530"
+  source: Oil
+electricity_sources_008: 
+  country_id: "2"
+  id: "8"
+  g_per_kWh: "360"
+  source: Gas
+electricity_sources_010: 
+  country_id: "2"
+  id: "10"
+  g_per_kWh: "0"
+  source: Renewable
+electricity_sources_009: 
+  country_id: "2"
+  id: "9"
+  g_per_kWh: "0"
+  source: Nuclear
+electricity_sources_001: 
+  country_id: "1"
+  id: "1"
+  g_per_kWh: "890"
+  source: Coal
+electricity_sources_002: 
+  country_id: "1"
+  id: "2"
+  g_per_kWh: "360"
+  source: Gas
+electricity_sources_003: 
+  country_id: "1"
+  id: "3"
+  g_per_kWh: "0"
+  source: Nuclear
+electricity_sources_004: 
+  country_id: "1"
+  id: "4"
+  g_per_kWh: "0"
+  source: Renewable

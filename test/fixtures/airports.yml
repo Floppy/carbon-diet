@@ -1,0 +1,36 @@
+gatwick:
+  id: 1
+  name: Gatwick
+  latitude: 51.1481
+  longitude: -0.190278
+  location: London
+  country: England
+  iata_code: LGW
+  icao_code: EGKK
+edinburgh:
+  id: 2
+  name: Edinburgh
+  latitude: 55.95
+  longitude: -3.3725
+  location: Edinburgh
+  country: UK
+  iata_code: EDI
+  icao_code: EGPH
+alicante:
+  id: 3
+  name: Alicante
+  latitude: 38.2819
+  longitude: -0.558056
+  location: Alicante
+  country: Spain
+  iata_code: ALC
+  icao_code: LEAL
+los_angeles:
+  id: 4
+  name: Los Angeles International
+  latitude: 33.9425
+  longitude: -118.408
+  location: Los Angeles
+  country: USA
+  iata_code: LAX
+  icao_code: KLAX

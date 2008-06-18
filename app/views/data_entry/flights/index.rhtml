@@ -1,0 +1,42 @@
+<% pagetitle("List Flights", "plane.png") %>
+
+<% content_for('optionbar') do %>
+  <%= pagination_links(@flight_pages) %>
+  <%= option "new_flight" %>
+  <%= option "back_to_add_data" %>
+  <div class="option" %>
+    <%= image_tag_with_tooltip('export.png') %>
+    <%= link_to 'Export Data', { :action => 'export' } %>  
+  </div>
+  <% if @flights.size > 0 %>
+    <%= option "analysis" %>
+  <% end %>
+<% end %>
+
+<div class="pagecontent">
+<table>
+  <tr>
+  <th>From</th>
+  <th>To</th>
+  <th>Outbound</th>
+  <th>Return</th>
+  <th>Class</th>
+  <th>Passengers</th>
+  <th></th>
+  <th></th>
+  </tr>
+  
+<% for flight in @flights %>
+  <tr id="flight<%= flight.id %>">
+  <td><%=h flight.from_airport.name %></td>
+  <td><%=h flight.to_airport.name %></td>
+  <td><%=h flight.outbound_on.strftime("%d %b %y") %></td>
+  <td><%=h flight.return_on ? flight.return_on.strftime("%d %b %y") : ""%></td>
+  <td><%=h flight.flight_class.name %></td>
+  <td><%=h flight.passengers %></td>
+  <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => flight %></td>
+  <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => flight }, :confirm => 'Delete this flight?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+</div>

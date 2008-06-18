@@ -1,0 +1,35 @@
+<div class="action" id="action<%= action.id %>" <%= @display %> >
+ <div>
+  <div class="actiontitle">
+    <% action.level.times { %><%= image_tag 'level.png' %><% } %>
+    <%=h action.title %>
+  </div>
+  <div class="actioncontent">
+    <%= image_tag action.image unless action.image.blank? %>
+    <div>
+    <%= action.content %>
+    </div>
+    <div class="clearleft"></div>
+    <div class="left">
+      <% form_remote_tag(:update => 'actionlist',
+                         :position => :bottom,
+                         :loading => visual_effect(:blindUp, 'action' + action.id.to_s),
+                         :complete => 'item_added()',
+                         :url => { :action => 'complete', :id => action, :done => true }) do %>
+      <%= submit_tag "I have done / will do this!" %>
+      <% end %>
+    </div>
+    <div class="right">
+      <% form_remote_tag(:update => 'actionlist',
+                         :position => :bottom,
+                         :loading => visual_effect(:blindUp, 'action' + action.id.to_s),
+                         :complete => 'item_added()',
+                         :url => { :action => 'complete', :id => action, :done => false},
+                         :confirm => 'Are you sure you can\'t do this? Press OK if you\'re sure and we won\'t suggest it again!', :method => :post ) do %>
+      <%= submit_tag "I can't do this!" %>
+      <% end %>
+    </div>
+    <div class="clearleft"></div>
+  </div>
+ </div>
+</div>

@@ -1,0 +1,31 @@
+<% if @profile == @current_user %>
+
+<div class="sectiontitle"><%= link_to('Friends', :controller => 'friends') %></div>
+<div>
+<% unless @profile.unapproved_befriendships.empty? %>
+  <%= image_tag 'warning.png' %>
+  <%= link_to 'You have received ' + pluralize(@profile.unapproved_befriendships.size, "friend request") + '.', :controller => 'friends' %><br/>
+<% end %>
+<% if @profile.friends.empty? %>
+  You have not added any friends! Why not <%= link_to 'find some', :controller => "search" %>?
+<% else %>
+  <% for friend in @profile.friends %>
+  <%= friend_link(friend, true) %>
+  <% end %>
+  <div class="clear"></div>
+<% end %>
+</div>
+
+<% else %>
+
+<% unless @profile.friends.empty? %>
+<div class="sectiontitle">Friends</div>
+<div>
+<% for friend in @profile.friends %>
+<%= friend_link(friend, true) %>
+<% end %>
+<div class="clear"></div>
+</div>
+<% end %>
+
+<% end %>

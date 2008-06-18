@@ -1,0 +1,2 @@
+module DataEntry::IndexHelper
+end

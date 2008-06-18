@@ -1,0 +1,6 @@
+one:
+  id: 1
+  action_id: 1
+  country_id: 1
+  content: Turn off your lights
+  paid_for: true

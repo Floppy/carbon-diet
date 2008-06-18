@@ -1,0 +1,23 @@
+/* Holly-hack for IE peekaboo bug */
+
+/* Hides from IE5-mac \*/
+html .actioncontent { 
+  height: 0.01%;
+} 
+
+div .peekaboofix { 
+  height: 0.01%;
+} 
+
+/* End hide from IE5-mac */
+
+/* Required to fix line-height problem with IE */
+.option * { 
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.option input { 
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

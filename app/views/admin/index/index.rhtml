@@ -1,0 +1,125 @@
+<%content_for "optionbar" do %>
+<div class="option">
+    <%=image_tag 'delete.png' %><%=link_to("Remove old sessions", { :action => "clean_sessions" } ) %>
+</div>
+<div class="option">
+  <%= image_tag 'admin_delete.png' %><%= link_to 'Clear cached data', :action => 'clearcacheddata' %>
+</div>
+<%=option "home" %>
+<%end %>
+<div class="pagecontent">
+    <div class="leftcolumn">
+        <div class="sectiontitle">
+            <%=image_tag 'flags/gb.png' %> General
+        </div>
+        <ul>
+        	<li>
+        	    <%=h @num_sessions %> sessions, <%=h @num_old_sessions %> not updated for 1 month.
+        	</li>
+            <li>
+                <%=link_to("Countries", { :controller => "/admin/country" } ) %>
+            </li>
+        </ul>
+        <div class="sectiontitle">
+            <%=image_tag 'user.png' %> Users (<%=h @num_users %> registered)
+        </div>
+        <ul>
+            <li>
+                <%=link_to("Users", { :controller => "/admin/user" } ) %>
+            </li>
+        </ul>
+        <%=render :partial => "shared/xmlswfcharts", :locals => { :data_url => @data_file, :width => "100%", :height => "120"  } %>
+        <div class="sectiontitle">
+            <%=image_tag 'action.png' %> Actions
+        </div>
+        <ul>
+            <li>
+                <%=link_to("Actions", { :controller => "/admin/actions" } ) %>
+            </li>
+            <li>
+                <%=link_to("Categories", { :controller => "/admin/action_categories" } ) %>
+            </li>
+            <li>
+                <%=link_to("Overrides", { :controller => "/admin/action_overrides" } ) %>
+            </li>
+        </ul>
+        <div class="sectiontitle">
+            <%=image_tag 'group.png' %> Social
+        </div>
+        <ul>
+            <li>
+                <%=link_to("Groups", { :controller => "/admin/groups" } ) %>
+            </li>
+            <li>
+                <%=link_to("Memberships", { :controller => "/admin/group_memberships" } ) %>
+            </li>
+            <li>
+                <%=link_to("Comments", { :controller => "/admin/comments" } ) %>
+            </li>
+            <li>
+                <%=link_to("Friendships", { :controller => "/admin/friendships" } ) %>
+            </li>
+        </ul>
+    </div>
+    <div class="rightcolumn">
+        <div class="sectiontitle">
+            <%=image_tag 'electricity.png' %> Electricity (<%=pluralize(@num_elec_readings,"reading")%> in <%=pluralize(@num_elec_accounts,"account")%>)
+        </div>
+        <ul>
+            <li>
+                <%=link_to("Units", { :controller => "/admin/electricity_units" } ) %>
+            </li>
+            <li>
+                <%=link_to("Sources", { :controller => "/admin/electricity_sources" } ) %>
+            </li>
+            <li>
+                <%=link_to("Suppliers", { :controller => "/admin/electricity_suppliers", :action => "list" } ) %>
+            </li>
+        </ul>
+        <div class="sectiontitle">
+            <%=image_tag 'gas.png' %> Gas (<%=pluralize(@num_gas_readings,"reading")%> in <%=pluralize(@num_gas_accounts,"account")%>)
+        </div>
+        <ul>
+            <li>
+                <%=link_to("Units", { :controller => "/admin/gas_units" } ) %>
+            </li>
+            <li>
+                <%=link_to("Suppliers", { :controller => "/admin/gas_suppliers" } ) %>
+            </li>
+        </ul>
+        <div class="sectiontitle">
+            <%=image_tag 'car.png' %> Vehicles (<%=pluralize(@num_vehicle_fuel_purchases,"purchase")%> for <%=pluralize(@num_vehicles,"vehicle")%>)
+        </div>
+        <ul>
+            <li>
+                <%=link_to("Fuel Units", { :controller => "/admin/vehicle_fuel_units" } ) %>
+            </li>
+            <li>
+                <%=link_to("Distance Units", { :controller => "/admin/vehicle_distance_units" } ) %>
+            </li>
+            <li>
+                <%=link_to("Classes", { :controller => "/admin/vehicle_fuel_classes" } ) %>
+            </li>
+            <li>
+                <%=link_to("Types", { :controller => "/admin/vehicle_fuel_types" } ) %>
+            </li>
+        </ul>
+        <div class="sectiontitle">
+            <%=image_tag 'plane.png' %> Flights (<%=pluralize(@num_flights,"flight")%>)
+        </div>
+        <ul>
+            <li>
+                <%=link_to("Airports", { :controller => "/admin/airports" } ) %>
+            </li>
+            <li>
+                <%=link_to("Factors", { :controller => "/admin/flight_factors" } ) %>
+            </li>
+            <li>
+                <%=link_to("Classes", { :controller => "/admin/flight_classes" } ) %>
+            </li>
+        </ul>
+    </div>
+    <div class="clear">
+        &nbsp;
+    </div>
+</div>

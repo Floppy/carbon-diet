@@ -1,0 +1,7 @@
+<div style="min-height:<%= small ? "32px" : "100px" %>;">
+<% if user.public? %>
+  <%= link_to image_tag(user.avatar(small)), :controller => '/profile', :login => user.login %>
+<% else %>
+  <%= image_tag(user.avatar(small)) %>
+<% end %>
+</div>

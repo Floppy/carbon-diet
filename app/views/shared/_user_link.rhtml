@@ -1,0 +1,5 @@
+<% if user.public? %>
+  <%= link_to h(user.name), :controller => '/profile', :login => user.login %>
+<% else %>
+  <%=h user.name %>
+<% end %>

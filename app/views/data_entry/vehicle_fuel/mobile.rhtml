@@ -1,0 +1,29 @@
+<h1>New Vehicle Fuel Purchase</h1>
+
+<%= start_form_tag :action => 'mobile', :id => @vehicle_fuel_purchase %>
+<%= error_messages_for 'vehicle_fuel_purchase' %>
+
+  <!--[form:vehicle_fuel_purchase]-->
+  <p>
+    <label for="vehicle_fuel_purchase_amount">Amount (<%=h @vehicle.vehicle_fuel_unit.abbreviation %>)</label><br/> 
+    <%= text_field 'vehicle_fuel_purchase', 'amount', :style => '-wap-input-format: "*n"'  %>
+  </p>
+  <p>
+    <label for="vehicle_fuel_purchase_purchased_on">Date</label><br/>
+    <%= date_select 'vehicle_fuel_purchase', 'purchased_on', :order => [:day, :month, :year]  %>
+  </p>
+  <p>
+    <label for="vehicle_fuel_purchase_vehicle_fuel_type">Type</label><br/>
+    <%= collection_select :vehicle_fuel_purchase, :vehicle_fuel_type_id, @vehicle_fuel_types, :id, :name %>
+  </p>
+  <p>
+    <label for="vehicle_fuel_purchase_distance">Odometer Reading (<%=h @vehicle.vehicle_distance_unit.abbreviation %>)<em>(optional)</em><br>
+    <%= text_field 'vehicle_fuel_purchase', 'distance', :style => '-wap-input-format: "*n"' %> 
+  </p>
+  <!--[eoform:vehicle_fuel_purchase]-->
+
+  <%= submit_tag 'Save' %>
+
+<%= end_form_tag %>
+
+<%= link_to 'Back', :controller => '/main', :action => 'mobile' %>

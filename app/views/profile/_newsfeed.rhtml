@@ -1,0 +1,17 @@
+<% feed = news_feed(@profile, 10) %>
+<% unless feed.empty? %>
+<div class="sectiontitle">Recent Activity</div>
+<div class="smalltext">
+<% last_date = 10.years.ago %>
+<% for item in feed %>
+<% if item[:when].to_date != last_date %>
+<em><%= item[:when].strftime("%d %b %y") %></em>
+<% last_date = item[:when].to_date %>
+<br/>
+<% end %>
+<%= image_tag item[:image] %>
+<%= item[:text] %>
+<br/>
+<% end %>
+</div>
+<% end %>

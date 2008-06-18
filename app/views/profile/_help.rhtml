@@ -1,0 +1,16 @@
+<% if @profile == @current_user and not @profile.has_enough_data_to_analyse %>
+<div class="sectiontitle">Welcome!</div>
+<div>
+<p>
+This site can help you to accurately track your carbon footprint on a daily basis and work out your contribution to climate change. You can get advice on how to reduce your footprint, and you also can compare yourself to your friends!
+</p><p>
+For a gentle introduction, take the <%= link_to 'tour', :controller => 'tour' %>, and for news of updates, subscribe to the <a href="http://carbondiet.blogspot.com">blog</a>.
+</p><p>
+<% if @current_user.country.nil? %>
+  You haven't selected a country yet, so you can't add your own data. Edit your <%= link_to 'settings', :controller => "user", :action => "edit" %> to select a country.
+<% else %>
+  Why not get started now, by <%= link_to 'adding some data', :controller => "/data_entry/index" %>?
+<% end %>
+</p>
+</div>
+<% end %>

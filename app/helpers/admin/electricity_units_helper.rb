@@ -1,0 +1,2 @@
+module Admin::ElectricityUnitsHelper
+end

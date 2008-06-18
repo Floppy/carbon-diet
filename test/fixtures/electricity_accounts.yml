@@ -1,0 +1,231 @@
+--- 
+electricity_accounts_017: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "6"
+  id: "20"
+  user_id: "35"
+  used_for_water: "0"
+electricity_accounts_006: 
+  name: Electricity
+  night_rate: "1"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "2"
+  id: "8"
+  user_id: "6"
+  used_for_water: "0"
+electricity_accounts_018: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "4"
+  id: "21"
+  user_id: "39"
+  used_for_water: "0"
+electricity_accounts_007: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "9"
+  id: "10"
+  user_id: "8"
+  used_for_water: "0"
+electricity_accounts_019: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "12"
+  id: "22"
+  user_id: "41"
+  used_for_water: "1"
+electricity_accounts_008: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "5"
+  id: "11"
+  user_id: "11"
+  used_for_water: "0"
+electricity_accounts_020: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "12"
+  id: "23"
+  user_id: "43"
+  used_for_water: "0"
+electricity_accounts_009: 
+  name: Electricity
+  night_rate: "1"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "9"
+  id: "12"
+  user_id: "15"
+  used_for_water: "0"
+electricity_accounts_021: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "12"
+  id: "24"
+  user_id: "44"
+  used_for_water: "0"
+electricity_accounts_010: 
+  name: Electricity
+  night_rate: "1"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "11"
+  id: "13"
+  user_id: "18"
+  used_for_water: "0"
+electricity_accounts_022: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "12"
+  id: "25"
+  user_id: "45"
+  used_for_water: "0"
+electricity_accounts_011: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "9"
+  id: "14"
+  user_id: "19"
+  used_for_water: "0"
+electricity_accounts_023: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "1"
+  id: "26"
+  user_id: "47"
+  used_for_water: "0"
+electricity_accounts_012: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "5"
+  id: "15"
+  user_id: "22"
+  used_for_water: "0"
+electricity_accounts_001: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "2"
+  id: "1"
+  user_id: "1"
+  used_for_water: "0"
+electricity_accounts_013: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "12"
+  id: "16"
+  user_id: "25"
+  used_for_water: "0"
+electricity_accounts_002: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "1"
+  id: "4"
+  user_id: "5"
+  used_for_water: "0"
+electricity_accounts_014: 
+  name: Electricity
+  night_rate: "1"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "1"
+  id: "17"
+  user_id: "26"
+  used_for_water: "0"
+electricity_accounts_003: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "8"
+  id: "5"
+  user_id: "7"
+  used_for_water: "0"
+electricity_accounts_015: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "12"
+  id: "18"
+  user_id: "28"
+  used_for_water: "0"
+electricity_accounts_004: 
+  name: Electricity
+  night_rate: "0"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "3"
+  id: "6"
+  user_id: "3"
+  used_for_water: "0"
+electricity_accounts_016: 
+  name: Electricity
+  night_rate: "1"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "5"
+  id: "19"
+  user_id: "30"
+  used_for_water: "0"
+electricity_accounts_005: 
+  name: Electricity
+  night_rate: "1"
+  electricity_unit_id: "1"
+  current: "1"
+  used_for_heating: "0"
+  electricity_supplier_id: "2"
+  id: "7"
+  user_id: "4"
+  used_for_water: "0"

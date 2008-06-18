@@ -1,0 +1,43 @@
+--- 
+vehicle_fuel_types_001: 
+  g_per_l: "2315"
+  name: Unleaded
+  default: "1"
+  id: "1"
+  vehicle_fuel_class_id: "1"
+vehicle_fuel_types_002: 
+  g_per_l: "2630"
+  name: Diesel
+  default: "1"
+  id: "2"
+  vehicle_fuel_class_id: "2"
+vehicle_fuel_types_003: 
+  g_per_l: "2315"
+  name: LRP (4 Star)
+  default: "1"
+  id: "3"
+  vehicle_fuel_class_id: "3"
+vehicle_fuel_types_004: 
+  g_per_l: "1498"
+  name: LPG (Autogas)
+  default: "1"
+  id: "4"
+  vehicle_fuel_class_id: "4"
+vehicle_fuel_types_005: 
+  g_per_l: "2315"
+  name: Gasoline
+  default: "1"
+  id: "5"
+  vehicle_fuel_class_id: "5"
+vehicle_fuel_types_006: 
+  g_per_l: "2630"
+  name: Diesel
+  default: "1"
+  id: "6"
+  vehicle_fuel_class_id: "6"
+vehicle_fuel_types_007: 
+  g_per_l: "1498"
+  name: LPG (Autogas)
+  default: "1"
+  id: "7"
+  vehicle_fuel_class_id: "7"

@@ -1,0 +1,55 @@
+<% pagetitle((params[:id] ? "Edit Flight" : "New Flight"), "plane.png") %>
+
+<% content_for('start_form') do %>
+  <%= start_form_tag :action => 'edit', :id => @flight %>
+<% end %>
+
+<% content_for('optionbar') do %>
+  <%= option "save" %>
+  <%= option "cancel" %>
+<% end %>
+
+  <div class="pagecontent">
+  
+  <%= tip_box "Start typing the airport names into the boxes, wait a moment, and then select the correct result from the dropdown box." %>
+  
+  <%= error_messages_for 'flight' %>
+
+  <!--[form:flight]-->
+  <table class="form">
+  <tr>
+    <td><label for="flight_from_airport">From</label></td>
+    <td><%= text_field_with_auto_complete :flight, :from_airport, :value => (@flight.from_airport.full_description rescue nil) %>
+    <%= help("Type in the box, and select one of the options that appear") %></td>
+  </tr>
+  <tr>
+    <td><label for="flight_to_airport">To</label></td>
+    <td><%= text_field_with_auto_complete :flight, :to_airport, :value => (@flight.to_airport.full_description rescue nil) %>
+    <%= help("Type in the box, and select one of the options that appear") %></td>
+  </tr>
+  <tr>
+    <td><label for="flight_outbound_on">Outbound Date</label></td>
+    <td><%= date_select 'flight', 'outbound_on', :order => [:day, :month, :year]  %></td>
+  </tr>
+  <tr>
+    <td><label for="flight_return_on">Return Date</label></td>
+    <td><%= date_select 'flight', 'return_on', :order => [:day, :month, :year], :include_blank => true  %>
+    <%= help("Leave blank for one way") %></td>
+  </tr>
+  <tr>
+    <td><label for="flight_flight_class">Seat Class</label></td>
+    <td><%= collection_select :flight, :flight_class_id, @classes, :id, :name %>
+	<%= help("Bigger seats take up more room, so use more fuel!") %></td>
+  </tr>
+  <tr>
+    <td><label for="flight_passengers">Number of people</label></td>
+    <td><%= text_field :flight, :passengers%></td>
+  </tr>
+  </table>
+  </div>
+
+  <!--[eoform:flight]-->
+
+<% content_for('end_form') do %>
+  <%= end_form_tag %>
+<% end %>

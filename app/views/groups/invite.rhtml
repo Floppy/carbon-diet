@@ -1,0 +1,41 @@
+<% pagetitle 'Invite friends to "' + h(@group.name) + '"', "invite.png" %>
+
+<% content_for('start_form') do %>
+  <%= start_form_tag :action => 'send_invitations', :id => @group %>
+<% end %>
+
+<% content_for('optionbar') do %>
+  <% if @friends.size != 0 %>
+    <div class="option">
+      <%= image_tag 'invite.png' %>
+      <%= submit_tag 'Invite' %>
+    </div>
+  <% end %>
+  <%= option "cancel" %>
+<% end %>
+
+<div class="pagecontent">
+<% if @friends.size != 0 %>
+  <p>
+  To invite your friends to this group, tick the ones you want to invite and press "Invite".
+  </p>
+  <div>
+  <% for friend in @friends %>
+    <%= check_box 'invite', friend.login %>
+    <%= render :partial => "/shared/user_image_link", :locals => { :user => friend, :small => true } %>
+    <%= render :partial => "/shared/user_link", :locals => { :user => friend } %>
+    <br/>
+  <% end %>
+  </div>
+<% else %>
+  <p>
+  You haven't added any friends on the site yet, so you can't invite them to this group! Why not make some friends by <%= link_to 'searching', :controller => "search" %> for other Carbon Diet users, or by <%= link_to 'inviting your contacts', :controller => "friends", :action => "invite" %> to sign up?
+  </p>
+<% end %>
+
+<div class="clear">&nbsp;</div>
+</div>
+
+<% content_for('end_form') do %>
+  <%= end_form_tag %>
+<% end %>

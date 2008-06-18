@@ -1,0 +1,33 @@
+<h1>New Electricity Reading</h1>
+
+<%= start_form_tag :action => 'mobile', :id => @electricity_reading %>
+<%= error_messages_for 'electricity_reading' %>
+
+  <!--[form:electricity_reading]-->
+  <% if @account.night_rate %>
+    <p>
+    <label for="electricity_reading_reading_day">Day reading (<%=h @account.electricity_unit.abbreviation %>)</label><br/>
+    <%= text_field 'electricity_reading', 'reading_day', :style => '-wap-input-format: "*n"' %>
+    </p>    
+    <p>
+    <label for="electricity_reading_reading_night">Night reading (<%=h @account.electricity_unit.abbreviation %>)</label><br/>
+    <%= text_field 'electricity_reading', 'reading_night', :style => '-wap-input-format: "*n"' %>
+    </p>    
+  <% else %>
+    <p>
+    <label for="electricity_reading_reading_day">Reading (<%=h @account.electricity_unit.abbreviation %>)</label><br/>
+    <%= text_field 'electricity_reading', 'reading_day', :style => '-wap-input-format: "*n"' %>
+    <%= hidden_field 'electricity_reading', 'reading_night', :value => "0" %>
+    </p>
+  <% end %>
+  <p>
+    <label for="electricity_reading_taken_on">Date</label><br/>
+    <%= date_select 'electricity_reading', 'taken_on', :order => [:day, :month, :year]  %>
+  </p>
+  <!--[eoform:electricity_reading]-->
+
+  <%= submit_tag 'Save' %>
+
+<%= end_form_tag %>
+
+<%= link_to 'Back', :controller => '/main', :action => 'mobile' %>

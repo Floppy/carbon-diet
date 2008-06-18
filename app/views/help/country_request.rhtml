@@ -1,0 +1,25 @@
+<% content_for('optionbar') do %>
+  <%= option "help" %>
+  <%= option "home" %>
+<% end %>
+
+<% pagetitle "Country Request", "help.png" %>
+
+<div class="pagecontent">
+<% if request.post? %>
+<p>
+Thanks for your request! We'll try to add your country as soon as we can. Keep an eye on the <a href="http://carbondiet.blogspot.com">blog</a> for updates!
+</p>
+<% else %>
+<p>
+If we don't have information for your country in the Carbon Diet, you can use this page to request that we add it for you. Select your
+country, press the button, and we'll see what we can do!
+</p>
+<p>
+<% form_tag do %>
+<%= select_tag 'country', country_options_for_select %>
+<%= submit_tag 'Submit Request' %>
+<% end %>
+</p>
+<% end %>
+</div>

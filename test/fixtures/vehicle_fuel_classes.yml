@@ -1,0 +1,29 @@
+--- 
+vehicle_fuel_classes_001: 
+  name: Unleaded
+  country_id: "1"
+  id: "1"
+vehicle_fuel_classes_002: 
+  name: Diesel
+  country_id: "1"
+  id: "2"
+vehicle_fuel_classes_003: 
+  name: 4 Star (LRP)
+  country_id: "1"
+  id: "3"
+vehicle_fuel_classes_004: 
+  name: LPG
+  country_id: "1"
+  id: "4"
+vehicle_fuel_classes_005: 
+  name: Gasoline
+  country_id: "2"
+  id: "5"
+vehicle_fuel_classes_006: 
+  name: Diesel
+  country_id: "2"
+  id: "6"
+vehicle_fuel_classes_007: 
+  name: LPG
+  country_id: "2"
+  id: "7"

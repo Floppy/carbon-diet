@@ -1,0 +1,5 @@
+<div class="option">
+<%= image_tag 'warning.png' if @current_user.needs_more_data %>
+<%= image_tag 'new.png' %>
+<%= link_to 'Add Data', { :controller => "data_entry/index" } %>
+</div>

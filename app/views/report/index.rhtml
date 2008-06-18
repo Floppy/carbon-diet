@@ -1,0 +1,48 @@
+<% content_for('optionbar') do %>
+  <% if @current_user.has_enough_data_to_analyse %>
+    <%= option "ratio" %>
+    <%= option "daily" %>
+  <% else %>
+    <%= option "add_data" %>
+  <% end %>
+  <%= option "action" %>
+  <%= option "home" %>
+<% end %>
+
+<% if @current_user.has_enough_data_to_analyse %>
+
+  <div class="pagecontent">
+  <p>
+  The Carbon Diet uses the data you enter to calculate your footprint in <em>kilograms of CO<span class='sub'>2</span> equivalent</em> (kg CO<span class='sub'>2</span>-e). There are many greenhouse gases, but this figure takes them all into account, not just carbon dioxide.
+  </p>
+  </div>
+
+  <div class="pagecontent">
+  Since you started tracking your emissions on the Carbon Diet, you have produced:
+  <ul>
+  <li>A total of <%= kg(@total) %>, or around <%= tonnes(@total,1) %>, at an average of <%= kg(@perday, 2) %> per day.</li>
+<% if @current_user.people_in_household > 1 %>
+  <li>...that's the equivalent of <%= tonnes(@perannum/@current_user.people_in_household, 2) %> per person per year on average.</li>
+<% else %>
+  <li>...that's the equivalent of <%= tonnes(@perannum, 2) %> a year on average.</li>
+<% end %>
+  <li>...each day, that's <%= number_with_precision(@times_breathed_out, 0) %> times the amount of CO<span class='sub'>2</span> an average person breathes out.</li>
+  <li>...which is the same as filling <%= number_with_precision(@balloons, 0) %> party balloons every day - that's one every <%= number_with_precision(@seconds_per_balloon, 0) %> seconds!</li>
+  </ul>
+  <p>
+  To see exactly where your footprint comes from and how it varies, click the links to the right.
+  </p>
+  </div>
+
+<% else %>
+
+  <div class="pagecontent">
+  <p>
+  Sorry, but you haven't put in enough data for us to analyse yet! The Carbon Diet works by analysing data that you 
+  enter about your electricity, gas, and vehicle usage, so until we have some of that, there's not a lot we can do!
+  </p><p>
+  Click on the link to the right to start entering data!
+  </p>
+  </div>
+
+<% end %>

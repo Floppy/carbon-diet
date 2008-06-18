@@ -1,0 +1,41 @@
+<% content_for('optionbar') do %>
+  <% if @current_user.country.nil? %>
+    <%= option "settings" %>
+  <% else %>
+    <div class="option">
+    <%= image_tag_with_tooltip 'electricity.png' %>
+    <%= link_to 'Electricity Account', :controller => '/electricity_accounts', :action => 'edit' %></td>
+    </div>
+    <div class="option">
+    <%= image_tag_with_tooltip('gas.png') %>
+    <%= link_to 'Gas Account', :controller => '/gas_accounts', :action => 'edit' %></td>
+    </div>
+    <div class="option">
+    <%= image_tag_with_tooltip('car.png') %>
+    <%= link_to 'Vehicle', :controller => '/vehicles', :action => 'edit' %></td>
+    </div>
+  <% end %>
+  <%= option "home" %>
+<% end %>
+
+<% if @current_user.country.nil? %>
+
+<div class="pagecontent">
+<p>
+You haven't selected a country yet, so unfortunately you can't add any accounts. If your country isn't supported yet, keep an eye on the <a href="http://carbondiet.blogspot.com">blog</a> for updates!
+</p>
+<p>
+To choose your country, click "Change Settings" on the right.
+</p>
+</div>
+
+<% else %>
+
+<div class="pagecontent">
+<p>
+The Carbon Diet groups your data into "accounts". Each account represents a single source of carbon. For instance, you would generally have an account for your home electricity, an account for each car you own, and an account for your natural gas supply (if you have one).
+</p>
+What sort of account would you like to add?
+</div>
+
+<% end %>

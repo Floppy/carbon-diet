@@ -1,0 +1,13 @@
+<tr>
+<td>
+  <%= render :partial => "/shared/user_image_link", :locals => { :user => user, :small => true } %>
+</td><td>
+  <%= render :partial => "/shared/user_link", :locals => { :user => user } %>
+</td><td>
+  <%= image_tag('true.png') %>
+  <%= link_to("Accept", :action => 'accept', :id => user.id) %>
+</td><td>
+  <%= image_tag('false.png') %>
+  <%= link_to("Reject", :action => 'reject', :id => user.id) %>
+</td>
+</tr>

@@ -1,0 +1,21 @@
+--- 
+gas_units_001: 
+  name: Cubic Metres
+  amount_in_m3: "1"
+  abbreviation: m3
+  id: "1"
+gas_units_002: 
+  name: Cubic Feet
+  amount_in_m3: "0.0283168"
+  abbreviation: ft3
+  id: "2"
+gas_units_003: 
+  name: Kilowatt-Hours
+  amount_in_m3: "0.0925926"
+  abbreviation: kWh
+  id: "3"
+gas_units_004: 
+  name: Therms
+  amount_in_m3: "2.83168"
+  abbreviation: thm
+  id: "4"

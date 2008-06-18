@@ -1,0 +1,24 @@
+<div>
+<table>
+<tr>
+<td><%= image_tag(@profile.avatar) %></td>
+<td>
+<%= image_tag_with_tooltip @profile.image %>
+<b>
+<% if @profile.display_name.nil? or @profile.display_name.blank? %>
+<%=h @profile.login %>
+<% else %>
+<%=h @profile.display_name %>
+<% end %>
+</b><br/>
+<% unless @profile.country.nil? %>
+<%= image_tag @profile.flag %>
+<span class="smalltext"><%=h @profile.country.name %></span>
+<% end %>
+<br />
+<% if @profile.people_in_household > 1 %>
+<span class="smalltext"><%= @profile.people_in_household %> people in household</span>
+<% end %>
+</td></tr>
+</table>
+</div>

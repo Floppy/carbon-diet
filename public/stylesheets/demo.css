@@ -1,0 +1,184 @@
+/* Global settings */
+
+a {
+  color: black;
+}
+
+/* Header */
+
+div.cd-header {
+  background: white;
+} 
+
+span.alert {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75em;
+  padding: 5px;
+}
+
+/* Page name */
+
+div.pagename {
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+table.pagename {
+  border-collapse: separate;
+  background-color: #d5f2ff;
+  border: 1px solid blue;
+  border-bottom: 0px;
+}
+
+td.pagename_left {
+  width: 3px;
+}
+
+td.pagename_right {
+  width: 3px;
+}
+
+/* Link bar */
+
+div.cd-linkbar {
+  margin-top: 5px;
+  background: white;
+  border-bottom: 1px solid blue;
+  font-size: 0.75em;
+}
+
+.cd-linkbar a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* User info box */
+
+div.userinfo {
+  font-size: 0.75em;
+  background-color: #d5f2ff;
+  border: 1px solid blue;
+}
+
+/* Flash warnings */
+
+.flash {  
+  border: 2px solid red;
+  background-color: #f0f0f0;
+}
+
+/* Content area */
+
+div.cd-content {
+  background: blue url(/images/demo/background.png) fixed;
+}
+
+/* Page content */
+
+div.pagecontent {
+  background-color: white;
+  border: 1px solid blue;
+}
+
+div.sectiontitle {
+  font-size: 0.8em;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+/* Option boxes */
+
+div.option {
+  background-color: #d5f2ff;
+  border: 1px solid blue;
+  color: black;
+}
+
+.option a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Login box */
+
+div.logincontent {
+  background-color: white;
+  border: 1px solid blue;
+}
+
+div.login {
+  background-color: #d5f2ff;
+  border: 1px solid blue;
+}
+
+/* Tagline */
+
+div.tagline {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #3f7f3f;
+}
+
+/* Actions */
+
+div.actiontitle {
+  background: #d5f2ff;
+  border: 1px solid blue;
+  border-bottom: 0px;
+  color: black;
+}
+
+div.actioncontent {
+  background: white;
+  border: 1px solid blue;
+}
+
+/* Comments */
+
+table.comment {
+  border: 1px solid blue;
+  background: #d5f2ff;
+}
+
+table.comment span.byline {
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+/* Tour */
+
+div.tour {
+  background-color: white;
+  border: 1px solid blue;
+}
+
+/* Tips */
+
+table.tip {
+  background-color: #d5f2ff;
+  border: 1px solid blue;
+  text-align: center;
+}
+
+table.tip td {
+  text-align: left;
+}
+
+/* Help */
+
+span.help:hover span {
+    border: 1px solid black;
+    background-color: #d5f2ff;
+	color: black;
+	font-size: 0.75em;
+}
+
+/* Footer */
+
+div.cd-footer {
+  border-top: 1px solid blue;
+  font-size: 0.65em;
+}

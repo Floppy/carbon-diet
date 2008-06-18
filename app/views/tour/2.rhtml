@@ -1,0 +1,28 @@
+<div class="tourimage">
+<%= image_tag 'tour/data_entry.png' %>
+</div>
+
+<div class="tour">
+<h3>How do I measure my carbon footprint?</h3>
+<p>
+The Carbon Diet makes it simple! 
+</p>
+<p>
+By simply entering utility meter readings every few days, and by entering the amount whenever you buy fuel for your car, we can calculate your exact carbon footprint on a daily basis. The site can calculate carbon impacts for:
+</p>
+<ul>
+<li><%= image_tag 'electricity.png' %> Electricity</li>
+<li><%= image_tag 'gas.png' %> Natural Gas</li>
+<li><%= image_tag 'car.png' %> Vehicle Fuel</li>
+<li><%= image_tag 'plane.png' %> Flights</li>
+<li>...with other fuels coming soon.</li>
+</ul>
+<p>
+Entering data is so easy, you can even do it on your mobile phone!
+</p>
+<p>
+<%= link_to image_tag('prev.png') + "Back", :action => '1' %>
+|
+<%= link_to "Next" + image_tag('next.png'), :action => '3' %>
+</p>
+</div>

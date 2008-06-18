@@ -1,0 +1,17 @@
+<% content_for('optionbar') do %>
+  <%= option "ratio" %>
+  <%= option "analysis" %>
+  <%= option "action" %>
+  <%= option "add_data" %>
+<% end %>
+
+<div class="pagecontent">
+<%= render :partial => "shared/line_chart", 
+           :locals => { :data_url => @data_file, :settings_url => @line_settings_url, :width => "100%", :height => "400", :show_flight_controls => @show_flight_controls } %>
+<p>
+Since <%= @start_date.strftime("%d %b %y") %>, each of your accounts has contributed:
+</p>
+<div id="totals">
+<%= render :partial => 'totals' %>
+</div>
+</div>

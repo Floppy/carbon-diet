@@ -1,0 +1,51 @@
+<% content_for('optionbar') do %>
+  <div class="option">
+    <%= image_tag 'help.png' %>
+    <%= link_to 'About', :action => 'about' %>
+  </div>
+  <div class="option">
+    <%= image_tag 'help.png' %>
+    <%= link_to 'Calculations', :action => 'calculation' %>
+  </div>
+  <div class="option">
+    <%= image_tag 'help.png' %>
+    <%= link_to 'Country Request', :action => 'country_request' %>
+  </div>
+  <div class="option">
+    <%= image_tag 'help.png' %>
+    <%= link_to 'Privacy policy', :action => 'privacy_policy' %>
+  </div>
+  <div class="option">
+    <%= image_tag 'help.png' %>
+    <%= link_to 'Live chat', :action => 'livechat' %>
+  </div>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+<h3>Frequently asked questions</h3>
+<h4>Why can't I see any results?</h4>
+<p>
+In order to calculate your footprint, we need to have enough data. Because we analyse the gaps between your readings/purchases rather than the readings themselves, we need 2 items of data in an account in order to work out the results. If
+you have less than this, then there won't be any data to display.
+</p>
+<h4>Why isn't my country in the list?</h4>
+<p>
+In order to work out your footprint, we need to know various figures. At the moment, we only have those figures for the countries in the list. If your country isn't in the list, then I'm afraid we can't track your data yet. However, you can let us know where you live using the <%= link_to 'country request', :action => 'country_request' %> page, and we will see if we can add it. Keep an eye on the <a href="http://carbondiet.blogspot.com">blog</a> for announcements!
+</p>
+<h4>How do the calculations work?</h4>
+<p>
+Basically, for each pair of readings or fuel purchases that you enter into the site, we can calculate the amount of CO<span class='sub'>2</span> which will be emitted in the period of time between them. This is done using information from numerous sources about the amount of CO<span class='sub'>2</span> emitted per kWh of electricity, or per litre of petrol. Simply taking the values you put in and multiplying by that emission data gives us the amount of CO<span class='sub'>2</span> emitted during that time period. This amount is then split equally across the period. For the graphs, some extra averaging is done to smooth out the data for display purposes. See the <%= link_to 'calculations', :action => "calculation" %> page for more details.
+</p>
+<h4>How accurate is it?</h4>
+<p>
+It's as accurate as you want it to be, down to a single day if you want. We recommend taking meter readings every week - this normally gives enough useful data for you to be able to see what's going on. However, you could take a reading every day (at the same time of course) if you wanted to get really really accurate.
+</p>
+<p>
+If you did want the results to be really accurate, consistency is key. Take a reading at the same time every week (or day), or always make sure you fill up your car at the same point on the dial.
+</p>
+<h4>You should add X and Y and Z!</h4>
+<p>
+We should, that's true. The site is only just starting out, and it'll be growing rapidly and covering more and more emission sources (such as flights) as we go along. If you have ideas, please share them either through the <a href="http://forum.carbondiet.org">forum</a>, or directly over the <%= link_to 'live chat', :action => 'livechat' %> interface.
+</p>
+</div>

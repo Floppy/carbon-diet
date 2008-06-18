@@ -1,0 +1,19 @@
+--- 
+countries_002: 
+  name: United States
+  electricity_unit_id: "1"
+  flag_image: flags/us.png
+  vehicle_distance_unit_id: "2"
+  abbreviation: US
+  vehicle_fuel_unit_id: "3"
+  gas_unit_id: "2"
+  id: "2"
+countries_001: 
+  name: United Kingdom
+  electricity_unit_id: "1"
+  flag_image: flags/gb.png
+  vehicle_distance_unit_id: "2"
+  abbreviation: UK
+  vehicle_fuel_unit_id: "1"
+  gas_unit_id: "1"
+  id: "1"

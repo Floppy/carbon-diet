@@ -1,0 +1,16 @@
+economy:
+  id: 1
+  name: Economy
+  scale_factor: 1
+premium_economy:
+  id: 2
+  name: Premium Economy
+  scale_factor: 1.2
+business:
+  id: 3
+  name: Business
+  scale_factor: 2.1
+first:
+  id: 4
+  name: First
+  scale_factor: 3.4

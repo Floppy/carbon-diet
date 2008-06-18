@@ -1,0 +1,17 @@
+domestic:
+  id: 1
+  name: Domestic
+  upper_limit: 1000
+  g_per_km: 450
+short_haul:
+  id: 2
+  name: Short Haul
+  lower_limit: 1000
+  upper_limit: 5000
+  g_per_km: 300
+long_haul:
+  id: 3
+  name: Long Haul
+  lower_limit: 5000
+  g_per_km: 320
+  

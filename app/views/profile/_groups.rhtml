@@ -1,0 +1,37 @@
+<% if @profile == @current_user %>
+
+<div class="sectiontitle"><%= link_to('Groups', :controller => 'groups') %></div>
+<div>
+<% unless @profile.group_invitations.empty? %>
+  <%= image_tag 'warning.png' %>
+  <%= link_to 'You have been invited to ' + pluralize(@profile.group_invitations.size, "group") + '.', :controller => 'groups' %><br/>
+<% end %>
+<% if @profile.groups.empty? %>
+  You are not a member of any groups! Why not <%= link_to 'find one to join', :controller => "search" %>?
+<% else %>
+  <ul>
+  <% for group in @profile.groups %>
+    <li class="group">
+    <%= link_to h(group.name), :controller => "groups", :action => 'view', :id => group %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+</div>
+
+<% else %>
+
+<% unless @profile.groups.empty? %>
+<div class="sectiontitle">Groups</div>
+<div>
+<ul>
+<% for group in @profile.groups %>
+<li class="group">
+<%= link_to h(group.name), :controller => "groups", :action => 'view', :id => group %>
+</li>
+<% end %>
+</ul>
+</div>
+<% end %>
+
+<% end %>

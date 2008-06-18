@@ -1,0 +1,23 @@
+<h1>The Carbon Diet</h1>
+<h2>Sign In</h2>
+
+<% if flash[:notice] %>
+<p class="flash"><%=h flash[:notice] %></p>
+<% end %>
+
+<%= start_form_tag :action => 'auth' %>
+<p>
+Username:<br/>
+<%= text_field 'user', 'login'  %>
+</p>
+<p>
+Password:<br/>
+<%= password_field 'user', 'password' %>
+</p>
+<p>
+Remember me <%= check_box 'user', 'remember' %>
+</p>
+<p>
+<%= submit_tag 'Log In' %>
+</p>
+<%= end_form_tag %>

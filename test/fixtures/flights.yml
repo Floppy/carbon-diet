@@ -1,0 +1,49 @@
+domestic:
+  id: 1
+  user_id: 1
+  from_airport_id: 1
+  to_airport_id: 2 
+  outbound_on: <%= 1.week.ago.to_date %>
+  flight_class_id: 1
+  passengers: 1
+short_haul:
+  id: 2
+  user_id: 1
+  from_airport_id: 1
+  to_airport_id: 3
+  outbound_on: <%= 2.weeks.ago.to_date %>
+  flight_class_id: 1
+  passengers: 1
+long_haul:
+  id: 3
+  user_id: 1
+  from_airport_id: 1
+  to_airport_id: 4
+  outbound_on: <%= 3.weeks.ago.to_date %>
+  flight_class_id: 1
+  passengers: 1
+first_class:
+  id: 4
+  user_id: 1
+  from_airport_id: 1
+  to_airport_id: 4
+  outbound_on: <%= 4.weeks.ago.to_date %>
+  flight_class_id: 4
+  passengers: 1
+two_people:
+  id: 5
+  user_id: 1
+  from_airport_id: 1
+  to_airport_id: 4
+  outbound_on: <%= 5.weeks.ago.to_date %>
+  flight_class_id: 1
+  passengers: 2
+return:
+  id: 6
+  user_id: 1
+  from_airport_id: 1
+  to_airport_id: 4
+  outbound_on: <%= 7.weeks.ago.to_date %>
+  return_on: <%= 6.weeks.ago.to_date %>
+  flight_class_id: 1
+  passengers: 1  

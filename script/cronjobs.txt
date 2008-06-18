@@ -1,0 +1,2 @@
+script/runner 'User.find(:all).each { |user| user.send_reminder }' -e production
+

@@ -1,0 +1,16 @@
+<% unless params[:controller] == "main" and params[:action] == "index" %>
+  <% if @current_user.nil? %>
+    <%= render :partial => 'shared/linktab', :locals => {:image => 'home.png', :link => link_to("Log In", :controller => "/main", :action => "index")} %>
+  <% else %>
+    <%= render :partial => 'shared/linktab', :locals => {:image => 'home.png', :link => link_to("Profile", :controller => "/profile", :login => @current_user.login)} %>
+  <% end %>
+<% end %>
+<%= render :partial => 'shared/linktab', :locals => {:image => 'search.png', :link => link_to("Search", :controller => "/search")} %>
+<%= render :partial => 'shared/linktab', :locals => {:image => 'blog.png', :link => '<a href="http://carbondiet.blogspot.com">Blog</a>'} %>
+<%= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => '<a href="http://forum.carbondiet.org">Forum</a>'} %>
+<%= render :partial => 'shared/linktab', :locals => {:image => 'tour.png', :link => link_to("Tour", :controller => "/tour")} %>
+<% unless @current_user.blank? or not @current_user.admin %>
+  <%= render :partial => 'shared/linktab', :locals => {:image => 'admin.png', :link => link_to("Admin", :controller => "/admin/index")} %>
+<% end %>
+<%= render :partial => 'shared/linktab', :locals => {:image => 'help.png', :link => link_to("Help", :controller => "/help" )} %>
+<div class="clear"></div>

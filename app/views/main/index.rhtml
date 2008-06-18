@@ -1,0 +1,30 @@
+<div class="login right">
+  <p>
+    <b>Log In or Sign Up</b><br/>
+    If you're new here, enter the details you'd like to use below.
+  </p>
+  <% form_tag :controller => '/user', :action => 'auth', :params => {:invite => params[:invite], :group => params[:group]} do %>
+    <p>
+      Username:
+      <%= text_field 'user', 'login', :size=> '10' %>
+      <%= help("Any combination of letters, numbers and underscores.")%>
+    </p><p>
+      Password:
+      <%= password_field 'user', 'password', :size=> '10' %>
+      <%= help("For security, make your password at least 6 characters long.")%>
+    </p><p>
+      Remember me
+      <%= check_box 'user', 'remember' %>
+      <%= help("To remember your login on this computer, check this box.")%>
+    </p><p>
+      <%= submit_tag 'Log In / Sign Up' %>
+    </p>
+  <% end %>
+  <p>
+    <%= link_to("Help! I've forgotten my password!", :controller => 'user', :action => 'resetpw') %>
+  </p>
+</div>
+
+<div class="logincontent">
+<%= whitelabel_content 'main' %>
+</div>

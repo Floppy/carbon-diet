@@ -1,0 +1,13 @@
+--- 
+groups_002: 
+  name: "West Sussex"
+  id: "2"
+  description: "A group for residents of West Sussex."
+  owner_id: 1
+  created_at: <%= Time.now %>
+groups_001: 
+  name: "Developers"
+  id: "1"
+  description: "A group for the Carbon Diet developers."
+  owner_id: 1
+  created_at: <%= Time.now %>  

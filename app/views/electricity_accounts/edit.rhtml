@@ -1,0 +1,76 @@
+<% content_for('start_form') do %>
+  <%= start_form_tag :action => 'edit', :id => @electricity_account %>
+<% end %>
+ 
+<% content_for('optionbar') do %>
+  <div class="option">
+    <%= image_tag "electricity.png" %>
+    <%= link_to "Show Suppliers", :controller => "electricity_supplier", :action => "list", :id => @current_user.country %>
+  </div>
+  <%= option "save" %>
+  <%= option "cancel" %>
+  <div class="option" %>
+    <%= image_tag_with_tooltip('delete.png') %>
+    <%= link_to 'Delete Account', { :action => 'destroy', :id => @electricity_account}, :confirm => 'Delete this account and all associated data, forever?', :method => :post %>  
+  </div>
+<% end %>
+
+  <div class="pagecontent">
+  <%= error_messages_for 'electricity_account' %>
+
+  <!--[form:electricity_account]-->
+  <table class="form">
+    <tr>
+      <td><label for="electricity_account_name">Name</label></td>
+      <td><%= text_field 'electricity_account', 'name'  %></td>
+    </tr>
+    <tr>
+      <td><label for="electricity_account_electricity_supplier_id">Supplier</label></td>
+      <td>
+        <%= collection_select :electricity_account, :electricity_supplier_id, @electricity_suppliers, :id, :name %>
+        <%= help("If your supplier is not in the list, choose the 'Standard' option.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="electricity_account_electricity_unit_id">Units</label></td>
+      <td>
+        <%= collection_select :electricity_account, :electricity_unit_id, @electricity_units, :id, :name_with_abbreviation %>
+        <%= help("The correct units will be written somewhere on your meter.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="electricity_account_night_rate">Dual rate?</label></td>
+      <td>
+        <%= check_box 'electricity_account', 'night_rate' %>
+        <%= help("If you have a meter with two dials, check this box.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="electricity_account_used_for_heating">Used for heating?</label></td>
+      <td>
+        <%= check_box 'electricity_account', 'used_for_heating' %>
+        <%= help("If you use electricity to heat your house, check this box.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="electricity_account_used_for_water">Used for hot water?</label></td>
+      <td>
+        <%= check_box 'electricity_account', 'used_for_water' %>
+        <%= help("If you use electricity to heat your water, check this box.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="electricity_account_current">Current?</label></td>
+      <td>
+        <%= check_box 'electricity_account', 'current' %>
+        <%= help("If this account is no longer in use, uncheck this box.")%>
+      </td>
+    </tr>
+  </table>
+  </div>
+
+  <!--[eoform:electricity_account]-->
+
+<% content_for('end_form') do %>
+  <%= end_form_tag %>
+<% end %>

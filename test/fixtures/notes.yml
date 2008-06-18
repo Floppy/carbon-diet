@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  note: Test note 1
+  date: <%= Date.today.to_s(:db) %>
+  notatable_id: 1
+  notatable_type: User
+two:
+  id: 2
+  note: Test note 2
+  date: <%= Date.today.to_s(:db) %>
+  notatable_id: 1
+  notatable_type: User

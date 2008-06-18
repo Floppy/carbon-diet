@@ -1,0 +1,281 @@
+--- 
+electricity_supplier_sources_051: 
+  electricity_supplier_id: "11"
+  id: "52"
+  percentage: "0.8"
+  electricity_source_id: "5"
+electricity_supplier_sources_040: 
+  electricity_supplier_id: "9"
+  id: "41"
+  percentage: "3.8"
+  electricity_source_id: "4"
+electricity_supplier_sources_029: 
+  electricity_supplier_id: "7"
+  id: "30"
+  percentage: "12"
+  electricity_source_id: "3"
+electricity_supplier_sources_018: 
+  electricity_supplier_id: "5"
+  id: "19"
+  percentage: "30"
+  electricity_source_id: "2"
+electricity_supplier_sources_007: 
+  electricity_supplier_id: "3"
+  id: "7"
+  percentage: "15"
+  electricity_source_id: "1"
+electricity_supplier_sources_052: 
+  electricity_supplier_id: "12"
+  id: "53"
+  percentage: "52"
+  electricity_source_id: "6"
+electricity_supplier_sources_041: 
+  electricity_supplier_id: "9"
+  id: "42"
+  percentage: "4.2"
+  electricity_source_id: "5"
+electricity_supplier_sources_030: 
+  electricity_supplier_id: "7"
+  id: "31"
+  percentage: "0.4"
+  electricity_source_id: "4"
+electricity_supplier_sources_019: 
+  electricity_supplier_id: "5"
+  id: "20"
+  percentage: "19"
+  electricity_source_id: "3"
+electricity_supplier_sources_008: 
+  electricity_supplier_id: "3"
+  id: "9"
+  percentage: "58"
+  electricity_source_id: "2"
+electricity_supplier_sources_053: 
+  electricity_supplier_id: "12"
+  id: "54"
+  percentage: "3"
+  electricity_source_id: "7"
+electricity_supplier_sources_042: 
+  electricity_supplier_id: "10"
+  id: "43"
+  percentage: "38.6"
+  electricity_source_id: "1"
+electricity_supplier_sources_031: 
+  electricity_supplier_id: "7"
+  id: "32"
+  percentage: "5.6"
+  electricity_source_id: "5"
+electricity_supplier_sources_020: 
+  electricity_supplier_id: "5"
+  id: "21"
+  percentage: "3"
+  electricity_source_id: "4"
+electricity_supplier_sources_009: 
+  electricity_supplier_id: "3"
+  id: "10"
+  percentage: "22"
+  electricity_source_id: "3"
+electricity_supplier_sources_054: 
+  electricity_supplier_id: "12"
+  id: "55"
+  percentage: "16"
+  electricity_source_id: "8"
+electricity_supplier_sources_043: 
+  electricity_supplier_id: "10"
+  id: "44"
+  percentage: "45.3"
+  electricity_source_id: "2"
+electricity_supplier_sources_032: 
+  electricity_supplier_id: "8"
+  id: "33"
+  percentage: "41"
+  electricity_source_id: "1"
+electricity_supplier_sources_021: 
+  electricity_supplier_id: "5"
+  id: "22"
+  percentage: "3"
+  electricity_source_id: "5"
+electricity_supplier_sources_010: 
+  electricity_supplier_id: "3"
+  id: "11"
+  percentage: "3"
+  electricity_source_id: "4"
+electricity_supplier_sources_055: 
+  electricity_supplier_id: "12"
+  id: "56"
+  percentage: "21"
+  electricity_source_id: "9"
+electricity_supplier_sources_044: 
+  electricity_supplier_id: "10"
+  id: "45"
+  percentage: "5.1"
+  electricity_source_id: "3"
+electricity_supplier_sources_033: 
+  electricity_supplier_id: "8"
+  id: "34"
+  percentage: "36"
+  electricity_source_id: "2"
+electricity_supplier_sources_022: 
+  electricity_supplier_id: "6"
+  id: "23"
+  percentage: "26.7"
+  electricity_source_id: "1"
+electricity_supplier_sources_011: 
+  electricity_supplier_id: "3"
+  id: "12"
+  percentage: "2"
+  electricity_source_id: "5"
+electricity_supplier_sources_056: 
+  electricity_supplier_id: "12"
+  id: "57"
+  percentage: "8"
+  electricity_source_id: "10"
+electricity_supplier_sources_045: 
+  electricity_supplier_id: "10"
+  id: "46"
+  percentage: "8.4"
+  electricity_source_id: "4"
+electricity_supplier_sources_034: 
+  electricity_supplier_id: "8"
+  id: "35"
+  percentage: "15"
+  electricity_source_id: "3"
+electricity_supplier_sources_023: 
+  electricity_supplier_id: "6"
+  id: "24"
+  percentage: "36.4"
+  electricity_source_id: "2"
+electricity_supplier_sources_012: 
+  electricity_supplier_id: "4"
+  id: "13"
+  percentage: "22.3"
+  electricity_source_id: "1"
+electricity_supplier_sources_001: 
+  electricity_supplier_id: "1"
+  id: "1"
+  percentage: "35.2"
+  electricity_source_id: "1"
+electricity_supplier_sources_046: 
+  electricity_supplier_id: "10"
+  id: "47"
+  percentage: "2.6"
+  electricity_source_id: "5"
+electricity_supplier_sources_035: 
+  electricity_supplier_id: "8"
+  id: "36"
+  percentage: "5"
+  electricity_source_id: "4"
+electricity_supplier_sources_024: 
+  electricity_supplier_id: "6"
+  id: "25"
+  percentage: "29.6"
+  electricity_source_id: "3"
+electricity_supplier_sources_013: 
+  electricity_supplier_id: "4"
+  id: "14"
+  percentage: "30.3"
+  electricity_source_id: "2"
+electricity_supplier_sources_002: 
+  electricity_supplier_id: "1"
+  id: "2"
+  percentage: "36.8"
+  electricity_source_id: "2"
+electricity_supplier_sources_047: 
+  electricity_supplier_id: "11"
+  id: "48"
+  percentage: "47"
+  electricity_source_id: "1"
+electricity_supplier_sources_036: 
+  electricity_supplier_id: "8"
+  id: "37"
+  percentage: "3"
+  electricity_source_id: "5"
+electricity_supplier_sources_025: 
+  electricity_supplier_id: "6"
+  id: "26"
+  percentage: "0.9"
+  electricity_source_id: "4"
+electricity_supplier_sources_014: 
+  electricity_supplier_id: "4"
+  id: "15"
+  percentage: "24.7"
+  electricity_source_id: "3"
+electricity_supplier_sources_003: 
+  electricity_supplier_id: "1"
+  id: "3"
+  percentage: "20.9"
+  electricity_source_id: "3"
+electricity_supplier_sources_048: 
+  electricity_supplier_id: "11"
+  id: "49"
+  percentage: "42.7"
+  electricity_source_id: "2"
+electricity_supplier_sources_037: 
+  electricity_supplier_id: "9"
+  id: "38"
+  percentage: "41"
+  electricity_source_id: "1"
+electricity_supplier_sources_026: 
+  electricity_supplier_id: "6"
+  id: "27"
+  percentage: "6.4"
+  electricity_source_id: "5"
+electricity_supplier_sources_015: 
+  electricity_supplier_id: "4"
+  id: "16"
+  percentage: "17.4"
+  electricity_source_id: "4"
+electricity_supplier_sources_004: 
+  electricity_supplier_id: "1"
+  id: "4"
+  percentage: "4.2"
+  electricity_source_id: "4"
+electricity_supplier_sources_050: 
+  electricity_supplier_id: "11"
+  id: "51"
+  percentage: "6.6"
+  electricity_source_id: "4"
+electricity_supplier_sources_049: 
+  electricity_supplier_id: "11"
+  id: "50"
+  percentage: "2.9"
+  electricity_source_id: "3"
+electricity_supplier_sources_038: 
+  electricity_supplier_id: "9"
+  id: "39"
+  percentage: "33.9"
+  electricity_source_id: "2"
+electricity_supplier_sources_027: 
+  electricity_supplier_id: "7"
+  id: "28"
+  percentage: "10"
+  electricity_source_id: "1"
+electricity_supplier_sources_016: 
+  electricity_supplier_id: "4"
+  id: "17"
+  percentage: "5.3"
+  electricity_source_id: "5"
+electricity_supplier_sources_005: 
+  electricity_supplier_id: "1"
+  id: "5"
+  percentage: "2.9"
+  electricity_source_id: "5"
+electricity_supplier_sources_039: 
+  electricity_supplier_id: "9"
+  id: "40"
+  percentage: "17.1"
+  electricity_source_id: "3"
+electricity_supplier_sources_028: 
+  electricity_supplier_id: "7"
+  id: "29"
+  percentage: "72"
+  electricity_source_id: "2"
+electricity_supplier_sources_017: 
+  electricity_supplier_id: "5"
+  id: "18"
+  percentage: "45"
+  electricity_source_id: "1"
+electricity_supplier_sources_006: 
+  electricity_supplier_id: "2"
+  id: "6"
+  percentage: "100"
+  electricity_source_id: "4"

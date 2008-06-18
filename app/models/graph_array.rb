@@ -1,0 +1,4 @@
+class GraphArray < Array
+  
+
+end

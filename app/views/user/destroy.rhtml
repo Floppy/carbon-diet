@@ -1,0 +1,16 @@
+<% content_for('optionbar') do %>
+  <%= start_form_tag :action => 'really_destroy'%> 
+    <div class="option">
+      <%= image_tag 'delete.png' %>
+      <%= submit_tag 'Yes, delete my data!' %>
+    </div>
+  <%= end_form_tag %>
+  <div class="option">
+    <%= image_tag 'home.png' %>
+    <%= link_to 'No, I want to stay!', :action => "edit" %>
+  </div>
+<% end %>
+
+<div class="pagecontent">
+Do you really want to delete your login? All your details, including all the data you've entered, will be lost forever!
+</div>

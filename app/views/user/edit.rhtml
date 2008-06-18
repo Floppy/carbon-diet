@@ -1,0 +1,88 @@
+<% content_for('start_form') do %>
+  <%= form_tag({ :action => 'update' }, { :multipart => true })%>
+<% end %>
+
+<% content_for('optionbar') do %>
+  <%= option "save" %>
+  <div class="option">
+    <%= image_tag_with_tooltip('delete.png') %>
+    <%= link_to 'Delete my login', { :action => 'destroy' } %>
+  </div>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+<div class="sectiontitle">General</div>
+<p>
+<label for="country_id">Which country do you live in?</label>
+<%= collection_select :user, :country_id, @countries, :id, :name %>
+<%= help "If your country is not in the list, " + link_to('click here', :controller=>'help',:action=>'country_request') + " to let us know." %>
+</p>
+<p>
+<label for="user_people_in_household">How many people are there in your household?</label>
+<%= text_field 'user', 'people_in_household', :size => 10 %>
+<%= help 'This is used to work out your carbon footprint per person.' %>
+</p>
+<div class="sectiontitle">Public Profile</div>
+<p>
+<label for="user_public">Would you like your profile to be publicly visible?</label>
+<%= check_box 'user', 'public'  %>
+</p>
+<p>
+<label for="user_display_name">How would you like your name to be shown on your profile? <span class="smalltext"><em>(optional)</em></span></label>
+<%= text_field 'user', 'display_name', :size => 20 %>
+<%= help 'This name will be public and searchable, but you can leave it blank if you want to.' %>
+</p>
+<p>
+<div class="left" style="margin-right: 10px;"><%= image_tag(@user.avatar) %></div>
+<label for="user_avatar">Upload a new image to show on your profile <span class="smalltext"><em>(will be scaled to max 100x100)</em></span>: </label><br/>
+<%= file_field 'user', 'avatar' %>
+<div class="clearleft">&nbsp;</div>
+</p>
+<div class="sectiontitle">Email</div>
+<p>
+<span class="smalltext"><em>You don't have to give us your email address, but it is needed for everything else in this section!</em></span>
+</p>
+<p>
+<label for="user_email">What is your email address? </label>
+<%= text_field 'user', 'email', :size => 30  %>
+<% if @current_user.confirmation_code %>
+<%= image_tag 'false.png' %> unconfirmed!
+<% end %>
+<%= help 'This will not be shown to anyone, but people can find you by searching for it.' %>
+</p>
+<p>
+Would you like us to email you...
+<ul>
+<li>
+<label for="user_reminder_frequency">to remind you to enter more data?</label>
+<%= select( 'user', 'reminder_frequency', [ ["Never", 0],
+                                            ["Every week", 1],
+                                            ["Every 2 weeks", 2],
+                                            ["Every 3 weeks", 3],
+                                            ["Every 4 weeks", 4] ]) %>
+</li>
+<li>
+<label for="user_notify_friend_requests">when people request to be your friend?</label>
+<%= check_box 'user', 'notify_friend_requests'  %>
+</li>
+<li>
+<label for="user_notify_profile_comments">when people write comments on your profile?</label>
+<%= check_box 'user', 'notify_profile_comments'  %>
+</li>
+</ul>
+</p>
+<div class="sectiontitle">Password</div>
+<p>
+<label for="user_password">
+<table>
+<tr><td>Change password:</td><td><%= password_field 'user', 'new_password', :size => 10, :value => '' %></td></tr>
+<tr><td>Confirm new password:</td><td><%= password_field 'user', 'new_password_confirmation', :size => 10, :value => '' %></td></tr>
+</table>
+</label>
+</p>
+</div>
+
+<% content_for('end_form') do %>
+  <%= end_form_tag %>
+<% end %>

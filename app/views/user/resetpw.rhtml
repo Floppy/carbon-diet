@@ -1,0 +1,20 @@
+<% content_for('optionbar') do %>
+  <%= option "login" %>
+<% end %>
+
+<div class="pagecontent">
+<p>
+If you've forgotten your password, and you've given us your email address, 
+then enter your username below. We'll send you instructions on how to
+change your password straight away! If you haven't given us your email, then
+you can <%= link_to 'talk to us directly', :controller => 'help', :action => 'livechat' %> and we'll sort you out.
+</p>
+<p>
+<%= start_form_tag :action => 'doreset' %>
+<table>
+<tr><td>Username:</td><td><%= text_field 'user', 'login'  %></td></tr>
+<tr><td></td><td><%= submit_tag 'Reset Password' %></td></tr>
+</table>
+<%= end_form_tag %>
+</p>
+</div>

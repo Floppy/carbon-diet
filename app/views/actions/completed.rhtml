@@ -1,0 +1,31 @@
+<% content_for('optionbar') do %>
+  <%= pagination_links(@completed_action_pages) %>
+  <%= option "action" %>
+<% end %>
+
+<div class="pagecontent">
+<p>
+If you want to undo any of your completed actions, you can use this page to do so. If you remove an action from this list, we will probably suggest it to you again at some point.
+</p>
+<table>
+  <tr>
+  <th>Date</th>
+  <th></th>
+  <th>Done?</th>
+  <th>Action</th>
+  <th></th>
+  <th></th>
+  </tr>
+  
+<% for action in @completed_actions %>
+  <tr>
+  <td><%=h action.created_at.strftime("%d %b %y") %></td>
+  <td><%= image_tag action.action.action_category.image unless action.action.action_category.image.nil? %></td>
+  <td><%= action.done ? image_tag('true.png') : image_tag('false.png') %></td>
+  <td><%=h action.action.title %></td>
+  <td><% action.action.level.times { %><%= image_tag 'level.png' %><% } %></td>
+  <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'uncomplete', :id => action }, :confirm => 'Remove this completed action? This will add it back into your suggestions list!', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+</div>

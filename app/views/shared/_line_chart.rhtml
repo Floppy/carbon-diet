@@ -1,0 +1,21 @@
+<!-- amline script-->
+  <script type="text/javascript" src="/javascripts/swfobject.js"></script>
+	<div id="flashcontent">
+		<strong>Sorry, but you need to upgrade your Flash Player!</strong>
+	</div>
+	<script type="text/javascript">
+		// <![CDATA[		
+		var so = new SWFObject("/flash/amline/amline.swf", "amline", "<%= width %>", "<%= height %>", "8", "#FFFFFF");
+		so.addVariable("path", "/");
+		so.addVariable("settings_file", escape("<%= settings_url %>"));
+		so.addVariable("data_file", escape("<%= data_url %>"));
+		so.addVariable("preloader_color", "#999999");
+		so.write("flashcontent");
+		// ]]>
+	</script>
+<!-- end of amline script -->
+<% if show_flight_controls %>
+  <div id="disable_flights" class="minibutton right hidden"><%= image_tag('plane_disabled.png', :title=>'Ignore flight emissions', :onclick=>"document.getElementById('amline').setParam('values.y_left.strict_min_max', 'true');document.getElementById('disable_flights').style.display='none';document.getElementById('enable_flights').style.display='block';")%></div>
+  <div id="enable_flights" class="minibutton right"><%= image_tag('plane.png', :title=>'Show flight emissions', :onclick=>"document.getElementById('amline').setParam('values.y_left.strict_min_max', 'false');document.getElementById('enable_flights').style.display='none';document.getElementById('disable_flights').style.display='block';")%></div>
+<% end %>
+<span class="smalltext"><em>figures are for household</em></span>

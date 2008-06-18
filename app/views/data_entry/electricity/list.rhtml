@@ -1,0 +1,53 @@
+<% content_for('optionbar') do %>
+  <%= pagination_links(@electricity_reading_pages) %>
+  <%= option "new_reading", { :account => params[:account] } %>
+  <%= option "back_to_add_data" %>
+  <%= option "edit_elec_account", { :account => params[:account] } %>
+  <div class="option" %>
+    <%= image_tag_with_tooltip('export.png') %>
+    <%= link_to 'Export Data', { :action => 'export', :account => params[:account]} %>  
+  </div>
+  <% if @electricity_readings.size > 1 %>
+    <%= option "analysis" %>
+  <% end %>
+<% end %>
+
+<div class="pagecontent">
+<% if @electricity_readings.empty? %>
+  <%= tip_box("You don't have any data in this account yet! Take an electricity reading and enter it here so we can proceed.") %>
+<% elsif @electricity_readings.size == 1 %>
+  <%= tip_box("You need two readings in order for us to analyse your data! Take another electricity reading (a few days after the first) and enter it here so we can proceed.") %>
+<% else %>
+  <%= tip_box(@tip) %>
+<% end %>
+<p>
+NOTE: If the units are wrong for your meter, you can change them in the <%= link_to 'edit account details', :controller => '/electricity_accounts', :action => 'edit', :id => params[:account] %> section.
+</p>
+<table>
+  <tr>
+  <th>Date</th>
+<% if @account.night_rate %>
+  <th>Day (<%=h @account.electricity_unit.abbreviation %>)</th>
+  <th>Night (<%=h @account.electricity_unit.abbreviation %>)</th>
+<% else %>
+  <th>Reading (<%=h @account.electricity_unit.abbreviation %>)</th>
+<% end %>
+  <th></th>
+  <th></th>
+  </tr>
+  
+<% for reading in @electricity_readings %>
+  <tr id="reading<%= reading.id %>">
+  <td><%=h reading.taken_on.strftime("%d %b %y") %></td>
+<% if @account.night_rate %>
+  <td><%=h reading.reading_day %></td>
+  <td><%=h reading.reading_night %></td>
+<% else %>
+  <td><%=h reading.reading_day %></td>
+<% end %>
+  <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => reading, :account => params[:account] %></td>
+  <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => reading, :account => params[:account] }, :confirm => 'Delete this reading?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+</div>

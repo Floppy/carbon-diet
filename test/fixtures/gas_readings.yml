@@ -1,0 +1,251 @@
+--- 
+gas_readings_043: 
+  taken_on: "2007-02-22"
+  reading: "3518"
+  gas_account_id: "15"
+  id: "43"
+gas_readings_032: 
+  taken_on: "2007-06-30"
+  reading: "5047.4"
+  gas_account_id: "12"
+  id: "32"
+gas_readings_021: 
+  taken_on: "2007-06-09"
+  reading: "6556.32"
+  gas_account_id: "1"
+  id: "21"
+gas_readings_010: 
+  taken_on: "2007-05-10"
+  reading: "6510.49"
+  gas_account_id: "1"
+  id: "10"
+gas_readings_009: 
+  taken_on: "2007-03-21"
+  reading: "6368"
+  gas_account_id: "1"
+  id: "9"
+gas_readings_044: 
+  taken_on: "2007-03-22"
+  reading: "3575"
+  gas_account_id: "15"
+  id: "44"
+gas_readings_033: 
+  taken_on: "2007-07-04"
+  reading: "6588.9"
+  gas_account_id: "1"
+  id: "33"
+gas_readings_022: 
+  taken_on: "2007-03-16"
+  reading: "5112"
+  gas_account_id: "4"
+  id: "22"
+gas_readings_011: 
+  taken_on: "2007-05-10"
+  reading: "275"
+  gas_account_id: "2"
+  id: "11"
+gas_readings_045: 
+  taken_on: "2007-04-19"
+  reading: "3616"
+  gas_account_id: "15"
+  id: "45"
+gas_readings_034: 
+  taken_on: "2007-07-04"
+  reading: "736770"
+  gas_account_id: "14"
+  id: "34"
+gas_readings_023: 
+  taken_on: "2007-06-11"
+  reading: "5216"
+  gas_account_id: "4"
+  id: "23"
+gas_readings_012: 
+  taken_on: "2007-04-10"
+  reading: "250"
+  gas_account_id: "2"
+  id: "12"
+gas_readings_001: 
+  taken_on: "2005-09-12"
+  reading: "4272"
+  gas_account_id: "1"
+  id: "1"
+gas_readings_046: 
+  taken_on: "2007-05-23"
+  reading: "3640"
+  gas_account_id: "15"
+  id: "46"
+gas_readings_035: 
+  taken_on: "2006-06-21"
+  reading: "3221"
+  gas_account_id: "15"
+  id: "35"
+gas_readings_024: 
+  taken_on: "2007-04-27"
+  reading: "5534"
+  gas_account_id: "7"
+  id: "24"
+gas_readings_013: 
+  taken_on: "2007-05-22"
+  reading: "6521.5"
+  gas_account_id: "1"
+  id: "13"
+gas_readings_002: 
+  taken_on: "2005-11-30"
+  reading: "4515"
+  gas_account_id: "1"
+  id: "2"
+gas_readings_047: 
+  taken_on: "2007-06-19"
+  reading: "3657"
+  gas_account_id: "15"
+  id: "47"
+gas_readings_036: 
+  taken_on: "2006-07-26"
+  reading: "3241"
+  gas_account_id: "15"
+  id: "36"
+gas_readings_025: 
+  taken_on: "2007-06-13"
+  reading: "6559.39"
+  gas_account_id: "1"
+  id: "25"
+gas_readings_014: 
+  taken_on: "2007-05-24"
+  reading: "6524.02"
+  gas_account_id: "1"
+  id: "14"
+gas_readings_003: 
+  taken_on: "2006-03-03"
+  reading: "5119"
+  gas_account_id: "1"
+  id: "3"
+gas_readings_048: 
+  taken_on: "2007-06-24"
+  reading: "3"
+  gas_account_id: "17"
+  id: "48"
+gas_readings_037: 
+  taken_on: "2006-08-22"
+  reading: "3255"
+  gas_account_id: "15"
+  id: "37"
+gas_readings_026: 
+  taken_on: "2007-06-19"
+  reading: "6565.63"
+  gas_account_id: "1"
+  id: "26"
+gas_readings_015: 
+  taken_on: "2007-05-31"
+  reading: "6543.67"
+  gas_account_id: "1"
+  id: "15"
+gas_readings_004: 
+  taken_on: "2006-05-30"
+  reading: "5477"
+  gas_account_id: "1"
+  id: "4"
+gas_readings_050: 
+  taken_on: "2007-07-08"
+  reading: "6594.45"
+  gas_account_id: "1"
+  id: "50"
+gas_readings_049: 
+  taken_on: "2007-06-25"
+  reading: "3"
+  gas_account_id: "17"
+  id: "49"
+gas_readings_038: 
+  taken_on: "2006-09-21"
+  reading: "3269"
+  gas_account_id: "15"
+  id: "38"
+gas_readings_027: 
+  taken_on: "2007-06-19"
+  reading: "325"
+  gas_account_id: "2"
+  id: "27"
+gas_readings_016: 
+  taken_on: "2007-02-22"
+  reading: "3522"
+  gas_account_id: "5"
+  id: "16"
+gas_readings_005: 
+  taken_on: "2006-08-31"
+  reading: "5623"
+  gas_account_id: "1"
+  id: "5"
+gas_readings_040: 
+  taken_on: "2006-11-20"
+  reading: "3321"
+  gas_account_id: "15"
+  id: "40"
+gas_readings_039: 
+  taken_on: "2006-10-20"
+  reading: "3287"
+  gas_account_id: "15"
+  id: "39"
+gas_readings_028: 
+  taken_on: "2007-06-20"
+  reading: "5046.9"
+  gas_account_id: "12"
+  id: "28"
+gas_readings_017: 
+  taken_on: "2006-11-23"
+  reading: "3328"
+  gas_account_id: "5"
+  id: "17"
+gas_readings_006: 
+  taken_on: "2006-09-30"
+  reading: "5670.2"
+  gas_account_id: "1"
+  id: "6"
+gas_readings_041: 
+  taken_on: "2006-12-21"
+  reading: "3369"
+  gas_account_id: "15"
+  id: "41"
+gas_readings_030: 
+  taken_on: "2007-06-26"
+  reading: "6576.52"
+  gas_account_id: "1"
+  id: "30"
+gas_readings_029: 
+  taken_on: "2007-06-22"
+  reading: "5046.9"
+  gas_account_id: "12"
+  id: "29"
+gas_readings_018: 
+  taken_on: "2006-10-10"
+  reading: "3278"
+  gas_account_id: "5"
+  id: "18"
+gas_readings_007: 
+  taken_on: "2006-10-17"
+  reading: "5700.52"
+  gas_account_id: "1"
+  id: "7"
+gas_readings_042: 
+  taken_on: "2007-01-23"
+  reading: "3429"
+  gas_account_id: "15"
+  id: "42"
+gas_readings_031: 
+  taken_on: "2007-06-28"
+  reading: "473"
+  gas_account_id: "13"
+  id: "31"
+gas_readings_020: 
+  taken_on: "2007-06-08"
+  reading: "258.3"
+  gas_account_id: "9"
+  id: "20"
+gas_readings_019: 
+  taken_on: "2005-06-08"
+  reading: "2725"
+  gas_account_id: "5"
+  id: "19"
+gas_readings_008: 
+  taken_on: "2006-11-11"
+  reading: "5781.7"
+  gas_account_id: "1"
+  id: "8"

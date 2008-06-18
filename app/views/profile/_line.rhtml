@@ -1,0 +1,5 @@
+<div class="sectiontitle">Daily footprint</div>
+<div class="fullwidth">
+<%= render :partial => "shared/line_chart", 
+           :locals => { :data_url => @line_url, :settings_url => @line_settings_url, :width => "100%", :height => "300", :show_flight_controls => @show_flight_controls } %>
+</div>
