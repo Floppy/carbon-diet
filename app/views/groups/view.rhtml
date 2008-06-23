@@ -30,9 +30,8 @@
       <%= image_tag 'group.png' %>
       <%= link_to 'Back to my groups', :action => 'list' %>
     </div>
-  <% else %>
-    <%= option "home" %>
   <% end %>
+  <%= option "home" %>
 <% end %>
 
 <% content_for('feed') do %>
