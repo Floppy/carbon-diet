@@ -79,6 +79,7 @@ div.cd-content {
 div.pagecontent {
   background-color: white;
   border: 1px solid #7fc07f;
+  height: 1%; /* Fix for IE6 peekaboo bug on some pages */
 }
 
 div.sectiontitle {
