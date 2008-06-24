@@ -11,4 +11,7 @@ class DataEntry::IndexControllerTest < Test::Unit::TestCase
     @response   = ActionController::TestResponse.new
   end
 
+  def test_truth
+    assert true
+  end
 end

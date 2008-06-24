@@ -11,4 +11,7 @@ class DataEntry::FlightsControllerTest < Test::Unit::TestCase
     @response   = ActionController::TestResponse.new
   end
 
+  def test_truth
+    assert true
+  end
 end
