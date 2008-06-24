@@ -5,6 +5,8 @@ class GroupInvitation < ActiveRecord::Base
   
   validates_presence_of :user, :group, :inviter
   
+  after_create :send_notification_email
+  
   def accept
     group.add_user(user)
     self.destroy
@@ -14,4 +16,8 @@ class GroupInvitation < ActiveRecord::Base
     self.destroy
   end
  
+  def send_notification_email
+    UserMailer.deliver_group_invitation(group, user) if user.confirmed_email
+  end
+  
 end

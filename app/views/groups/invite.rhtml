@@ -21,10 +21,12 @@
   </p>
   <div>
   <% for friend in @friends %>
-    <%= check_box 'invite', friend.login %>
-    <%= render :partial => "/shared/user_image_link", :locals => { :user => friend, :small => true } %>
-    <%= render :partial => "/shared/user_link", :locals => { :user => friend } %>
-    <br/>
+    <% unless friend.login.empty? %>
+      <%= check_box 'invite', friend.login %>
+      <%= render :partial => "/shared/user_image_link", :locals => { :user => friend, :small => true } %>
+      <%= render :partial => "/shared/user_link", :locals => { :user => friend } %>
+      <br/>
+    <% end %>
   <% end %>
   </div>
 <% else %>

@@ -47,7 +47,7 @@ class UserMailerTest < Test::Unit::TestCase
     @expected.to      = 'james@carbondiet.org'
     @expected.body    = read_fixture('group_invitation')
     @expected.date    = Time.now
-    assert_equal @expected.encoded, UserMailer.create_group_invitation(Group.find(1).name, User.find(1).email, @expected.date).encoded
+    assert_equal @expected.encoded, UserMailer.create_group_invitation(Group.find(1), User.find(1), @expected.date).encoded
   end
 
   def test_friend_request

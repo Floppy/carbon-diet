@@ -13,11 +13,11 @@ class UserMailer < ActionMailer::Base
     @recipients     = email
   end
 
-  def group_invitation(group, email, sent_at = Time.now)
+  def group_invitation(group, user, sent_at = Time.now)
     setup(sent_at)
     @subject       = 'Carbon Diet: Group invitation'
     @body["group"] = group
-    @recipients    = email
+    @recipients    = user.email
   end
 
   def friend_request(name, email, sent_at = Time.now)

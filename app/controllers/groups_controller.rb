@@ -95,11 +95,8 @@ class GroupsController < ApplicationController
     group = @current_user.groups.find(params[:id]) 
     for friend in @current_user.friends
       if params[:invite][friend.login] == "1"
-        # Invite friend
-        invitation = GroupInvitation.new(:user => friend, :inviter => @current_user, :group => group)
-        invitation.save!
-        # Send invite notification email if there is a confirmed email address
-        UserMailer.deliver_group_invitation(group.name, friend.confirmed_email) unless friend.confirmed_email.nil?
+        # Create invitation - automatically notifies the invited person
+        GroupInvitation.create(:user => friend, :inviter => @current_user, :group => group)
       end
     end
     flash[:notice] = "Invitations sent!"
