@@ -10,11 +10,6 @@ module ApplicationHelper
     "<b>" + (amount ? number_with_precision(amount.to_f/1000, precision) : "?") + "</b> tonnes"
   end
 
-  def image_tag(location, options={})
-    raise location unless location.include?(".png")
-    super(location, options)
-  end
-
   def image_tag_with_tooltip(location, options={})
     options[:title] ||= location.split('.').first.capitalize
     image_tag(location, options)
