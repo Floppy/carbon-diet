@@ -1,6 +1,6 @@
 <% content_for('optionbar') do %>
 
-<% for elec_account in @current_user.electricity_accounts.find_by_current(:all, true) %>
+<% for elec_account in @current_user.electricity_accounts.find(:all, :conditions => {:current => true}) %>
 <div class="option">
 <% if elec_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'electricity.png' %>
@@ -8,7 +8,7 @@
 </div>
 <% end %>
 
-<% for gas_account in @current_user.gas_accounts.find_by_current(:all, true) %>
+<% for gas_account in @current_user.gas_accounts.find(:all, :conditions => {:current => true}) %>
 <div class="option">
 <% if gas_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'gas.png' %>
@@ -16,7 +16,7 @@
 </div>
 <% end %>
 
-<% for vehicle in @current_user.vehicles.find_by_current(:all, true) %>
+<% for vehicle in @current_user.vehicles.find(:all, :conditions => {:current => true}) %>
 <div class="option">
 <%= image_tag 'car.png' %>
 <%= link_to(vehicle.name, { :controller => "vehicle_fuel", :action => "list", :vehicle => vehicle.id } ) %>
