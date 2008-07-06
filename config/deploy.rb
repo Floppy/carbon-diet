@@ -3,7 +3,7 @@ require 'mongrel_cluster/recipes'
 set :application, 'carbon-diet'
 
 set :scm, "git"
-set :repository, 'git@code.atechlabs.com:carbon-diet.git'
+set :repository, 'git@carbondiet.codebasehq.com:carbon-diet.git'
 set :deploy_via, :export
 
 set :deploy_to, '/home/carbondiet'
