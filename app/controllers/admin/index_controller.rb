@@ -11,12 +11,12 @@ class Admin::IndexController < Admin::AdminController
     @num_vehicles = Vehicle.count 
     @num_flights = Flight.count 
     @num_sessions = CGI::Session::ActiveRecordStore::Session::count
-    @num_old_sessions = CGI::Session::ActiveRecordStore::Session::count(['updated_at < ?', 1.month.ago])
+    @num_old_sessions = CGI::Session::ActiveRecordStore::Session::count(:conditions => ["updated_at < ?", 1.month.ago.to_s(:db)])
     @data_file = url_for :action => "chart"
   end
 
   def clean_sessions
-    CGI::Session::ActiveRecordStore::Session::destroy_all( ['updated_at < ?', 1.month.ago] )
+    CGI::Session::ActiveRecordStore::Session::destroy_all(["updated_at < ?", 1.month.ago.to_s(:db)])
     redirect_to :action => "index"
   end
   
