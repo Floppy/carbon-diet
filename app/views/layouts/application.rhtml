@@ -51,7 +51,6 @@
 <% end %>
 
 <div class="cd-content">
-<%= yield :start_form %>
 <% if @content_for_optionbar %>
   <div class="optionbar">
   <%= yield :optionbar %>
@@ -74,7 +73,6 @@
 <% end %>
 <%= yield %>
 </div>
-<%= yield :end_form %>
 <div class="clear">&nbsp;</div>
 </div>
 

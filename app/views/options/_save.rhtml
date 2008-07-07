@@ -1,4 +1,4 @@
 <div class="option">
 <%= image_tag 'save.png' %>
-<%= submit_tag 'Save' %>
+<%= button_to_function 'Save', "$('#{id}').submit()" %>
 </div>

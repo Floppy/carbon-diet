@@ -5,7 +5,7 @@
 <p class="flash"><%=h flash[:notice] %></p>
 <% end %>
 
-<%= start_form_tag :action => 'auth' %>
+<%= form_tag :action => 'auth' %>
 <p>
 Username:<br/>
 <%= text_field 'user', 'login'  %>
@@ -20,4 +20,4 @@ Remember me <%= check_box 'user', 'remember' %>
 <p>
 <%= submit_tag 'Log In' %>
 </p>
-<%= end_form_tag %>
+<%= end %>

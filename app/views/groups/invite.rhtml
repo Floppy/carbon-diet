@@ -1,14 +1,13 @@
 <% pagetitle 'Invite friends to "' + h(@group.name) + '"', "invite.png" %>
 
 <% content_for('start_form') do %>
-  <%= start_form_tag :action => 'send_invitations', :id => @group %>
 <% end %>
 
 <% content_for('optionbar') do %>
   <% if @friends.size != 0 %>
     <div class="option">
       <%= image_tag 'invite.png' %>
-      <%= submit_tag 'Invite' %>
+      <%= button_to_function 'Invite', "$('invite_form').submit()" %>
     </div>
   <% end %>
   <%= option "cancel" %>
@@ -20,12 +19,14 @@
   To invite your friends to this group, tick the ones you want to invite and press "Invite".
   </p>
   <div>
-  <% for friend in @friends %>
-    <% unless friend.login.empty? %>
-      <%= check_box 'invite', friend.login %>
-      <%= render :partial => "/shared/user_image_link", :locals => { :user => friend, :small => true } %>
-      <%= render :partial => "/shared/user_link", :locals => { :user => friend } %>
-      <br/>
+  <% form_tag({:action => 'send_invitations', :id => @group}, {:id => "invite_form"}) do %>
+    <% for friend in @friends %>
+      <% unless friend.login.empty? %>
+        <%= check_box 'invite', friend.login %>
+        <%= render :partial => "/shared/user_image_link", :locals => { :user => friend, :small => true } %>
+        <%= render :partial => "/shared/user_link", :locals => { :user => friend } %>
+        <br/>
+      <% end %>
     <% end %>
   <% end %>
   </div>
@@ -37,7 +38,3 @@
 
 <div class="clear">&nbsp;</div>
 </div>
-
-<% content_for('end_form') do %>
-  <%= end_form_tag %>
-<% end %>

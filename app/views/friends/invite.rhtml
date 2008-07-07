@@ -1,9 +1,5 @@
 <% pagetitle "Invite Contacts", "invite.png" %>
 
-<% content_for('start_form') do %>
-  <%= start_form_tag :action => 'send_invitations' %>
-<% end %>
-
 <% content_for('optionbar') do %>
   <div class="option">
     <%= image_tag 'user.png' %>
@@ -14,6 +10,7 @@
 <% end %>
 
 <div class="pagecontent">
+<% form_tag :action => 'send_invitations' do %>
 <p>
 To invite your contacts to use The Carbon Diet, enter their email addresses in the box below, and we'll send them an email. We don't keep the email addresses, so you don't need to worry about us spamming them!
 </p>
@@ -39,9 +36,5 @@ Please confirm that you are a real person by retyping the two words in the box b
 <p>
 And finally, click the button to invite your contacts: <%= submit_tag 'Invite Now!' %>
 </p>
-</div>
-
-<% content_for('end_form') do %>
-  <%= end_form_tag %>
 <% end %>
-
+</div>

@@ -1,6 +1,6 @@
 <h1>New Electricity Reading</h1>
 
-<%= start_form_tag :action => 'mobile', :id => @electricity_reading %>
+<% form_tag :action => 'mobile', :id => @electricity_reading do %>
 <%= error_messages_for 'electricity_reading' %>
 
   <!--[form:electricity_reading]-->
@@ -28,6 +28,6 @@
 
   <%= submit_tag 'Save' %>
 
-<%= end_form_tag %>
+<% end %>
 
 <%= link_to 'Back', :controller => '/main', :action => 'mobile' %>

@@ -10,11 +10,11 @@ change your password straight away! If you haven't given us your email, then
 you can <%= link_to 'talk to us directly', :controller => 'help', :action => 'livechat' %> and we'll sort you out.
 </p>
 <p>
-<%= start_form_tag :action => 'doreset' %>
+<% form_tag :action => 'doreset' do %>
 <table>
 <tr><td>Username:</td><td><%= text_field 'user', 'login'  %></td></tr>
 <tr><td></td><td><%= submit_tag 'Reset Password' %></td></tr>
 </table>
-<%= end_form_tag %>
+<% end %>
 </p>
 </div>
