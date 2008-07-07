@@ -29,18 +29,21 @@ class GroupsControllerTest < Test::Unit::TestCase
     end
     when_not_logged_in do
       get :invite, :id => 2
-      assert_redirect '/'
+      assert_response :redirect 
+      assert_redirected_to '/'
     end
   end
 
   def test_send_invitations
     when_logged_in do
       post :send_invitations, :id => 2
-      assert_redirect '/groups/invite/2'
+      assert_response :redirect
+      assert_redirected_to '/groups/view/2'
     end
     when_not_logged_in do
       post :send_invitations, :id => 2
-      assert_redirect '/'
+      assert_response :redirect
+      assert_redirected_to '/'
     end
   end
 end
