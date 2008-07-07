@@ -1,17 +1,13 @@
 --- 
-action_categories_001: 
+electricity:
   name: Electricity
-  id: "1"
   image: electricity.png
-action_categories_002: 
+heating:
   name: Heating
-  id: "2"
   image: gas.png
-action_categories_003: 
+hot_water:
   name: Hot Water
-  id: "3"
   image: gas.png
-action_categories_004: 
+travel:
   name: Travel
-  id: "4"
   image: car.png

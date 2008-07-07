@@ -6,7 +6,7 @@ class ActionTest < Test::Unit::TestCase
   fixtures :action_overrides
 
   def test_relationships
-    action = Action.find(1)
+    action = actions(:turn_off_lights)
     assert action.action_category
     assert action.action_overrides
     assert action.completed_actions
@@ -14,9 +14,9 @@ class ActionTest < Test::Unit::TestCase
   end
   
   def test_override
-    action = Action.find(1)
+    action = actions(:turn_off_lights)
     action.load_random_override(1)
-    assert action.content == ActionOverride.find(1).content
+    assert action.content == action_overrides(:turn_off_lights).content
   end
   
 end

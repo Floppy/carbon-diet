@@ -6,7 +6,7 @@ class CompletedActionTest < Test::Unit::TestCase
   fixtures :users
 
   def test_relationships
-    action = CompletedAction.find(1)
+    action = completed_actions(:completed_actions_001)
     assert action.action
     assert action.user
   end
