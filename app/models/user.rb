@@ -148,7 +148,7 @@ class User < ActiveRecord::Base
       # Create avatar URL
       path + self.login + ".png"
     elsif email
-      "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=#{small ? 32 : 80}&d=http%3A%2F%2Fwww.carbondiet.org%2Fimages%2Favatar#{small ? 32 : 80}.png"
+      "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=#{small ? 32 : 80}&d=wavatar"
     else
       small ? "avatar32.png" : "avatar80.png"
     end
