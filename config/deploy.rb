@@ -11,14 +11,7 @@ role :app, '67.207.136.20'
 role :web, '67.207.136.20'
 role :db,  '67.207.136.20', :primary => true
 
-after "deploy:update_code", "symlink:avatars", "symlink:dbconfig", "gems:install"
-
-namespace :gems do
-  desc "Install required gems on server"
-  task :install do
-    run "sudo rake RAILS_ENV=production -f #{release_path}/Rakefile gems:install"
-  end
-end
+after "deploy:update_code", "symlink:avatars", "symlink:dbconfig"
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
