@@ -62,7 +62,3 @@ end
 # Recaptcha configuration
 ENV['RECAPTCHA_PUBLIC_KEY']  = "6LduNgAAAAAAACVF4O4KRiyVnD0BjuUj3R2waHir"
 ENV['RECAPTCHA_PRIVATE_KEY'] = "6LduNgAAAAAAAA7hx3zsYKcynv7WjyEItvrPD2Ie"
-
-# Set email addresses for exception notification
-ExceptionNotifier.exception_recipients = %w(james@carbondiet.org)
-ExceptionNotifier.sender_address = %("Carbon Diet Errors" <error@carbondiet.org>)
