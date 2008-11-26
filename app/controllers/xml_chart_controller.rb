@@ -124,6 +124,8 @@ private
     else
       avg_period = 14
     end
+    # TEMPORARY hack: don't smooth out my emissions at all
+    avg_period = 1 if @current_user.id == 1
     # Create graph data
     @data = []
     total = GraphData.new
