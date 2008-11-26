@@ -24,6 +24,13 @@ private
     convolve(kernel)
   end
 
+  def no_smoothing
+    # Create an identity kernel
+    kernel = Array.new(1,1.0)
+    # Convolve with kernel
+    convolve(kernel)
+  end
+
   def convolve(kernel)
     # Check kernel size is odd
     raise "kernel must be uneven width" unless kernel.size.odd?
