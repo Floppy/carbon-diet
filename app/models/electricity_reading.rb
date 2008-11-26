@@ -5,7 +5,7 @@ class ElectricityReading < ActiveRecord::Base
   validates_numericality_of :reading_day
   validates_numericality_of :reading_night
   # Attributes
-  attr_accessible :taken_on, :reading_day, :reading_night
+  attr_accessible :taken_on, :reading_day, :reading_night, :automatic
 
   protected
   def validate_on_create
@@ -22,10 +22,10 @@ class ElectricityReading < ActiveRecord::Base
     subsequent = electricity_account.electricity_readings.find(:first, 
                                                                :conditions => ["taken_on > ?", taken_on])
     # Check readings, make sure they're in sequence
-    errors.add("Day reading is lower than its preceeding value!", "Are you sure it's correct?") unless previous.nil? || previous.reading_day <= reading_day
-    errors.add("Day reading is higher than its subsequent value!", "Are you sure it's correct?") unless subsequent.nil? || subsequent.reading_day >= reading_day
-    errors.add("Night reading is lower than its preceeding value!", "Are you sure it's correct?") unless previous.nil? || previous.reading_night <= reading_night
-    errors.add("Night reading is higher than its subsequent value!", "Are you sure it's correct?") unless subsequent.nil? || subsequent.reading_night >= reading_night
+    errors.add("Day reading (#{reading_day}) is lower than its preceeding value (#{previous.reading_day})!", "Are you sure it's correct?") unless previous.nil? || previous.reading_day <= reading_day
+    errors.add("Day reading (#{reading_day})  is higher than its subsequent value! (#{subsequent.reading_day})", "Are you sure it's correct?") unless subsequent.nil? || subsequent.reading_day >= reading_day
+    errors.add("Night reading (#{reading_night}) is lower than its preceeding value (#{previous.reading_night})!", "Are you sure it's correct?") unless previous.nil? || previous.reading_night <= reading_night
+    errors.add("Night reading (#{reading_night}) is higher than its subsequent value (#{subsequent.reading_night})!", "Are you sure it's correct?") unless subsequent.nil? || subsequent.reading_night >= reading_night
   end
 
 public

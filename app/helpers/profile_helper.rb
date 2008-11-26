@@ -3,7 +3,7 @@ module ProfileHelper
   def news_feed(user, limit=10)
     feed = []
     # Get electricity reading data
-    for reading in user.electricity_readings.find(:all, :limit => limit, :order => "taken_on DESC")
+    for reading in user.electricity_readings.find(:all, :limit => limit, :order => "taken_on DESC", :conditions => {:automatic => false})
       feed << {:image => 'electricity.png', 
                :when => reading.taken_on.to_time, 
                :text => "took a reading for '" + h(reading.electricity_account.name) + "'"}

@@ -34,6 +34,7 @@ NOTE: If the units are wrong for your meter, you can change them in the <%= link
 <% end %>
   <th></th>
   <th></th>
+  <th></th>
   </tr>
   
 <% for reading in @electricity_readings %>
@@ -45,6 +46,7 @@ NOTE: If the units are wrong for your meter, you can change them in the <%= link
 <% else %>
   <td><%=h reading.reading_day %></td>
 <% end %>
+  <td><%= image_tag_with_tooltip('automatic.png') if reading.automatic %></td>
   <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => reading, :account => params[:account] %></td>
   <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => reading, :account => params[:account] }, :confirm => 'Delete this reading?', :method => :post %></td>
   </tr>
