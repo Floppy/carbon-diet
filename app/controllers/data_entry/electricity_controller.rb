@@ -3,6 +3,7 @@ class DataEntry::ElectricityController < AuthenticatedController
   # Filters
   before_filter :check_elec_account
   prepend_before_filter :enable_mobile_mode, :only => [ :mobile ]
+  skip_before_filter :check_logged_in, :only => [:currentcost]
 
   def index
     redirect_to :action => 'list'
@@ -64,6 +65,40 @@ class DataEntry::ElectricityController < AuthenticatedController
     render :action => "export.rxml", :layout => false
   rescue
     render :file => "#{RAILS_ROOT}/public/404.html", :status => 404
+  end
+
+  def currentcost
+    # Receives data from my currentcost daemon
+    authenticate_with_http_basic do |username, password|
+      # Authenticate
+      result = User.authenticate(username, password)
+      @current_user = User.find_by_id(result)
+      render(:nothing => true, :status => 401) and return if @current_user.nil?
+      # Get the account
+      @account = @current_user.electricity_accounts.find_by_id(params[:account])
+      render(:nothing => true, :status => 401) and return if @account.nil?
+      # Load data from XML
+      doc = REXML::Document.new(request.raw_post)
+      # For each item in the history
+      REXML::XPath.each(doc, '/data/entry') do |entry|
+        date = Date.parse(entry.elements['date'].text)
+        value = entry.elements['value'].text
+        # Is there already a reading for today?
+        break if @account.electricity_readings.find(:first, :conditions => {:taken_on => date})
+        # If not, find a reading for yesterday and add today's figure onto it
+        previous = @account.electricity_readings.find(:first, :conditions => {:taken_on => date - 1})
+        if previous
+          kwh = previous.kWh_day + value.to_i
+          reading = kwh / @account.electricity_unit.amount_in_kWh
+          @account.electricity_readings.create(:automatic => true, 
+                                               :taken_on => date,
+                                               :reading_day => reading,
+                                               :reading_night => previous.reading_night)
+        end
+      end
+      # Render result - just 201 Created
+      render(:nothing => true, :status => 201)
+    end
   end
 
 private
