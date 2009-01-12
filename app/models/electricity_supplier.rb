@@ -21,7 +21,10 @@ class ElectricitySupplier < ActiveRecord::Base
     return total
   end
 
-  def kg_per_kWh  
+  def kg_per_kWh
+    # Use explicit g_per_kWh figure if set
+    return g_per_kWh.to_f / 1000.0 if g_per_kWh
+    # Otherwise, calculate from source mix
     total = 0
     for source in electricity_supplier_sources
       total += source.electricity_source.g_per_kWh * (source.percentage.to_f / 100) / 1000
