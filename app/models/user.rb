@@ -440,6 +440,10 @@ public
     return emissiondata
   end    
 
+  def to_param
+    login
+  end
+
 private
 
   def generate_salt

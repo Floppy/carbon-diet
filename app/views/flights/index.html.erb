@@ -1,12 +1,11 @@
 <% pagetitle("List Flights", "plane.png") %>
 
 <% content_for('optionbar') do %>
-  <%= pagination_links(@flight_pages) %>
   <%= option "new_flight" %>
   <%= option "back_to_add_data" %>
   <div class="option" %>
     <%= image_tag_with_tooltip('export.png') %>
-    <%= link_to 'Export Data', { :action => 'export' } %>  
+    <%= link_to 'Export Data', formatted_user_flights_path(@user, :xml) %>
   </div>
   <% if @flights.size > 0 %>
     <%= option "analysis" %>
@@ -34,9 +33,12 @@
   <td><%=h flight.return_on ? flight.return_on.strftime("%d %b %y") : ""%></td>
   <td><%=h flight.flight_class.name %></td>
   <td><%=h flight.passengers %></td>
-  <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => flight %></td>
-  <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => flight }, :confirm => 'Delete this flight?', :method => :post %></td>
+  <td><%= link_to image_tag_with_tooltip('edit.png'), edit_user_flight_path(@user, flight) %></td>
+  <td><%= link_to image_tag_with_tooltip('delete.png'), user_flight_path(@user, flight), :method => :delete,  :confirm => 'Delete this flight?' %></td>
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @flights %>
+
 </div>

@@ -1,0 +1,14 @@
+<% pagetitle("Edit Flight", "plane.png") %>
+
+<% content_for('optionbar') do %>
+  <%= option "save", :id => "edit_flight_#{@flight.id}" %>
+  <%= option "cancel" %>
+<% end %>
+
+<div class="pagecontent">
+  
+  <%= tip_box "Start typing the airport names into the boxes, wait a moment, and then select the correct result from the dropdown box." %>
+  
+  <%= render :partial => "form" %>
+
+</div>

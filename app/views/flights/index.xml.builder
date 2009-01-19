@@ -1,3 +1,4 @@
+xml.instruct!
 xml.flights do
 
   for flight in @flights
