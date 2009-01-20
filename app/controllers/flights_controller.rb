@@ -5,7 +5,7 @@ class FlightsController < BelongsToUser
   def index
     respond_to do |format|
       format.html {
-        @flights = @user.flights.paginate :per_page => 3, :order => "outbound_on DESC", :page => params[:page]
+        @flights = @user.flights.paginate :per_page => 20, :order => "outbound_on DESC", :page => params[:page]
       }
       format.xml {
         @flights = @user.flights.find :all, :order => "outbound_on DESC"

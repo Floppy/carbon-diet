@@ -428,7 +428,7 @@ div.progressBar {
 
 div.progressBar div.border {
   background-color: #fff;
-  border: 1px solid grey;
+  border: 1px solid gray;
   width: 100%;
 }
 
@@ -437,3 +437,71 @@ div.progressBar div.background {
   height: 18px;
   width: 0%;
 }
+
+div.pagination {
+  margin-top: 10px;
+  background: white;
+  /* self-clearing method: */
+}
+
+div.pagination a, div.pagination span {
+  padding: .2em .5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+}
+
+div.pagination span.disabled {
+  color: #999;
+  border: 1px solid #DDD;
+}
+
+div.pagination span.current {
+  font-weight: bold;
+  background: #2E6AB1;
+  color: white;
+  border: 1px solid #2E6AB1;
+}
+
+div.pagination a {
+  text-decoration: none;
+  color: #105CB6;
+  border: 1px solid #9AAFE5;
+}
+
+div.pagination a:hover, div.pagination a:focus {
+  color: #003;
+  border-color: #003;
+}
+
+div.pagination .page_info {
+  background: #2E6AB1;
+  color: white;
+  padding: .4em .6em;
+  width: 22em;
+  margin-bottom: .3em;
+  text-align: center;
+}
+
+div.pagination .page_info b {
+  color: #003;
+  background: #6aa6ed;
+  padding: .1em .25em;
+}
+
+div.pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: left;
+  visibility: hidden;
+}
+
+* html div.pagination {
+  height: 1%;
+}
+
+*:first-child+html div.pagination {
+  overflow: hidden;
+}
+
