@@ -10,6 +10,9 @@ class FlightsController < BelongsToUser
       format.xml {
         @flights = @user.flights.find :all, :order => "outbound_on DESC"
       }
+      format.ammap {
+        @flights = @user.flights.find :all, :order => "outbound_on DESC"
+      }
     end
   end
 

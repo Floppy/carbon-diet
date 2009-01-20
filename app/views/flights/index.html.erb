@@ -42,3 +42,21 @@
 <%= will_paginate @flights %>
 
 </div>
+
+<div class="pagecontent">
+  <!-- ammap script-->
+  <script type="text/javascript" src="/javascripts/swfobject.js"></script>
+  <div id="flashmap">
+    <strong>You need to upgrade your Flash Player</strong>
+  </div>
+  <script type="text/javascript">
+    // <![CDATA[
+    var so = new SWFObject("/flash/ammap/ammap.swf", "ammap", "100%", "300", "8", "#FFFFFF");
+    so.addVariable("path", "/");
+    so.addVariable("map_settings", escape("<settings><projection>mercator</projection><background><color>#FFFFFF</color><alpha>100</alpha></background><area><color_light>#7FFF7F</color_light></area><small_map><enabled>false</enabled></small_map><zoom><color>#DDDDDD</color><outline_color>#000000</outline_color></zoom></settings>"));
+    so.addVariable("data_file", escape("<%= formatted_user_flights_path(@user, :ammap) %>"));
+    so.write("flashmap");
+    // ]]>
+  </script>
+  <!-- end of ammap script -->
+</div>
