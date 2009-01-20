@@ -1,4 +1,4 @@
-class Admin::GasSupplierController < Admin::AdminController
+class Admin::GasSuppliersController < Admin::AdminController
  
   active_scaffold :gas_suppliers do |config|
     config.columns = [:name, :country, :g_per_m3, :default]    
