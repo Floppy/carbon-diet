@@ -13,6 +13,8 @@ role :db,  '67.207.136.20', :primary => true
 
 after "deploy:update_code", "symlink:avatars", "symlink:dbconfig"
 
+after "deploy", "deploy:cleanup"
+
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
