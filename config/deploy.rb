@@ -1,3 +1,5 @@
+require 'hoptoad_notifier/recipes/hoptoad'
+
 set :application, 'carbon-diet'
 
 set :scm, "git"

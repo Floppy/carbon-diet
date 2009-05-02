@@ -7,6 +7,19 @@ When an uncaught exception occurs, HoptoadNotifier will POST the relevant data
 to the Hoptoad server specified in your environment.
 
 INSTALLATION
+------------
+
+REMOVE EXCEPTION_NOTIFIER
+
+In your ApplicationController, REMOVE this line:
+
+  include ExceptionNotifiable
+
+In your config/environment* files, remove all references to ExceptionNotifier
+
+Remove the vendor/plugins/exception_notifier directory.
+
+INSTALL HOPTOAD_NOTIFIER
 
 From your project's RAILS_ROOT, run:
 
@@ -19,19 +32,16 @@ You should have something like this in config/initializers/hoptoad.rb.
   HoptoadNotifier.configure do |config|
     config.api_key = '1234567890abcdef'
   end
-  
+
 (Please note that this configuration should be in a global configuration, and
-is *not* enrivonment-specific. Hoptoad is smart enough to know what errors are
+is *not* environment-specific. Hoptoad is smart enough to know what errors are
 caused by what environments, so your staging errors don't get mixed in with
 your production errors.)
 
-Then, to enable hoptoad in your application, include this code...
-
-  include HoptoadNotifier::Catcher
-
-...in your ApplicationController, and all exceptions will be logged to Hoptoad
-where they can be aggregated, filtered, sorted, analyzed, massaged, and
-searched.
+That should be it! Now all exceptions will be logged to Hoptoad where they can
+be aggregated, filtered, sorted, analyzed, massaged, and searched. In previous
+releases you had to include HoptoadNotifier::Catcher into your
+ApplicationController, but the plugin takes care of that now.
 
 ** NOTE FOR RAILS 1.2.* USERS: **
 You will need to copy the hoptoad_notifier_tasks.rake file into your
@@ -48,8 +58,8 @@ which will be visible immediately.
 USAGE
 
 For the most part, hoptoad works for itself.  Once you've included the notifier 
-in your ApplicationController, all errors will be rescued by the 
-#rescue_action_in_public provided by the plugin.
+in your ApplicationController (which is now done automatically by the plugin), 
+all errors will be rescued by the #rescue_action_in_public provided by the plugin.
 
 If you want to log arbitrary things which you've rescued yourself from a 
 controller, you can do something like this:
@@ -63,6 +73,20 @@ controller, you can do something like this:
 
 The #notify_hoptoad call will send the notice over to hoptoad for later 
 analysis.
+
+TRACKING DEPLOYMENTS IN HOPTOAD
+
+Paying Hoptoad plans support the ability to track deployments of your application in Hoptoad.
+By notify Hoptoad of your application deployments, all errors are resolved when a deploy occurs,
+so that you'll be notified again about any errors that reoccur after a deployment.
+
+Additionally, it's possible to review the errors in Hoptoad that occurred before and after a deploy.
+
+When Hoptoad is installed as a plugin this functionality is loaded automatically (if you have Capistrano version 2.0.0 or greater).
+
+When Hoptoad installed as a gem, you need to add 
+  require 'hoptoad_notifier/recipes/hoptoad'
+to your deploy.rb
 
 GOING BEYOND EXCEPTIONS
 
@@ -131,6 +155,24 @@ To ignore *only* certain errors (and override the defaults), use the
   HoptoadNotifier.configure do |config|
     config.api_key      = '1234567890abcdef'
     config.ignore_only  = [ActiveRecord::IgnoreThisError]
+  end
+
+To ignore certain user agents, add in the #ignore_user_agent attribute as a
+string or regexp:
+
+  HoptoadNotifier.configure do |config|
+    config.api_key      = '1234567890abcdef'
+    config.ignore_user_agent  << /Ignored/
+    config.ignore_user_agent << 'IgnoredUserAgent'
+  end
+
+To ignore exceptions based on other conditions, use #ignore_by_filter:
+
+  HoptoadNotifier.configure do |config|
+    config.api_key      = '1234567890abcdef'
+    config.ignore_by_filter do |exception_data|
+      true if exception_data[:error_class] == "RuntimeError"
+    end
   end
 
 TESTING
