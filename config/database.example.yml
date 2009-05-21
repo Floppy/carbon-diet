@@ -1,0 +1,23 @@
+defaults: &defaults
+  adapter: mysql
+  host: localhost
+  socket: /var/run/mysqld/mysqld.sock
+
+local_defaults: &local_defaults
+  <<: *defaults
+  username: db_username
+  password: db_password
+
+development:
+  <<: *local_defaults
+  database: carbondiet_development
+
+test:
+  <<: *local_defaults
+  database: carbondiet_test
+
+production:
+  <<: *defaults
+  database: carbondiet_production
+  username: db_username
+  password: db_password
