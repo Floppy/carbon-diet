@@ -1,3 +1,6 @@
-HoptoadNotifier.configure do |config|
-  config.api_key = '5f16b1f0cfae95758e3ee531fc95679c'
+HOPTOAD_CONFIG_FILE = "#{RAILS_ROOT}/config/hoptoad.yml"
+if File.exist?(HOPTOAD_CONFIG_FILE)
+  HoptoadNotifier.configure do |config|
+    config.api_key = YAML.load_file(HOPTOAD_CONFIG_FILE)['api_key']
+  end
 end

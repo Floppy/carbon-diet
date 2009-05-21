@@ -7,11 +7,11 @@ set :deploy_via, :export
 set :deploy_to, '/home/carbondiet'
 set :user, 'carbondiet'
 
-role :app, '67.207.136.20'
-role :web, '67.207.136.20'
-role :db,  '67.207.136.20', :primary => true
+role :app, 'www.carbondiet.org'
+role :web, 'www.carbondiet.org'
+role :db,  'www.carbondiet.org', :primary => true
 
-after "deploy:update_code", "symlink:avatars", "symlink:dbconfig"
+after "deploy:update_code", "symlink:avatars", "copy:dbconfig", "copy:hoptoad"
 
 after "deploy", "deploy:cleanup"
 
@@ -31,8 +31,15 @@ namespace :symlink do
   task :avatars do
     run "ln -fs #{shared_path}/avatars #{release_path}/public/images"
   end
+end
+
+namespace :copy do
   desc "Make copy of database yaml" 
   task :dbconfig do
     run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+  end
+  desc "Make copy of hoptoad yaml"
+  task :hoptoad do
+    run "cp #{shared_path}/config/hoptoad.yml #{release_path}/config/hoptoad.yml"
   end
 end
