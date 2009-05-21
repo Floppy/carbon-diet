@@ -26,6 +26,9 @@ class FlightsController < BelongsToUser
     if @flight.save
       @user.update_stored_statistics!
       redirect_to :action => 'index'
+    else
+      @classes = FlightClass.find( :all )
+      render :action => 'new'
     end
   end
 
@@ -38,6 +41,9 @@ class FlightsController < BelongsToUser
     if @flight.save
       @user.update_stored_statistics!
       redirect_to :action => 'index'
+    else
+      @classes = FlightClass.find( :all )
+      render :action => 'edit'
     end
   end
 
