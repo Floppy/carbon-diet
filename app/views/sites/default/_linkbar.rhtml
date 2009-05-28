@@ -12,6 +12,6 @@
 <% unless @current_user.blank? or not @current_user.admin %>
   <%= render :partial => 'shared/linktab', :locals => {:image => 'admin.png', :link => link_to("Admin", :controller => "/admin/index")} %>
 <% end %>
-<%= render :partial => 'shared/linktab', :locals => {:image => 'help.png', :link => link_to("Help", :controller => "/help" )} %>
-<%= render :partial => 'shared/linktab', :locals => {:image => 'code.png', :link => link_to("Code", "http://github.com/Floppy/carbon-diet" )} %>
+<%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", :controller => "/help" )} %>
+<%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'code.png', :link => link_to("Code", "http://github.com/Floppy/carbon-diet" )} %>
 <div class="clear"></div>
