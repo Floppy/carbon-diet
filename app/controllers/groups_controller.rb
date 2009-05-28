@@ -126,6 +126,7 @@ class GroupsController < ApplicationController
 
   def feed
     @group = Group.find_by_id(params[:id])
+    redirect_to :action => 'list' and return if @group.nil?
     @comments = @group.comments.find(:all, :order => "created_at DESC", :limit => 10)
     # Send data
     headers["Content-Type"] = "application/atom+xml"
