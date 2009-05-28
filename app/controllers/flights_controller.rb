@@ -22,6 +22,7 @@ class FlightsController < BelongsToUser
   end
 
   def create
+    fix_missing_date_components
     @flight = @user.flights.create(params[:flight])
     if @flight.save
       @user.update_stored_statistics!
@@ -37,6 +38,7 @@ class FlightsController < BelongsToUser
   end
 
   def update
+    fix_missing_date_components
     @flight.update_attributes(params[:flight])
     if @flight.save
       @user.update_stored_statistics!
@@ -71,6 +73,14 @@ private
   def search_airports(search)
     @airports = Airport.search(search, 10)
     render :partial => 'airport_autocomplete'
+  end
+
+  def fix_missing_date_components
+    if !params[:flight]['return_on(1i)'].blank? || !params[:flight]['return_on(2i)'].blank? || !params[:flight]['return_on(3i)'].blank?
+      params[:flight]['return_on(1i)'] = params[:flight]['outbound_on(1i)'] if params[:flight]['return_on(1i)'].blank?
+      params[:flight]['return_on(2i)'] = params[:flight]['outbound_on(2i)'] if params[:flight]['return_on(2i)'].blank?
+      params[:flight]['return_on(3i)'] = params[:flight]['outbound_on(3i)'] if params[:flight]['return_on(3i)'].blank?
+    end
   end
   
 end

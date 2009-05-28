@@ -44,6 +44,7 @@ Rails::Initializer.run do |config|
   # See Rails::Configuration for more options
 
   config.gem 'mislav-will_paginate', :version => '>= 2.2.3', :lib => 'will_paginate',  :source => 'http://gems.github.com'
+  config.gem 'validates_timeliness'
 
 end
 
