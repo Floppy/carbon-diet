@@ -132,9 +132,9 @@ class User < ActiveRecord::Base
       img = MiniMagick::Image.from_blob(file.read)
       img.format 'png'
       img.resize '100x100'
-      img.write(ENV['CARBONDIET_BASE_DIR'] + "public/images/avatars/#{login}.png")
+      img.write("#{RAILS_ROOT}/public/images/avatars/#{login}.png")
       img.resize '32x32'
-      img.write(ENV['CARBONDIET_BASE_DIR'] + "public/images/avatars/thumbnails/#{login}.png")
+      img.write("#{RAILS_ROOT}/public/images/avatars/thumbnails/#{login}.png")
       # Set avatar flag
       write_attribute('has_avatar', true)
     end
@@ -176,8 +176,8 @@ class User < ActiveRecord::Base
     comments.each { |x| x.destroy }
     # Remove avatar images
     if has_avatar
-      FileUtils.remove(ENV['CARBONDIET_BASE_DIR'] + "public/images/avatars/#{login}.png")
-      FileUtils.remove(ENV['CARBONDIET_BASE_DIR'] + "public/images/avatars/thumbnails/#{login}.png")
+      FileUtils.remove("#{RAILS_ROOT}/public/images/avatars/#{login}.png")
+      FileUtils.remove("#{RAILS_ROOT}/public/images/avatars/thumbnails/#{login}.png")
     end
     # Call base
     super

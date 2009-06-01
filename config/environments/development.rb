@@ -21,6 +21,3 @@ config.action_mailer.smtp_settings = {
   :port => 25,
   :domain => "carbondiet.org",
 }
-
-# Set base directory for image storage
-ENV['CARBONDIET_BASE_DIR'] = ''

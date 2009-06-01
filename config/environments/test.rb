@@ -18,5 +18,3 @@ config.action_controller.perform_caching             = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-# Set base directory for image storage
-ENV['CARBONDIET_BASE_DIR'] = ''
