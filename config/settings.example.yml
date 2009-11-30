@@ -1,0 +1,8 @@
+development:
+  style: default
+
+test:
+  style: default
+
+production:
+  style: default

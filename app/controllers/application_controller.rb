@@ -3,9 +3,6 @@
 class ApplicationController < ActionController::Base
   include HoptoadNotifier::Catcher
 
-  # Check subdomain before all requests  
-  before_filter :get_subdomain
-
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_carbondiet_session_id'
 
@@ -52,11 +49,6 @@ protected
     session[:mobile] = true
   end
 
-  def get_subdomain
-    @style = request.env["HTTP_X_FORWARDED_HOST"].split('.')[0] unless request.env["HTTP_X_FORWARDED_HOST"].nil?
-    @style = "default" if [nil, "www", "test", "carbondiet", "67"].include? @style
-  end
-
   def redirect_to_main_page
     if session[:mobile]
       redirect_to(:controller => "/main", :action => "mobile")
@@ -101,6 +93,10 @@ protected
     actions = Action.find_for_user(@current_user, categories, num, offset)
     # Load override content
     actions.each { |action| action.load_random_override(@current_user.country_id) }
+  end
+
+  def style
+    APP_CONFIG[:style]
   end
 
 end
