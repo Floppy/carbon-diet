@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def whitelabel_content(file)
-    render :partial => "/sites/#{@style}/#{file}"
+    render :partial => "/sites/#{APP_CONFIG[:style]}/#{file}"
   rescue
     nil
   end

@@ -95,8 +95,4 @@ protected
     actions.each { |action| action.load_random_override(@current_user.country_id) }
   end
 
-  def style
-    APP_CONFIG[:style]
-  end
-
 end

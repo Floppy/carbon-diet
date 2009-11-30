@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 <head>
-  <title><%= render :partial => "/sites/#{@style}/title" %><%=h ": " + @pagename if not @pagename.blank? %><%=h ": " + @content_for_pagename if not @content_for_pagename.blank? %></title>
-  <%= stylesheet_link_tag 'common/common', @style %>
+  <title><%= render :partial => "/sites/#{APP_CONFIG[:style]}/title" %><%=h ": " + @pagename if not @pagename.blank? %><%=h ": " + @content_for_pagename if not @content_for_pagename.blank? %></title>
+  <%= stylesheet_link_tag 'common/common', APP_CONFIG[:style] %>
   <%= javascript_include_tag :defaults %>
   <%= active_scaffold_includes %>
   <script type="text/javascript"><%= @content_for_page_scripts %></script>
@@ -13,7 +13,7 @@
   <%= stylesheet_link_tag 'common/ie' %>
   <![endif]-->  
   <%= yield :feed %>
-  <link rel="shortcut icon" href="/images/<%= @style %>/favicon.ico" />
+  <link rel="shortcut icon" href="/images/<%= APP_CONFIG[:style] %>/favicon.ico" />
   <meta name="Keywords" content="carbon calculator, carbon footprint, climate change, global warming"/>
   <meta name="Description" content="Saving the planet, together! Calculate your daily carbon footprint, take action to reduce it, and share it with your friends!"/>
   <meta name="Author" content="James Smith"/>
@@ -41,7 +41,7 @@
 </div>
 
 <div class="cd-linkbar">
-<%= render :partial => "/sites/#{@style}/linkbar" %>
+<%= render :partial => "/sites/#{APP_CONFIG[:style]}/linkbar" %>
 </div>
 
 <% if flash[:notice] %>
