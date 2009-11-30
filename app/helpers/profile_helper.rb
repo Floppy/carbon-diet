@@ -21,7 +21,7 @@ module ProfileHelper
                :text => "bought some fuel for '" + h(purchase.vehicle.name) + "'"}
     end
     # Get completed action data
-    for action in user.completed_actions.find(:all, :limit => limit, :order => "created_at DESC", :conditions => ["done = TRUE"])
+    for action in user.completed_actions.find(:all, :limit => limit, :order => "created_at DESC", :conditions => {:done => true})
       feed << {:image => 'action.png', 
                :when => action.created_at, 
                :text => "agreed to do the action " + link_to(h(action.action.title), :controller => "/actions", :action => 'view', :id => action.action.id)}

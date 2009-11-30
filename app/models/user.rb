@@ -25,19 +25,19 @@ class User < ActiveRecord::Base
   has_many :approved_friendships,
     :foreign_key =>       'user_id',
     :class_name =>        'Friendship',
-    :conditions =>        [ "approved = TRUE" ]
+    :conditions =>        { :approved => true }
   has_many :unapproved_friendships,
     :foreign_key =>       'user_id',
     :class_name =>        'Friendship',
-    :conditions =>        [ "approved = FALSE" ]
+    :conditions =>        { :approved => false }
   has_many :approved_befriendships,
     :foreign_key =>       'friend_id',
     :class_name =>        'Friendship',
-    :conditions =>        [ "approved = TRUE" ]
+    :conditions =>        { :approved => true }
   has_many :unapproved_befriendships,
     :foreign_key =>       'friend_id',
     :class_name =>        'Friendship',
-    :conditions =>        [ "approved = FALSE" ]
+    :conditions =>        { :approved => false }
   has_many :friends,
     :through => :approved_friendships,
     :source => :friend
