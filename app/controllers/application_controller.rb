@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_carbondiet_session_id'
 
+  before_filter :detect_iphone
+
+  helper_method :iphone_user_agent?
+
 protected
 
   def get_current_user
@@ -93,6 +97,14 @@ protected
     actions = Action.find_for_user(@current_user, categories, num, offset)
     # Load override content
     actions.each { |action| action.load_random_override(@current_user.country_id) }
+  end
+
+  def detect_iphone
+    request.format = :iphone if iphone_user_agent?
+  end
+
+  def iphone_user_agent?
+    request.env["HTTP_USER_AGENT"] &&  request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
   end
 
 end
