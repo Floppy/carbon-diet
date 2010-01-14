@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :detect_iphone
 
-  helper_method :iphone_user_agent?
+  helper_method :iphone?
 
 protected
 
@@ -100,10 +100,13 @@ protected
   end
 
   def detect_iphone
-    request.format = :iphone if iphone_user_agent?
+    if iphone?
+      request.format = :iphone
+      session[:mobile] = nil
+    end
   end
 
-  def iphone_user_agent?
+  def iphone?
     request.env["HTTP_USER_AGENT"] &&  request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
   end
 
