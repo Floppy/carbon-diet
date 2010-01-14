@@ -6,13 +6,13 @@ Add data to:
   <em>You don't have any account data to edit!</em><br/>
 <% else %>
   <ul>
-  <% for elec_account in @current_user.electricity_accounts.find(:all, :conditions => {:current => true}) %>
+  <% for elec_account in @current_user.electricity_accounts.current %>
     <li><%= link_to(elec_account.name, { :controller => "data_entry/electricity", :action => "mobile", :account => elec_account.id } ) %></li>
   <% end %>
-  <% for gas_account in @current_user.gas_accounts.find(:all, :conditions => {:current => true}) %>
+  <% for gas_account in @current_user.gas_accounts.current %>
     <li><%= link_to(gas_account.name, { :controller => "data_entry/gas", :action => "mobile", :account => gas_account.id } ) %></li>
   <% end %>
-  <% for vehicle in @current_user.vehicles.find(:all, :conditions => {:current => true}) %>
+  <% for vehicle in @current_user.vehicles.current %>
     <li><%= link_to(vehicle.name, { :controller => "data_entry/vehicle_fuel", :action => "mobile", :vehicle => vehicle.id } ) %></li>
   <% end %>
   </ul>

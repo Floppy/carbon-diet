@@ -4,11 +4,23 @@ require 'mini_magick'
 class User < ActiveRecord::Base
   # Relationships
   belongs_to :country
-  has_many :electricity_accounts
+  has_many :electricity_accounts do
+    def current
+      find :all, :conditions => {:current => 1}
+    end
+  end
   has_many :electricity_readings, :through => :electricity_accounts
-  has_many :gas_accounts
+  has_many :gas_accounts do
+    def current
+      find :all, :conditions => {:current => 1}
+    end
+  end
   has_many :gas_readings, :through => :gas_accounts
-  has_many :vehicles
+  has_many :vehicles do
+    def current
+      find :all, :conditions => {:current => 1}
+    end
+  end
   has_many :vehicle_fuel_purchases, :through => :vehicles
   has_many :flights
   has_many :completed_actions
