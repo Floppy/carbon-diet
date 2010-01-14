@@ -4,6 +4,10 @@ class MainController < ApplicationController
   before_filter :check_not_logged_in, :only => [ :index ]
 
   def index
+    respond_to do |format|
+      format.html
+      format.iphone {render :layout => request.xhr? ? false : "application"}
+    end
   end
 
   def mobile

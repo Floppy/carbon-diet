@@ -23,6 +23,11 @@ class ProfileController < ApplicationController
     @comments = @profile.comments.find(:all, :limit => 5)
     # Get actions
     @actions = get_actions(3) if @profile == @current_user
+    # Respond
+    respond_to do |format|
+      format.html
+      format.iphone { render :layout => request.xhr? ? false : "application" }
+    end
   end
 
   def feed

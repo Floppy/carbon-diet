@@ -1,0 +1,24 @@
+<ul title="Accounts" selected="true">
+  <% @current_user.electricity_accounts.current.each do |account| %>
+    <li>
+      <%= link_to("#{image_tag 'electricity.png'} #{account.name}", { :controller => "data_entry/electricity", :action => "edit", :account => account.id } ) %>
+    </li>
+  <% end %>
+  <% @current_user.gas_accounts.current.each do |account| %>
+    <li>
+      <%= link_to("#{image_tag 'gas.png'} #{account.name}", { :controller => "data_entry/gas", :action => "edit", :account => account.id } ) %>
+    </li>
+  </div>
+  <% end %>
+  <% @current_user.vehicles.current.each do |vehicle| %>
+    <li>
+      <%= link_to("#{image_tag 'car.png'} #{vehicle.name}", { :controller => "data_entry/vehicle_fuel", :action => "edit", :vehicle => vehicle.id } ) %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to "#{image_tag 'plane.png'} Flights", new_user_flight_path(@current_user) %>
+  </li>
+  <li>
+    <%= link_to "#{image_tag 'help.png'} Help", "/help" %>
+  </li>
+</ul>

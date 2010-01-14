@@ -1,0 +1,18 @@
+<% form_tag({:controller => '/user', :action => 'auth', :params => {:invite => params[:invite], :group => params[:group]}}, {:class => "panel", :selected => "true", :title => "Log In"}) do %>
+  <fieldset>
+    <div class="row">
+      <label for="username">Username</label>
+      <%= text_field 'user', 'login' %>
+    </div>
+    <div class="row">
+      <label for="password">Password</label>
+      <%= password_field 'user', 'password' %>
+    </div>
+    <div class="row">
+      <label for="remember">Remember Me</label>
+      <%= check_box 'user', 'remember' %>
+    </div>
+  </fieldset>
+  <a class="whiteButton" type="submit" href="#">Log In</a>
+<% end %>
+
