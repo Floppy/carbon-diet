@@ -29,7 +29,8 @@ class DataEntry::GasController < AuthenticatedController
       @gas_reading.update_attributes(params[:gas_reading])
       if @gas_reading.save
         @current_user.update_stored_statistics!
-        index
+        iphone? ? redirect_to_main_page : index
+        return
       end
     end
     # Set page name
@@ -37,6 +38,11 @@ class DataEntry::GasController < AuthenticatedController
       @pagename = "Editing gas reading"
     else
       @pagename = "Add gas reading"
+    end
+    # Respond
+    respond_to do |format|
+      format.html
+      format.iphone { render :layout => false }
     end
   end
 

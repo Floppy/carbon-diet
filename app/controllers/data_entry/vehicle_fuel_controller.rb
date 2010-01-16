@@ -33,7 +33,8 @@ class DataEntry::VehicleFuelController < AuthenticatedController
       @vehicle_fuel_purchase.update_attributes(params[:vehicle_fuel_purchase])
       if @vehicle_fuel_purchase.save
         @current_user.update_stored_statistics!
-        index
+        iphone? ? redirect_to_main_page : index
+        return
       end
     end
     # Set page name
@@ -41,6 +42,11 @@ class DataEntry::VehicleFuelController < AuthenticatedController
       @pagename = "Editing fuel purchase"
     else
       @pagename = "Add fuel purchase"
+    end
+    # Respond
+    respond_to do |format|
+      format.html
+      format.iphone { render :layout => false }
     end
   end
 

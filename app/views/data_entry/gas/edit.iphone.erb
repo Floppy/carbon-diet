@@ -1,0 +1,18 @@
+<% form_tag({:action => 'edit', :id => @gas_reading}, {:class => "panel", :selected => "true", :title => "Add Reading", :target => "_self"}) do %>
+
+  <fieldset>
+
+    <div class="row">
+      <label for="gas_reading_reading"><%=h @account.gas_unit.abbreviation %></label>
+      <%= text_field 'gas_reading', 'reading', :value => "" %>
+    </div>
+    <div class="row">
+      <label for="gas_reading_taken_on">Date</label>
+      <%= date_select 'gas_reading', 'taken_on', :order => [:day, :month, :year], :use_short_month => true %>
+    </div>
+
+  </fieldset>
+
+  <a class="whiteButton" type="submit" href="#">Add</a>
+
+<% end %>
