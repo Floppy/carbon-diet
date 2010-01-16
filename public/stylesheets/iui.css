@@ -400,3 +400,15 @@ fieldset > .row:last-child {
 a img {
   border: none;
 }
+
+.panel > div.textpanel {
+    position: relative;
+    margin: 0 0 20px 0;
+    padding: 0px 10px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: 1px solid #999999;
+    text-align: left;
+    font-size: 16px;
+}

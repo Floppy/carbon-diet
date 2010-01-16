@@ -4,6 +4,10 @@ class HelpController < ApplicationController
   
   def index
     @pagename = "Help"
+    respond_to do |format|
+      format.html
+      format.iphone { render :layout => false }
+    end
   end
 
   def about
