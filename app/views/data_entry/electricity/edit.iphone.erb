@@ -1,0 +1,30 @@
+<% form_tag({:action => 'edit', :id => @electricity_reading}, {:class => "panel", :selected => "true", :title => "Add Reading", :target => "_self"}) do %>
+
+  <fieldset>
+
+    <% if @account.night_rate %>
+      <div class="row">
+        <label for="electricity_reading_reading_day">Day (<%=h @account.electricity_unit.abbreviation %>)</label>
+        <%= text_field 'electricity_reading', 'reading_day', :value => "" %>
+      </div>
+      <div class="row">
+        <label for="electricity_reading_reading_night">Night (<%=h @account.electricity_unit.abbreviation %>)</label>
+        <%= text_field 'electricity_reading', 'reading_night', :value => "" %>
+      </div>
+    <% else %>
+      <div class="row">
+        <label for="electricity_reading_reading_day"><%=h @account.electricity_unit.abbreviation %></label>
+        <%= text_field 'electricity_reading', 'reading_day', :value => "" %>
+        <%= hidden_field 'electricity_reading', 'reading_night', :value => "0" %>
+      </div>
+    <% end %>
+    <div class="row">
+      <label for="electricity_reading_taken_on">Date</label>
+      <%= date_select 'electricity_reading', 'taken_on', :order => [:day, :month, :year], :use_short_month => true %>
+    </div>
+
+  </fieldset>
+
+  <a class="whiteButton" type="submit" href="#">Add</a>
+
+<% end %>

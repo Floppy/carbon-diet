@@ -30,7 +30,8 @@ class DataEntry::ElectricityController < AuthenticatedController
       @electricity_reading.update_attributes(params[:electricity_reading])
       if @electricity_reading.save
         @current_user.update_stored_statistics!
-        index
+        iphone? ? redirect_to_main_page : index
+        return
       end
     end
     # Set page name
@@ -38,6 +39,11 @@ class DataEntry::ElectricityController < AuthenticatedController
       @pagename = "Editing electricity reading"
     else
       @pagename = "Add electricity reading"
+    end
+    # Respond
+    respond_to do |format|
+      format.html
+      format.iphone { render :layout => false }
     end
   end
 
