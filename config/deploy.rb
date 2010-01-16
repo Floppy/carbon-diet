@@ -7,11 +7,13 @@ set :deploy_via, :export
 set :deploy_to, '/home/carbondiet'
 set :user, 'carbondiet'
 
+ssh_options[:forward_agent] = true
+
 role :app, 'www.carbondiet.org'
 role :web, 'www.carbondiet.org'
 role :db,  'www.carbondiet.org', :primary => true
 
-after "deploy:update_code", "symlink:avatars", "copy:dbconfig", "copy:hoptoad"
+after "deploy:update_code", "symlink:avatars", "copy:dbconfig", "copy:hoptoad", "copy:settings"
 
 after "deploy", "deploy:cleanup"
 
@@ -37,6 +39,10 @@ namespace :copy do
   desc "Make copy of database yaml" 
   task :dbconfig do
     run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+  end
+  desc "Make copy of settings yaml"
+  task :settings do
+    run "cp #{shared_path}/config/settings.yml #{release_path}/config/settings.yml"
   end
   desc "Make copy of hoptoad yaml"
   task :hoptoad do
