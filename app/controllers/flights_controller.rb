@@ -12,6 +12,7 @@ class FlightsController < BelongsToUser
       }
       format.ammap {
         @flights = @user.flights.find :all, :order => "outbound_on DESC"
+        render :layout => false
       }
     end
   end
