@@ -39,7 +39,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :flights
     user.resources :vehicles do |vehicle|
-      vehicle.resources :fuel_purchases
+      vehicle.resources :fuel_purchases, :controller => "VehicleFuelPurchases"
+    end
+    user.resources :electricity_accounts do |elec|
+      elec.resources :readings, :controller => "ElectricityReadings"
+    end
+    user.resources :gas_accounts do |gas|
+      gas.resources :readings, :controller => "GasReadings"
     end
   end
 
