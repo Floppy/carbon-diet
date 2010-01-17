@@ -3,7 +3,7 @@
   <% for account in @current_user.electricity_accounts %>
   <div class="option">
   <%= image_tag account.image %>
-  <%= link_to h(account.name), :controller => '/electricity_accounts', :action => 'edit', :id => account %>
+  <%= link_to h(account.name), edit_user_electricity_account_path(@current_user, account) %>
   </div>
   <% end %>
 

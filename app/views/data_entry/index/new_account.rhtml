@@ -4,7 +4,7 @@
   <% else %>
     <div class="option">
     <%= image_tag_with_tooltip 'electricity.png' %>
-    <%= link_to 'Electricity Account', :controller => '/electricity_accounts', :action => 'edit' %>
+    <%= link_to 'Electricity Account', new_user_electricity_account_path(@current_user) %>
     </div>
     <div class="option">
     <%= image_tag_with_tooltip('gas.png') %>

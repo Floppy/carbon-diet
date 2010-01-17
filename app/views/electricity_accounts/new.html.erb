@@ -1,0 +1,10 @@
+<% pagetitle "New Electricity Account", "electricity.png" %>
+
+<% content_for('optionbar') do %>
+  <%= option "save", :id => 'new_electricity_account' %>
+  <%= option "cancel" %>
+<% end %>
+
+<div class="pagecontent">
+  <%= render :partial => "form" %>
+</div>
