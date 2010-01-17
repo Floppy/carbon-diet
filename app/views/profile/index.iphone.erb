@@ -1,4 +1,5 @@
 <ul title="Carbon Diet" selected="true">
+  <li class="group">Add Data</li>
   <% @current_user.electricity_accounts.current.each do |account| %>
     <li>
       <%= link_to("#{image_tag 'electricity.png'} #{account.name}", { :controller => "data_entry/electricity", :action => "edit", :account => account.id } ) %>
@@ -15,9 +16,11 @@
       <%= link_to("#{image_tag 'car.png'} #{vehicle.name}", { :controller => "data_entry/vehicle_fuel", :action => "edit", :vehicle => vehicle.id } ) %>
     </li>
   <% end %>
+  <li class="group">Analysis</li>
   <li>
-    <%= link_to "#{image_tag 'chart_pie.png'} Analysis", { :controller => "report", :action => "index" } %>
+    <%= link_to "#{image_tag 'chart_pie.png'} Totals", { :controller => "report", :action => "index" } %>
   </li>
+  <li class="group">Help</li>
   <li>
     <%= link_to "#{image_tag 'help.png'} Help", "/help" %>
   </li>
