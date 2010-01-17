@@ -30,7 +30,6 @@ class VehiclesController < BelongsToUser
   end
 
   def update
-    @vehicle.user = @current_user
     @vehicle.update_attributes!(params[:vehicle])
     if @vehicle.save
       @user.update_stored_statistics!
