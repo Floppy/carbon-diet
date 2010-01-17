@@ -4,9 +4,9 @@
     <%= image_tag type[:image] unless type[:image].nil?%>
     <%=h type[:name] %>:
     <% if @current_user.people_in_household > 1 %>
-    <%= tonnes(type[:data][:perannum]/@current_user.people_in_household, 2) %>
+    <%= tonnes(type[:data][:perannum]/@current_user.people_in_household, 2, true) %>
     <% else %>
-    <%= tonnes(type[:data][:perannum], 2) %>
+    <%= tonnes(type[:data][:perannum], 2, true) %>
     <% end %>
     </li>
   <% end %>

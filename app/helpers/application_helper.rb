@@ -6,8 +6,8 @@ module ApplicationHelper
     "<b>" + (amount ? number_with_precision(amount, precision) : "?") + "</b> kg"
   end
 
-  def tonnes(amount,precision=0)
-    "<b>" + (amount ? number_with_precision(amount.to_f/1000, precision) : "?") + "</b> tonnes"
+  def tonnes(amount,precision=0, abbreviate=false)
+    "<b>" + (amount ? number_with_precision(amount.to_f/1000, precision) : "?") + "</b>" + (abbreviate ? "t" : " tonnes")
   end
 
   def image_tag_with_tooltip(location, options={})
