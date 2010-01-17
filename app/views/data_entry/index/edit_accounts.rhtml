@@ -1,25 +1,25 @@
 <% content_for('optionbar') do %>
 
-<% for account in @current_user.electricity_accounts %>
-<div class="option">
-<%= image_tag account.image %>
-<%= link_to h(account.name), :controller => '/electricity_accounts', :action => 'edit', :id => account %>
-</div>
-<% end %>
+  <% for account in @current_user.electricity_accounts %>
+  <div class="option">
+  <%= image_tag account.image %>
+  <%= link_to h(account.name), :controller => '/electricity_accounts', :action => 'edit', :id => account %>
+  </div>
+  <% end %>
 
-<% for account in @current_user.gas_accounts %>
-<div class="option">
-<%= image_tag account.image %>
-<%= link_to h(account.name), :controller => '/gas_accounts', :action => 'edit', :id => account %>
-</div>
-<% end %>
+  <% for account in @current_user.gas_accounts %>
+  <div class="option">
+  <%= image_tag account.image %>
+  <%= link_to h(account.name), :controller => '/gas_accounts', :action => 'edit', :id => account %>
+  </div>
+  <% end %>
 
-<% for vehicle in @current_user.vehicles %>
-<div class="option">
-<%= image_tag vehicle.image %>
-<%= link_to h(vehicle.name), :controller => '/vehicles', :action => 'edit', :id => vehicle %>
-</div>
-<% end %>
+  <% @current_user.vehicles.each do |vehicle| %>
+    <div class="option">
+      <%= image_tag vehicle.image %>
+      <%= link_to h(vehicle.name), edit_user_vehicle_path(@current_user, vehicle) %>
+    </div>
+  <% end %>
 
   <%= option "home" %>
 <% end %>

@@ -36,7 +36,12 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/service.wsdl', :action => 'wsdl'
 
   # New-style resourceful routes
-  map.resources :users, :has_many => [:flights]
+  map.resources :users do |user|
+    user.resources :flights
+    user.resources :vehicles do |vehicle|
+      vehicle.resources :fuel_purchases
+    end
+  end
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'

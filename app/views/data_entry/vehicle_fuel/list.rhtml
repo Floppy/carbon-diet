@@ -7,7 +7,7 @@
   <%= option "back_to_add_data" %>
   <div class="option">
     <%= image_tag_with_tooltip 'edit.png' %>
-    <%= link_to 'Edit account details', :controller => '/vehicles', :action => 'edit', :id => params[:vehicle] %>
+    <%= link_to 'Edit account details', edit_user_vehicle_path(@current_user, @vehicle) %>
   </div>
   <div class="option" %>
     <%= image_tag_with_tooltip('export.png') %>

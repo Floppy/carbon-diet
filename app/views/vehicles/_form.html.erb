@@ -1,0 +1,35 @@
+<%= error_messages_for 'vehicle' %>
+
+<% form_for [@user, @vehicle] do |f| %>
+  <table class="form">
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :fuel_class, "Fuel" %></td>
+      <td><%= f.collection_select :vehicle_fuel_class_id, @vehicle_fuel_classes, :id, :name %></td>
+    </tr>
+    <tr>
+      <td><label for="vehicle_vehicle_fuel_unit_id">Fuel Units</label></td>
+      <td>
+        <%= collection_select :vehicle, :vehicle_fuel_unit_id, @vehicle_fuel_units, :id, :name_with_abbreviation %>
+        <%= help("Select the units in which you buy fuel.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="vehicle_vehicle_distance_unit_id">Distance Units</label></td>
+      <td>
+        <%= collection_select :vehicle, :vehicle_distance_unit_id, @vehicle_distance_units, :id, :name_with_abbreviation %>
+        <%= help("Select the units in which your car measures distance.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="vehicle_current">Current?</label></td>
+      <td>
+        <%= check_box 'vehicle', 'current' %>
+        <%= help("If this vehicle is no longer in use, uncheck this box.")%>
+      </td>
+    </tr>
+  </table>
+<%  end %>

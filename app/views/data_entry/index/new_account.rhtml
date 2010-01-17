@@ -4,15 +4,15 @@
   <% else %>
     <div class="option">
     <%= image_tag_with_tooltip 'electricity.png' %>
-    <%= link_to 'Electricity Account', :controller => '/electricity_accounts', :action => 'edit' %></td>
+    <%= link_to 'Electricity Account', :controller => '/electricity_accounts', :action => 'edit' %>
     </div>
     <div class="option">
     <%= image_tag_with_tooltip('gas.png') %>
-    <%= link_to 'Gas Account', :controller => '/gas_accounts', :action => 'edit' %></td>
+    <%= link_to 'Gas Account', :controller => '/gas_accounts', :action => 'edit' %>
     </div>
     <div class="option">
-    <%= image_tag_with_tooltip('car.png') %>
-    <%= link_to 'Vehicle', :controller => '/vehicles', :action => 'edit' %></td>
+      <%= image_tag_with_tooltip('car.png') %>
+      <%= link_to 'Vehicle', new_user_vehicle_path(@current_user) %>
     </div>
   <% end %>
   <%= option "home" %>
