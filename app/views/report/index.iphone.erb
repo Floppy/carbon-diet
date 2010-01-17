@@ -1,0 +1,13 @@
+<ul title="Analysis" selected="true">
+  <% @totals.each do |type| %>
+    <li>
+    <%= image_tag type[:image] unless type[:image].nil?%>
+    <%=h type[:name] %>:
+    <% if @current_user.people_in_household > 1 %>
+    <%= tonnes(type[:data][:perannum]/@current_user.people_in_household, 2) %>
+    <% else %>
+    <%= tonnes(type[:data][:perannum], 2) %>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
