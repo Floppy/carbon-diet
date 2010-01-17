@@ -21,7 +21,7 @@
   <%= tip_box(@tip) %>
 <% end %>
 <p>
-NOTE: If the units are wrong for your meter, you can change them in the <%= link_to 'edit account details', :controller => '/gas_accounts', :action => 'edit', :id => params[:account] %> section.
+NOTE: If the units are wrong for your meter, you can change them in the <%= link_to 'edit account details', edit_user_gas_account_path(@current_user, @account) %> section.
 </p>
 <table>
   <tr>

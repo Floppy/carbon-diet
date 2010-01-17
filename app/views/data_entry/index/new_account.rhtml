@@ -8,7 +8,7 @@
     </div>
     <div class="option">
     <%= image_tag_with_tooltip('gas.png') %>
-    <%= link_to 'Gas Account', :controller => '/gas_accounts', :action => 'edit' %>
+    <%= link_to 'Gas Account', new_user_gas_account_path(@current_user) %>
     </div>
     <div class="option">
       <%= image_tag_with_tooltip('car.png') %>

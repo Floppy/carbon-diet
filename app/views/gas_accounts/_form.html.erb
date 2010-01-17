@@ -1,0 +1,45 @@
+<%= error_messages_for 'account' %>
+
+<% form_for [@user, @account] do |f| %>
+  <table class="form">
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :gas_supplier, "Supplier" %></td>
+      <td>
+        <%= f.collection_select :gas_supplier_id, @gas_suppliers, :id, :name %>
+        <%= help("If your supplier is not in the list, choose the 'Standard' option.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :gas_unit, "Units" %></td>
+      <td>
+        <%= f.collection_select :gas_unit_id, @gas_units, :id, :name_with_abbreviation %>
+        <%= help("The correct units will be written somewhere on your meter.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :used_for_heating, "Used for heating?" %></td>
+      <td>
+        <%= f.check_box :used_for_heating %>
+        <%= help("If you use electricity to heat your house, check this box.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :used_for_water, "Used for water?" %></td>
+      <td>
+        <%= f.check_box :used_for_water %>
+        <%= help("If you use electricity to heat your water, check this box.")%>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :current, "Current?" %></td>
+      <td>
+        <%= f.check_box :current %>
+        <%= help("If this account is no longer in use, uncheck this box.")%>
+      </td>
+    </tr>
+  </table>
+<%  end %>
