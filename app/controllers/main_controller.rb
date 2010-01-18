@@ -11,7 +11,7 @@ class MainController < ApplicationController
 
   def mobile
     # Force mobile mode - allow escape though...
-    session[:mobile] = (params[:enable] == "false" ? nil : true)
+    session[:wap] = (params[:enable] == "false" ? nil : true)
     redirect_to_main_page
   end
 
