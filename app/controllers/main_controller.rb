@@ -1,17 +1,18 @@
 class MainController < ApplicationController
-  prepend_before_filter :enable_mobile_mode, :only => [ :mobile ]
-  before_filter :check_logged_in, :only => [ :mobile ]  
-  before_filter :check_not_logged_in, :only => [ :index ]
 
   def index
+    redirecto_to_main_page if @current_user
     respond_to do |format|
       format.html
       format.iphone {render :layout => request.xhr? ? false : "application"}
+      format.wml
     end
   end
 
   def mobile
-    render :action => 'mobile', :layout => false
+    # Force mobile mode - allow escape though...
+    session[:mobile] = (params[:enable] == "false" ? nil : true)
+    redirect_to_main_page
   end
 
 end

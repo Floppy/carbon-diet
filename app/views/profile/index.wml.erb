@@ -1,0 +1,21 @@
+<h1>Carbon Diet</h1>
+<p>
+<% if @current_user.has_no_accounts %>
+  <em>You don't have any account data to edit!</em><br/>
+<% else %>
+  Add data to:<br/>
+  <% for elec_account in @current_user.electricity_accounts.current %>
+    <%= link_to(elec_account.name, { :controller => "data_entry/electricity", :action => "edit", :account => elec_account.id } ) %><br/>
+  <% end %>
+  <% for gas_account in @current_user.gas_accounts.current %>
+    <%= link_to(gas_account.name, { :controller => "data_entry/gas", :action => "edit", :account => gas_account.id } ) %><br/>
+  <% end %>
+  <% for vehicle in @current_user.vehicles.current %>
+    <%= link_to(vehicle.name, { :controller => "data_entry/vehicle_fuel", :action => "edit", :vehicle => vehicle.id } ) %><br/>
+  <% end %>
+<% end %>
+</p>
+<p>
+<%= link_to "Help", "/help" %><br/>
+<%= link_to 'Log Out', :controller => "/user", :action => "logout" %>
+</p>

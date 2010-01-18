@@ -12,21 +12,23 @@ class ProfileController < ApplicationController
       redirect_to :controller => 'search'
       return
     end
-    # Get emissions data
-    @period = report_period
-    @pie_url = url_for(:controller => "xml_chart", :action => "pie_all", :period => @period, :user => @profile.id)
-    @line_url = url_for(:controller => "xml_chart", :action => "line_all", :period => @period, :user => @profile.id)
-    @line_settings_url = url_for(:controller => "xml_chart", :action => "line_all_settings", :period => @period, :user => @profile.id)
-    @show_flight_controls = @profile.flights.count > 0 ? true : false;
-    @totals = @profile.calculate_totals(@period)
-    # Get comments
-    @comments = @profile.comments.find(:all, :limit => 5)
-    # Get actions
-    @actions = get_actions(3) if @profile == @current_user
     # Respond
     respond_to do |format|
-      format.html
+      format.html {
+        # Get emissions data
+        @period = report_period
+        @pie_url = url_for(:controller => "xml_chart", :action => "pie_all", :period => @period, :user => @profile.id)
+        @line_url = url_for(:controller => "xml_chart", :action => "line_all", :period => @period, :user => @profile.id)
+        @line_settings_url = url_for(:controller => "xml_chart", :action => "line_all_settings", :period => @period, :user => @profile.id)
+        @show_flight_controls = @profile.flights.count > 0 ? true : false;
+        @totals = @profile.calculate_totals(@period)
+        # Get comments
+        @comments = @profile.comments.find(:all, :limit => 5)
+        # Get actions
+        @actions = get_actions(3) if @profile == @current_user
+      }
       format.iphone { render :layout => request.xhr? ? false : "application" }
+      format.wml
     end
   end
 

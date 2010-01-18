@@ -7,6 +7,7 @@ class HelpController < ApplicationController
     respond_to do |format|
       format.html
       format.iphone { render :layout => false }
+      format.wml
     end
   end
 

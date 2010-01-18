@@ -2,7 +2,6 @@ class DataEntry::ElectricityController < AuthenticatedController
 
   # Filters
   before_filter :check_elec_account
-  prepend_before_filter :enable_mobile_mode, :only => [ :mobile ]
   skip_before_filter :check_logged_in, :only => [:currentcost]
 
   def index
@@ -30,7 +29,7 @@ class DataEntry::ElectricityController < AuthenticatedController
       @electricity_reading.update_attributes(params[:electricity_reading])
       if @electricity_reading.save
         @current_user.update_stored_statistics!
-        iphone? ? redirect_to_main_page : index
+        mobile? ? redirect_to_main_page : index
         return
       end
     end
@@ -44,18 +43,8 @@ class DataEntry::ElectricityController < AuthenticatedController
     respond_to do |format|
       format.html
       format.iphone { render :layout => false }
+      format.wml
     end
-  end
-
-  def mobile
-    @electricity_reading = ElectricityReading.new
-    if request.post?
-      @electricity_reading.electricity_account = @account
-      @electricity_reading.update_attributes(params[:electricity_reading])
-      redirect_to_main_page if @electricity_reading.save
-      return
-    end
-    render :action => 'mobile', :layout => false
   end
 
   def destroy

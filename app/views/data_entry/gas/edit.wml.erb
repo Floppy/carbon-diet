@@ -1,0 +1,26 @@
+<h1>New Gas Reading</h1>
+
+<%= error_messages_for 'gas_reading' %>
+
+<!--[form:gas_reading]-->
+<p>
+  <label for="gas_reading_reading">Reading (<%=h @account.gas_unit.abbreviation %>)</label><br/>
+  <%= text_field 'gas_reading', 'reading', :style => '-wap-input-format: "*n"' %>
+</p>
+<p>
+  <label for="gas_reading_taken_on">Date</label><br/>
+  <%= date_select 'gas_reading', 'taken_on', :order => [:day, :month, :year]  %>
+</p>
+<!--[eoform:gas_reading]-->
+
+<anchor>
+  <go method="post" href="/data_entry/gas/<%= @account.id %>/edit">
+    <postfield name="gas_reading[reading]" value="$(gas_reading[reading])"/>
+    <postfield name="gas_reading[taken_on(1i)]" value="$(gas_reading[taken_on(1i)])"/>
+    <postfield name="gas_reading[taken_on(2i)]" value="$(gas_reading[taken_on(2i)])"/>
+    <postfield name="gas_reading[taken_on(3i)]" value="$(gas_reading[taken_on(3i)])"/>
+  </go>
+  Save
+</anchor>
+
+<%= link_to 'Back', :controller => '/profile' %>

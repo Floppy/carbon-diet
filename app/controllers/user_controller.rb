@@ -1,8 +1,7 @@
 class UserController < ApplicationController
-  before_filter :check_logged_in, :only => [ :logout, :mobile_logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation ]  
-  before_filter :check_not_logged_in, :except => [ :logout, :mobile_logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation, :confirm_email ]
+  before_filter :check_logged_in, :only => [ :logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation ]  
+  before_filter :check_not_logged_in, :except => [ :logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation, :confirm_email ]
   before_filter :check_form_data, :only => [:auth]
-  prepend_before_filter :enable_mobile_mode, :only => [ :mobile_login, :mobile_logout ]  
   filter_parameter_logging :password
   
   verify :method => :post, 
@@ -45,29 +44,20 @@ public
     redirect_to :controller => "/main", :action => "index"
   end
 
-  def mobile_login
-    render :action => "mobile_login", :layout => false
-  end
-
   def logout
     cookies[:login_token] = nil
     @current_user.clear_login_key! if @current_user
+    wap = session[:wap]
     reset_session
+    session[:wap] = wap
     redirect_to_login_page
-  end
-
-  def mobile_logout
-    cookies[:login_token] = nil
-    @current_user.clear_login_key! if @current_user
-    reset_session
-    redirect_to_mobile_login_page
   end
 
   def auth
     # Find user and check password
     result = User.authenticate(params[:user][:login], params[:user][:password])
     if result == :no_such_user
-      if session[:mobile]
+      if mobile?
         flash[:notice] = "Unknown username entered."
         redirect_to_login_page
       else
@@ -88,7 +78,7 @@ public
     elsif result == :wrong_password
       # Notify user of incorrect password   
       flash[:notice] = "Incorrect password entered."
-      flash[:notice] += "If you were trying to create a new account, the username you used is already registered." if not session[:mobile]
+      flash[:notice] += "If you were trying to create a new account, the username you used is already registered." if not mobile?
       redirect_to_login_page
     elsif result == :logged_in_using_email
       # Notify user that email login isn't allowed any more

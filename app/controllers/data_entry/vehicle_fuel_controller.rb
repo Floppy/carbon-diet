@@ -1,7 +1,6 @@
 class DataEntry::VehicleFuelController < AuthenticatedController
 
   # Filters
-  prepend_before_filter :enable_mobile_mode, :only => [ :mobile ]
   before_filter :check_vehicle
 
   def index
@@ -33,7 +32,7 @@ class DataEntry::VehicleFuelController < AuthenticatedController
       @vehicle_fuel_purchase.update_attributes(params[:vehicle_fuel_purchase])
       if @vehicle_fuel_purchase.save
         @current_user.update_stored_statistics!
-        iphone? ? redirect_to_main_page : index
+        mobile? ? redirect_to_main_page : index
         return
       end
     end
@@ -47,22 +46,8 @@ class DataEntry::VehicleFuelController < AuthenticatedController
     respond_to do |format|
       format.html
       format.iphone { render :layout => false }
+      format.wml
     end
-  end
-
-  def mobile
-    @vehicle_fuel_purchase = VehicleFuelPurchase.new
-    @vehicle_fuel_types = @vehicle.vehicle_fuel_class.vehicle_fuel_types
-    unless params[:id]
-      @vehicle_fuel_purchase.vehicle_fuel_type = VehicleFuelType.default(@vehicle.vehicle_fuel_class)
-    end
-    if request.post?
-      @vehicle_fuel_purchase.vehicle = @vehicle
-      @vehicle_fuel_purchase.update_attributes(params[:vehicle_fuel_purchase])
-      redirect_to_main_page if @vehicle_fuel_purchase.save
-      return
-    end
-    render :action => 'mobile', :layout => false
   end
 
   def destroy

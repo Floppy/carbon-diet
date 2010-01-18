@@ -6,13 +6,16 @@ class ApplicationController < ActionController::Base
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_carbondiet_session_id'
 
-  before_filter :detect_iphone
+  before_filter :detect_mobile_platforms
 
   helper_method :iphone?
+  helper_method :wap?
+  helper_method :mobile?
 
 protected
 
   def get_current_user
+    return @current_user if @current_user
     if session[:user_id] 
       @current_user = User.find_by_id(session[:user_id])
       # If we have a user ID with no user attached, reset session
@@ -49,30 +52,18 @@ protected
     end
   end
 
-  def enable_mobile_mode
-    session[:mobile] = true
-  end
-
   def redirect_to_main_page
-    if session[:mobile]
-      redirect_to(:controller => "/main", :action => "mobile")
-    else
+    if get_current_user
       redirect_to(:controller => "/profile")
-    end  
+    else
+      redirect_to(:controller => "/main", :action => "index")
+    end
   end
 
   def redirect_to_login_page
-    if session[:mobile]
-      redirect_to_mobile_login_page
-    else
-      redirect_to(:controller => "/main", :action => "index")
-    end  
+    redirect_to(:controller => "/main", :action => "index")
   end
 
-  def redirect_to_mobile_login_page
-    redirect_to(:controller => "/user", :action => "mobile_login")
-  end
- 
   def paginate_collection(collection, options = {})
     default_options = {:per_page => 10, :page => 1}
     options = default_options.merge options
@@ -99,15 +90,26 @@ protected
     actions.each { |action| action.load_random_override(@current_user.country_id) }
   end
 
-  def detect_iphone
+  def detect_mobile_platforms
     if iphone?
       request.format = :iphone
-      session[:mobile] = nil
+      session[:wap] = nil # Kill the WAP session variable
+    elsif wap?
+      request.format = :wml
     end
   end
 
   def iphone?
-    request.env["HTTP_USER_AGENT"] &&  request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+  end
+
+  def wap?
+    # If a browser explicitly asks for wap/wml, give it to them - also allow manual override using session
+    session[:wap].present? || request.accepts.each.detect{|x| x.to_s == "text/vnd.wap.wml"}.present?
+  end
+
+  def mobile?
+    iphone? || wap?
   end
 
 end

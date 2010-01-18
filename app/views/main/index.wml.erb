@@ -1,11 +1,11 @@
 <h1>The Carbon Diet</h1>
+<br/>
 <h2>Sign In</h2>
 
 <% if flash[:notice] %>
 <p class="flash"><%=h flash[:notice] %></p>
 <% end %>
 
-<% form_tag :action => 'auth' do %>
 <p>
 Username:<br/>
 <%= text_field 'user', 'login'  %>
@@ -18,6 +18,12 @@ Password:<br/>
 Remember me <%= check_box 'user', 'remember' %>
 </p>
 <p>
-<%= submit_tag 'Log In' %>
+  <anchor>
+    <go method="post" href="/user/auth">
+      <postfield name="user[login]" value="$(user[login])"/>
+      <postfield name="user[password]" value="$(user[password])"/>
+      <postfield name="user[remember]" value="$(user[remember])"/>
+    </go>
+    Log in
+  </anchor>
 </p>
-<% end %>

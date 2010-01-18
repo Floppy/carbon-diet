@@ -2,7 +2,6 @@ class DataEntry::GasController < AuthenticatedController
 
   # Filters
   before_filter :check_gas_account
-  prepend_before_filter :enable_mobile_mode, :only => [ :mobile ]
 
   def index
     redirect_to :action => 'list'
@@ -29,7 +28,7 @@ class DataEntry::GasController < AuthenticatedController
       @gas_reading.update_attributes(params[:gas_reading])
       if @gas_reading.save
         @current_user.update_stored_statistics!
-        iphone? ? redirect_to_main_page : index
+        mobile? ? redirect_to_main_page : index
         return
       end
     end
@@ -43,18 +42,8 @@ class DataEntry::GasController < AuthenticatedController
     respond_to do |format|
       format.html
       format.iphone { render :layout => false }
+      format.wml
     end
-  end
-
-  def mobile
-    @gas_reading = GasReading.new
-    if request.post?
-      @gas_reading.gas_account = @account
-      @gas_reading.update_attributes(params[:gas_reading])
-      redirect_to_main_page if @gas_reading.save
-      return
-    end
-    render :action => 'mobile', :layout => false
   end
 
   def destroy
