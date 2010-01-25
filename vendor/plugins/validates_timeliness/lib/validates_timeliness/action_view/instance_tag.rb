@@ -43,7 +43,7 @@ module ValidatesTimeliness
 
         date, time = raw_value.split(' ')
         date_array = date.split('-')
-        time_array = time.split(':')
+        time_array = time ? time.split(':') : []
 
         TimelinessDateTime.new(*(date_array + time_array).map {|v| v.blank? ? nil : v.to_i})
       end
