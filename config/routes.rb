@@ -27,7 +27,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/groups/browse/:string', :controller => "groups", :action => "browse"
 
   # Connection for data entry controllers
-  map.connect '/data_entry/electricity/:account/:action/:id', :controller => "data_entry/electricity"
   map.connect '/data_entry/gas/:account/:action/:id', :controller => "data_entry/gas"
   map.connect '/data_entry/vehicle_fuel/:vehicle/:action/:id', :controller => "data_entry/vehicle_fuel"
 
@@ -42,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
       vehicle.resources :fuel_purchases, :controller => "VehicleFuelPurchases"
     end
     user.resources :electricity_accounts do |elec|
-      elec.resources :readings, :controller => "ElectricityReadings"
+      elec.resources :electricity_readings, :as => "readings"
     end
     user.resources :gas_accounts do |gas|
       gas.resources :readings, :controller => "GasReadings"

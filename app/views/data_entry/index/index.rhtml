@@ -4,7 +4,7 @@
 <div class="option">
 <% if elec_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'electricity.png' %>
-<%= link_to(elec_account.name, { :controller => "electricity", :action => "list", :account => elec_account.id } ) %>
+<%= link_to(elec_account.name, user_electricity_account_electricity_readings_path(@current_user, elec_account) ) %>
 </div>
 <% end %>
 

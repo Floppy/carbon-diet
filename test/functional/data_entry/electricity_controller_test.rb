@@ -1,14 +1,14 @@
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'data_entry/electricity_controller'
+require 'electricity_readings_controller'
 
 # Re-raise errors caught by the controller.
-class DataEntry::ElectricityController; def rescue_action(e) raise e end; end
+class ElectricityReadingsController; def rescue_action(e) raise e end; end
 
-class DataEntry::ElectricityControllerTest < Test::Unit::TestCase
+class ElectricityReadingsControllerTest < Test::Unit::TestCase
   fixtures :electricity_readings
 
   def setup
-    @controller = DataEntry::ElectricityController.new
+    @controller = ElectricityReadingsController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end

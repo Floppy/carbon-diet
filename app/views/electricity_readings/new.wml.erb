@@ -26,7 +26,7 @@
 <!--[eoform:electricity_reading]-->
 
 <anchor>
-  <go method="post" href="/data_entry/electricity/<%= @account.id %>/edit">
+  <go method="post" href="<%= user_electricity_account_electricity_readings_path(@user, @account) %>">
     <postfield name="electricity_reading[reading_day]" value="$(electricity_reading[reading_day])"/>
     <postfield name="electricity_reading[reading_night]" value="$(electricity_reading[reading_night])"/>
     <postfield name="electricity_reading[taken_on(1i)]" value="$(electricity_reading[taken_on(1i)])"/>

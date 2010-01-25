@@ -1,0 +1,26 @@
+<%= error_messages_for 'reading' %>
+
+<% form_for [@user, @account, @reading] do |f| %>
+  <table class="form">
+  <% if @account.night_rate %>
+    <tr>
+      <td><%= f.label :reading_day, "Day reading (#{@account.electricity_unit.abbreviation})" %></td>
+      <td><%= f.text_field :reading_day %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :reading_night, "Night reading (#{@account.electricity_unit.abbreviation})" %></td>
+      <td><%= f.text_field :reading_night %></td>
+    </tr>
+  <% else %>
+    <tr>
+      <td><%= f.label :reading_day, "Reading (#{@account.electricity_unit.abbreviation})" %></td>
+      <td><%= f.text_field :reading_day %></td>
+      <td><%= f.hidden_field :reading_night, :value => 0 %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td><%= f.label :taken_on, "Date" %></td>
+    <td><%= f.date_select :taken_on, :order => [:day, :month, :year] %></td>
+  </tr>
+  </table>
+<% end %>

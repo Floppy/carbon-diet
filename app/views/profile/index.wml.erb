@@ -5,7 +5,7 @@
 <% else %>
   Add data to:<br/>
   <% for elec_account in @current_user.electricity_accounts.current %>
-    <%= link_to(elec_account.name, { :controller => "data_entry/electricity", :action => "edit", :account => elec_account.id } ) %><br/>
+    <%= link_to(elec_account.name, new_user_electricity_account_electricity_reading_path(@current_user, elec_account)) %><br/>
   <% end %>
   <% for gas_account in @current_user.gas_accounts.current %>
     <%= link_to(gas_account.name, { :controller => "data_entry/gas", :action => "edit", :account => gas_account.id } ) %><br/>
