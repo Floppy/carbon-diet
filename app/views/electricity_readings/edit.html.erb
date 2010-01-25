@@ -1,0 +1,10 @@
+<% pagetitle("Editing Electicity Reading", "electricity.png") %>
+
+<% content_for('optionbar') do %>
+  <%= option "save", :id => "edit_electricity_reading_#{@reading.id}" %>
+  <%= option "cancel" %>
+<% end %>
+
+<div class="pagecontent">
+  <%= render :partial => "form" %>
+</div>
