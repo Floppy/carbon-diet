@@ -52,7 +52,7 @@ class UserMailer < ActionMailer::Base
 private
 
   def setup(sent_at)   
-    @from            = 'Carbon Diet <info@carbondiet.org>'
+    @from            = 'info@carbondiet.org'
     @sent_on         = sent_at
     @headers         = {}
   end
