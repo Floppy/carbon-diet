@@ -12,7 +12,7 @@
 <div class="option">
 <% if gas_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'gas.png' %>
-<%= link_to(gas_account.name, { :controller => "gas", :action => "list", :account => gas_account.id } ) %>
+<%= link_to(gas_account.name, user_gas_account_gas_readings_path(@current_user, gas_account) ) %>
 </div>
 <% end %>
 

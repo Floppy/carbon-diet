@@ -1,0 +1,14 @@
+<%= error_messages_for 'reading' %>
+
+<% form_for [@user, @account, @reading] do |f| %>
+  <table class="form">
+    <tr>
+      <td><%= f.label :reading, "Reading (#{@account.gas_unit.abbreviation})"%></td>
+      <td><%= f.text_field :reading  %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :taken_on, "Date" %></td>
+      <td><%= f.date_select :taken_on, :order => [:day, :month, :year]  %></td>
+    </tr>
+  </table>
+<% end %>

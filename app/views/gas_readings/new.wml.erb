@@ -14,7 +14,7 @@
 <!--[eoform:gas_reading]-->
 
 <anchor>
-  <go method="post" href="/data_entry/gas/<%= @account.id %>/edit">
+  <go method="post" href="<%= user_gas_account_gas_readings_path(@user, @account) %>">
     <postfield name="gas_reading[reading]" value="$(gas_reading[reading])"/>
     <postfield name="gas_reading[taken_on(1i)]" value="$(gas_reading[taken_on(1i)])"/>
     <postfield name="gas_reading[taken_on(2i)]" value="$(gas_reading[taken_on(2i)])"/>

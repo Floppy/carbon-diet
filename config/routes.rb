@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
       elec.resources :electricity_readings, :as => "readings"
     end
     user.resources :gas_accounts do |gas|
-      gas.resources :readings, :controller => "GasReadings"
+      gas.resources :gas_readings, :as => "readings"
     end
   end
 

@@ -18,7 +18,7 @@ class GasAccountsController < BelongsToUser
     @account = @user.gas_accounts.create(params[:gas_account])
     if @account.save
       @user.update_stored_statistics!
-      redirect_to :controller => '/data_entry/gas', :account => @account
+      redirect_to user_gas_account_gas_readings_path(@user, @account)
     else
       get_select_options
       render :action => 'new'
@@ -33,7 +33,7 @@ class GasAccountsController < BelongsToUser
     @account.update_attributes!(params[:gas_account])
     if @account.save
       @user.update_stored_statistics!
-      redirect_to :controller => '/data_entry/gas', :account => @account
+      redirect_to user_gas_account_gas_readings_path(@user, @account)
     else
       get_select_options
       render :action => 'edit'
