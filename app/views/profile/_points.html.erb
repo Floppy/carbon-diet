@@ -1,0 +1,27 @@
+<% if @current_user.tester? %>
+<div class="sectiontitle">Reputation</div>
+<div>
+  <% points = @profile.points %>
+  <div style="text-align: center;">
+    <span style="font-size:300%"><%= points[:total] %></span>
+    <br/>
+    <span style="font-size:150%"><%= points[:level][2] %></span>
+  </div>
+  <div style="width:50%; margin: 0px auto 10px auto; padding: 0px; border: 1px solid black; height: 8px;">
+    <div style="width:<%=points[:percentage]%>%; margin: 0px; background: red; height: 100%;"></div>
+  </div>
+  <div id="breakdown_toggle" style="text-align: center; font-size: 75%">
+    <%= link_to_function "details", "Effect.SlideDown('breakdown'); Effect.SlideUp('breakdown_toggle')" %>
+  </div>
+  <div id="breakdown" style="display:none; text-align: center; font-size: 75%">
+    <table style="width:100%">
+      <% points[:breakdown].sort{|x,y| y[1][:value] <=> x[1][:value]}.each do |x| %>
+        <tr>
+          <td style="width:50%;text-align:right"><%= x[1][:value] %> points</td><td style="text-align:left">from <%= x[1][:description] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+  <%= debug points %>
+<% end %>

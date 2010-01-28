@@ -33,4 +33,8 @@ class Action < ActiveRecord::Base
     nil
   end
 
+  def points
+    level * 10
+  end
+
 end
