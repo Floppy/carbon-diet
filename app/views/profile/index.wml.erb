@@ -4,11 +4,11 @@
   <em>You don't have any account data to edit!</em><br/>
 <% else %>
   Add data to:<br/>
-  <% for elec_account in @current_user.electricity_accounts.current %>
-    <%= link_to(elec_account.name, new_user_electricity_account_electricity_reading_path(@current_user, elec_account)) %><br/>
+  <% for account in @current_user.electricity_accounts.current %>
+    <%= link_to(account.name, new_user_electricity_account_electricity_reading_path(@current_user, account)) %><br/>
   <% end %>
-  <% for gas_account in @current_user.gas_accounts.current %>
-    <%= link_to(gas_account.name, { :controller => "data_entry/gas", :action => "edit", :account => gas_account.id } ) %><br/>
+  <% for account in @current_user.gas_accounts.current %>
+    <%= link_to(account.name, new_user_gas_account_gas_reading_path(@current_user, account)) %><br/>
   <% end %>
   <% for vehicle in @current_user.vehicles.current %>
     <%= link_to(vehicle.name, { :controller => "data_entry/vehicle_fuel", :action => "edit", :vehicle => vehicle.id } ) %><br/>

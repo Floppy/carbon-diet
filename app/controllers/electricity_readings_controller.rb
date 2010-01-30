@@ -42,7 +42,11 @@ class ElectricityReadingsController < BelongsToUser
       @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_electricity_account_electricity_readings_path(@user, @account))
     else
-      render :action => 'new'
+      respond_to do |format|
+        format.html { render :action => 'new' }
+        format.iphone { render :action => 'new', :layout => false }
+        format.wml { render :action => 'new' }
+      end
     end
   end
 
