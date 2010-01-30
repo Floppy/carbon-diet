@@ -45,6 +45,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'mislav-will_paginate', :version => '>= 2.2.3', :lib => 'will_paginate',  :source => 'http://gems.github.com'
   #config.gem 'validates_timeliness' using plugin for now for newer code with fixes in
+  config.gem 'hoptoad_notifier'
 
 end
 
