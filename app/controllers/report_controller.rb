@@ -28,7 +28,7 @@ class ReportController < AuthenticatedController
         days = Date::today - @current_user.date_of_first_data
         days = 365 if days > 365
         @totals = @current_user.calculate_totals(days)
-        render :layout => false
+        render_iphone
       }
     end
   end

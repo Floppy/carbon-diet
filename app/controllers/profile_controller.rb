@@ -27,7 +27,7 @@ class ProfileController < ApplicationController
         # Get actions
         @actions = get_actions(3) if @profile == @current_user
       }
-      format.iphone { render :layout => request.xhr? ? false : "application" }
+      format.iphone { render_iphone }
       format.wml
     end
   end

@@ -4,7 +4,7 @@ class MainController < ApplicationController
     redirecto_to_main_page if @current_user
     respond_to do |format|
       format.html
-      format.iphone {render :layout => request.xhr? ? false : "application"}
+      format.iphone { render_iphone }
       format.wml
     end
   end

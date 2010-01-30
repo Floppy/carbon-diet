@@ -6,7 +6,7 @@ class HelpController < ApplicationController
     @pagename = "Help"
     respond_to do |format|
       format.html
-      format.iphone { render :layout => false }
+      format.iphone { render_iphone }
       format.wml
     end
   end
