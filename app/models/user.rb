@@ -468,7 +468,7 @@ public
       [500,1e100,"Wizard"]
     ]
     breakdown = {}
-    breakdown[:entries] = {:value => electricity_readings.count+gas_readings.count+vehicle_fuel_purchases.count+flights.count, :description => "measurement"}
+    breakdown[:entries] = {:value => electricity_readings.count(:conditions => {:automatic => false})+gas_readings.count+vehicle_fuel_purchases.count+flights.count, :description => "measurement"}
     breakdown[:actions] = {:value => actions.find(:all).inject(0){|t,x| t += x.points}, :description => "actions"}
     breakdown[:sociability] = {:value => (friends.count+groups.count)*2, :description => "sociability"}
     breakdown[:gossip] = {:value => comments.count, :description => "gossip"}
