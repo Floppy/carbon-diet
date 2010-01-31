@@ -1,6 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   require 'md5'
+  include WmlHelper
 
   def kg(amount,precision=0)
     "<b>" + (amount ? number_with_precision(amount, precision) : "?") + "</b> kg"
