@@ -1,4 +1,4 @@
-<% if @current_user.tester? %>
+<% if @current_user && @current_user.tester? %>
 <div class="sectiontitle">Reputation</div>
 <div>
   <% points = @profile.points %>
