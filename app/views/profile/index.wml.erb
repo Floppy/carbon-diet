@@ -1,21 +1,23 @@
-<h1>Carbon Diet</h1>
+<p>
+  <big>The Carbon Diet</big>
+</p>
 <p>
 <% if @current_user.has_no_accounts %>
   <em>You don't have any account data to edit!</em><br/>
 <% else %>
   Add data to:<br/>
   <% for account in @current_user.electricity_accounts.current %>
-    <%= link_to(account.name, new_user_electricity_account_electricity_reading_path(@current_user, account)) %><br/>
+    <%=image_tag 'electricity.png'%> <%= link_to(account.name, new_user_electricity_account_electricity_reading_path(@current_user, account)) %><br/>
   <% end %>
   <% for account in @current_user.gas_accounts.current %>
-    <%= link_to(account.name, new_user_gas_account_gas_reading_path(@current_user, account)) %><br/>
+    <%=image_tag 'gas.png'%> <%= link_to(account.name, new_user_gas_account_gas_reading_path(@current_user, account)) %><br/>
   <% end %>
   <% for vehicle in @current_user.vehicles.current %>
-    <%= link_to(vehicle.name, { :controller => "data_entry/vehicle_fuel", :action => "edit", :vehicle => vehicle.id } ) %><br/>
+    <%=image_tag 'car.png'%> <%= link_to(vehicle.name, { :controller => "data_entry/vehicle_fuel", :action => "edit", :vehicle => vehicle.id } ) %><br/>
   <% end %>
 <% end %>
 </p>
 <p>
-<%= link_to "Help", "/help" %><br/>
-<%= link_to 'Log Out', :controller => "/user", :action => "logout" %>
+  <%=image_tag 'help.png'%> <%= link_to "Help", "/help" %><br/>
+  <%=image_tag 'delete.png'%> <%= link_to 'Log Out', :controller => "/user", :action => "logout" %>
 </p>

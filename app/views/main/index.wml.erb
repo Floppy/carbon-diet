@@ -1,29 +1,30 @@
-<h1>The Carbon Diet</h1>
-<br/>
-<h2>Sign In</h2>
+<p>
+  <big>The Carbon Diet</big>
+</p>
+<p>
+  <strong>Sign In</strong>
+</p>
+<% if flash[:notice] -%>
+<p>
+  <em><%=h flash[:notice] %></em>
+</p>
+<% end -%>
 
-<% if flash[:notice] %>
-<p class="flash"><%=h flash[:notice] %></p>
-<% end %>
-
-<p>
-Username:<br/>
-<%= text_field 'user', 'login'  %>
-</p>
-<p>
-Password:<br/>
-<%= password_field 'user', 'password' %>
-</p>
-<p>
-Remember me <%= check_box 'user', 'remember' %>
-</p>
-<p>
-  <anchor>
-    <go method="post" href="/user/auth">
-      <postfield name="user[login]" value="$(user[login])"/>
-      <postfield name="user[password]" value="$(user[password])"/>
-      <postfield name="user[remember]" value="$(user[remember])"/>
-    </go>
-    Log in
-  </anchor>
-</p>
+<fieldset>
+  <p>
+    Username:
+    <input type="text" name="login" size="20" emptyok="false"/>
+  </p>
+  <p>
+    Password:
+    <input type="text" name="password" size="20" emptyok="false"/>
+  </p>
+  <p>
+    <do type="accept" label="Log In">
+      <go method="post" href="/user/auth">
+        <postfield name="user[login]" value="$login"/>
+        <postfield name="user[password]" value="$password"/>
+      </go>
+    </do>
+  </p>
+</fieldset>
