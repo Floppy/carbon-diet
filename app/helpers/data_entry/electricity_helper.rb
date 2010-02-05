@@ -1,2 +1,0 @@
-module DataEntry::ElectricityHelper
-end

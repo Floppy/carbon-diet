@@ -1,2 +1,0 @@
-module DataEntry::FlightsHelper
-end
