@@ -11,10 +11,6 @@
     <%= image_tag 'help.png' %>
     <%= link_to 'Privacy policy', :action => 'privacy_policy' %>
   </div>
-  <div class="option">
-    <%= image_tag 'help.png' %>
-    <%= link_to 'Live chat', :action => 'livechat' %>
-  </div>
   <%= option "home" %>
 <% end %>
 
@@ -31,7 +27,7 @@ In order to work out your footprint, we need to know various figures. At the mom
 </p>
 <h4>How do the calculations work?</h4>
 <p>
-Basically, for each pair of readings or fuel purchases that you enter into the site, we can calculate the amount of CO<span class='sub'>2</span> which will be emitted in the period of time between them. This is done using information from numerous sources about the amount of CO<span class='sub'>2</span> emitted per kWh of electricity, or per litre of petrol. Simply taking the values you put in and multiplying by that emission data gives us the amount of CO<span class='sub'>2</span> emitted during that time period. This amount is then split equally across the period. For the graphs, some extra averaging is done to smooth out the data for display purposes. See the <%= link_to 'calculations', :action => "calculation" %> page for more details.
+Basically, for each pair of readings or fuel purchases that you enter into the site, we can calculate the amount of CO<span class='sub'>2</span> which will be emitted in the period of time between them. This is done using information from numerous sources about the amount of CO<span class='sub'>2</span> emitted per kWh of electricity, or per litre of petrol. Simply taking the values you put in and multiplying by that emission data gives us the amount of CO<span class='sub'>2</span> emitted during that time period. This amount is then split equally across the period. For the graphs, some extra averaging is done to smooth out the data for display purposes. See the <%= link_to 'calculations FAQ', 'http://support.carbondiet.org/faqs/general/how-do-the-calculations-work' %> for more details.
 </p>
 <h4>How accurate is it?</h4>
 <p>
@@ -42,6 +38,6 @@ If you did want the results to be really accurate, consistency is key. Take a re
 </p>
 <h4>You should add X and Y and Z!</h4>
 <p>
-We should, that's true. The site is only just starting out, and it'll be growing rapidly and covering more and more emission sources (such as flights) as we go along. If you have ideas, please share them either through the <a href="http://forum.carbondiet.org">forum</a>, or directly over the <%= link_to 'live chat', :action => 'livechat' %> interface.
+We should, that's true. The site is only just starting out, and it'll be growing rapidly and covering more and more emission sources (such as flights) as we go along. If you have ideas, please share them either through our <a href="http://support.carbondiet.org">support site</a>.
 </p>
 </div>

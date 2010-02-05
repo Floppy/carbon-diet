@@ -15,10 +15,6 @@ class HelpController < ApplicationController
     @pagename = "About"
   end
 
-  def livechat
-    @pagename = "Live chat"
-  end
-
   def privacy_policy
     @pagename = "Privacy policy"
   end

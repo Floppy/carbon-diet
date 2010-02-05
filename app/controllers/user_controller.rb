@@ -198,9 +198,7 @@ public
       UserMailer.deliver_password_change(user.confirmed_email, url_for(:action => 'change_password', :code => user.password_change_code))
       flash[:notice] = "Instructions for changing your password have been sent to you via email."
     else
-      flash[:notice] = "Unfortunately, we don't have your email address on file! Use the chat box below to contact us for more help."
-  	 	redirect_to :controller => "help", :action => "livechat"
-  	 	return
+      flash[:notice] = "Unfortunately, we don't have your email address on file! Please send us a message via the help button above and we will sort you out."
     end
     redirect_to_login_page
   end
