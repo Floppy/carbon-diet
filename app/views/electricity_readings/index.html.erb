@@ -1,5 +1,4 @@
 <% content_for('optionbar') do %>
-  <%= pagination_links(@electricity_reading_pages) %>
   <div class="option">
     <%= image_tag_with_tooltip 'new.png' %>
     <%= link_to 'Enter new reading', new_user_electricity_account_electricity_reading_path(@user, @account) %>
@@ -55,4 +54,6 @@ NOTE: If the units are wrong for your meter, you can change them in the <%= link
   </tr>
 <% end %>
 </table>
+<%= will_paginate @electricity_readings %>
+
 </div>

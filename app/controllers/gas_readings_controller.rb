@@ -16,7 +16,7 @@ class GasReadingsController < BelongsToUser
         # Page name
         @pagename = "Readings for " + @account.name
         # Data
-        @gas_reading_pages, @gas_readings = paginate :gas_readings, {:per_page => 20, :conditions => ["gas_account_id = ?", @account.id], :order => "taken_on DESC"}
+        @gas_readings = @account.gas_readings.paginate :page => params[:page], :order => "taken_on DESC"
       }
       format.xml {
         @gas_readings = @account.gas_readings.find(:all, :order => "taken_on DESC")

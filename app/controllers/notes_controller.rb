@@ -6,7 +6,7 @@ class NotesController < AuthenticatedController
 
   def list
     # Data
-    @note_pages, @notes = paginate_collection @current_user.all_notes, {:per_page => 20, :page => params[:page]}
+    @notes = @current_user.notes.paginate :page => params[:page]
   end
 
   def edit

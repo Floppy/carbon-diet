@@ -42,7 +42,7 @@ class ActionsController < ApplicationController
     # Page name
     @pagename = "Completed actions"
     # Data
-    @completed_action_pages, @completed_actions = paginate :completed_actions, {:per_page => 20, :conditions => ["user_id = ?", @current_user.id], :order => "created_at DESC"}
+    @completed_actions = @current_user.completed_actions.paginate :page => params[:page], :order => "created_at DESC"
   end
 
   def uncomplete

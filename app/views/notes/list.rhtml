@@ -1,7 +1,6 @@
 <% pagetitle 'Notes', 'note.png' %>
 
 <% content_for('optionbar') do %>
-  <%= pagination_links(@note_pages) %>
   <%= option "new_note"%>
   <%= option "home" %>
 <% end %>
@@ -26,5 +25,7 @@
     </tr>
   <% end %>
 </table>
+
+<%= will_paginate @notes %>
 
 </div>

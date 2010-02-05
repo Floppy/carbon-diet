@@ -1,5 +1,4 @@
 <% content_for('optionbar') do %>
-  <%= pagination_links(@vehicle_fuel_purchase_pages) %>
   <div class="option">
     <%= image_tag_with_tooltip 'new.png' %>
     <%= link_to 'Enter new purchase', :action => 'edit', :vehicle => params[:vehicle] %>
@@ -50,4 +49,7 @@ NOTE: If the units are wrong for your vehicle, you can change them in the <%= li
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @vehicle_fuel_purchases %>
+
 </div>

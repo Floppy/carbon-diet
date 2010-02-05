@@ -1,5 +1,4 @@
 <% content_for('optionbar') do %>
-  <%= pagination_links(@completed_action_pages) %>
   <%= option "action" %>
 <% end %>
 
@@ -28,4 +27,6 @@ If you want to undo any of your completed actions, you can use this page to do s
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @completed_actions %>
 </div>

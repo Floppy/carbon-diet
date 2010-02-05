@@ -18,7 +18,7 @@ class DataEntry::VehicleFuelController < AuthenticatedController
     # Page name
     @pagename = "Fuel purchases for " + @vehicle.name
     # Data
-    @vehicle_fuel_purchase_pages, @vehicle_fuel_purchases = paginate :vehicle_fuel_purchases, {:per_page => 20, :conditions => ["vehicle_id = ?", @vehicle.id], :order => "purchased_on DESC"}
+    @vehicle_fuel_purchases = @vehicle.vehicle_fuel_purchases.paginate :page => params[:page], :order => "purchased_on DESC"
   end
 
   def edit

@@ -63,16 +63,6 @@ protected
     redirect_to(:controller => "/main", :action => "index")
   end
 
-  def paginate_collection(collection, options = {})
-    default_options = {:per_page => 10, :page => 1}
-    options = default_options.merge options
-    pages = Paginator.new self, collection.size, options[:per_page], options[:page]
-    first = pages.current.offset
-    last = [first + options[:per_page], collection.size].min
-    slice = collection[first...last]
-    return [pages, slice]
-  end
-  
   def get_actions(num, offset=0)
     return if @current_user.nil?
     totals = @current_user.calculate_totals(28)

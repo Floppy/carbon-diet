@@ -19,7 +19,7 @@ class ElectricityReadingsController < BelongsToUser
         # Page name
         @pagename = "Readings for " + @account.name
         # Data
-        @electricity_reading_pages, @electricity_readings = paginate :electricity_readings, {:per_page => 20, :conditions => ["electricity_account_id = ?", @account.id], :order => "taken_on DESC"}
+        @electricity_readings = @account.electricity_readings.paginate :page => params[:page], :order => 'taken_on DESC'
       }
       format.xml {
         @electricity_readings = @account.electricity_readings.find(:all, :order => "taken_on DESC")
