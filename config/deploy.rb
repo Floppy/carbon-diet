@@ -13,7 +13,7 @@ role :app, 'www.carbondiet.org'
 role :web, 'www.carbondiet.org'
 role :db,  'www.carbondiet.org', :primary => true
 
-after "deploy:update_code", "symlink:avatars", "copy:dbconfig", "copy:hoptoad", "copy:settings"
+after "deploy:update_code", "symlink:avatars", "copy:dbconfig", "copy:settings"
 
 after "deploy", "deploy:cleanup"
 
@@ -43,10 +43,6 @@ namespace :copy do
   desc "Make copy of settings yaml"
   task :settings do
     run "cp #{shared_path}/config/settings.yml #{release_path}/config/settings.yml"
-  end
-  desc "Make copy of hoptoad yaml"
-  task :hoptoad do
-    run "cp #{shared_path}/config/hoptoad.yml #{release_path}/config/hoptoad.yml"
   end
 end
 
