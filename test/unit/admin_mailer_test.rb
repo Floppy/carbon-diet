@@ -20,7 +20,7 @@ class AdminMailerTest < ActiveSupport::TestCase
 
   def test_new_signup
     @expected.subject = 'Carbon Diet: New user signed up!'
-    @expected.from    = 'Carbon Diet <info@carbondiet.org>'
+    @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'
     @expected.body    = read_fixture('new_signup')
     @expected.date    = Time.now
@@ -29,7 +29,7 @@ class AdminMailerTest < ActiveSupport::TestCase
 
   def test_country_request
     @expected.subject = 'Carbon Diet: Country request!'
-    @expected.from    = 'Carbon Diet <info@carbondiet.org>'
+    @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'
     @expected.body    = read_fixture('country_request')
     @expected.date    = Time.now
