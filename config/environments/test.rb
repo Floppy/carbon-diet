@@ -21,3 +21,9 @@ config.action_mailer.delivery_method = :test
 config.gem 'rspec', :lib => false
 config.gem 'rspec-rails', :lib => false
 config.gem 'factory_girl'
+
+# Raise deprecation warnings as errors
+class DeprecatedFunctionality < SyntaxError; end
+ActiveSupport::Deprecation.behavior = Proc.new {|message, callstack|
+  raise DeprecatedFunctionality, message
+}
