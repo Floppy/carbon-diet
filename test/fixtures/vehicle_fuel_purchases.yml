@@ -818,3 +818,18 @@ vehicle_fuel_purchases_054:
   purchased_on: "2006-04-12"
   distance: 
   vehicle_fuel_type_id: "1"
+purchase_20_days_ago:
+  amount: 40
+  vehicle: vehicle_for_emissions_test
+  purchased_on: "<%= 15.days.ago.to_date %>"
+  vehicle_fuel_type: vehicle_fuel_types_easy
+purchase_10_days_ago:
+  amount: 30
+  vehicle: vehicle_for_emissions_test
+  purchased_on: "<%= 5.days.ago.to_date %>"
+  vehicle_fuel_type: vehicle_fuel_types_easy
+purchase_0_days_ago:
+  amount: 40
+  vehicle: vehicle_for_emissions_test
+  purchased_on: "<%= 0.days.ago.to_date %>"
+  vehicle_fuel_type: vehicle_fuel_types_easy

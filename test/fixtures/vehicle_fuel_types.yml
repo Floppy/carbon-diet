@@ -41,3 +41,8 @@ vehicle_fuel_types_007:
   default: "1"
   id: "7"
   vehicle_fuel_class_id: "7"
+vehicle_fuel_types_easy:
+  g_per_l: "1000"
+  name: Easy Unleaded
+  default: 1
+  vehicle_fuel_class_id: 1
