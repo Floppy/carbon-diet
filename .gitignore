@@ -5,3 +5,4 @@ log/*
 nbproject
 public/images/avatars/*
 db/*.db
+coverage
