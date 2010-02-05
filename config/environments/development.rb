@@ -22,5 +22,5 @@ config.action_mailer.smtp_settings = {
   :domain => "carbondiet.org",
 }
 
-config.gem 'rspec'
-config.gem 'rspec-rails'
+config.gem 'rspec', :lib => false
+config.gem 'rspec-rails', :lib => false
