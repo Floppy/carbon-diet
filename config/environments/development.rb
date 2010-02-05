@@ -24,3 +24,4 @@ config.action_mailer.smtp_settings = {
 
 config.gem 'rspec', :lib => false
 config.gem 'rspec-rails', :lib => false
+config.gem 'factory_girl'
