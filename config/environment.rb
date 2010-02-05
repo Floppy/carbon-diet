@@ -13,9 +13,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
   
-  # Skip frameworks you're not going to use (only works if using vendor/rails)
-  # config.frameworks -= [ :action_web_service, :action_mailer ]
-
   # Only load the plugins named here, by default all plugins in vendor/plugins are loaded
   # config.plugins = %W( exception_notification ssl_requirement )
 
@@ -42,29 +39,9 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
   
   # See Rails::Configuration for more options
-
-  config.gem 'mislav-will_paginate', :version => '>= 2.2.3', :lib => 'will_paginate',  :source => 'http://gems.github.com'
+  config.gem 'will_paginate', :version => '~> 2.3.12'
   #config.gem 'validates_timeliness' using plugin for now for newer code with fixes in
   config.gem 'hoptoad_notifier'
   config.gem 'multipass'
 
 end
-
-# Add new inflection rules using the following format 
-# (all these examples are active by default):
-# Inflector.inflections do |inflect|
-#   inflect.plural /^(ox)$/i, '\1en'
-#   inflect.singular /^(ox)en/i, '\1'
-#   inflect.irregular 'person', 'people'
-#   inflect.uncountable %w( fish sheep )
-# end
-
-# Add new mime types for use in respond_to blocks:
-# Mime::Type.register "text/richtext", :rtf
-Mime::Type.register "application/xml", :ammap
-
-# Include your application configuration below
-
-# Recaptcha configuration
-ENV['RECAPTCHA_PUBLIC_KEY']  = "6LduNgAAAAAAACVF4O4KRiyVnD0BjuUj3R2waHir"
-ENV['RECAPTCHA_PRIVATE_KEY'] = "6LduNgAAAAAAAA7hx3zsYKcynv7WjyEItvrPD2Ie"

@@ -3,15 +3,8 @@ development:
   multipass:
     site: carbondiet
     api_key: <api_key>
-
-test:
-  style: default
-  multipass:
-    site: carbondiet
-    api_key: <api_key>
-
-production:
-  style: default
-  multipass:
-    site: carbondiet
+  recaptcha:
+    public_key: <public_key>
+    private_key: <private_key>
+  hoptoad:
     api_key: <api_key>
