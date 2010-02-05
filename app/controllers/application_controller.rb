@@ -2,9 +2,6 @@
 # Likewise, all the methods added will be available for all controllers.
 class ApplicationController < ActionController::Base
 
-  # Pick a unique cookie name to distinguish our session data from others'
-  session :session_key => '_carbondiet_session_id'
-
   before_filter :detect_mobile_platforms
 
   helper_method :iphone?
