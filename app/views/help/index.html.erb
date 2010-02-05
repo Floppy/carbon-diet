@@ -1,0 +1,12 @@
+<% content_for('optionbar') do %>
+  <div class="option">
+    <%= image_tag 'help.png' %>
+    <%= link_to 'Country Request', :action => 'country_request' %>
+  </div>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+  <%= render :partial => "about" %>
+  <%= render :partial => "privacy" %>
+</div>

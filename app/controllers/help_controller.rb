@@ -11,14 +11,6 @@ class HelpController < ApplicationController
     end
   end
 
-  def about
-    @pagename = "About"
-  end
-
-  def privacy_policy
-    @pagename = "Privacy policy"
-  end
-
   def country_request
     if request.post?
       # Send email with country request in it
