@@ -1,7 +1,8 @@
 class MainController < ApplicationController
 
   def index
-    redirecto_to_main_page if @current_user
+    redirect_to_main_page if @current_user
+    session[:next] = params[:to] unless params[:to].nil?
     respond_to do |format|
       format.html
       format.iphone { render_iphone }

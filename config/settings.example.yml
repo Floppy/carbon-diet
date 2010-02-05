@@ -1,8 +1,17 @@
 development:
   style: default
+  multipass:
+    site: carbondiet
+    api_key: <api_key>
 
 test:
   style: default
+  multipass:
+    site: carbondiet
+    api_key: <api_key>
 
 production:
   style: default
+  multipass:
+    site: carbondiet
+    api_key: <api_key>

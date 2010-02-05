@@ -484,6 +484,16 @@ public
     }
   end
 
+  # initialize the multipass object
+  def self.multipass
+    @multipass ||= MultiPass.new(APP_CONFIG['multipass']['site'], APP_CONFIG['multipass']['api_key'])
+  end
+
+  # create a multipass for this user object
+  def multipass
+    self.class.multipass.encode(:email => email, :name => name, :expires => 30.minutes.from_now, :external_url => "http://www.carbondiet.org/profile/#{login}")
+  end
+
 private
 
   def generate_salt

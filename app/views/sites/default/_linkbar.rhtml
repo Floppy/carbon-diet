@@ -7,11 +7,19 @@
 <% end %>
 <%= render :partial => 'shared/linktab', :locals => {:image => 'search.png', :link => link_to("Search", :controller => "/search")} %>
 <%= render :partial => 'shared/linktab', :locals => {:image => 'blog.png', :link => '<a href="http://carbondiet.blogspot.com">Blog</a>'} %>
-<%= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => '<a href="http://forum.carbondiet.org">Forum</a>'} %>
+<% if @current_user %>
+  <%= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => link_to("Discuss", "http://support.carbondiet.org/discussions?sso=#{CGI.escape(@current_user.multipass)}")} %>
+<% else %>
+  <%= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => link_to("Discuss", "http://support.carbondiet.org/discussions")} %>
+<% end %>
 <%= render :partial => 'shared/linktab', :locals => {:image => 'tour.png', :link => link_to("Tour", :controller => "/tour")} %>
 <% unless @current_user.blank? or not @current_user.admin %>
   <%= render :partial => 'shared/linktab', :locals => {:image => 'admin.png', :link => link_to("Admin", :controller => "/admin/index")} %>
 <% end %>
-<%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", :controller => "/help" )} %>
+<% if @current_user %>
+  <%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", "http://support.carbondiet.org/faqs?sso=#{CGI.escape(@current_user.multipass)}", :id => "help-link" )} %>
+<% else %>
+  <%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", "http://support.carbondiet.org/faqs", :id => "help-link" )} %>
+<% end %>
 <%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'code.png', :link => link_to("Code", "http://github.com/Floppy/carbon-diet" )} %>
 <div class="clear"></div>

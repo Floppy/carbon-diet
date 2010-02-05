@@ -101,6 +101,12 @@ public
       elsif session[:intended_action] and session[:intended_controller]
         # Redirect to main page
         redirect_to(:controller => session[:intended_controller], :action => session[:intended_action], :params => session[:intended_params])
+      elsif session[:next]
+        if session[:next].include? "http://support.carbondiet.org"
+          redirect_to "#{session[:next]}?sso=#{CGI.escape(user.multipass)}"
+        else
+          redirect_to(session[:next])
+        end
       else
         redirect_to_main_page
       end    
