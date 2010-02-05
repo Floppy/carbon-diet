@@ -21,3 +21,6 @@ config.action_mailer.smtp_settings = {
   :port => 25,
   :domain => "carbondiet.org",
 }
+
+config.gem 'rspec'
+config.gem 'rspec-rails'
