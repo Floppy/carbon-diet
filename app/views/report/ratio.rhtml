@@ -18,7 +18,7 @@ Over the last year, your carbon footprint has come from:
 <% if item[:name] != "Total" %>
 <tr>
 <td><%=h item[:name] %></td>
-<td><%= item[:data][:percentage].nil? ? 0 : number_with_precision(item[:data][:percentage], 0) %>%</td>
+<td><%= item[:data][:percentage].nil? ? 0 : number_with_precision(item[:data][:percentage], :precision => 0) %>%</td>
 </tr>
 <% end %>
 <% end %>

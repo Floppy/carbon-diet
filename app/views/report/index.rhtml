@@ -26,8 +26,8 @@
 <% else %>
   <li>...that's the equivalent of <%= tonnes(@perannum, 2) %> a year on average.</li>
 <% end %>
-  <li>...each day, that's <%= number_with_precision(@times_breathed_out, 0) %> times the amount of CO<span class='sub'>2</span> an average person breathes out.</li>
-  <li>...which is the same as filling <%= number_with_precision(@balloons, 0) %> party balloons every day - that's one every <%= number_with_precision(@seconds_per_balloon, 0) %> seconds!</li>
+  <li>...each day, that's <%= number_with_precision(@times_breathed_out, :precision => 0) %> times the amount of CO<span class='sub'>2</span> an average person breathes out.</li>
+  <li>...which is the same as filling <%= number_with_precision(@balloons, :precision => 0) %> party balloons every day - that's one every <%= number_with_precision(@seconds_per_balloon, :precision => 0) %> seconds!</li>
   </ul>
   <p>
   To see exactly where your footprint comes from and how it varies, click the links to the right.

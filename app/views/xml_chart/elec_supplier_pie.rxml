@@ -29,7 +29,7 @@ xml.chart do
     xml.row do
       xml.string @supplier.name
       for source in @supplier.electricity_supplier_sources
-        xml.string source.electricity_source.source + ": " + number_with_precision(source.percentage, 1) + "%"
+        xml.string source.electricity_source.source + ": " + number_with_precision(source.percentage, :precision => 1) + "%"
       end
     end
   end

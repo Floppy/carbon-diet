@@ -23,7 +23,7 @@ xml.chart do
             options[:description] = dataset[:notes][xid][:note]
             options[:bullet] = "images/note.png"
           end          
-          xml.value number_with_precision(value,2), options
+          xml.value number_with_precision(value, :precision => 2), options
           xid += 1
         end
       end

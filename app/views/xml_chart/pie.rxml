@@ -33,7 +33,7 @@ xml.chart do
     xml.row do
       xml.null
       for item in @totals
-        xml.string(item[:name] + ": " + (item[:data][:percentage].nil? ? number_with_precision(item[:data][:total],0) + " kg" : number_with_precision(item[:data][:percentage]*100,0) + "%"))
+        xml.string(item[:name] + ": " + (item[:data][:percentage].nil? ? number_with_precision(item[:data][:total],:precision => 0) + " kg" : number_with_precision(item[:data][:percentage]*100,:precision => 0) + "%"))
       end
     end
   end
