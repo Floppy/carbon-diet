@@ -19,19 +19,6 @@ class HelpController < ApplicationController
     @pagename = "Live chat"
   end
 
-  def calculation
-    @electricity_acct = @current_user.electricity_accounts.first rescue nil
-    @electricity_acct = User.find(1).electricity_accounts.first if @electricity_acct.nil? or !@electricity_acct.has_enough_data_to_analyse
-    @electricity_acct.electricity_supplier = ElectricitySupplier.default(@electricity_acct.user.country)
-    @gas_acct = @current_user.gas_accounts.first rescue nil
-    @gas_acct = User.find(1).gas_accounts.first if @gas_acct.nil? or !@gas_acct.has_enough_data_to_analyse
-    @gas_acct.gas_supplier = GasSupplier.default(@gas_acct.user.country)
-    @vehicle = @current_user.vehicles.first rescue nil
-    @vehicle = User.find(1).vehicles.first if @vehicle.nil? or !@vehicle.has_enough_data_to_analyse
-    @flight = Flight.new(:from_airport => "EGLL", :to_airport => "KLAX")
-    @flight2 = Flight.new(:from_airport => "EGLL", :to_airport => "KLAX", :passengers => 2, :flight_class_id => 4)
-  end
-
   def privacy_policy
     @pagename = "Privacy policy"
   end
