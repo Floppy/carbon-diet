@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class AirportTest < Test::Unit::TestCase
+class AirportTest < ActiveSupport::TestCase
   fixtures :airports
 
   def test_full_description

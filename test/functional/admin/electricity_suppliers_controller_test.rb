@@ -4,7 +4,7 @@ require 'admin/electricity_suppliers_controller'
 # Re-raise errors caught by the controller.
 class Admin::ElectricitySuppliersController; def rescue_action(e) raise e end; end
 
-class Admin::ElectricitySuppliersControllerTest < Test::Unit::TestCase
+class Admin::ElectricitySuppliersControllerTest < ActiveSupport::TestCase
   fixtures :electricity_suppliers
 
   def setup

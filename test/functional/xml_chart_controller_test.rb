@@ -4,7 +4,7 @@ require 'xml_chart_controller'
 # Re-raise errors caught by the controller.
 class XmlChartController; def rescue_action(e) raise e end; end
 
-class XmlChartControllerTest < Test::Unit::TestCase
+class XmlChartControllerTest < ActiveSupport::TestCase
   fixtures :users
 
   def setup

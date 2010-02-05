@@ -4,7 +4,7 @@ require 'admin/gas_units_controller'
 # Re-raise errors caught by the controller.
 class Admin::GasUnitsController; def rescue_action(e) raise e end; end
 
-class Admin::GasUnitsControllerTest < Test::Unit::TestCase
+class Admin::GasUnitsControllerTest < ActiveSupport::TestCase
   def setup
     @controller = Admin::GasUnitsController.new
     @request    = ActionController::TestRequest.new

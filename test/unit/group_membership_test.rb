@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class GroupMembershipTest < Test::Unit::TestCase
+class GroupMembershipTest < ActiveSupport::TestCase
   fixtures :users
   fixtures :groups
   fixtures :group_memberships

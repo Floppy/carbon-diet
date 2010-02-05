@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class VehicleFuelTypeTest < Test::Unit::TestCase
+class VehicleFuelTypeTest < ActiveSupport::TestCase
   fixtures :vehicle_fuel_types
   fixtures :vehicle_fuel_classes
 

@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class ActionTest < Test::Unit::TestCase
+class ActionTest < ActiveSupport::TestCase
   fixtures :actions
   fixtures :action_categories
   fixtures :action_overrides

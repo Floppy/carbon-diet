@@ -4,7 +4,7 @@ require 'admin/action_overrides_controller'
 # Re-raise errors caught by the controller.
 class Admin::ActionOverridesController; def rescue_action(e) raise e end; end
 
-class Admin::ActionOverridesControllerTest < Test::Unit::TestCase
+class Admin::ActionOverridesControllerTest < ActiveSupport::TestCase
   def setup
     @controller = Admin::ActionOverridesController.new
     @request    = ActionController::TestRequest.new

@@ -4,7 +4,7 @@ require 'admin/vehicle_distance_units_controller'
 # Re-raise errors caught by the controller.
 class Admin::VehicleDistanceUnitsController; def rescue_action(e) raise e end; end
 
-class Admin::VehicleDistanceUnitsControllerTest < Test::Unit::TestCase
+class Admin::VehicleDistanceUnitsControllerTest < ActiveSupport::TestCase
   def setup
     @controller = Admin::VehicleDistanceUnitsController.new
     @request    = ActionController::TestRequest.new

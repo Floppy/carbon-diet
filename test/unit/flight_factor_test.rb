@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class FlightFactorTest < Test::Unit::TestCase
+class FlightFactorTest < ActiveSupport::TestCase
   fixtures :flight_factors
 
   # Replace this with your real tests.

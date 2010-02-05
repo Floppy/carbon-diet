@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class FlightClassTest < Test::Unit::TestCase
+class FlightClassTest < ActiveSupport::TestCase
   fixtures :flight_classes
 
   def test_validation_failure

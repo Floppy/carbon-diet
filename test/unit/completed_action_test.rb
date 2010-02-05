@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class CompletedActionTest < Test::Unit::TestCase
+class CompletedActionTest < ActiveSupport::TestCase
   fixtures :completed_actions
   fixtures :actions
   fixtures :users
