@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/gas_supplier_controller'
+require 'admin/gas_suppliers_controller'
 
 # Re-raise errors caught by the controller.
-class Admin::GasSupplierController; def rescue_action(e) raise e end; end
+class Admin::GasSuppliersController; def rescue_action(e) raise e end; end
 
-class Admin::GasSupplierControllerTest < ActiveSupport::TestCase
+class Admin::GasSuppliersControllerTest < ActionController::TestCase
   def setup
-    @controller = Admin::GasSupplierController.new
+    @controller = Admin::GasSuppliersController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end

@@ -4,7 +4,7 @@ require 'admin/electricity_units_controller'
 # Re-raise errors caught by the controller.
 class Admin::ElectricityUnitsController; def rescue_action(e) raise e end; end
 
-class Admin::ElectricityUnitsControllerTest < ActiveSupport::TestCase
+class Admin::ElectricityUnitsControllerTest < ActionController::TestCase
   def setup
     @controller = Admin::ElectricityUnitsController.new
     @request    = ActionController::TestRequest.new

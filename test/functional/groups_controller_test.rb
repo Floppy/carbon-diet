@@ -4,7 +4,10 @@ require 'groups_controller'
 # Re-raise errors caught by the controller.
 class GroupsController; def rescue_action(e) raise e end; end
 
-class GroupsControllerTest < ActiveSupport::TestCase
+class GroupsControllerTest < ActionController::TestCase
+
+  fixtures :groups
+
   def setup
     @controller = GroupsController.new
     @request    = ActionController::TestRequest.new
@@ -22,13 +25,14 @@ class GroupsControllerTest < ActiveSupport::TestCase
   end
 
   def test_invite
+    @group = Group.find(2)
     when_logged_in do
-      get :invite, :id => 2
+      get :invite, :id => @group.id
       assert_response :success
       assert_template 'invite'
     end
     when_not_logged_in do
-      get :invite, :id => 2
+      get :invite, :id => @group.id
       assert_response :redirect 
       assert_redirected_to '/'
     end

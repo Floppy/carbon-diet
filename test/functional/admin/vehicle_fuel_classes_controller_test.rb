@@ -4,7 +4,7 @@ require 'admin/vehicle_fuel_classes_controller'
 # Re-raise errors caught by the controller.
 class Admin::VehicleFuelClassesController; def rescue_action(e) raise e end; end
 
-class Admin::VehicleFuelClassesControllerTest < ActiveSupport::TestCase
+class Admin::VehicleFuelClassesControllerTest < ActionController::TestCase
   fixtures :vehicle_fuel_classes
 
   def setup

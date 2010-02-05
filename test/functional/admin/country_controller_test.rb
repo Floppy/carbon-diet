@@ -4,7 +4,7 @@ require 'admin/country_controller'
 # Re-raise errors caught by the controller.
 class Admin::CountryController; def rescue_action(e) raise e end; end
 
-class Admin::CountryControllerTest < ActiveSupport::TestCase
+class Admin::CountryControllerTest < ActionController::TestCase
   fixtures :countries
 
   def setup
