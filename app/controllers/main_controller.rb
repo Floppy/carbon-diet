@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
   def index
-    redirect_to_main_page if @current_user
+    redirect_to_main_page and return if get_current_user
     session[:next] = params[:to] unless params[:to].nil?
     respond_to do |format|
       format.html
