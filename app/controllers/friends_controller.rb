@@ -1,18 +1,44 @@
 class FriendsController < AuthenticatedController
 
+  include GraphFunctions
+
   def index
     redirect_to :action => 'list'
   end
  
   def list
-    @pagename = 'My Friends'
-    # Generate league table
-    @leaguetable = []
-    @current_user.friends.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
-    @leaguetable << { :user => @current_user, :total => @current_user.annual_emissions > 0 ? @current_user.annual_emissions : 9e99 }
-    @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
-    # Generate pie chart URL
-    @pie_url = url_for(:controller => "xml_chart", :action => "pie_friends")
+    respond_to do |format|
+      format.html {
+        @pagename = 'My Friends'
+        # Generate league table
+        @leaguetable = []
+        @current_user.friends.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
+        @leaguetable << { :user => @current_user, :total => @current_user.annual_emissions > 0 ? @current_user.annual_emissions : 9e99 }
+        @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
+        # Generate pie chart URL
+        @pie_url = url_for(:controller => "friends", :action => "list", :format => :xmlchart)
+      }
+      format.xmlchart {
+        srand(42)
+        # Store totals
+        @totals = []
+        @colours = []
+        # Get friends
+        friends = Array.new(@current_user.friends)
+        friends << @current_user
+        total = 0.0
+        friends.each { |u| total += u.annual_emissions if u.public}
+        # For each account, calculate emissions
+        for user in friends
+          # Create totals
+          @totals << {:name => user.name, :data => { :total => user.annual_emissions, :percentage => user.annual_emissions/total} } if user.public
+          # Create colours
+          @colours << random_colour
+        end
+        # Send data
+        render :file => 'shared/pie', :layout => false
+      }
+    end
   end
  
   def add

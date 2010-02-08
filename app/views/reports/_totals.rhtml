@@ -6,8 +6,8 @@
 <td><%= kg(item[:data][:total]) %></td>
 <td><%= kg(item[:data][:perday],2) %></td>
 <td>
-<% if @current_user.people_in_household > 1 %>
-<%= tonnes(item[:data][:perannum]/@current_user.people_in_household,2) %>/person
+<% if @user.people_in_household > 1 %>
+<%= tonnes(item[:data][:perannum]/@user.people_in_household,2) %>/person
 <% else %>
 <%= tonnes(item[:data][:perannum],2) %>
 <% end %>

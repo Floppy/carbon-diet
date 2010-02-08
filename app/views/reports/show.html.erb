@@ -1,5 +1,5 @@
 <% content_for('optionbar') do %>
-  <% if @current_user.has_enough_data_to_analyse %>
+  <% if @user.has_enough_data_to_analyse %>
     <%= option "ratio" %>
     <%= option "daily" %>
   <% else %>
@@ -9,7 +9,7 @@
   <%= option "home" %>
 <% end %>
 
-<% if @current_user.has_enough_data_to_analyse %>
+<% if @user.has_enough_data_to_analyse %>
 
   <div class="pagecontent">
   <p>
@@ -21,8 +21,8 @@
   Since you started tracking your emissions on the Carbon Diet, you have produced:
   <ul>
   <li>A total of <%= kg(@total) %>, or around <%= tonnes(@total,1) %>, at an average of <%= kg(@perday, 2) %> per day.</li>
-<% if @current_user.people_in_household > 1 %>
-  <li>...that's the equivalent of <%= tonnes(@perannum/@current_user.people_in_household, 2) %> per person per year on average.</li>
+<% if @user.people_in_household > 1 %>
+  <li>...that's the equivalent of <%= tonnes(@perannum/@user.people_in_household, 2) %> per person per year on average.</li>
 <% else %>
   <li>...that's the equivalent of <%= tonnes(@perannum, 2) %> a year on average.</li>
 <% end %>

@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
   before_filter :get_current_user, :only => ["view", "browse", "feed"]
   before_filter :check_logged_in, :except => ["view", "browse", "feed"]
 
+  include GraphFunctions
+
   verify :method => :post, :only => ['destroy']
 
   def index
@@ -20,15 +22,38 @@ class GroupsController < ApplicationController
   end
  
   def view
-    @group = Group.find_by_id(params[:id])
-    @pagename = @group.name
-    @comments = @group.comments
-    # Generate league table
-    @leaguetable = []
-    @group.users.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
-    @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
-    # Generate pie chart URL
-    @pie_url = url_for(:controller => "xml_chart", :action => "pie_group", :id => @group.id)    
+    respond_to do |format|
+      format.html {
+        @group = Group.find_by_id(params[:id])
+        @pagename = @group.name
+        @comments = @group.comments
+        # Generate league table
+        @leaguetable = []
+        @group.users.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
+        @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
+        # Generate pie chart URL
+        @pie_url = url_for(:controller => "groups", :action => "view", :format => :xmlchart, :id => @group.id)
+      }
+      format.xmlchart {
+        srand(69)
+        # Store totals
+        @totals = []
+        @colours = []
+        # Get group
+        @group = Group.find_by_id(params[:id])
+        total = 0.0
+        @group.users.each { |u| total += u.annual_emissions if u.public }
+        # For each account, calculate emissions
+        for user in @group.users
+          # Create totals
+          @totals << {:name => user.name, :data => { :total => user.annual_emissions, :percentage => user.annual_emissions/total} } if user.public
+          # Create colours
+          @colours << random_colour
+        end
+        # Send data
+        render :file => 'shared/pie', :layout => false
+      }
+    end
   rescue
     flash[:notice] = "Unknown group!"
     index

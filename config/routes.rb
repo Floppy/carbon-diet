@@ -14,9 +14,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '', :controller => "main", :action => "index"
   map.connect '/m', :controller => "main", :action => "mobile"
 
-  # Connection for charts
-  map.connect '/xml_chart/:action/:period/:user', :controller => "xml_chart" 
-
   # Connection for public profiles
   map.connect '/profile/:login', :controller => "profile", :action => "index"
 
@@ -42,6 +39,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :gas_accounts do |gas|
       gas.resources :gas_readings, :as => "readings"
     end
+    user.resource :report, :member => {:recent => :get, :ratio => :get}
   end
 
   # Install the default route as the lowest priority.

@@ -5,8 +5,25 @@ class NotesController < AuthenticatedController
   end
 
   def list
-    # Data
-    @notes = @current_user.notes.paginate :page => params[:page]
+    respond_to do |format|
+      format.html {
+        # Data
+        @notes = @current_user.notes.paginate :page => params[:page]
+      }
+      format.amline {
+        notes = @current_user.all_notes
+        @data = []
+        day = params[:period].to_i.days.ago.to_date
+        while (day <= Date.today)
+          todays_note = notes.find { |x| x.date == day }
+          str = todays_note ? todays_note.date.strftime("%b %d") + ": " + todays_note.note : nil
+          @data << { :date => day, :note => str }
+          day += 1
+        end
+        # Send data
+        render :layout => false
+      }
+    end
   end
 
   def edit

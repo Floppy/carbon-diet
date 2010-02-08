@@ -1,4 +1,4 @@
 <div class="option">
 <%= image_tag 'chart_curve.png' %>
-<%= link_to("Daily Trends", { :controller => "report", :action => "recent" } ) %>
+<%= link_to("Daily Trends", recent_user_report_path(@user || @current_user) ) %>
 </div>
