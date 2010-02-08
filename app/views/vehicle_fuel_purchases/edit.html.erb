@@ -1,0 +1,10 @@
+<% pagetitle("Editing Fuel Purchase", "car.png") %>
+
+<% content_for('optionbar') do %>
+  <%= option "save", :id => "edit_vehicle_fuel_purchase_#{@purchase.id}" %>
+  <%= option "cancel" %>
+<% end %>
+
+<div class="pagecontent">
+  <%= render :partial => "form" %>
+</div>

@@ -19,7 +19,7 @@
 <% for vehicle in @current_user.vehicles.current %>
 <div class="option">
 <%= image_tag 'car.png' %>
-<%= link_to(vehicle.name, { :controller => "vehicle_fuel", :action => "list", :vehicle => vehicle.id } ) %>
+<%= link_to(vehicle.name, user_vehicle_vehicle_fuel_purchases_path(@current_user, vehicle) ) %>
 </div>
 <% end %>
 

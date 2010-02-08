@@ -26,10 +26,6 @@ ActionController::Routing::Routes.draw do |map|
   # Connection for group browser
   map.connect '/groups/browse/:string', :controller => "groups", :action => "browse"
 
-  # Connection for data entry controllers
-  map.connect '/data_entry/gas/:account/:action/:id', :controller => "data_entry/gas"
-  map.connect '/data_entry/vehicle_fuel/:vehicle/:action/:id', :controller => "data_entry/vehicle_fuel"
-
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   map.connect ':controller/service.wsdl', :action => 'wsdl'
@@ -38,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :flights
     user.resources :vehicles do |vehicle|
-      vehicle.resources :fuel_purchases, :controller => "VehicleFuelPurchases"
+      vehicle.resources :vehicle_fuel_purchases, :as => "fuel_purchases"
     end
     user.resources :electricity_accounts do |elec|
       elec.resources :electricity_readings, :as => "readings"

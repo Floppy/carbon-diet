@@ -1,0 +1,26 @@
+<% form_for [@user, @vehicle, @purchase] do |f| %>
+  <%= f.error_messages %>
+  <table class="form">
+    <tr>
+      <td><%= f.label :amount, "Amount (#{@vehicle.vehicle_fuel_unit.abbreviation})"%></td>
+      <td><%= f.text_field :amount %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :purchased_on, "Date" %></td>
+      <td><%= f.date_select :purchased_on, :order => [:day, :month, :year] %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :vehicle_fuel_type, "Fuel Type" %></td>
+      <td><%= f.collection_select :vehicle_fuel_type_id, @vehicle_fuel_types, :id, :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :distance, "Odometer Reading (#{@vehicle.vehicle_distance_unit.abbreviation})" %></td>
+      <td>
+        <%= f.text_field :distance %>
+        <em>(optional)</em>
+        <%= help("Enter your car's TOTAL distance travelled.")%>
+      </td>
+    </tr>
+  </table>
+<% end %>
+

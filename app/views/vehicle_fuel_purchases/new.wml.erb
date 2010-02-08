@@ -1,6 +1,6 @@
 <big>New Vehicle Fuel Purchase</big>
 
-<%= error_messages_for 'vehicle_fuel_purchase' %>
+<%= error_messages_for 'purchase' %>
 
 <fieldset>
   <p>
@@ -13,7 +13,7 @@
   </p>
   <p>
     Type<br/>
-    <%= wml_select "fuel_type", @vehicle_fuel_types, @vehicle_fuel_purchase.vehicle_fuel_type, :id, :name %>
+    <%= wml_select "fuel_type", @vehicle_fuel_types, @purchase.vehicle_fuel_type, :id, :name %>
   </p>
   <p>
     Distance (<%=h @vehicle.vehicle_distance_unit.abbreviation %>)<br/>
@@ -21,7 +21,7 @@
   </p>
   <p>
     <do type="accept" label="Save">
-      <go method="post" href="/data_entry/vehicle_fuel/<%= @vehicle.id %>/edit">
+      <go method="post" href="<%= user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle) %>">
         <postfield name="vehicle_fuel_purchase[amount]" value="$amount"/>
         <postfield name="vehicle_fuel_purchase[purchased_on(3i)]" value="$day"/>
         <postfield name="vehicle_fuel_purchase[purchased_on(2i)]" value="$month"/>

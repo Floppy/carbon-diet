@@ -13,7 +13,7 @@
     <%=image_tag 'gas.png'%> <%= link_to(account.name, new_user_gas_account_gas_reading_path(@current_user, account)) %><br/>
   <% end %>
   <% for vehicle in @current_user.vehicles.current %>
-    <%=image_tag 'car.png'%> <%= link_to(vehicle.name, { :controller => "data_entry/vehicle_fuel", :action => "edit", :vehicle => vehicle.id } ) %><br/>
+    <%=image_tag 'car.png'%> <%= link_to(vehicle.name, new_user_vehicle_vehicle_fuel_purchase_path(@current_user, vehicle)) %><br/>
   <% end %>
 <% end %>
 </p>

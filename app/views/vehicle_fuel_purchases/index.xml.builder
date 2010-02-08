@@ -6,7 +6,7 @@ xml.vehicle do
   xml.distance_unit @vehicle.vehicle_distance_unit.name
   xml.current @vehicle.current
   
-  for purchase in @vehicle.vehicle_fuel_purchases
+  @purchases.each do |purchase|
     xml.purchase do
       xml.purchased_on purchase.purchased_on.xmlschema
       xml.amount purchase.amount

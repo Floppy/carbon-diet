@@ -8,8 +8,8 @@ class VehiclesController < BelongsToUser
   def new
     @vehicle = Vehicle.new
     # Set default values
-    @vehicle.vehicle_distance_unit = @current_user.country.vehicle_distance_unit
-    @vehicle.vehicle_fuel_unit = @current_user.country.vehicle_fuel_unit
+    @vehicle.vehicle_distance_unit = @user.country.vehicle_distance_unit
+    @vehicle.vehicle_fuel_unit = @user.country.vehicle_fuel_unit
     # Get options for select
     get_select_options
   end
@@ -18,7 +18,7 @@ class VehiclesController < BelongsToUser
     @vehicle = @user.vehicles.create(params[:vehicle])
     if @vehicle.save
       @user.update_stored_statistics!
-      redirect_to :controller => '/data_entry/vehicle_fuel', :vehicle => @vehicle
+      redirect_to user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle)
     else
       get_select_options
       render :action => 'new'
@@ -33,7 +33,7 @@ class VehiclesController < BelongsToUser
     @vehicle.update_attributes!(params[:vehicle])
     if @vehicle.save
       @user.update_stored_statistics!
-      redirect_to :controller => '/data_entry/vehicle_fuel', :vehicle => @vehicle
+      redirect_to user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle)
     else
       get_select_options
       render :action => 'edit'
@@ -49,13 +49,13 @@ class VehiclesController < BelongsToUser
 protected
 
   def get_select_options
-    @vehicle_fuel_classes = @current_user.country.vehicle_fuel_classes.find( :all, :order => 'name')
+    @vehicle_fuel_classes = @user.country.vehicle_fuel_classes.find( :all, :order => 'name')
     @vehicle_fuel_units = VehicleFuelUnit.find( :all, :order => 'name')
     @vehicle_distance_units = VehicleDistanceUnit.find( :all, :order => 'name')
   end
 
   def get_vehicle
-    @vehicle = @current_user.vehicles.find(params[:id])
+    @vehicle = @user.vehicles.find(params[:id])
   end
 
 end
