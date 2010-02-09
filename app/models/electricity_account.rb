@@ -34,7 +34,7 @@ class ElectricityAccount < ActiveRecord::Base
     last_date = 0;
     # Analyse each reading
     readings = electricity_readings.find(:all, :order => "taken_on")
-    for reading in readings
+    readings.each do |readings|
       # Calculate electricity used since last reading
       kWh_total = reading.kWh_day
       if reading.kWh_night 

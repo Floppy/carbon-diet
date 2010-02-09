@@ -34,7 +34,7 @@ class GasAccount < ActiveRecord::Base
     last_date = 0;
     # Analyse each reading
     readings = gas_readings.find(:all, :order => "taken_on")
-    for reading in readings
+    readings.each do |reading|
       # Calculate gas used since last reading
       if last_m3 != 0
         m3_used = reading.m3 - last_m3

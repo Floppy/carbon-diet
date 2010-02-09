@@ -29,7 +29,7 @@ class Vehicle < ActiveRecord::Base
     # Analyse each purchase
     purchases = vehicle_fuel_purchases.find(:all, :order => "purchased_on")
     last_purchase = nil
-    for purchase in purchases
+    purchases.each do |purchase|
       # Calculate fuel used since last purchase
       unless last_purchase.nil?
         co2 = last_purchase.kg_of_co2

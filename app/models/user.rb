@@ -200,13 +200,13 @@ class User < ActiveRecord::Base
   end
 
   def has_enough_data_to_analyse
-    for account in electricity_accounts
+    electricity_accounts.each do |account|
       return true if account.has_enough_data_to_analyse
     end
-    for account in gas_accounts
+    gas_accounts.each do |account|
       return true if account.has_enough_data_to_analyse
     end
-    for vehicle in vehicles
+    vehicles.each do |vehicle|
       return true if vehicle.has_enough_data_to_analyse
     end
     return true if flights.count > 0
@@ -219,7 +219,7 @@ class User < ActiveRecord::Base
 
   def count_elec_readings
     num = 0
-    for account in electricity_accounts
+    electricity_accounts.each do |account|
       num += account.count_readings
     end
     return num
@@ -227,7 +227,7 @@ class User < ActiveRecord::Base
 
   def count_gas_readings
     num = 0
-    for account in gas_accounts
+    gas_accounts.each do |account|
       num += account.count_readings
     end
     return num
@@ -235,7 +235,7 @@ class User < ActiveRecord::Base
 
   def count_vehicle_fuel_purchases
     num = 0
-    for account in vehicles
+    vehicles.each do |account|
       num += account.count_purchases
     end
     return num
@@ -285,12 +285,12 @@ class User < ActiveRecord::Base
     totals = []
     grand_total = 0.0
     # Calculate totals for each emissions source
-    for item in all_emissions
+    all_emissions.each do |item|
       totals << {:name => item[:name], :image => item[:image], :categories => item[:categories], :data => item[:data].calculate_total_over_period(period)}
       grand_total += totals.last[:data][:total]
     end
     # Calculate percentages and yearly totals
-    for item in totals
+    totals.each do |item|
       unless item[:data][:total] == 0
         item[:data][:percentage] = (item[:data][:total] / grand_total) * 100
       end
@@ -400,11 +400,11 @@ private
 
   def date_of_oldest_new_data
     oldest_date = nil
-    for account in electricity_accounts
+    electricity_accounts.each do |account|
       account_newest = account.date_of_newest_data
       oldest_date = account_newest if oldest_date.nil? or oldest_date > account_newest
     end
-    for account in gas_accounts
+    gas_accounts.each do |account|
       account_newest = account.date_of_newest_data
       oldest_date = account_newest if oldest_date.nil? or oldest_date > account_newest
     end
@@ -419,7 +419,7 @@ private
   def all_emissions_for_account_type(accounts)
     emissions = []
     # For each account, calculate emissions
-    for account in accounts
+    accounts.each do |account|
       # Find the emissions for the account
       emissions << {:name => account.name, :image => account.image, :data => account.emissions, :categories => account.action_categories}
     end
@@ -438,7 +438,7 @@ public
     # Initialise result array
     emissiondata = EmissionArray.new
     # Analyse each reading
-    for flight in flights.find(:all, :order => "outbound_on")
+    flights.find(:all, :order => "outbound_on").each do |flight|
       # Add to result array
       days = flight.return_on ? (flight.return_on - flight.outbound_on + 1) : 1
       co2 = flight.kg_of_co2
