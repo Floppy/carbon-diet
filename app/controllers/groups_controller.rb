@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
         total = 0.0
         @group.users.each { |u| total += u.annual_emissions if u.public }
         # For each account, calculate emissions
-        for user in @group.users
+        @group.users.each do |user|
           # Create totals
           @totals << {:name => user.name, :data => { :total => user.annual_emissions, :percentage => user.annual_emissions/total} } if user.public
           # Create colours
@@ -108,7 +108,7 @@ class GroupsController < ApplicationController
   def invite
     @group = @current_user.groups.find(params[:id]) 
     @friends = Array.new(@current_user.friends)
-    for user in @group.users
+    @group.users.each do |user|
       @friends.delete(user) 
     end
   rescue
@@ -118,7 +118,7 @@ class GroupsController < ApplicationController
 
   def send_invitations
     group = @current_user.groups.find(params[:id]) 
-    for friend in @current_user.friends
+    @current_user.friends.each do |friend|
       if params[:invite][friend.login] == "1"
         # Create invitation - automatically notifies the invited person
         GroupInvitation.create(:user => friend, :inviter => @current_user, :group => group)

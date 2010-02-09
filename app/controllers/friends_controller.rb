@@ -29,7 +29,7 @@ class FriendsController < AuthenticatedController
         total = 0.0
         friends.each { |u| total += u.annual_emissions if u.public}
         # For each account, calculate emissions
-        for user in friends
+        friends.each do |user|
           # Create totals
           @totals << {:name => user.name, :data => { :total => user.annual_emissions, :percentage => user.annual_emissions/total} } if user.public
           # Create colours

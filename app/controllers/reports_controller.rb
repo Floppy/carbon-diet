@@ -6,7 +6,7 @@ class ReportsController < BelongsToUser
     respond_to do |format|
       format.html {
         @total = 0.0
-        for item in @user.all_emissions
+        @user.all_emissions.each do |item|
           # Calculate total
           temp = item[:data].calculate_total
           # Add up data
@@ -47,7 +47,7 @@ class ReportsController < BelongsToUser
         # Store totals
         @totals = []
         # For each account, calculate emissions
-        for item in @user.all_emissions
+        @user.all_emissions.each do |item|
           # Create totals
           @totals << {:name => item[:name], :data => item[:data].calculate_total_over_period(params[:period].to_i)}
         end
@@ -87,7 +87,7 @@ class ReportsController < BelongsToUser
         @data = []
         total = GraphData.new
         total[:values] = Array.new(params[:period].to_i, nil)
-        for dataset in emissions
+        emissions.each do |dataset|
           temp = dataset[:data].calculate_graph(params[:period].to_i, 1)
           running_avg = temp.smooth(avg_period)
           @data << { :name => dataset[:name],
@@ -95,7 +95,7 @@ class ReportsController < BelongsToUser
                      :dates => temp[:dates] }
           offset = 0
           if emissions.size > 1
-            for datum in running_avg
+            running_avg.each do |datum|
               unless datum.nil?
                 if total[:values][offset].nil?
                   total[:values][offset] = 0
@@ -149,12 +149,12 @@ class ReportsController < BelongsToUser
         total = GraphData.new
         total[:values] = Array.new(period, nil)
         # Add all emissions together that are not flights
-        for dataset in @user.all_emissions
+        @user.all_emissions.each do |dataset|
           if dataset[:name] != 'Flights'
             temp = dataset[:data].calculate_graph(period, 1)
             running_avg = temp.smooth(avg_period)
             offset = 0
-            for datum in running_avg
+            running_avg.each do |datum|
               unless datum.nil?
                 if total[:values][offset].nil?
                   total[:values][offset] = 0

@@ -64,9 +64,9 @@ protected
     return if @current_user.nil?
     totals = @current_user.calculate_totals(28)
     categories = []
-    for item in totals
+    totals.each do |item|
       if item[:name] != "Total"
-        for category in item[:categories]
+        item[:categories].each do |category|
           categories << category unless categories.include?(category)
         end
       end
