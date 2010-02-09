@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/profile/:login', :controller => "profile", :action => "index"
 
   # Connection for admin interface
-  map.connect '/admin', :controller => "admin/index", :action => "index"
+  map.connect '/admin', :controller => "admin/dashboard", :action => "index"
 
   # Connection for group browser
   map.connect '/groups/browse/:string', :controller => "groups", :action => "browse"
