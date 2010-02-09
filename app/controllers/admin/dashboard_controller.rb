@@ -1,4 +1,4 @@
-class Admin::IndexController < Admin::AdminController
+class Admin::DashboardController < Admin::AdminController
 
   def index
     @pagename = "Administration"
