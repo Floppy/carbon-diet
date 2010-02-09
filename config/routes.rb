@@ -29,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # New-style resourceful routes
   map.resources :users do |user|
+    user.resource :accounts
     user.resources :flights
     user.resources :vehicles do |vehicle|
       vehicle.resources :vehicle_fuel_purchases, :as => "fuel_purchases"

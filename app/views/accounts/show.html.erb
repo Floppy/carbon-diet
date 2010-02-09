@@ -27,13 +27,13 @@
 
 <div class="option">
 <%= image_tag 'new.png' %>
-<%= link_to("Add account", { :action => "new_account" } ) %>
+<%= link_to("Add account", new_user_accounts_path(@user) ) %>
 </div>
 
 <% if not @current_user.has_no_accounts %>
 <div class="option">
 <%= image_tag 'edit.png' %>
-<%= link_to("Edit accounts", { :action => "edit_accounts" } ) %>
+<%= link_to("Edit accounts", edit_user_accounts_path(@user) ) %>
 </div>
 <% end %>
 
