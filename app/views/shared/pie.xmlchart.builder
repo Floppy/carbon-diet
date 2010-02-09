@@ -11,13 +11,13 @@ xml.chart do
   xml.chart_data do
     xml.row do
       xml.null
-      for item in @totals
+      @totals.each do |item|
         xml.string item[:name]
       end
     end
     xml.row do
       xml.null
-      for item in @totals
+      @totals.each do |item|
         xml.number item[:data][:total]
       end
     end
@@ -26,13 +26,13 @@ xml.chart do
   xml.chart_value_text do
     xml.row do
       xml.null
-      for item in @totals
+      @totals.each do |item|
         xml.null
       end
     end
     xml.row do
       xml.null
-      for item in @totals
+      @totals.each do |item|
         xml.string(item[:name] + ": " + (item[:data][:percentage].nil? ? number_with_precision(item[:data][:total],:precision => 0) + " kg" : number_with_precision(item[:data][:percentage]*100,:precision => 0) + "%"))
       end
     end
@@ -40,7 +40,7 @@ xml.chart do
 
   if @colours
     xml.series_color do
-      for colour in @colours
+      @colours.each do |colour|
         xml.color colour
       end
     end

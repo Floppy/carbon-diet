@@ -16,7 +16,7 @@ If you want to undo any of your completed actions, you can use this page to do s
   <th></th>
   </tr>
   
-<% for action in @completed_actions %>
+<% @completed_actions.each do |action| %>
   <tr>
   <td><%=h action.created_at.strftime("%d %b %y") %></td>
   <td><%= image_tag action.action.action_category.image unless action.action.action_category.image.nil? %></td>

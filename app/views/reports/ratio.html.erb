@@ -14,7 +14,7 @@
 Over the last year, your carbon footprint has come from:
 </p>
 <table border="1">
-<% for item in @totals %>
+<% @totals.each do |item| %>
 <% if item[:name] != "Total" %>
 <tr>
 <td><%=h item[:name] %></td>

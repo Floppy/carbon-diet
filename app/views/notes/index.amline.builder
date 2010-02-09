@@ -16,13 +16,13 @@ xml.chart do
   xml.chart_data do
     xml.row do
       xml.null
-      for item in @data
+      @data.each do |item|
         xml.null
       end
     end
     xml.row do
       xml.null
-      for item in @data
+      @data.each do |item|
         item[:note].nil? ? xml.null : xml.number("1")
       end
     end
@@ -31,13 +31,13 @@ xml.chart do
   xml.chart_value_text do
     xml.row do
       xml.null
-      for item in @data
+      @data.each do |item|
         xml.null
       end
     end
     xml.row do
       xml.null
-      for item in @data
+      @data.each do |item|
         item[:note].nil? ? xml.null : xml.string(item[:note])
       end
     end

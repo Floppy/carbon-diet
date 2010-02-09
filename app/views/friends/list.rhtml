@@ -19,7 +19,7 @@ You haven't added any friends yet! Why not <%= link_to 'search', :controller => 
 
 <% if @current_user.friends.size != 0 %>
   <div class="sectiontitle">Your friends</div>
-  <% for friend in @current_user.friends %>
+  <% @current_user.friends.each do |friend| %>
   <%= friend_link(friend) %>
   <% end %>
 <% end %>
@@ -32,7 +32,7 @@ You haven't added any friends yet! Why not <%= link_to 'search', :controller => 
     <div>
     <%= pluralize(@current_user.unapproved_fans.size, "person") %> <%= @current_user.unapproved_fans.size > 1 ? "want" : "wants" %> to be friends with you:
     <table>
-    <% for friend in @current_user.unapproved_fans %>
+    <% @current_user.unapproved_fans.each do |friend| %>
       <%= approve_friend_link(friend) %>
     <% end %>
     </table>
@@ -42,7 +42,7 @@ You haven't added any friends yet! Why not <%= link_to 'search', :controller => 
     <div>
       <%= pluralize(@current_user.unapproved_friends.size, "person") %> <%= @current_user.unapproved_friends.size > 1 ? "haven't" : "hasn't" %> replied to your friend request<%= "s" if @current_user.unapproved_friends.size > 1 %> yet:
       <table>
-      <% for friend in @current_user.unapproved_friends %>
+      <% @current_user.unapproved_friends.each do |friend| %>
         <tr><td>
           <%= render :partial => "/shared/user_image_link", :locals => { :user => friend, :small => true } %>
         </td><td>

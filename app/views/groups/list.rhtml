@@ -20,7 +20,7 @@
 You have been invited to join <%= pluralize(@current_user.group_invitations.size, "group") %>:
 </p>
 <table>
-<% for invitation in @current_user.group_invitations %>
+<% @current_user.group_invitations.each do |invitation| %>
 <%= group_invite_link(invitation) %>
 <% end %>
 </table>

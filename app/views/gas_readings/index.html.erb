@@ -33,7 +33,7 @@ NOTE: If the units are wrong for your meter, you can change them in the <%= link
   <th></th>
   </tr>
   
-<% for reading in @gas_readings %>
+<% @gas_readings.each do |reading| %>
   <tr id="reading<%= reading.id %>">
   <td><%=h reading.taken_on.strftime("%d %b %y") %></td>
   <td><%=h reading.reading %></td>

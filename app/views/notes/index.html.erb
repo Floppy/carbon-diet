@@ -15,7 +15,7 @@
     <th></th>
     <th></th>
   </tr>
-  <% for note in @notes %>
+  <% @notes.each do |note| %>
     <tr>
       <td><%= image_tag note.notatable.image %></td>
       <td><%=h note.date.strftime("%d %b %y") %></td>

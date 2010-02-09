@@ -28,7 +28,7 @@ Root
 
 <% unless @subsections.empty? %>
   <ul>
-  <% for subsection in @subsections %>
+  <% @subsections.each do |subsection| %>
     <li class="subsection">
     <%= link_to h(subsection[0]), :string => subsection[0] %> (<%= subsection[1] %> groups) 
     </li>
@@ -38,7 +38,7 @@ Root
 
 <% unless @groups.empty? %>
   <ul>
-  <% for group in @groups %>
+  <% @groups.each do |group| %>
     <li class="group">
     <%= link_to h(group.name), :controller => 'groups', :action => 'view', :id => group.id %> (<%= group.users.count %> members)
     </li>

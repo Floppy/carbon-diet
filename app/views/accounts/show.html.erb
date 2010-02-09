@@ -1,6 +1,6 @@
 <% content_for('optionbar') do %>
 
-<% for elec_account in @current_user.electricity_accounts.current %>
+<% @current_user.electricity_accounts.current.each do |elec_account| %>
 <div class="option">
 <% if elec_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'electricity.png' %>
@@ -8,7 +8,7 @@
 </div>
 <% end %>
 
-<% for gas_account in @current_user.gas_accounts.current %>
+<% @current_user.gas_accounts.current.each do |gas_account| %>
 <div class="option">
 <% if gas_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'gas.png' %>
@@ -16,7 +16,7 @@
 </div>
 <% end %>
 
-<% for vehicle in @current_user.vehicles.current %>
+<% @current_user.vehicles.current.each do |vehicle| %>
 <div class="option">
 <%= image_tag 'car.png' %>
 <%= link_to(vehicle.name, user_vehicle_vehicle_fuel_purchases_path(@current_user, vehicle) ) %>

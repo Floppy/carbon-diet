@@ -38,7 +38,7 @@ NOTE: If the units are wrong for your vehicle, you can <%= link_to 'change them'
   <th></th>
   </tr>
   
-<% for purchase in @purchases %>
+<% @purchases.each do |purchase| %>
   <tr id="purchase<%= purchase.id %>">
   <td><%=h purchase.purchased_on.strftime("%d %b %y") %></td>
   <td><%=h purchase.amount %></td>

@@ -10,7 +10,7 @@ xml.gas_account do
     xml.hot_water @account.used_for_water
   end
 
-  for reading in @account.gas_readings
+  @account.gas_readings.each do |reading|
     xml.reading do
       xml.taken_on reading.taken_on.xmlschema
       xml.reading reading.reading

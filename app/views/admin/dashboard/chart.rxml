@@ -11,13 +11,13 @@ xml.chart do
   xml.chart_data do
     xml.row do
       xml.null
-      for value in @data
+      @data.each do |value|
         xml.string value[:date].to_date.strftime("%b %d")   
       end
     end
     xml.row do
       xml.string "Signup Rate"
-      for value in @data
+     @data.each do |value|
         xml.number value[:count]   
       end
     end

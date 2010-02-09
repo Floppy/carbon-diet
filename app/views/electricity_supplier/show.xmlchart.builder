@@ -7,13 +7,13 @@ xml.chart do
   xml.chart_data do
     xml.row do 
       xml.null
-      for source in @supplier.electricity_supplier_sources
+      @supplier.electricity_supplier_source.each do |source|
         xml.string source.electricity_source.source
       end
     end
     xml.row do
       xml.string @supplier.name
-      for source in @supplier.electricity_supplier_sources
+      @supplier.electricity_supplier_sources.each do |source|
         xml.number source.percentage
       end
     end
@@ -22,13 +22,13 @@ xml.chart do
   xml.chart_value_text do
     xml.row do 
       xml.null
-      for source in @supplier.electricity_supplier_sources
+      @supplier.electricity_supplier_sources.each do |source|
         xml.null
       end
     end
     xml.row do
       xml.string @supplier.name
-      for source in @supplier.electricity_supplier_sources
+      @supplier.electricity_supplier_sources.each do |source|
         xml.string source.electricity_source.source + ": " + number_with_precision(source.percentage, :precision => 1) + "%"
       end
     end
@@ -44,7 +44,7 @@ xml.chart do
   }
 
   xml.series_color do
-    for source in @supplier.electricity_supplier_sources
+    @supplier.electricity_supplier_sources.each do |source|
       if colours[source.electricity_source.source]
         xml.color colours[source.electricity_source.source]
       else

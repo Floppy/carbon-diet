@@ -56,7 +56,7 @@
 </p>
 <em><%= @group.users.count %> members:</em>
 <div>
-<% for user in @group.users %>
+<% @group.users.each do |user| %>
 <%= friend_link(user, true) %>
 <% end %>
 </div>

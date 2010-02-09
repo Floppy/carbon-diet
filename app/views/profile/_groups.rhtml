@@ -10,7 +10,7 @@
   You are not a member of any groups! Why not <%= link_to 'find one to join', :controller => "search" %>?
 <% else %>
   <ul>
-  <% for group in @profile.groups %>
+  <% @profile.groups.each do |group| %>
     <li class="group">
     <%= link_to h(group.name), :controller => "groups", :action => 'view', :id => group %>
     </li>
@@ -25,7 +25,7 @@
 <div class="sectiontitle">Groups</div>
 <div>
 <ul>
-<% for group in @profile.groups %>
+<% @profile.groups.each do |group| %>
 <li class="group">
 <%= link_to h(group.name), :controller => "groups", :action => 'view', :id => group %>
 </li>

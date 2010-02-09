@@ -3,7 +3,7 @@
 <div class="leftcolumn">
 <table>
 <% i = 0 %>
-<% for entry in @leaguetable %>
+<% @leaguetable.each do |entry| %>
   <tr>
   <td><%= i = i.next %></td>
   <td><%= entry[:user].public ? link_to(h(entry[:user].name), :controller => "/profile", :login => entry[:user].login) : h(entry[:user].name) %></td>

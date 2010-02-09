@@ -1,6 +1,6 @@
 <table border="1">
 <tr><th>Source</th><th>Total</th><th>Daily Average</th><th>Yearly Equivalent</th></tr>
-<% for item in @totals %>
+<% @totals.each do |item| %>
 <tr>
 <td><%=h item[:name] %></td>
 <td><%= kg(item[:data][:total]) %></td>

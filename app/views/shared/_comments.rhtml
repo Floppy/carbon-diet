@@ -14,7 +14,7 @@ Comments
 <% end %>
 </p>
 <% end %>
-<% for comment in @comments %>
+<% @comments.each do |comment| %>
 <a name="comment<%= comment.id %>"></a>
 <table class="comment" id="comment<%= comment.id %>">
 <tr>

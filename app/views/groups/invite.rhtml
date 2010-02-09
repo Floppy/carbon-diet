@@ -20,7 +20,7 @@
   </p>
   <div>
   <% form_tag({:action => 'send_invitations', :id => @group}, {:id => "invite_form"}) do %>
-    <% for friend in @friends %>
+    <% @friends.each do |friend| %>
       <% unless friend.login.empty? %>
         <%= check_box 'invite', friend.login %>
         <%= render :partial => "/shared/user_image_link", :locals => { :user => friend, :small => true } %>

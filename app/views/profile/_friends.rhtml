@@ -9,7 +9,7 @@
 <% if @profile.friends.empty? %>
   You have not added any friends! Why not <%= link_to 'find some', :controller => "search" %>?
 <% else %>
-  <% for friend in @profile.friends %>
+  <% @profile.friends.each do |friend| %>
   <%= friend_link(friend, true) %>
   <% end %>
   <div class="clear"></div>
@@ -21,7 +21,7 @@
 <% unless @profile.friends.empty? %>
 <div class="sectiontitle">Friends</div>
 <div>
-<% for friend in @profile.friends %>
+<% @profile.friends.each do |friend| %>
 <%= friend_link(friend, true) %>
 <% end %>
 <div class="clear"></div>

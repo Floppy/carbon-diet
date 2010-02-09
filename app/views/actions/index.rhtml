@@ -49,7 +49,7 @@ Based on your <%= link_to 'emissions', :controller => 'report' %> over the last 
 </p>
 
 <div id="actionlist">
-<% for action in @actions %>
+<% @actions.each do |action| %>
 <%= render :partial => 'action', :locals => { :action => action } %>
 <% end %>
 </div>

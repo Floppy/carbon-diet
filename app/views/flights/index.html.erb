@@ -25,7 +25,7 @@
   <th></th>
   </tr>
   
-<% for flight in @flights %>
+<% @flights.each do |flight| %>
   <tr id="flight<%= flight.id %>">
   <td><%=h flight.from_airport.name %></td>
   <td><%=h flight.to_airport.name %></td>

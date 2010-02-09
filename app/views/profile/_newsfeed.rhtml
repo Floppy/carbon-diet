@@ -3,7 +3,7 @@
 <div class="sectiontitle">Recent Activity</div>
 <div class="smalltext">
 <% last_date = 10.years.ago %>
-<% for item in feed %>
+<% feed.each do |item| %>
 <% if item[:when].to_date != last_date %>
 <em><%= item[:when].strftime("%d %b %y") %></em>
 <% last_date = item[:when].to_date %>
