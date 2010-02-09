@@ -1,0 +1,17 @@
+<% form_for [@user, @note] do |f| %>
+  <%= f.error_messages %>
+  <table class="form">
+    <tr>
+      <td><%= f.label :date %></td>
+      <td><%= f.date_select :date, :order => [:day, :month, :year]  %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :account %></td>
+      <td><%= f.select :notatable_string, @notatables %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :note %></td>
+      <td><%= f.text_area :note %></td>
+    </tr>
+  </table>
+<% end %>

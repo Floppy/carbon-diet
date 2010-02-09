@@ -39,6 +39,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :gas_accounts do |gas|
       gas.resources :gas_readings, :as => "readings"
     end
+    user.resources :notes
     user.resource :report, :member => {:recent => :get, :ratio => :get}
   end
 

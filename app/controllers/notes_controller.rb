@@ -1,14 +1,11 @@
-class NotesController < AuthenticatedController
+class NotesController < BelongsToUser
+  before_filter :get_note, :except => [:index, :new, :create]
 
   def index
-    redirect_to :action => 'list'
-  end
-
-  def list
     respond_to do |format|
       format.html {
         # Data
-        @notes = @current_user.notes.paginate :page => params[:page]
+        @notes = @current_user.all_notes.paginate :page => params[:page]
       }
       format.amline {
         notes = @current_user.all_notes
@@ -26,23 +23,47 @@ class NotesController < AuthenticatedController
     end
   end
 
-  def edit
-    @note = params[:id] ? @current_user.all_notes.find { |x| x.id == params[:id].to_i } : Note.new    
+  def new
     @notatables = notatable_list
-    if request.post?
-      @note.update_attributes(params[:note])
-      @note.notatable_string = params[:note][:notatable_string]
-      index if @note.save
+    @note = Note.new
+  end
+
+  def create
+    @note = Note.create(params[:note])
+    @note.notatable_string = params[:note][:notatable_string]
+    if @note.save
+      redirect_to user_notes_path(@user)
+    else
+      @notatables = notatable_list
+      render :action => "new"
+    end
+  end
+
+  def edit
+    @notatables = notatable_list
+  end
+
+  def update
+    @note.update_attributes(params[:note])
+    @note.notatable_string = params[:note][:notatable_string]
+    if @note.save
+      redirect_to user_notes_path(@user)
+    else
+      @notatables = notatable_list
+      render :action => "edit"
     end
   end
 
   def destroy
-    note = @current_user.all_notes.find { |x| x.id == params[:id].to_i }
-    note.destroy unless note.nil?
-    index
+    @note.destroy
+    redirect_to user_notes_path(@user)
   end
 
 private
+
+  def get_note
+    @note = Note.find(params[:id])
+  end
 
   def notatable_list
     notatable = []

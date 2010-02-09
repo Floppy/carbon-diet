@@ -1,5 +1,5 @@
 <div class="option">
 <%= image_tag_with_tooltip 'new.png' %>
-<%= link_to 'Create new note', :action => 'edit'%>
+<%= link_to 'Create new note', new_user_note_path(@user || @current_user) %>
 </div>
 
