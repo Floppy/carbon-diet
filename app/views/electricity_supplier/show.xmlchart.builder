@@ -7,7 +7,7 @@ xml.chart do
   xml.chart_data do
     xml.row do 
       xml.null
-      @supplier.electricity_supplier_source.each do |source|
+      @supplier.electricity_supplier_sources.each do |source|
         xml.string source.electricity_source.source
       end
     end

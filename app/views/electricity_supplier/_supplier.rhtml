@@ -7,7 +7,7 @@
                                              :id => supplier.id,
                                              :format => :xmlchart) } %>
 <ul>
-<li>Total: <%= kg(supplier.kg_per_kWh,2) %> / kWh</li>
+<li>Total: <%= kg(supplier.kg_per_kwh,2) %> / kWh</li>
 <% unless supplier.company_url.blank? %>
 <li>Homepage: <a href="http://<%=h supplier.company_url %>">http://<%=h supplier.company_url %></a></li>
 <% end %>

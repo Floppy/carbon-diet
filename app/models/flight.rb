@@ -34,8 +34,6 @@ class Flight < ActiveRecord::Base
     b2 = to_airport.longitude / 360 * (2 * Math::PI)
     oneway = Math.acos(Math.cos(a1)*Math.cos(b1)*Math.cos(a2)*Math.cos(b2) + Math.cos(a1)*Math.sin(b1)*Math.cos(a2)*Math.sin(b2) + Math.sin(a1)*Math.sin(a2)) * r
     oneway * (return_on.nil? ? 1 : 2)
-  rescue
-    0
   end
 
 end

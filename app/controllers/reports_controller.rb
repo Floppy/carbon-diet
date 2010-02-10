@@ -73,102 +73,111 @@ class ReportsController < BelongsToUser
         @pagename = "Daily trends"
       }
       format.amline {
-        # Generate graph
-        emissions = @user.all_emissions
-        case params[:period].to_i
-        when 0..90
-          avg_period = 3
-        when 91..365
-          avg_period = 7
-        else
-          avg_period = 14
-        end
-        # Create graph data
-        @data = []
-        total = GraphData.new
-        total[:values] = Array.new(params[:period].to_i, nil)
-        emissions.each do |dataset|
-          temp = dataset[:data].calculate_graph(params[:period].to_i, 1)
-          running_avg = temp.smooth(avg_period)
-          @data << { :name => dataset[:name],
-                     :data => running_avg,
-                     :dates => temp[:dates] }
-          offset = 0
-          if emissions.size > 1
-            running_avg.each do |datum|
-              unless datum.nil?
-                if total[:values][offset].nil?
-                  total[:values][offset] = 0
-                end
-                  total[:values][offset] += datum
-              end
-              offset += 1
-            end
-          end
-        end
-        # Load notes
-        notes = @user.all_notes
-        total[:notes] = Array.new(params[:period].to_i, nil)
-        day = params[:period].to_i.days.ago.to_date + 1
-        i = 0
-        while (day <= Date.today)
-          todays_note = notes.find { |x| x.date == day }
-          str = todays_note ? todays_note.note : nil
-          total[:notes][i] = { :date => day, :note => str }
-          i += 1
-          day += 1
-        end
-        # Add total line
-        if emissions.size > 1
-          @data << { :name => 'Total',
-                     :data => total[:values],
-                     :notes=> total[:notes]}
-        end
-        # View settings
-        colours = ["0000ff", "ff0000", "ff00ff", "00ff00", "00ffff", "ffff00",
-                    "00007f", "7f0000", "7f007f", "007f00", "007f7f", "7f7f00"]
-        colours[emissions.size] = "d0d0d0"
-        colour = 0
-        @data.each do |data|
-          data[:colour] = colours[colour]
-          colour += 1
-        end
-        # Render
+        amline(params[:period].to_i)
         render :layout => false
       }
       format.amline_settings {
-        period = params[:period].to_i
-        case period
-        when 0..90
-          avg_period = 3
-        when 91..365
-          avg_period = 7
-        else
-          avg_period = 14
-        end
-        total = GraphData.new
-        total[:values] = Array.new(period, nil)
-        # Add all emissions together that are not flights
-        @user.all_emissions.each do |dataset|
-          if dataset[:name] != 'Flights'
-            temp = dataset[:data].calculate_graph(period, 1)
-            running_avg = temp.smooth(avg_period)
-            offset = 0
-            running_avg.each do |datum|
-              unless datum.nil?
-                if total[:values][offset].nil?
-                  total[:values][offset] = 0
-                end
-                total[:values][offset] += datum
-              end
-              offset += 1
-            end
-          end
-        end
-        @max = total[:values].max { |a,b| nilcomp(a,b) }
+        amline_settings(params[:period].to_i)
         render :layout => false
       }
     end
+  end
+
+  protected
+
+  def amline(period)
+    # Generate graph
+    emissions = @user.all_emissions
+    case period
+    when 0..90
+      avg_period = 3
+    when 91..365
+      avg_period = 7
+    else
+      avg_period = 14
+    end
+    # Create graph data
+    @data = []
+    total = GraphData.new
+    total[:values] = Array.new(period, nil)
+    emissions.each do |dataset|
+      temp = dataset[:data].calculate_graph(period, 1)
+      running_avg = temp.smooth(avg_period)
+      @data << { :name => dataset[:name],
+                 :data => running_avg,
+                 :dates => temp[:dates] }
+      offset = 0
+      if emissions.size > 1
+        running_avg.each do |datum|
+          unless datum.nil?
+            if total[:values][offset].nil?
+              total[:values][offset] = 0
+            end
+              total[:values][offset] += datum
+          end
+          offset += 1
+        end
+      end
+    end
+    # Load notes
+    notes = @user.all_notes
+    total[:notes] = Array.new(period, nil)
+    day = period.days.ago.to_date + 1
+    i = 0
+    while (day <= Date.today)
+      todays_note = notes.find { |x| x.date == day }
+      str = todays_note ? todays_note.note : nil
+      total[:notes][i] = { :date => day, :note => str }
+      i += 1
+      day += 1
+    end
+    # Add total line
+    if emissions.size > 1
+      @data << { :name => 'Total',
+                 :data => total[:values],
+                 :notes=> total[:notes]}
+    end
+    # View settings
+    colours = ["0000ff", "ff0000", "ff00ff", "00ff00", "00ffff", "ffff00",
+                "00007f", "7f0000", "7f007f", "007f00", "007f7f", "7f7f00"]
+    colours[emissions.size] = "d0d0d0"
+    colour = 0
+    @data.each do |data|
+      data[:colour] = colours[colour]
+      colour += 1
+    end
+    # Render
+  end
+
+  def amline_settings(period)
+    case period
+    when 0..90
+      avg_period = 3
+    when 91..365
+      avg_period = 7
+    else
+      avg_period = 14
+    end
+    total = GraphData.new
+    total[:values] = Array.new(period, nil)
+    # Add all emissions together that are not flights
+    @user.all_emissions.each do |dataset|
+      if dataset[:name] != 'Flights'
+        temp = dataset[:data].calculate_graph(period, 1)
+        running_avg = temp.smooth(avg_period)
+        offset = 0
+        running_avg.each do |datum|
+          unless datum.nil?
+            if total[:values][offset].nil?
+              total[:values][offset] = 0
+            end
+            total[:values][offset] += datum
+          end
+          offset += 1
+        end
+      end
+    end
+    @max = total[:values].max { |a,b| nilcomp(a,b) }
   end
 
 end

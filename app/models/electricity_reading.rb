@@ -30,11 +30,11 @@ class ElectricityReading < ActiveRecord::Base
 
 public
 
-  def kWh_day
+  def kwh_day
     reading_day * electricity_account.electricity_unit.amount_in_kWh
   end
 
-  def kWh_night
+  def kwh_night
     reading_night * electricity_account.electricity_unit.amount_in_kWh
   end
 

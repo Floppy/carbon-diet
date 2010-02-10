@@ -52,6 +52,8 @@ module ProfileHelper
         text = "wrote a comment on " + (comment.commentable.public ? link_to(h(name), :controller => "/profile", :login => comment.commentable.login, :anchor => "comment#{comment.id}") : h(name)) + " profile"
       when "Group" :
         text = "wrote a comment in the " + link_to(h(comment.commentable.name), :controller => "/groups", :action => 'view', :id => comment.commentable.id, :anchor => "comment#{comment.id}") + " group"
+      else
+        raise "Unknown commentable type!"
       end
       feed << {:image => 'comment.png', 
                :when => comment.created_at.to_time,
