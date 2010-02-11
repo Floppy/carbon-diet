@@ -1,5 +1,6 @@
 class ElectricityAccountsController < BelongsToUser
   before_filter :get_account, :except => [:index, :new, :create]
+  before_filter :get_select_options, :except => [:index, :destroy]
 
   def index
     redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
@@ -10,8 +11,6 @@ class ElectricityAccountsController < BelongsToUser
     # Set default values
     @account.electricity_supplier = ElectricitySupplier.default(@current_user.country)
     @account.electricity_unit = @current_user.country.electricity_unit
-    # Get options for select
-    get_select_options
   end
 
   def create
@@ -19,13 +18,11 @@ class ElectricityAccountsController < BelongsToUser
     if @account.save
       redirect_to user_electricity_account_electricity_readings_path(@user, @account)
     else
-      get_select_options
       render :action => 'new'
     end
   end
 
   def edit
-    get_select_options
   end
 
   def update
@@ -33,7 +30,6 @@ class ElectricityAccountsController < BelongsToUser
     if @account.save
       redirect_to :controller => '/data_entry/electricity', :account => @account
     else
-      get_select_options
       render :action => 'edit'
     end
   end

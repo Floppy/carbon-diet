@@ -1,5 +1,6 @@
 class VehiclesController < BelongsToUser
   before_filter :get_vehicle, :except => [:index, :new, :create]
+  before_filter :get_select_options, :except => [:index, :destroy]
 
   def index
     redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
@@ -10,8 +11,6 @@ class VehiclesController < BelongsToUser
     # Set default values
     @vehicle.vehicle_distance_unit = @user.country.vehicle_distance_unit
     @vehicle.vehicle_fuel_unit = @user.country.vehicle_fuel_unit
-    # Get options for select
-    get_select_options
   end
 
   def create
@@ -19,13 +18,11 @@ class VehiclesController < BelongsToUser
     if @vehicle.save
       redirect_to user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle)
     else
-      get_select_options
       render :action => 'new'
     end
   end
 
   def edit
-    get_select_options
   end
 
   def update
@@ -33,7 +30,6 @@ class VehiclesController < BelongsToUser
     if @vehicle.save
       redirect_to user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle)
     else
-      get_select_options
       render :action => 'edit'
     end
   end

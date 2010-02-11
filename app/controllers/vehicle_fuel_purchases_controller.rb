@@ -2,17 +2,13 @@ class VehicleFuelPurchasesController < BelongsToUser
   # Filters
   before_filter :get_vehicle
   before_filter :get_purchase, :except => [:new, :create, :index]
+  before_filter :get_select_options, :except => [:index, :destroy]
 
   def index
     respond_to do |format|
       format.html {
         # Tip
-        case rand(2)
-        when 0
-          @tip = "Every time you buy fuel, add it here to track how much you've used."
-        else
-          @tip = "If you always fill up at the same point on your fuel gauge, the results will be more accurate."
-        end
+        @tip = tips.rand
         # Page name
         @pagename = "Readings for " + @vehicle.name
         # Data
@@ -26,7 +22,6 @@ class VehicleFuelPurchasesController < BelongsToUser
 
   def new
     @purchase = VehicleFuelPurchase.new
-    get_select_options
     respond_to do |format|
       format.html
       format.iphone { render_iphone }
@@ -39,7 +34,6 @@ class VehicleFuelPurchasesController < BelongsToUser
     if @purchase.save
       mobile? ? redirect_to_main_page : redirect_to(user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle))
     else
-      get_select_options
       respond_to do |format|
         format.html { render :action => 'new' }
         format.iphone { render_iphone :action => 'new' }
@@ -49,7 +43,6 @@ class VehicleFuelPurchasesController < BelongsToUser
   end
 
   def edit
-    get_select_options
   end
 
   def update
@@ -57,7 +50,6 @@ class VehicleFuelPurchasesController < BelongsToUser
     if @purchase.save
       mobile? ? redirect_to_main_page : redirect_to(user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle))
     else
-      get_select_options
       render :action => 'edit'
     end
   end
@@ -79,6 +71,13 @@ private
 
   def get_purchase
     @purchase = @vehicle.vehicle_fuel_purchases.find(params[:id])
+  end
+
+  def tips
+    [
+      "Every time you buy fuel, add it here to track how much you've used.",
+      "If you always fill up at the same point on your fuel gauge, the results will be more accurate."
+    ]
   end
 
 end

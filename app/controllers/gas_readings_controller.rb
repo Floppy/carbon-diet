@@ -7,12 +7,7 @@ class GasReadingsController < BelongsToUser
     respond_to do |format|
       format.html {
         # Tip
-        case rand(2)
-        when 0
-          @tip = "Enter your meter readings regularly to get the most accurate results."
-        else
-          @tip = "You can use meter readings from your old gas bills to fill in the last few years."
-        end
+        @tip = tips.rand
         # Page name
         @pagename = "Readings for " + @account.name
         # Data
@@ -71,6 +66,13 @@ private
 
   def get_gas_reading
     @reading = @account.gas_readings.find(params[:id])
+  end
+
+  def tips
+    [
+      "Enter your meter readings regularly to get the most accurate results.",
+      "You can use meter readings from your old gas bills to fill in the last few years."
+    ]
   end
 
 end
