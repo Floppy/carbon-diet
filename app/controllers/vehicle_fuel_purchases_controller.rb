@@ -37,7 +37,6 @@ class VehicleFuelPurchasesController < BelongsToUser
   def create
     @purchase = @vehicle.vehicle_fuel_purchases.create(params[:vehicle_fuel_purchase])
     if @purchase.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle))
     else
       get_select_options
@@ -56,7 +55,6 @@ class VehicleFuelPurchasesController < BelongsToUser
   def update
     @purchase.update_attributes(params[:vehicle_fuel_purchase])
     if @purchase.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle))
     else
       get_select_options
@@ -66,7 +64,6 @@ class VehicleFuelPurchasesController < BelongsToUser
 
   def destroy
     @purchase.destroy
-    @current_user.update_stored_statistics!
     redirect_to(user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle))
   end
 

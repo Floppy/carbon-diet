@@ -7,6 +7,9 @@ class VehicleFuelPurchase < ActiveRecord::Base
   # Attributes
   attr_accessible :purchased_on, :amount, :vehicle_fuel_type_id, :distance
 
+  # Delegation
+  delegate :user, :to => :vehicle
+
   def validate
     unless distance.nil?
       # Find distance immediately before this one, and the one immediately after

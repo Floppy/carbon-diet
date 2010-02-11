@@ -365,6 +365,7 @@ class User < ActiveRecord::Base
   end
 
   def update_stored_statistics!
+    raise "---------------- UPDATING #{login}"
     days = Date::today - date_of_first_data
     days = 365 if days > 365
     self.annual_emission_total = calculate_totals(days).last[:data][:perannum] / people_in_household

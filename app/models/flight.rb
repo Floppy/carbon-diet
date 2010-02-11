@@ -3,6 +3,7 @@ class Flight < ActiveRecord::Base
   belongs_to :from_airport, :class_name => 'Airport', :foreign_key => 'from_airport_id'
   belongs_to :to_airport, :class_name => 'Airport', :foreign_key => 'to_airport_id'
   belongs_to :flight_class
+  belongs_to :user
   attr_accessible :outbound_on, :return_on, :from_airport, :to_airport, :passengers, :flight_class_id
   validates_presence_of :user_id, :outbound_on, :from_airport_id, :to_airport_id, :flight_class_id
   validates_date :outbound_on

@@ -17,7 +17,6 @@ class VehiclesController < BelongsToUser
   def create
     @vehicle = @user.vehicles.create(params[:vehicle])
     if @vehicle.save
-      @user.update_stored_statistics!
       redirect_to user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle)
     else
       get_select_options
@@ -32,7 +31,6 @@ class VehiclesController < BelongsToUser
   def update
     @vehicle.update_attributes!(params[:vehicle])
     if @vehicle.save
-      @user.update_stored_statistics!
       redirect_to user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle)
     else
       get_select_options
@@ -42,7 +40,6 @@ class VehiclesController < BelongsToUser
 
   def destroy
     @vehicle.destroy
-    @user.update_stored_statistics!
     redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
   end
 

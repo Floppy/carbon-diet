@@ -36,7 +36,6 @@ class GasReadingsController < BelongsToUser
   def create
     @reading = @account.gas_readings.create(params[:gas_reading])
     if @reading.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_gas_account_gas_readings_path(@user, @account))
     else
       respond_to do |format|
@@ -53,7 +52,6 @@ class GasReadingsController < BelongsToUser
   def update
     @reading.update_attributes(params[:gas_reading])
     if @reading.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_gas_account_gas_readings_path(@user, @account))
     else
       render :action => 'edit'
@@ -62,7 +60,6 @@ class GasReadingsController < BelongsToUser
 
   def destroy
     @reading.destroy
-    @current_user.update_stored_statistics!
     redirect_to(user_gas_account_gas_readings_path(@user, @account))
   end
 

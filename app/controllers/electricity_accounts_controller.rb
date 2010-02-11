@@ -17,7 +17,6 @@ class ElectricityAccountsController < BelongsToUser
   def create
     @account = @user.electricity_accounts.create(params[:electricity_account])
     if @account.save
-      @user.update_stored_statistics!
       redirect_to user_electricity_account_electricity_readings_path(@user, @account)
     else
       get_select_options
@@ -32,7 +31,6 @@ class ElectricityAccountsController < BelongsToUser
   def update
     @account.update_attributes!(params[:electricity_account])
     if @account.save
-      @user.update_stored_statistics!
       redirect_to :controller => '/data_entry/electricity', :account => @account
     else
       get_select_options
@@ -42,7 +40,6 @@ class ElectricityAccountsController < BelongsToUser
 
   def destroy
     @account.destroy
-    @user.update_stored_statistics!
     redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
   end
 

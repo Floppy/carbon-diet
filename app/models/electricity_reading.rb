@@ -1,13 +1,20 @@
 class ElectricityReading < ActiveRecord::Base
+  
   # Relationships
   belongs_to :electricity_account
+
   # Validation
   validates_numericality_of :reading_day
   validates_numericality_of :reading_night
+
   # Attributes
   attr_accessible :taken_on, :reading_day, :reading_night, :automatic
 
+  # Delegation
+  delegate :user, :to => :electricity_account
+
   protected
+  
   def validate_on_create
     # Make sure we have not already got a reading for the date entered
     existing = electricity_account.electricity_readings.find(:first, 

@@ -253,8 +253,6 @@ public
       redirect_to :action => 'edit'
       return    
     end
-    # Update stats in case people in household has changed
-    @current_user.update_stored_statistics! 
     # Done
     redirect_to_main_page
   end

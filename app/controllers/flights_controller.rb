@@ -26,7 +26,6 @@ class FlightsController < BelongsToUser
     fix_missing_date_components
     @flight = @user.flights.create(params[:flight])
     if @flight.save
-      @user.update_stored_statistics!
       redirect_to :action => 'index'
     else
       @classes = FlightClass.find( :all )
@@ -42,7 +41,6 @@ class FlightsController < BelongsToUser
     fix_missing_date_components
     @flight.update_attributes(params[:flight])
     if @flight.save
-      @user.update_stored_statistics!
       redirect_to :action => 'index'
     else
       @classes = FlightClass.find( :all )
@@ -52,7 +50,6 @@ class FlightsController < BelongsToUser
 
   def destroy
     @flight.destroy
-    @user.update_stored_statistics!
     redirect_to :action => 'index'
   end
 

@@ -6,6 +6,9 @@ class GasReading < ActiveRecord::Base
   # Attributes
   attr_accessible :taken_on, :reading
 
+  # Delegation
+  delegate :user, :to => :gas_account
+
   protected
 
   def validate_on_create
