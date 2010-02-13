@@ -14,7 +14,7 @@
 <% end %>
 <%= render :partial => 'shared/linktab', :locals => {:image => 'tour.png', :link => link_to("Tour", :controller => "/tour")} %>
 <% unless @current_user.blank? or not @current_user.admin %>
-  <%= render :partial => 'shared/linktab', :locals => {:image => 'admin.png', :link => link_to("Admin", :controller => "/admin/index")} %>
+  <%= render :partial => 'shared/linktab', :locals => {:image => 'admin.png', :link => link_to("Admin", :controller => "/admin/dashboard")} %>
 <% end %>
 <% if @current_user %>
   <%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", "http://support.carbondiet.org/faqs?sso=#{CGI.escape(@current_user.multipass)}", :id => "help-link" )} %>

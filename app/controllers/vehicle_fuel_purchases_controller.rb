@@ -7,11 +7,7 @@ class VehicleFuelPurchasesController < BelongsToUser
   def index
     respond_to do |format|
       format.html {
-        # Tip
         @tip = tips.rand
-        # Page name
-        @pagename = "Readings for " + @vehicle.name
-        # Data
         @purchases = @vehicle.vehicle_fuel_purchases.paginate :page => params[:page], :order => "purchased_on DESC"
       }
       format.xml {

@@ -10,9 +10,6 @@ class ElectricityReadingsController < BelongsToUser
     respond_to do |format|
       format.html {
         @tip = tips.rand
-        # Page name
-        @pagename = "Readings for " + @account.name
-        # Data
         @electricity_readings = @account.electricity_readings.paginate :page => params[:page], :order => 'taken_on DESC'
       }
       format.xml {

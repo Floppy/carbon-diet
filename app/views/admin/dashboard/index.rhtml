@@ -1,3 +1,5 @@
+<% pagetitle("Administration", "admin.png") %>
+
 <%content_for "optionbar" do %>
 <div class="option">
     <%=image_tag 'delete.png' %><%=link_to("Remove old sessions", { :action => "clean_sessions" } ) %>

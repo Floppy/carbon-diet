@@ -1,6 +1,6 @@
 <% if @profile == @current_user %>
 
-<div class="sectiontitle"><%= link_to('Groups', :controller => 'groups') %></div>
+<div class="sectiontitle"><%= link_to('Groups', user_groups_path(@profile)) %></div>
 <div>
 <% unless @profile.group_invitations.empty? %>
   <%= image_tag 'warning.png' %>
@@ -12,7 +12,7 @@
   <ul>
   <% @profile.groups.each do |group| %>
     <li class="group">
-    <%= link_to h(group.name), :controller => "groups", :action => 'view', :id => group %>
+    <%= link_to h(group.name), group %>
     </li>
   <% end %>
   </ul>
@@ -27,7 +27,7 @@
 <ul>
 <% @profile.groups.each do |group| %>
 <li class="group">
-<%= link_to h(group.name), :controller => "groups", :action => 'view', :id => group %>
+<%= link_to h(group.name), group %>
 </li>
 <% end %>
 </ul>

@@ -3,7 +3,6 @@ class HelpController < ApplicationController
   before_filter :check_logged_in, :only => [:country_request]
   
   def index
-    @pagename = "Help"
     respond_to do |format|
       format.html
       format.iphone { render_iphone }

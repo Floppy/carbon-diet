@@ -1,7 +1,6 @@
 class Admin::DashboardController < Admin::AdminController
 
   def index
-    @pagename = "Administration"
     @num_users = User.count
     @num_elec_readings = ElectricityReading.count 
     @num_elec_accounts = ElectricityAccount.count 

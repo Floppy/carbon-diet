@@ -9,7 +9,6 @@ class FriendsController < AuthenticatedController
   def list
     respond_to do |format|
       format.html {
-        @pagename = 'My Friends'
         # Generate league table
         @leaguetable = []
         @current_user.friends.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }

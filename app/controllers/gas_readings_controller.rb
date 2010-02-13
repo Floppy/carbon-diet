@@ -6,11 +6,7 @@ class GasReadingsController < BelongsToUser
   def index
     respond_to do |format|
       format.html {
-        # Tip
         @tip = tips.rand
-        # Page name
-        @pagename = "Readings for " + @account.name
-        # Data
         @gas_readings = @account.gas_readings.paginate :page => params[:page], :order => "taken_on DESC"
       }
       format.xml {

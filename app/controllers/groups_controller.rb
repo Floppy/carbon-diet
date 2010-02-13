@@ -1,46 +1,30 @@
 class GroupsController < ApplicationController
-  before_filter :get_current_user, :only => ["view", "browse", "feed"]
-  before_filter :check_logged_in, :except => ["view", "browse", "feed"]
+  before_filter :get_current_user
+  before_filter :get_group, :except => [:index, :new, :create]
+  before_filter :check_group_owner, :only => [:edit, :update, :destroy]
 
   include GraphFunctions
-
-  verify :method => :post, :only => ['destroy']
-
-  def index
-    redirect_to :action => 'list'
-    return
-  end
- 
-  def list
-    @pagename = "My Groups"
-    @groups = @current_user.groups
-  end
   
-  def browse
-    @pagename = "Browse Groups"
+  def index
     @subsections, @groups =  Group.browse(params[:string])
   end
  
-  def view
+  def show
     respond_to do |format|
       format.html {
-        @group = Group.find_by_id(params[:id])
-        @pagename = @group.name
         @comments = @group.comments
         # Generate league table
         @leaguetable = []
         @group.users.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
         @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
         # Generate pie chart URL
-        @pie_url = url_for(:controller => "groups", :action => "view", :format => :xmlchart, :id => @group.id)
+        @pie_url = group_path(@group, :format => :xmlchart)
       }
       format.xmlchart {
         srand(69)
         # Store totals
         @totals = []
         @colours = []
-        # Get group
-        @group = Group.find_by_id(params[:id])
         total = 0.0
         @group.users.each { |u| total += u.annual_emissions if u.public }
         # For each account, calculate emissions
@@ -53,15 +37,26 @@ class GroupsController < ApplicationController
         # Send data
         render :file => 'shared/pie', :layout => false
       }
+      format.atom {
+        @comments = @group.comments.find(:all, :order => "created_at DESC", :limit => 10)
+      }
     end
-  rescue
-    flash[:notice] = "Unknown group!"
-    index
+  end
+
+  def new
+    @group = Group.new
+  end
+
+  def create
+    @group = Group.create(params[:group])
+    if @group.save
+      redirect_to @group
+    else
+      render :action => "new"
+    end
   end
 
   def edit
-    @group = params[:id] ? Group.find_by_id(params[:id]) : Group.new
-    index if (@group.owner && @group.owner != @current_user)
     if request.post?      
       if verify_recaptcha(@group)
         @group.update_attributes(params[:group])
@@ -79,32 +74,20 @@ class GroupsController < ApplicationController
     end
   end
 
-  def destroy
-    group = @current_user.owned_groups.find(params[:id])
-    group.destroy
-    index
-  rescue
-    flash[:notice] = "Unknown group!"
-    index
-  end
-
-  def join
-    group = Group.find_by_id(params[:id], :conditions => ["private IS FALSE"])
-    group.add_user(@current_user)
-    redirect_to :action => 'view', :id => params[:id]
-  rescue
-    flash[:notice] = "Unknown or private group!"    
-    redirect_to :action => 'list'
-  end
-
-  def leave
-    group = Group.find(params[:id]) rescue flash[:notice] = "Unknown group!"
-    unless group.nil?
-      group.remove_user(@current_user)
+  def update
+    @group.update_attributes(params[:group])
+    if @group.save
+      redirect_to @group
+    else
+      render :action => "edit"
     end
-    redirect_to :action => 'view', :id => params[:id]
   end
- 
+
+  def destroy
+    @group.destroy
+    redirect_to groups_path
+  end
+
   def invite
     @group = @current_user.groups.find(params[:id]) 
     @friends = Array.new(@current_user.friends)
@@ -149,13 +132,14 @@ class GroupsController < ApplicationController
     redirect_to :action => 'list'
   end
 
-  def feed
-    @group = Group.find_by_id(params[:id])
-    redirect_to :action => 'list' and return if @group.nil?
-    @comments = @group.comments.find(:all, :order => "created_at DESC", :limit => 10)
-    # Send data
-    headers["Content-Type"] = "application/atom+xml"
-    render :action => 'atom.rxml', :layout => false
+  protected
+
+  def get_group
+    @group = Group.find_by_name(params[:id])
+  end
+
+  def check_group_owner
+    raise AccessDenied unless @current_user.admin? || @current_user == @group.owner
   end
 
 end
