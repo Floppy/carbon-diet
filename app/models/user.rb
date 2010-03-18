@@ -364,11 +364,11 @@ class User < ActiveRecord::Base
     return total
   end
 
-  def update_stored_statistics!
+  def update_stored_statistics!(save = true)
     days = Date::today - date_of_first_data
     days = 365 if days > 365
     self.annual_emission_total = calculate_totals(days).last[:data][:perannum] / people_in_household
-    self.save! rescue nil
+    self.save(false) if save
   end
 
   def needs_reminding?
