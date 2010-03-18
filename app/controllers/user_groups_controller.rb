@@ -15,4 +15,10 @@ class UserGroupsController < BelongsToUser
     redirect_to group_path(@group)
   end
 
+  protected
+
+  def get_group
+    @group = Group.find_by_name(params[:id])
+  end
+
 end

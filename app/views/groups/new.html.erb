@@ -1,0 +1,10 @@
+<% pagetitle "New Group", "group.png" %>
+
+<% content_for('optionbar') do %>
+  <%= option "save", :id => 'new_group' %>
+  <%= option "cancel" %>
+<% end %>
+
+<div class="pagecontent">
+  <%= render :partial => "form" %>
+</div>

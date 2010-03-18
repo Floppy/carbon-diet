@@ -4,7 +4,7 @@
   <% if @current_user %>
     <div class="option">
       <%= image_tag 'new.png' %>
-      <%= link_to("Create new group", { :action => "edit" } ) %>
+      <%= link_to("Create new group", new_group_path ) %>
     </div>
   <% end %>
   <%= option "search" %>
@@ -42,7 +42,7 @@ Root
   <ul>
   <% @groups.each do |group| %>
     <li class="group">
-    <%= link_to h(group.name), :controller => 'groups', :action => 'view', :id => group.id %> (<%= group.users.count %> members)
+    <%= link_to h(group.name), group %> (<%= group.users.count %> members)
     </li>
   <% end %>
   </ul>

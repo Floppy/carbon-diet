@@ -4,7 +4,7 @@
   <% if @current_user %>
     <div class="option">
       <%= image_tag 'invite.png' %>
-      <%= link_to("Invite Contacts", { :action => "invite" } ) %>
+      <%= link_to("Invite Contacts", invite_user_friends_path(@user) ) %>
     </div>
   <% end %>
   <%= option "search" %>

@@ -1,12 +1,9 @@
-class FriendsController < AuthenticatedController
+class FriendsController < BelongsToUser
+  before_filter :get_friend, :except => [:index, :send_invitations, :invite]
 
   include GraphFunctions
 
   def index
-    redirect_to :action => 'list'
-  end
- 
-  def list
     respond_to do |format|
       format.html {
         # Generate league table
@@ -15,7 +12,7 @@ class FriendsController < AuthenticatedController
         @leaguetable << { :user => @current_user, :total => @current_user.annual_emissions > 0 ? @current_user.annual_emissions : 9e99 }
         @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
         # Generate pie chart URL
-        @pie_url = url_for(:controller => "friends", :action => "list", :format => :xmlchart)
+        @pie_url = user_friends_path(@user, :format => :xmlchart)
       }
       format.xmlchart {
         srand(42)
@@ -41,22 +38,22 @@ class FriendsController < AuthenticatedController
   end
  
   def add
-    @current_user.add_friend(User.find(params[:id])) rescue flash[:notice] = 'Unknown user'
+    @current_user.add_friend(@friend) rescue flash[:notice] = 'Unknown user'
     redirect_to :action => 'list'
   end
 
   def remove
-    @current_user.remove_friend(User.find(params[:id])) rescue flash[:notice] = 'Unknown user'
+    @current_user.remove_friend(@friend) rescue flash[:notice] = 'Unknown user'
     redirect_to :action => 'list'
   end
 
   def accept
-    @current_user.approve_friend_request(User.find(params[:id])) rescue flash[:notice] = 'Unknown user'
+    @current_user.approve_friend_request(@friend) rescue flash[:notice] = 'Unknown user'
     redirect_to :action => 'list'
   end
 
   def reject
-    @current_user.reject_friend_request(User.find(params[:id])) rescue flash[:notice] = 'Unknown user'
+    @current_user.reject_friend_request(@friend) rescue flash[:notice] = 'Unknown user'
     redirect_to :action => 'list'
   end
 
@@ -83,6 +80,12 @@ class FriendsController < AuthenticatedController
   def invite
     @group_list = [["",0]]
     @current_user.groups.each { |group| @group_list << [group.name, group.id] }
+  end
+
+  protected
+
+  def get_friend
+    @friend = User.find_by_login(params[:id])
   end
 
 end

@@ -2,6 +2,6 @@
 <%= render :partial => "/shared/user_image_link", :locals => { :user => user, :small => small } %>
 <%= render :partial => "/shared/user_link", :locals => { :user => user } %>
 <% unless small %>
-	<%= link_to image_tag_with_tooltip('delete.png'), {:controller => 'friends', :action => 'remove', :id => user.id}, :confirm => 'Are you sure you want to remove this person from your friends list?' %>
+	<%= link_to image_tag_with_tooltip('delete.png'), user_friend_path(@user, user), :confirm => 'Are you sure you want to remove this person from your friends list?', :method => :delete %>
 <% end %>
 </div>

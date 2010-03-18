@@ -1,6 +1,6 @@
 <% if @profile == @current_user %>
 
-<div class="sectiontitle"><%= link_to('Friends', :controller => 'friends') %></div>
+<div class="sectiontitle"><%= link_to "Friends", user_friends_path(@profile) %></div>
 <div>
 <% unless @profile.unapproved_befriendships.empty? %>
   <%= image_tag 'warning.png' %>

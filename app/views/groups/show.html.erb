@@ -19,18 +19,18 @@
     <% else %>
       <div class="option">
         <%= image_tag 'invite.png' %>
-        <%= link_to 'Invite friends', :action => 'invite', :id => @group %>
+        <%= link_to 'Invite friends', invite_group_path(@group) %>
       </div>
       <div class="option">
         <%= image_tag 'delete.png' %>
-        <%= link_to 'Leave group', :action => 'leave', :id => @group %>
+        <%= link_to 'Leave group', user_group_path(@current_user, @group), :method => :delete %>
       </div>
     <% end %>
   <% end %>
   <% unless @current_user.nil? %>
     <div class="option">
       <%= image_tag 'group.png' %>
-      <%= link_to 'Back to my groups', :action => 'list' %>
+      <%= link_to 'Back to my groups', user_groups_path(@current_user) %>
     </div>
   <% end %>
   <%= option "home" %>

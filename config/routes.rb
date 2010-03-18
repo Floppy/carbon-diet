@@ -43,8 +43,13 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :notes
     user.resource :report, :member => {:recent => :get, :ratio => :get}
     user.resources :groups, :controller => "user_groups"
+    user.resources :friends, :collection => {
+      :invite => :get
+    }
   end
-  map.resources :groups
+  map.resources :groups, :member => {:invite => :get} do |group|
+    group.resources :invitations
+  end
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
