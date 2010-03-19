@@ -64,8 +64,7 @@ class FlightsController < BelongsToUser
 private
 
   def get_flight
-    @flight = @user.flights.find_by_id(params[:id])
-    render_http_code 404 if @flight.nil?
+    @flight = @user.flights.find(params[:id])
   end
 
   def search_airports(search)

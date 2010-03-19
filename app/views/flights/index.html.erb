@@ -3,7 +3,7 @@
 <% content_for('optionbar') do %>
   <%= option "new_flight" %>
   <%= option "back_to_add_data" %>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('export.png') %>
     <%= link_to 'Export Data', user_flights_path(@user, :format => :xml) %>
   </div>

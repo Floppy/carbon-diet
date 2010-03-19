@@ -12,52 +12,52 @@
 <% end %>
 
 <div class="pagecontent">
-
-<ul><li class="subsection-open">
-<% unless params[:string].nil? %>
-<%= link_to 'Root', :string => nil %>
-<% else %>
-Root
-<% end %>
-
-<% unless params[:string].nil? %>
-<% (params[:string].length - 1).times { |x| %><ul><li class="subsection-open"><%= link_to params[:string].first(x+1), :string => params[:string].first(x+1) %><% } %>
-<% end %>
-
-<% unless params[:string].nil? %>
-<ul><li class="subsection-open"><%= h(params[:string]) %>
-<% end %>
-
-<% unless @subsections.empty? %>
   <ul>
-  <% @subsections.each do |subsection| %>
-    <li class="subsection">
-    <%= link_to h(subsection[0]), :string => subsection[0] %> (<%= subsection[1] %> groups) 
-    </li>
-  <% end %>
+      <li class="subsection-open">
+        <% unless params[:string].nil? %>
+          <%= link_to 'Root', :string => nil %>
+        <% else %>
+          Root
+        <% end %>
+
+        <% unless params[:string].nil? %>
+          <% (params[:string].length - 1).times { |x| %><ul><li class="subsection-open"><%= link_to params[:string].first(x+1), :string => params[:string].first(x+1) %><% } %>
+        <% end %>
+
+        <% unless params[:string].nil? %>
+          <ul>
+            <li class="subsection-open"><%= h(params[:string]) %>
+        <% end %>
+
+        <% unless @subsections.empty? %>
+          <ul>
+          <% @subsections.each do |subsection| %>
+            <li class="subsection">
+              <%= link_to h(subsection[0]), :string => subsection[0] %> (<%= subsection[1] %> groups)
+            </li>
+          <% end %>
+          </ul>
+        <% end %>
+
+        <% unless @groups.empty? %>
+          <ul>
+          <% @groups.each do |group| %>
+            <li class="group">
+            <%= link_to h(group.name), group_path(group) %> (<%= group.users.count %> members)
+            </li>
+          <% end %>
+          </ul>
+        <% end %>
+
+        <% unless params[:string].nil? %>
+          <% params[:string].length.times { %></li></ul><% } %>
+        <% end %>
+
+        <% unless params[:string].nil? %>
+            </li>
+          </ul>
+        <% end %>
+
+      </li>
   </ul>
-<% end %>
-
-<% unless @groups.empty? %>
-  <ul>
-  <% @groups.each do |group| %>
-    <li class="group">
-    <%= link_to h(group.name), group %> (<%= group.users.count %> members)
-    </li>
-  <% end %>
-  </ul>
-<% end %>
-
-<% unless params[:string].nil? %>
-<% params[:string].length.times { %></li></ul><% } %>
-<% end %>
-
-<% unless params[:string].nil? %>
-</li></ul>
-<% end %>
-
-</li></ul>
-
-</div>
-
 </div>

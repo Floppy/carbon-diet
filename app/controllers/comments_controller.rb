@@ -28,7 +28,7 @@ class CommentsController < AuthenticatedController
     when "User"
       redirect_to :controller => "profile", :login => User.find(params[:comment][:commentable_id]).login, :anchor => "comments"
     when "Group"
-      redirect_to :controller => "groups", :action => "view", :id => params[:comment][:commentable_id], :anchor => "comments"
+      redirect_to group_path(comment.commentable, :anchor => "comments")
     else
       redirect_to_main_page
     end    
@@ -46,7 +46,7 @@ class CommentsController < AuthenticatedController
     when "User"
       redirect_to :controller => "profile", :login => User.find(comment.commentable_id).login, :anchor => "comments"
     when "Group"
-      redirect_to :controller => "groups", :action => "view", :id => comment.commentable_id, :anchor => "comments"
+      redirect_to group_path(comment.commentable, :anchor => "comments")
     else
       redirect_to_main_page
     end    

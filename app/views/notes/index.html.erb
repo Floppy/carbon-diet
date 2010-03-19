@@ -21,7 +21,7 @@
       <td><%=h note.date.strftime("%d %b %y") %></td>
       <td><%=h note.note.first(50)%><%= "..." if note.note.size > 50 %></td>
       <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => note %></td>
-      <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => note}, :confirm => 'Delete this note?', :method => :post %></td>
+      <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => note}, :confirm => 'Delete this note?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>

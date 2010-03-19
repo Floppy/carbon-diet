@@ -4,72 +4,73 @@
 
 
 <div class="pagecontent">
-Enter some search terms in the box to search for users or groups.
-<br/>
-<span class="smalltext"><em>Hint: You can search for public users by their login name, display name, or the whole of their email address. You can search for groups using any part of their title or description.</em></span>
-<p>
-<% form_tag :action => 'index' do %>
-<%= image_tag 'search.png' %>
-<%= text_field :search, :string, :value => (params[:search].nil? ? "" : params[:search][:string]) %>
-<%= submit_tag 'Search' %>
-<% end %>
-</p>
+  Enter some search terms in the box to search for users or groups.
+  <br/>
+  <span class="smalltext"><em>Hint: You can search for public users by their login name, display name, or the whole of their email address. You can search for groups using any part of their title or description.</em></span>
+  <p>
+    <% form_tag :action => 'index' do %>
+    <%= image_tag 'search.png' %>
+    <%= text_field :search, :string, :value => (params[:search].nil? ? "" : params[:search][:string]) %>
+    <%= submit_tag 'Search' %>
+    <% end %>
+  </p>
 </div>
 
 <% unless @users.nil? or @groups.nil? %>
 
-<div class="pagecontent">
+  <div class="pagecontent">
 
-<div class="leftcolumn">
-<div class="sectiontitle">
-<%= image_tag 'user.png' %>
-<% unless @current_user.nil? %>
-<%= link_to 'Users', :controller => 'friends' %>
-<% else %>
-Users
-<% end %>
-</div>
-<% if @users.empty? %>
-  No users found!
-  <% unless @current_user.nil? %>
-  Why not <%= link_to 'invite your contacts', :controller => "friends", :action => "invite" %>?
-  <% end %>
-<% else %>
-<%=h @users.size %> users found:
-</p><p>
-<% end %>
-<% @users.each do |user| %>
-<%= image_tag(user.avatar(true)) %>
-<%= link_to h(user.login), :controller => 'profile', :action => 'index', :login => user.login %>
-<% unless user.display_name.nil? or user.display_name.blank? %> - <%=h user.display_name %><% end %>
-<%= image_tag user.flag %>
-<br/>
-<% end %>
-</p>
-</div>
+    <div class="leftcolumn">
+      <div class="sectiontitle">
+        <%= image_tag 'user.png' %>
+        <% unless @current_user.nil? %>
+          <%= link_to 'Users', :controller => 'friends' %>
+        <% else %>
+          Users
+        <% end %>
+      </div>
+      <p>
+        <% if @users.empty? %>
+          No users found!
+          <% unless @current_user.nil? %>
+            Why not <%= link_to 'invite your contacts', :controller => "friends", :action => "invite" %>?
+          <% end %>
+        <% else %>
+          <%=h @users.size %> users found:
+        <% end %>
+      </p><p>
+        <% @users.each do |user| %>
+          <%= image_tag(user.avatar(true)) %>
+          <%= link_to h(user.login), :controller => 'profile', :action => 'index', :login => user.login %>
+          <% unless user.display_name.nil? or user.display_name.blank? %> - <%=h user.display_name %><% end %>
+          <%= image_tag user.flag %>
+          <br/>
+        <% end %>
+      </p>
+    </div>
 
-<div class="rightcolumn">
-<div class="sectiontitle">
-<%= image_tag 'group.png' %>
-<% unless @current_user.nil? %>
-<%= link_to 'Groups', :controller => 'groups' %>
-<% else %>
-Groups
-<% end %>
-<span class="smalltext">(<%= link_to 'browse all', :controller => 'groups', :action => 'browse' %>)</a>
-</div>
-<% if @groups.empty? %>
-No groups found! 
-<% unless @current_user.nil? %>
-Why not <%= link_to 'create a new one', :controller => "groups", :action => "edit" %>?
-<% end %>
-<% else %>
-<%=h @groups.size %> groups found:
-<%= render :partial => "/shared/grouplist" %>
-<% end %>
-</div>
+    <div class="rightcolumn">
+      <div class="sectiontitle">
+        <%= image_tag 'group.png' %>
+        <% unless @current_user.nil? %>
+          <%= link_to 'Groups', :controller => 'groups' %>
+        <% else %>
+          Groups
+        <% end %>
+        <span class="smalltext">(<%= link_to 'browse all', :controller => 'groups', :action => 'index' %>)</span>
+      </div>
+      <% if @groups.empty? %>
+        No groups found!
+        <% unless @current_user.nil? %>
+          Why not <%= link_to 'create a new one', :controller => "groups", :action => "edit" %>?
+        <% end %>
+      <% else %>
+        <%=h @groups.size %> groups found:
+        <%= render :partial => "/shared/grouplist" %>
+      <% end %>
+    </div>
+    <div class="clear">&nbsp;</div>
+  </div>
 
 <% end %>
 
-<div class="clear">&nbsp;</div>
-</div>

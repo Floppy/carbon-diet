@@ -21,6 +21,7 @@ config.action_mailer.delivery_method = :test
 config.gem 'rspec', :lib => false
 config.gem 'rspec-rails', :lib => false
 config.gem 'factory_girl'
+config.gem 'tarantula', :lib => 'relevance/tarantula'
 
 # Raise deprecation warnings as errors
 class DeprecatedFunctionality < SyntaxError; end

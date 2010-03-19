@@ -1,23 +1,22 @@
 <% if @profile == @current_user and @current_user.confirmation_code %>
-<div class="sectiontitle">Unconfirmed Email Address</div>
-<p>
-<%= image_tag 'warning.png' %>
-You haven't confirmed the email address <%= mail_to @current_user.email, nil, :encode => 'javascript' %> yet - this means we can't send you reminders, friend requests, or anything else! Please follow the link in the email we sent you to confirm your address. If you didn't get the email, <%= link_to 'click here', :controller => 'user', :action => 'resend_confirmation' %> to resend the confirmation message. If the email address above is wrong, change it in your <%= link_to 'settings', :controller => "user", :action => "edit" %>.
-</p>
+  <div class="sectiontitle">Unconfirmed Email Address</div>
+  <p>
+    <%= image_tag 'warning.png' %>
+    You haven't confirmed the email address <%= mail_to @current_user.email, nil, :encode => 'javascript' %> yet - this means we can't send you reminders, friend requests, or anything else! Please follow the link in the email we sent you to confirm your address. If you didn't get the email, <%= link_to 'click here', :controller => 'user', :action => 'resend_confirmation' %> to resend the confirmation message. If the email address above is wrong, change it in your <%= link_to 'settings', :controller => "user", :action => "edit" %>.
+  </p>
 <% end %>
 <% if @profile == @current_user and @current_user.public == false %>
-<div class="sectiontitle">Private Profile</div>
-<p>
-<%= image_tag 'warning.png' %>
-Your profile is not publicly visible! This means that your friends won't be able to find you in searches, or compare their carbon footprint to yours! To make your profile public, edit your <%= link_to 'settings', :controller => "user", :action => "edit" %>.
-</p>
+  <div class="sectiontitle">Private Profile</div>
+  <p>
+    <%= image_tag 'warning.png' %>
+    Your profile is not publicly visible! This means that your friends won't be able to find you in searches, or compare their carbon footprint to yours! To make your profile public, edit your <%= link_to 'settings', :controller => "user", :action => "edit" %>.
+  </p>
 <% end %>
-
 <% if @profile == @current_user and @current_user.needs_more_data %>
-<div class="sectiontitle">Time for more data!</div>
-<p>
-<%= image_tag 'warning.png' %>
-One or more of your accounts hasn't had any data entered in over a week. The Carbon Diet works best if you enter data regularly, so why not go ahead and <%= link_to 'enter some now', :controller => "data_entry/index" %>?
-</p>
+  <div class="sectiontitle">Time for more data!</div>
+  <p>
+    <%= image_tag 'warning.png' %>
+    One or more of your accounts hasn't had any data entered in over a week. The Carbon Diet works best if you enter data regularly, so why not go ahead and <%= link_to 'enter some now', user_accounts_path(@current_user) %>?
+  </p>
 <% end %>
 

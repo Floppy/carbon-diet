@@ -10,7 +10,7 @@
     <%= image_tag_with_tooltip 'edit.png' %>
     <%= link_to 'Edit account details', edit_user_vehicle_path(@user, @vehicle) %>
   </div>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('export.png') %>
     <%= link_to 'Export Data', user_vehicle_vehicle_fuel_purchases_path(@user, @vehicle, :format => :xml) %>
   </div>
