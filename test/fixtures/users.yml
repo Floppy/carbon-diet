@@ -60,7 +60,7 @@ users_004:
   public: "0"
   reminded_at: 
   password_salt: Q1OfiKti
-  admin: "1"
+  admin: "0"
   country_id: "1"
   id: "4"
   password_change_code: 
@@ -653,13 +653,13 @@ users_001:
   tester: "1"
   public: "1"
   reminded_at: 
-  password_salt: Q1OfiKti
-  admin: "1"
+  password_salt: ON7kzeqr
+  admin: "0"
   country_id: "1"
   id: "1"
   password_change_code: 
   region_id: 
-  password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
+  password_hash: 3831a5858b294ef1faed5efa6901e0e4c3a1e6ba9b239e2c3d5246bf6d94f386
   reminder_frequency: "1"
   display_name: James Smith
   login: james
