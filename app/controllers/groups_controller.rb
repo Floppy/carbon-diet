@@ -136,6 +136,7 @@ class GroupsController < ApplicationController
 
   def get_group
     @group = Group.find_by_name(params[:id])
+    raise ActiveRecord::RecordNotFound unless @group
   end
 
   def check_group_owner

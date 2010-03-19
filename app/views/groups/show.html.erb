@@ -37,7 +37,7 @@
 <% end %>
 
 <% content_for('feed') do %>
-  <%= auto_discovery_link_tag(:atom, {:action => 'feed', :id => @group, :format => 'xml'} ) %>
+  <%= auto_discovery_link_tag(:atom, group_url(@group, :format => :atom) ) %>
 <% end %>
 
 <div class="pagecontent">
@@ -70,7 +70,7 @@
 <%= render :partial => "/shared/comments", :locals => { :source => @group, 
                                                         :post => (@current_user and @current_user.groups.include?(@group)),
                                                         :feed_controller => 'groups',
-                                                        :feed_action => 'feed',
+                                                        :feed_action => 'show',
                                                         :feed_id => @group} %>
 
 </div>

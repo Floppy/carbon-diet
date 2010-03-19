@@ -36,7 +36,7 @@ module ProfileHelper
     user.group_memberships.find(:all, :limit => limit, :order => "created_at DESC").each do |group|
       feed << {:image => 'group.png', 
                :when => group.created_at, 
-               :text => "joined the group " + link_to(h(group.group.name), :controller => "/groups", :action => 'view', :id => group.group.id)}
+               :text => "joined the group " + link_to(h(group.group.name), group_path(group.group))}
     end
     # Get note data
     user.all_notes(limit).each do |note|
@@ -51,7 +51,7 @@ module ProfileHelper
         name = comment.commentable == user ? "his" : comment.commentable.name + "'s"
         text = "wrote a comment on " + (comment.commentable.public ? link_to(h(name), :controller => "/profile", :login => comment.commentable.login, :anchor => "comment#{comment.id}") : h(name)) + " profile"
       when "Group" :
-        text = "wrote a comment in the " + link_to(h(comment.commentable.name), :controller => "/groups", :action => 'view', :id => comment.commentable.id, :anchor => "comment#{comment.id}") + " group"
+        text = "wrote a comment in the " + link_to(h(comment.commentable.name), group_path(comment.commentable, :anchor => "comment#{comment.id}")) + " group"
       else
         raise "Unknown commentable type!"
       end
