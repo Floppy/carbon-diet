@@ -3,7 +3,7 @@
 <% content_for('optionbar') do %>
   <%= option "save", :id => "edit_gas_account_#{@account.id}" %>
   <%= option "cancel" %>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('delete.png') %>
     <%= link_to 'Delete Account', user_gas_account_path(@user, @account), :confirm => 'Delete this account and all associated data, forever?', :method => :delete %>
   </div>

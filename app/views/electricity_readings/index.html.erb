@@ -7,7 +7,7 @@
   </div>
   <%= option "back_to_add_data" %>
   <%= option "edit_elec_account", { :user => @user, :account => @account } %>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('export.png') %>
     <%= link_to 'Export Data', user_electricity_account_electricity_readings_path(@user, @account, :format => :xml) %>
   </div>

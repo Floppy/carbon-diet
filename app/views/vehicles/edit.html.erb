@@ -3,7 +3,7 @@
 <% content_for('optionbar') do %>
   <%= option "save", :id => "edit_vehicle_#{@vehicle.id}" %>
   <%= option "cancel" %>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('delete.png') %>
     <%= link_to 'Delete Vehicle', user_vehicle_path(@user, @vehicle), :confirm => 'Delete this vehicle and all associated data, forever?', :method => :delete %>
   </div>
