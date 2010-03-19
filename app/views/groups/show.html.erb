@@ -30,7 +30,7 @@
   <% unless @current_user.nil? %>
     <div class="option">
       <%= image_tag 'group.png' %>
-      <%= link_to 'Back to my groups', :action => 'list' %>
+      <%= link_to 'Back to my groups', user_groups_path(@current_user) %>
     </div>
   <% end %>
   <%= option "home" %>
