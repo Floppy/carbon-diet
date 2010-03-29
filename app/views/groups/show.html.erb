@@ -13,7 +13,7 @@
       <% unless @group.private %>
         <div class="option">
           <%= image_tag 'new.png' %>
-          <%= link_to 'Join group', :action => 'join', :id => @group %>
+          <%= link_to 'Join group', user_group_path(@current_user, @group), :method => :put %>
         </div>
       <% end %>
     <% else %>

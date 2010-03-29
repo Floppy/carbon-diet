@@ -10,7 +10,7 @@ class UserGroupsController < BelongsToUser
     redirect_to user_groups_path(@user)
   end
 
-  def create
+  def update
     @group.add_user @user
     redirect_to group_path(@group)
   end
