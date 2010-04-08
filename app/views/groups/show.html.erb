@@ -19,7 +19,7 @@
     <% else %>
       <div class="option">
         <%= image_tag 'invite.png' %>
-        <%= link_to 'Invite friends', invite_group_path(@group) %>
+        <%= link_to 'Invite friends', new_group_invitation_path(@group) %>
       </div>
       <div class="option">
         <%= image_tag 'delete.png' %>

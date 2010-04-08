@@ -19,7 +19,7 @@
   To invite your friends to this group, tick the ones you want to invite and press "Invite".
   </p>
   <div>
-  <% form_tag({:action => 'send_invitations', :id => @group}, {:id => "invite_form"}) do %>
+  <% form_tag group_invitations_path(@group), :method => :post, :id => "invite_form" do %>
     <% @friends.each do |friend| %>
       <% unless friend.login.empty? %>
         <%= check_box 'invite', friend.login %>

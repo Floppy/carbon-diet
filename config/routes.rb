@@ -51,8 +51,8 @@ ActionController::Routing::Routes.draw do |map|
       :reject => :post
     }
   end
-  map.resources :groups, :member => {:invite => :get} do |group|
-    group.resources :invitations
+  map.resources :groups do |group|
+    group.resources :invitations, :controller => "group_invitations"
   end
 
   # Install the default route as the lowest priority.

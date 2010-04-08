@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_filter :get_current_user
   before_filter :get_group, :except => [:index, :new, :create]
   before_filter :check_group_owner, :only => [:edit, :update, :destroy]
-  before_filter :check_group_member, :only => [:invite]
+  before_filter :check_group_member, :only => [:invite, :send_invitations]
 
   include GraphFunctions
   
@@ -87,43 +87,6 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     redirect_to groups_path
-  end
-
-  def invite
-    @friends = Array.new(@current_user.friends)
-    @group.users.each do |user|
-      @friends.delete(user) 
-    end
-  end
-
-  def send_invitations
-    group = @current_user.groups.find(params[:id]) 
-    @current_user.friends.each do |friend|
-      if params[:invite][friend.login] == "1"
-        # Create invitation - automatically notifies the invited person
-        GroupInvitation.create(:user => friend, :inviter => @current_user, :group => group)
-      end
-    end
-    flash[:notice] = "Invitations sent!"
-    redirect_to :action => 'view', :id => params[:id]
-  end
-
-  def invite_accept
-    invitation = @current_user.group_invitations.find(params[:id])
-    invitation.accept
-    redirect_to :action => 'list'
-  rescue
-    flash[:notice] = "Unknown invitation ID!"
-    redirect_to :action => 'list'
-  end
-  
-  def invite_reject
-    invitation = @current_user.group_invitations.find(params[:id])
-    invitation.reject
-    redirect_to :action => 'list'
-  rescue
-    flash[:notice] = "Unknown invitation ID!"
-    redirect_to :action => 'list'
   end
 
   protected

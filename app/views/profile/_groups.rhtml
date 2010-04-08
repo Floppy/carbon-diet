@@ -4,7 +4,7 @@
 <div>
 <% unless @profile.group_invitations.empty? %>
   <%= image_tag 'warning.png' %>
-  <%= link_to 'You have been invited to ' + pluralize(@profile.group_invitations.size, "group") + '.', :controller => 'groups' %><br/>
+  <%= link_to 'You have been invited to ' + pluralize(@profile.group_invitations.size, "group") + '.', user_groups_path(@profile) %><br/>
 <% end %>
 <% if @profile.groups.empty? %>
   You are not a member of any groups! Why not <%= link_to 'find one to join', :controller => "search" %>?
