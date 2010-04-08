@@ -44,7 +44,8 @@ ActionController::Routing::Routes.draw do |map|
     user.resource :report, :member => {:recent => :get, :ratio => :get}
     user.resources :groups, :controller => "user_groups"
     user.resources :friends, :collection => {
-      :invite => :get
+      :invite => :get,
+      :send_invitations => :post
     }, :member => {
       :accept => :post,
       :reject => :post
