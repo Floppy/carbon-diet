@@ -8,8 +8,8 @@ class FriendsController < BelongsToUser
       format.html {
         # Generate league table
         @leaguetable = []
-        @current_user.friends.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
-        @leaguetable << { :user => @current_user, :total => @current_user.annual_emissions > 0 ? @current_user.annual_emissions : 9e99 }
+        @user.friends.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
+        @leaguetable << { :user => @user, :total => @user.annual_emissions > 0 ? @user.annual_emissions : 9e99 }
         @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
         # Generate pie chart URL
         @pie_url = user_friends_path(@user, :format => :xmlchart)
@@ -20,8 +20,8 @@ class FriendsController < BelongsToUser
         @totals = []
         @colours = []
         # Get friends
-        friends = Array.new(@current_user.friends)
-        friends << @current_user
+        friends = Array.new(@user.friends)
+        friends << @user
         total = 0.0
         friends.each { |u| total += u.annual_emissions if u.public}
         # For each account, calculate emissions
@@ -37,24 +37,24 @@ class FriendsController < BelongsToUser
     end
   end
  
-  def add
-    @current_user.add_friend(@friend) rescue flash[:notice] = 'Unknown user'
-    redirect_to :action => 'list'
+  def update
+    @user.add_friend(@friend)
+    redirect_to user_friends_path(@user)
   end
 
-  def remove
-    @current_user.remove_friend(@friend) rescue flash[:notice] = 'Unknown user'
-    redirect_to :action => 'list'
+  def destroy
+    @user.remove_friend(@friend)
+    redirect_to user_friends_path(@user)
   end
 
   def accept
-    @current_user.approve_friend_request(@friend) rescue flash[:notice] = 'Unknown user'
-    redirect_to :action => 'list'
+    @user.approve_friend_request(@friend) rescue flash[:notice] = 'Unknown user'
+    redirect_to user_friends_path(@user)
   end
 
   def reject
     @current_user.reject_friend_request(@friend) rescue flash[:notice] = 'Unknown user'
-    redirect_to :action => 'list'
+    redirect_to user_friends_path(@user)
   end
 
   def send_invitations
@@ -74,12 +74,12 @@ class FriendsController < BelongsToUser
     if sent > 0
       flash[:notice] = "Invitations sent!"
     end
-    redirect_to :action => 'list'
+    redirect_to user_friends_path(@user)
   end
 
   def invite
     @group_list = [["",0]]
-    @current_user.groups.each { |group| @group_list << [group.name, group.id] }
+    @user.groups.each { |group| @group_list << [group.name, group.id] }
   end
 
   protected
