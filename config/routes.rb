@@ -31,20 +31,29 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resource :accounts
     user.resources :flights
-    user.resources :vehicles do |vehicle|
+    user.resources :vehicles, :except => [:index, :show] do |vehicle|
       vehicle.resources :vehicle_fuel_purchases, :as => "fuel_purchases"
     end
-    user.resources :electricity_accounts do |elec|
+    user.resources :electricity_accounts, :except => [:index, :show] do |elec|
       elec.resources :electricity_readings, :as => "readings"
     end
-    user.resources :gas_accounts do |gas|
+    user.resources :gas_accounts, :except => [:index, :show] do |gas|
       gas.resources :gas_readings, :as => "readings"
     end
     user.resources :notes
     user.resource :report, :member => {:recent => :get, :ratio => :get}
     user.resources :groups, :controller => "user_groups"
+    user.resources :friends, :collection => {
+      :invite => :get,
+      :send_invitations => :post
+    }, :member => {
+      :accept => :post,
+      :reject => :post
+    }
   end
-  map.resources :groups
+  map.resources :groups do |group|
+    group.resources :invitations, :controller => "group_invitations"
+  end
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'

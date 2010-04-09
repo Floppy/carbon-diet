@@ -13,17 +13,17 @@
       <% unless @group.private %>
         <div class="option">
           <%= image_tag 'new.png' %>
-          <%= link_to 'Join group', :action => 'join', :id => @group %>
+          <%= link_to 'Join group', user_group_path(@current_user, @group), :method => :put %>
         </div>
       <% end %>
     <% else %>
       <div class="option">
         <%= image_tag 'invite.png' %>
-        <%= link_to 'Invite friends', :action => 'invite', :id => @group %>
+        <%= link_to 'Invite friends', new_group_invitation_path(@group) %>
       </div>
       <div class="option">
         <%= image_tag 'delete.png' %>
-        <%= link_to 'Leave group', :action => 'leave', :id => @group %>
+        <%= link_to 'Leave group', user_group_path(@current_user, @group), :method => :delete %>
       </div>
     <% end %>
   <% end %>

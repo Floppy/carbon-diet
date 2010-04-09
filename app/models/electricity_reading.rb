@@ -6,6 +6,7 @@ class ElectricityReading < ActiveRecord::Base
   # Validation
   validates_numericality_of :reading_day
   validates_numericality_of :reading_night
+  validates_date :taken_on
 
   # Attributes
   attr_accessible :taken_on, :reading_day, :reading_night, :automatic

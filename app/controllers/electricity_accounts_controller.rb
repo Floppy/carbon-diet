@@ -1,10 +1,6 @@
 class ElectricityAccountsController < BelongsToUser
-  before_filter :get_account, :except => [:index, :new, :create]
-  before_filter :get_select_options, :except => [:index, :destroy]
-
-  def index
-    redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
-  end
+  before_filter :get_account, :except => [:new, :create]
+  before_filter :get_select_options, :except => [:destroy]
 
   def new
     @account = ElectricityAccount.new
@@ -28,7 +24,7 @@ class ElectricityAccountsController < BelongsToUser
   def update
     @account.update_attributes!(params[:electricity_account])
     if @account.save
-      redirect_to :controller => '/data_entry/electricity', :account => @account
+      redirect_to user_electricity_account_electricity_readings_path(@user, @account)
     else
       render :action => 'edit'
     end
@@ -36,7 +32,7 @@ class ElectricityAccountsController < BelongsToUser
 
   def destroy
     @account.destroy
-    redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
+    redirect_to user_accounts_path(@user)
   end
 
 protected

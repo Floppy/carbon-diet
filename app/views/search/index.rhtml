@@ -23,17 +23,13 @@
     <div class="leftcolumn">
       <div class="sectiontitle">
         <%= image_tag 'user.png' %>
-        <% unless @current_user.nil? %>
-          <%= link_to 'Users', :controller => 'friends' %>
-        <% else %>
-          Users
-        <% end %>
+        Users
       </div>
       <p>
         <% if @users.empty? %>
           No users found!
           <% unless @current_user.nil? %>
-            Why not <%= link_to 'invite your contacts', :controller => "friends", :action => "invite" %>?
+            Why not <%= link_to 'invite your contacts', invite_user_friends_path(@current_user) %>?
           <% end %>
         <% else %>
           <%=h @users.size %> users found:
@@ -52,17 +48,13 @@
     <div class="rightcolumn">
       <div class="sectiontitle">
         <%= image_tag 'group.png' %>
-        <% unless @current_user.nil? %>
-          <%= link_to 'Groups', :controller => 'groups' %>
-        <% else %>
-          Groups
-        <% end %>
-        <span class="smalltext">(<%= link_to 'browse all', :controller => 'groups', :action => 'index' %>)</span>
+        Groups
+        <span class="smalltext">(<%= link_to 'browse all', groups_path %>)</span>
       </div>
       <% if @groups.empty? %>
         No groups found!
         <% unless @current_user.nil? %>
-          Why not <%= link_to 'create a new one', :controller => "groups", :action => "edit" %>?
+          Why not <%= link_to 'create a new one', new_group_path %>?
         <% end %>
       <% else %>
         <%=h @groups.size %> groups found:

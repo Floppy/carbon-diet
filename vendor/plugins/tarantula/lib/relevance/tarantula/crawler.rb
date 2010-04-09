@@ -12,7 +12,7 @@ class Relevance::Tarantula::Crawler
   attr_accessor :proxy, :handlers, :skip_uri_patterns, :log_grabber,
                 :reporters, :crawl_queue, :links_queued,
                 :form_signatures_queued, :max_url_length, :response_code_handler,
-                :times_to_crawl, :fuzzers, :test_name, :crawl_timeout
+                :times_to_crawl, :fuzzers, :test_name, :crawl_timeout, :read_only, :non_destructive, :max_paths
   attr_reader   :transform_url_patterns, :referrers, :failures, :successes, :crawl_start_times, :crawl_end_times
 
   def initialize
@@ -83,7 +83,7 @@ class Relevance::Tarantula::Crawler
   end
 
   def finished?
-    @crawl_queue.empty?
+    @crawl_queue.empty? || (!max_paths.nil? && (max_paths.to_i <= links_completed_count))
   end
 
   def do_crawl(number)
@@ -95,7 +95,7 @@ class Relevance::Tarantula::Crawler
   end
 
   def crawl_the_queue(number = 0)
-    while (request = @crawl_queue.pop)
+    while (!finished? && request = @crawl_queue.pop)
       request.crawl
       blip(number)
     end
@@ -166,12 +166,25 @@ class Relevance::Tarantula::Crawler
     end
   end
 
+  # NOTE: It appears Link#method is a Symbol while FS#method is a string
+  def should_skip_method?(method, url)
+    if read_only && method.to_s != "get"
+      log "Skipping non-read-only url #{url}"
+      return true
+    elsif non_destructive && method.to_s == "delete"
+      log "Skipping destructive url #{url}"
+      return true
+    else
+      return false
+    end
+  end
+
   def should_skip_link?(link)
-    should_skip_url?(link.href) || @links_queued.member?(link)
+    should_skip_url?(link.href) || @links_queued.member?(link) || should_skip_method?(link.method, link.href)
   end
 
   def should_skip_form_submission?(fs)
-    should_skip_url?(fs.action) || @form_signatures_queued.member?(fs.signature)
+    should_skip_url?(fs.action) || @form_signatures_queued.member?(fs.signature) || should_skip_method?(fs.method, fs.action)
   end
 
   def transform_url(url)
@@ -223,7 +236,7 @@ class Relevance::Tarantula::Crawler
   end
 
   def report_results
-    puts "Crawled #{total_links_count} links and forms."
+    puts "Crawled #{links_completed_count} links and forms."
     generate_reports
   end
 

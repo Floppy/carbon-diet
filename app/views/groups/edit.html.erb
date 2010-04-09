@@ -1,41 +1,15 @@
+<% pagetitle("Editing #{@group.name}", "group.png") %>
+
 <% content_for('optionbar') do %>
-  <%= option "save", :id => "group_form" %>
+  <%= option "save", :id => "edit_group_#{@group.id}" %>
+  <%= option "cancel" %>
   <div class="option">
     <%= image_tag 'delete.png' %>
-    <%= link_to 'Delete Group', {:action => 'destroy', :id => @group}, :confirm => "Are you sure you want to delete this group? This will remove it for everyone!", :method => :post %>
+    <%= link_to 'Delete Group', group_path(@group), :confirm => "Are you sure you want to delete this group? This will remove it for everyone!", :method => :delete %>
   </div>
-  <%= option "cancel" %>
+
 <% end %>
 
 <div class="pagecontent">
-  <%= error_messages_for 'group' %>
-
-  <% form_tag({:action => 'edit', :id => @group}, {:id => "group_form"}) do %>
-    <!--[form:group]-->
-    <table class="form">
-      <tr>
-        <td><label for="group_name">Name</label></td>
-        <td><%= text_field 'group', 'name'  %></td>
-      </tr>
-      <tr>
-        <td><label for="group_description">Description</label></td>
-        <td><%= text_area 'group', 'description', :rows => 5  %></td>
-      </tr>
-      <tr>
-        <td><label for="group_private">Invitation Only</label></td>
-        <td>
-          <%= check_box 'group', 'private'  %>
-          <%= help("If you check this box, users will only be able to join if invited.") %>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          Please confirm that you are a real person by retyping the two words in the box below. This helps us stop spam.<br/>
-          <%= recaptcha_tags(:ssl => true) %>
-        </td>
-      </tr>
-    </table>
-    <!--[eoform:group]-->
-  <% end %>
+  <%= render :partial => "form" %>
 </div>

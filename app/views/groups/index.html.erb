@@ -4,7 +4,7 @@
   <% if @current_user %>
     <div class="option">
       <%= image_tag 'new.png' %>
-      <%= link_to("Create new group", { :action => "edit" } ) %>
+      <%= link_to("Create new group", new_group_path ) %>
     </div>
   <% end %>
   <%= option "search" %>
@@ -51,11 +51,6 @@
 
         <% unless params[:string].nil? %>
           <% params[:string].length.times { %></li></ul><% } %>
-        <% end %>
-
-        <% unless params[:string].nil? %>
-            </li>
-          </ul>
         <% end %>
 
       </li>

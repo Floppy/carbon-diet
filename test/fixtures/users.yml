@@ -32,7 +32,7 @@ users_026:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test026
-  login: ""
+  login: "test026"
   created_at: 2007-06-20 00:00:00
   email: test026@example.com
 users_015: 
@@ -50,7 +50,7 @@ users_015:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test015
-  login: ""
+  login: "test015"
   created_at: 2007-06-04 00:00:00
   email: test015@example.com
 users_004: 
@@ -86,7 +86,7 @@ users_038:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test038
-  login: ""
+  login: "test038"
   created_at: 2007-06-28 00:00:00
   email: test038@example.com
 users_027: 
@@ -104,7 +104,7 @@ users_027:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test027
-  login: ""
+  login: "test027"
   created_at: 2007-06-20 00:00:00
   email: test027@example.com
 users_016: 
@@ -122,7 +122,7 @@ users_016:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: ""
-  login: ""
+  login: "test016"
   created_at: 2007-06-05 00:00:00
   email: test016@example.com
 users_005: 
@@ -140,7 +140,7 @@ users_005:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test005
-  login: ""
+  login: "test005"
   created_at: 2007-05-04 00:00:00
   email: test005@example.com
 users_039: 
@@ -158,7 +158,7 @@ users_039:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "1"
   display_name: Test039
-  login: ""
+  login: "test039"
   created_at: 2007-06-30 00:00:00
   email: test039@example.com
 users_028: 
@@ -176,7 +176,7 @@ users_028:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test028
-  login: ""
+  login: "test028"
   created_at: 2007-06-21 00:00:00
   email: test028@example.com
 users_017: 
@@ -194,7 +194,7 @@ users_017:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: ""
-  login: ""
+  login: "test017"
   created_at: 2007-06-07 00:00:00
   email: test017@example.com
 users_006: 
@@ -212,7 +212,7 @@ users_006:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test006
-  login: ""
+  login: "test006"
   created_at: 2007-05-04 00:00:00
   email: test006@example.com
 users_040: 
@@ -230,7 +230,7 @@ users_040:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "4"
   display_name: Test040
-  login: ""
+  login: "test040"
   created_at: 2007-07-01 00:00:00
   email: test040@example.com
 users_041: 
@@ -248,7 +248,7 @@ users_041:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "1"
   display_name: Test041
-  login: ""
+  login: "test041"
   created_at: 2007-07-01 00:00:00
   email: test041@example.com
 users_030: 
@@ -266,7 +266,7 @@ users_030:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test030
-  login: ""
+  login: "test030"
   created_at: 2007-06-21 00:00:00
   email: test030@example.com
 users_029: 
@@ -284,7 +284,7 @@ users_029:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test029
-  login: ""
+  login: "test029"
   created_at: 2007-06-21 00:00:00
   email: test029@example.com
 users_018: 
@@ -302,7 +302,7 @@ users_018:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test018
-  login: ""
+  login: "test018"
   created_at: 2007-06-07 00:00:00
   email: test018@example.com
 users_007: 
@@ -320,7 +320,7 @@ users_007:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test007
-  login: ""
+  login: "test007"
   created_at: 2007-05-05 00:00:00
   email: test007@example.com
 users_042: 
@@ -337,7 +337,7 @@ users_042:
   region_id: 
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "2"
-  display_name: ""
+  display_name: "test042"
   login: test042
   created_at: 2007-07-04 19:50:29
   email: test042@example.com
@@ -356,7 +356,7 @@ users_031:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test031
-  login: ""
+  login: "test031"
   created_at: 2007-06-22 00:00:00
   email: test031@example.com
 users_020: 
@@ -374,7 +374,7 @@ users_020:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: ""
-  login: ""
+  login: "test020"
   created_at: 2007-06-08 00:00:00
   email: test020@example.com
 users_019: 
@@ -392,7 +392,7 @@ users_019:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test019
-  login: ""
+  login: "test019"
   created_at: 2007-06-08 00:00:00
   email: test019@example.com
 users_008: 
@@ -446,7 +446,7 @@ users_032:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test032
-  login: ""
+  login: "test032"
   created_at: 2007-06-24 00:00:00
   email: test032@example.com
 users_021: 
@@ -464,7 +464,7 @@ users_021:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: 
-  login: ""
+  login: "test021"
   created_at: 2007-06-08 00:00:00
   email: test021@example.com
 users_010: 
@@ -482,7 +482,7 @@ users_010:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: 
-  login: ""
+  login: "test010"
   created_at: 2007-05-27 00:00:00
   email: test010@example.com
 users_009: 
@@ -536,7 +536,7 @@ users_033:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "4"
   display_name: Test033
-  login: ""
+  login: "test033"
   created_at: 2007-06-25 00:00:00
   email: test033@example.com
 users_022: 
@@ -554,7 +554,7 @@ users_022:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test022
-  login: ""
+  login: "test022"
   created_at: 2007-06-13 00:00:00
   email: test022@example.com
 users_011: 
@@ -572,7 +572,7 @@ users_011:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test011
-  login: ""
+  login: "test011"
   created_at: 2007-05-29 00:00:00
   email: test011@example.com
 users_045: 
@@ -608,7 +608,7 @@ users_034:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: 
-  login: ""
+  login: "test034"
   created_at: 2007-06-27 00:00:00
   email: test034@example.com
 users_023: 
@@ -626,7 +626,7 @@ users_023:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: ""
-  login: ""
+  login: "test023"
   created_at: 2007-06-15 00:00:00
   email: test023@example.com
 users_012: 
@@ -644,7 +644,7 @@ users_012:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: ""
-  login: ""
+  login: "test012"
   created_at: 2007-05-29 00:00:00
   email: test012@example.com
 users_001: 
@@ -698,7 +698,7 @@ users_035:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test035
-  login: ""
+  login: "test035"
   created_at: 2007-06-27 00:00:00
   email: test035@example.com
 users_024: 
@@ -716,7 +716,7 @@ users_024:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test024
-  login: ""
+  login: "test024"
   created_at: 2007-06-19 00:00:00
   email: test024@example.com
 users_013: 
@@ -734,7 +734,7 @@ users_013:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: ""
-  login: ""
+  login: "test013"
   created_at: 2007-05-30 00:00:00
   email: test013@example.com
 users_002: 
@@ -770,7 +770,7 @@ users_036:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test036
-  login: ""
+  login: "test036"
   created_at: 2007-06-27 00:00:00
   email: test036@example.com
 users_025: 
@@ -788,7 +788,7 @@ users_025:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: Test025
-  login: ""
+  login: "test025"
   created_at: 2007-06-19 00:00:00
   email: test025@example.com
 users_014: 
@@ -806,7 +806,7 @@ users_014:
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
   display_name: ""
-  login: ""
+  login: "test014"
   created_at: 2007-06-04 00:00:00
   email: test014@example.com
 users_003: 

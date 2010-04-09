@@ -1,7 +1,8 @@
 class UserMailer < ActionMailer::Base
 
-  def reminder(email, sent_at = Time.now)
-    setup('A reminder from the Carbon Diet', email, sent_at)
+  def reminder(user, sent_at = Time.now)
+    setup('A reminder from the Carbon Diet', user.confirmed_email, sent_at)
+    body :user => user
   end
 
   def password_change(email, url, sent_at = Time.now)
@@ -11,12 +12,12 @@ class UserMailer < ActionMailer::Base
 
   def group_invitation(group, user, sent_at = Time.now)
     setup('Carbon Diet: Group invitation', user.email, sent_at)
-    body :group => group
+    body :group => group, :user => user
   end
 
-  def friend_request(name, email, sent_at = Time.now)
-    setup('Carbon Diet: Friend request', email, sent_at)
-    body :name => name
+  def friend_request(user, friend, sent_at = Time.now)
+    setup('Carbon Diet: Friend request', friend.confirmed_email, sent_at)
+    body :user => user, :friend => friend
   end
 
   def comment_notification(user, commenter, sent_at = Time.now)
