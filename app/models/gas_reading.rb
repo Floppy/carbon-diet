@@ -3,6 +3,7 @@ class GasReading < ActiveRecord::Base
   belongs_to :gas_account
   # Validation
   validates_numericality_of :reading
+  validates_date :taken_on
   # Attributes
   attr_accessible :taken_on, :reading
 
