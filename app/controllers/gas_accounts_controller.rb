@@ -1,10 +1,6 @@
 class GasAccountsController < BelongsToUser
-  before_filter :get_account, :except => [:index, :new, :create]
-  before_filter :get_select_options, :except => [:index, :destroy]
-
-  def index
-    redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
-  end
+  before_filter :get_account, :except => [:new, :create]
+  before_filter :get_select_options, :except => [:destroy]
 
   def new
     @account = GasAccount.new
@@ -36,7 +32,7 @@ class GasAccountsController < BelongsToUser
 
   def destroy
     @account.destroy
-    redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
+    redirect_to user_accounts_path(@user)
   end
 
 protected

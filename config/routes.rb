@@ -31,13 +31,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resource :accounts
     user.resources :flights
-    user.resources :vehicles do |vehicle|
+    user.resources :vehicles, :except => [:index, :show] do |vehicle|
       vehicle.resources :vehicle_fuel_purchases, :as => "fuel_purchases"
     end
-    user.resources :electricity_accounts do |elec|
+    user.resources :electricity_accounts, :except => [:index, :show] do |elec|
       elec.resources :electricity_readings, :as => "readings"
     end
-    user.resources :gas_accounts do |gas|
+    user.resources :gas_accounts, :except => [:index, :show] do |gas|
       gas.resources :gas_readings, :as => "readings"
     end
     user.resources :notes
