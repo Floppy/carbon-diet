@@ -246,7 +246,7 @@ class User < ActiveRecord::Base
     return unless needs_reminding?
     # Send reminder if there is an email address confirmed
     unless self.confirmed_email.nil? or self.login.blank? # Can't send reminder to people without a login, because we can't save the reminder time
-      UserMailer.deliver_reminder(self.confirmed_email)
+      UserMailer.deliver_reminder(self)
       # Store todays date in reminder field
       self.reminded_at = Time::now
       self.save!
@@ -310,7 +310,7 @@ class User < ActiveRecord::Base
       friends << friend 
       # Send email to friend
       unless friend.confirmed_email.nil? or friend.notify_friend_requests == false
-        UserMailer.deliver_friend_request(self.name, friend.confirmed_email)
+        UserMailer.deliver_friend_request(self, friend)
       end
     end
   end
