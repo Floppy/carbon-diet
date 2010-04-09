@@ -3,7 +3,7 @@
 <% content_for('optionbar') do %>
   <div class="option">
     <%= image_tag 'user.png' %>
-    <%= link_to("List Friends", { :action => "list" } ) %>
+    <%= link_to("List Friends", user_friends_path(@user) ) %>
   </div>
   <%= option "search" %>
   <%= option "home" %>

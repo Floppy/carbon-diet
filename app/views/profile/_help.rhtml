@@ -9,7 +9,7 @@ For a gentle introduction, take the <%= link_to 'tour', :controller => 'tour' %>
 <% if @current_user.country.nil? %>
   You haven't selected a country yet, so you can't add your own data. Edit your <%= link_to 'settings', :controller => "user", :action => "edit" %> to select a country.
 <% else %>
-  Why not get started now, by <%= link_to 'adding some data', :controller => "/data_entry/index" %>?
+  Why not get started now, by <%= link_to 'adding some data', user_accounts_path(@profile) %>?
 <% end %>
 </p>
 </div>
