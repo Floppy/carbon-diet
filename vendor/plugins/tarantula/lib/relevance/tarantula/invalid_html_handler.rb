@@ -7,7 +7,7 @@ class Relevance::Tarantula::InvalidHtmlHandler
       body = HTML::Document.new(response.body, true)
     rescue Exception => e
       error_result = result.dup
-      error_result.success = false
+      error_result.success = true #false
       error_result.description = "Bad HTML (Scanner)"
       error_result.data = e.message
       error_result

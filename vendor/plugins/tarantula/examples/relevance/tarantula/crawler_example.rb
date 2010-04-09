@@ -153,7 +153,6 @@ describe Relevance::Tarantula::Crawler do
       crawler.times_to_crawl = 2
       crawler.crawl
     end
-    
   end
   
   describe "report_results" do
@@ -223,6 +222,31 @@ describe Relevance::Tarantula::Crawler do
       crawler.finished?.should == false
     end
     
+    it "is finished when the number of max_paths has been exceeded" do
+      crawler = Relevance::Tarantula::Crawler.new
+      crawler.max_paths = 2
+      
+      crawler.crawl_queue = [:stub_link]
+      crawler.stubs(:links_completed_count).returns(3)
+      crawler.finished?.should == true
+    end
+    
+    it "isn't finished when the number of max_paths has not been exceeded" do
+      crawler = Relevance::Tarantula::Crawler.new
+      crawler.max_paths = 2
+      
+      crawler.crawl_queue = [:stub_link]
+      crawler.stubs(:links_completed_count).returns(1)
+      crawler.finished?.should == false
+    end
+    
+    it "isn't finished when the number of max_paths is not set" do
+      crawler = Relevance::Tarantula::Crawler.new
+
+      crawler.crawl_queue = [:stub_link]      
+      crawler.stubs(:links_completed_count).returns(2)
+      crawler.finished?.should == false
+    end    
   end
 
   it "crawls links and forms again and again until finished?==true" do
@@ -280,6 +304,47 @@ describe Relevance::Tarantula::Crawler do
     it "skips mailto links (those that begin with http)" do
       @crawler.expects(:log).with("Skipping mailto-anything")
       @crawler.should_skip_link?(make_link("mailto-anything")).should == true
+    end
+    
+    describe 'read only skipping' do 
+      before { @crawler.read_only = true }
+         
+      # TODO: Only testing a delete link here. Need to test put and post links.
+      it "skips any delete links" do      
+        # This is jacked from method_javascript_function(:delete)
+        # Didn't want to include url helpers just for this - Mark
+        js = "var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit();"
+      
+        link = make_link(Hpricot(%Q{<a href="/foo" onclick="#{js}">foo</a>}).at('a'))
+        @crawler.expects(:log).with("Skipping non-read-only url /foo")
+        @crawler.should_skip_link?(link).should == true
+      end
+      
+      it "skips any post forms" do
+        @crawler.expects(:log).with("Skipping non-read-only url /post-form")
+             
+        fs = stub_everything(:action => "/post-form", :method => "post")
+        @crawler.should_skip_form_submission?(fs).should == true
+      end
+      it "does not skip any get forms" do     
+        fs = stub_everything(:action => "/get-form", :method => "get")
+        @crawler.should_skip_form_submission?(fs).should == false
+      end
+      
+    end
+    
+    describe 'non destructive skipping' do
+      before { @crawler.non_destructive = true }
+    
+      it  "skips any delete links" do      
+        # This is jacked from method_javascript_function(:delete)
+        # Didn't want to include url helpers just for this - Mark
+        js = "var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit();"
+      
+        link = make_link(Hpricot(%Q{<a href="/foo" onclick="#{js}">foo</a>}).at('a'))
+        @crawler.expects(:log).with("Skipping destructive url /foo")
+        @crawler.should_skip_link?(link).should == true      
+      end
     end
   
     it 'skips blank links' do
