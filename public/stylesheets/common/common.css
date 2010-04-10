@@ -505,3 +505,17 @@ div.pagination:after {
   overflow: hidden;
 }
 
+#ie-no-more-container {
+  background: #FFFFCC;
+  border: 1px solid #FF9933;
+  width: 90%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 20px;
+  position:absolute;
+  top:20px;
+}
+
+#ie-no-more-close-button {
+  float: right;
+}
