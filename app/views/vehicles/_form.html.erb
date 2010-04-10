@@ -1,6 +1,6 @@
 <%= error_messages_for 'vehicle' %>
 
-<% form_for [@user, @vehicle] do |f| %>
+<% form_for [@user, @vehicle], :html => {:autocomplete => "off"} do |f| %>
   <table class="form">
     <tr>
       <td><%= f.label :name %></td>
