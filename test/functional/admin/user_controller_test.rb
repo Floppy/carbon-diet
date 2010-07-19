@@ -1,5 +1,6 @@
 require File.dirname(__FILE__) + '/../../test_helper'
 require 'admin/user_controller'
+require 'admin/admin_controller'
 
 # Re-raise errors caught by the controller.
 class Admin::UserController; def rescue_action(e) raise e end; end

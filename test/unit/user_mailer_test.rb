@@ -20,12 +20,13 @@ class UserMailerTest < ActiveSupport::TestCase
   end
 
   def test_reminder
+    user = User.find(1)
     @expected.subject = 'A reminder from the Carbon Diet'
     @expected.from    = 'info@carbondiet.org'
-    @expected.to      = 'james@carbondiet.org'
+    @expected.to      = user.confirmed_email
     @expected.body    = read_fixture('reminder')
     @expected.date    = Time.now
-    assert_equal @expected.encoded, UserMailer.create_reminder(@expected.to, @expected.date).encoded
+    assert_equal @expected.encoded, UserMailer.create_reminder(user, @expected.date).encoded
   end
 
   def test_password_change
@@ -51,12 +52,14 @@ class UserMailerTest < ActiveSupport::TestCase
   end
 
   def test_friend_request
+    user = User.find(2)
+    friend = User.find(1)
     @expected.subject = 'Carbon Diet: Friend request'
     @expected.from    = 'info@carbondiet.org'
-    @expected.to      = 'james@carbondiet.org'
+    @expected.to      = friend.confirmed_email
     @expected.body    = read_fixture('friend_request')
     @expected.date    = Time.now
-    assert_equal @expected.encoded, UserMailer.create_friend_request("Test002", @expected.to, @expected.date).encoded
+    assert_equal @expected.encoded, UserMailer.create_friend_request(user, friend, @expected.date).encoded
   end
 
   def test_comment_notification
