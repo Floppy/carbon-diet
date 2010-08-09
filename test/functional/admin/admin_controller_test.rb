@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/index_controller'
+require 'admin/admin_controller'
 
 # Re-raise errors caught by the controller.
-class Admin::IndexController; def rescue_action(e) raise e end; end
+class Admin::AdminController; def rescue_action(e) raise e end; end
 
-class Admin::IndexControllerTest < ActionController::TestCase
+class Admin::AdminControllerTest < ActionController::TestCase
   def setup
-    @controller = Admin::IndexController.new
+    @controller = Admin::AdminController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end
