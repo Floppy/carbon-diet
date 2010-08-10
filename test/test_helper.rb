@@ -25,4 +25,14 @@ class ActiveSupport::TestCase
   self.use_instantiated_fixtures  = false
 
   # Add more helper methods to be used by all tests here...
+  def when_logged_in(user_id = 1)
+    @request.session[:user_id] = user_id
+    yield
+  end
+
+  def when_not_logged_in
+    @request.session[:user_id] = nil
+    yield
+  end
+
 end

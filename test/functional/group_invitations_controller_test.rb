@@ -15,16 +15,6 @@ class GroupInvitationsControllerTest < ActionController::TestCase
     @group = Group.find(2)
   end
 
-  def when_logged_in
-    @request.session[:user_id] = 1
-    yield
-  end
-
-  def when_not_logged_in
-    @request.session[:user_id] = nil
-    yield
-  end
-
   def test_invite
     when_not_logged_in do
       get :new, :group_id => @group.name
