@@ -12,7 +12,7 @@ protected
 
   def get_current_user
     return @current_user if @current_user
-    if session[:user_id] 
+    if session[:user_id]
       @current_user = User.find_by_id(session[:user_id])
       # If we have a user ID with no user attached, reset session
       unless @current_user
@@ -102,6 +102,11 @@ protected
 
   def mobile?
     iphone? || wap?
+  end
+
+  def render_http_code(code)
+    @code = code
+    render :status => code, :file => File.join(RAILS_ROOT, 'public', "#{code}.html")
   end
 
 end
