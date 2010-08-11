@@ -1,30 +1,30 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
-class FlightFactorTest < ActiveSupport::TestCase
+describe "FlightFactor", ActiveSupport::TestCase do
   fixtures :flight_factors
 
   # Replace this with your real tests.
-  def test_find_by_distance
+  it "find by distance" do
     # Domestic
     factor = FlightFactor.find_by_distance(500);
-    assert factor.g_per_km == 450
+    factor.g_per_km.should == 450
     # Short Haul
     factor = FlightFactor.find_by_distance(1500);
-    assert factor.g_per_km == 300
+    factor.g_per_km.should == 300
     # Long haul
     factor = FlightFactor.find_by_distance(10000);
-    assert factor.g_per_km == 320
+    factor.g_per_km.should == 320
     # Domestic/Short boundary
     factor = FlightFactor.find_by_distance(1000);
-    assert factor.g_per_km == 300
+    factor.g_per_km.should == 300
     # Short/Long boundary
     factor = FlightFactor.find_by_distance(5000);
-    assert factor.g_per_km == 320
+    factor.g_per_km.should == 320
     # Zero
     factor = FlightFactor.find_by_distance(0);
-    assert factor.g_per_km == 450
+    factor.g_per_km.should == 450
     # Moon
     factor = FlightFactor.find_by_distance(384400);
-    assert factor.g_per_km == 320
+    factor.g_per_km.should == 320
   end
 end

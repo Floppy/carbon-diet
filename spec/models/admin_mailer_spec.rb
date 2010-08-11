@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
-class AdminMailerTest < ActiveSupport::TestCase
+describe "AdminMailer", ActiveSupport::TestCase do
   FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
   CHARSET = "utf-8"
 
@@ -8,7 +8,7 @@ class AdminMailerTest < ActiveSupport::TestCase
 
   include ActionMailer::Quoting
 
-  def setup
+  before do
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
@@ -18,7 +18,7 @@ class AdminMailerTest < ActiveSupport::TestCase
     @expected.mime_version = '1.0'
   end
 
-  def test_new_signup
+  it "new signup" do
     @expected.subject = 'Carbon Diet: New user signed up!'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'
@@ -27,7 +27,7 @@ class AdminMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, AdminMailer.create_new_signup("james", @expected.date).encoded
   end
 
-  def test_country_request
+  it "country request" do
     @expected.subject = 'Carbon Diet: Country request!'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'

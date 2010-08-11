@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
-class UserMailerTest < ActiveSupport::TestCase
+describe "UserMailer", ActiveSupport::TestCase do
   FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
   CHARSET = "utf-8"
 
@@ -9,7 +9,7 @@ class UserMailerTest < ActiveSupport::TestCase
 
   include ActionMailer::Quoting
 
-  def setup
+  before do
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
@@ -19,7 +19,7 @@ class UserMailerTest < ActiveSupport::TestCase
     @expected.mime_version = '1.0'
   end
 
-  def test_reminder
+  it "reminder" do
     user = User.find(1)
     @expected.subject = 'A reminder from the Carbon Diet'
     @expected.from    = 'info@carbondiet.org'
@@ -29,7 +29,7 @@ class UserMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, UserMailer.create_reminder(user, @expected.date).encoded
   end
 
-  def test_password_change
+  it "password change" do
     # Change user password
     srand(42)
     User.find(1).reset_password
@@ -42,7 +42,7 @@ class UserMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, UserMailer.create_password_change(User.find(1).email, "http://www.carbondiet.org/user/change_password/" + User.find(1).password_change_code, @expected.date).encoded
   end
 
-  def test_group_invitation
+  it "group invitation" do
     @expected.subject = 'Carbon Diet: Group invitation'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'james@carbondiet.org'
@@ -51,7 +51,7 @@ class UserMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, UserMailer.create_group_invitation(Group.find(1), User.find(1), @expected.date).encoded
   end
 
-  def test_friend_request
+  it "friend request" do
     user = User.find(2)
     friend = User.find(1)
     @expected.subject = 'Carbon Diet: Friend request'
@@ -62,7 +62,7 @@ class UserMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, UserMailer.create_friend_request(user, friend, @expected.date).encoded
   end
 
-  def test_comment_notification
+  it "comment notification" do
     @expected.subject    = 'Carbon Diet: Someone wrote a comment on your profile!'
     @expected.from       = 'info@carbondiet.org'
     @expected.to         = 'james@carbondiet.org'
@@ -71,7 +71,7 @@ class UserMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, UserMailer.create_comment_notification(User.find(1), User.find(2), @expected.date).encoded
   end
 
-  def test_email_confirmation
+  it "email confirmation" do
     # Set email confirmation code
     user = User.find(44)
     user.email  = "james@carbondiet.org"
@@ -85,7 +85,7 @@ class UserMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, UserMailer.create_email_confirmation(user, @expected.date).encoded
   end
 
-  def test_friend_invitation
+  it "friend invitation" do
     @expected.subject    = 'An invitation to join The Carbon Diet'
     @expected.from       = 'info@carbondiet.org'
     @expected.to         = 'james@carbondiet.org'
@@ -94,7 +94,7 @@ class UserMailerTest < ActiveSupport::TestCase
     assert_equal @expected.encoded, UserMailer.create_friend_invitation(User.find(1), "james@carbondiet.org", "0", @expected.date).encoded
   end
 
-  def test_friend_invitation_with_group
+  it "friend invitation with group" do
     @expected.subject    = 'An invitation to join The Carbon Diet'
     @expected.from       = 'info@carbondiet.org'
     @expected.to         = 'james@carbondiet.org'
