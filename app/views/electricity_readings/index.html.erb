@@ -1,3 +1,5 @@
+<% pagetitle("Readings for #{@account.name}", "electricity.png") %>
+
 <% content_for('optionbar') do %>
   <div class="option">
     <%= image_tag_with_tooltip 'new.png' %>
@@ -5,7 +7,7 @@
   </div>
   <%= option "back_to_add_data" %>
   <%= option "edit_elec_account", { :user => @user, :account => @account } %>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('export.png') %>
     <%= link_to 'Export Data', user_electricity_account_electricity_readings_path(@user, @account, :format => :xml) %>
   </div>
@@ -39,7 +41,7 @@ NOTE: If the units are wrong for your meter, you can change them in the <%= link
   <th></th>
   </tr>
   
-<% for reading in @electricity_readings %>
+<% @electricity_readings.each do |reading| %>
   <tr id="reading<%= reading.id %>">
   <td><%=h reading.taken_on.strftime("%d %b %y") %></td>
 <% if @account.night_rate %>

@@ -1,11 +1,11 @@
-<% pagetitle("List Flights", "plane.png") %>
+<% pagetitle("Flights", "plane.png") %>
 
 <% content_for('optionbar') do %>
   <%= option "new_flight" %>
   <%= option "back_to_add_data" %>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('export.png') %>
-    <%= link_to 'Export Data', formatted_user_flights_path(@user, :xml) %>
+    <%= link_to 'Export Data', user_flights_path(@user, :format => :xml) %>
   </div>
   <% if @flights.size > 0 %>
     <%= option "analysis" %>
@@ -25,7 +25,7 @@
   <th></th>
   </tr>
   
-<% for flight in @flights %>
+<% @flights.each do |flight| %>
   <tr id="flight<%= flight.id %>">
   <td><%=h flight.from_airport.name %></td>
   <td><%=h flight.to_airport.name %></td>
@@ -54,7 +54,7 @@
     var so = new SWFObject("/flash/ammap/ammap.swf", "ammap", "100%", "300", "8", "#FFFFFF");
     so.addVariable("path", "/");
     so.addVariable("map_settings", escape("<settings><projection>mercator</projection><background><color>#FFFFFF</color><alpha>100</alpha></background><area><color_light>#7FFF7F</color_light></area><small_map><enabled>false</enabled></small_map><zoom><color>#DDDDDD</color><outline_color>#000000</outline_color></zoom></settings>"));
-    so.addVariable("data_file", escape("<%= formatted_user_flights_path(@user, :ammap) %>"));
+    so.addVariable("data_file", escape("<%= user_flights_path(@user, :format => :ammap) %>"));
     so.write("flashmap");
     // ]]>
   </script>

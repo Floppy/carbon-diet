@@ -1,4 +1,4 @@
 <div class="option">
 <%= image_tag 'chart_pie.png' %>
-<%= link_to 'Analysis', { :controller => "/report", :action => "index" } %>
+<%= link_to 'Analysis', user_report_path(@user || @current_user) %>
 </div>

@@ -12,7 +12,7 @@ protected
 
   def get_current_user
     return @current_user if @current_user
-    if session[:user_id] 
+    if session[:user_id]
       @current_user = User.find_by_id(session[:user_id])
       # If we have a user ID with no user attached, reset session
       unless @current_user
@@ -64,9 +64,9 @@ protected
     return if @current_user.nil?
     totals = @current_user.calculate_totals(28)
     categories = []
-    for item in totals
+    totals.each do |item|
       if item[:name] != "Total"
-        for category in item[:categories]
+        item[:categories].each do |category|
           categories << category unless categories.include?(category)
         end
       end
@@ -102,6 +102,11 @@ protected
 
   def mobile?
     iphone? || wap?
+  end
+
+  def render_http_code(code)
+    @code = code
+    render :status => code, :file => File.join(RAILS_ROOT, 'public', "#{code}.html")
   end
 
 end

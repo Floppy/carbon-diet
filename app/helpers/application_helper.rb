@@ -38,7 +38,7 @@ module ApplicationHelper
 
   def pagetitle(name, icon = nil)
     @content_for_pagename = name
-    @content_for_pageicon = image_tag(icon)
+    @content_for_pageicon = image_tag(icon) if icon
   end
 
   def whitelabel_content(file)

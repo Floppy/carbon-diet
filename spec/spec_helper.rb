@@ -18,7 +18,6 @@ Spec::Runner.configure do |config|
   # in your config/boot.rb
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
-  config.fixture_path = RAILS_ROOT + '/test/fixtures/'
 
   # == Fixtures
   #
@@ -51,4 +50,15 @@ Spec::Runner.configure do |config|
   # == Notes
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
+end
+
+# Add more helper methods to be used by all tests here...
+def when_logged_in(user_id = 1)
+  @request.session[:user_id] = user_id
+  yield
+end
+
+def when_not_logged_in
+  @request.session[:user_id] = nil
+  yield
 end

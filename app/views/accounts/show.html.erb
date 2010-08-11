@@ -1,0 +1,69 @@
+<% pagetitle "Accounts" %>
+
+<% content_for('optionbar') do %>
+
+<% @current_user.electricity_accounts.current.each do |elec_account| %>
+<div class="option">
+<% if elec_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
+<%= image_tag 'electricity.png' %>
+<%= link_to(elec_account.name, user_electricity_account_electricity_readings_path(@current_user, elec_account) ) %>
+</div>
+<% end %>
+
+<% @current_user.gas_accounts.current.each do |gas_account| %>
+<div class="option">
+<% if gas_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
+<%= image_tag 'gas.png' %>
+<%= link_to(gas_account.name, user_gas_account_gas_readings_path(@current_user, gas_account) ) %>
+</div>
+<% end %>
+
+<% @current_user.vehicles.current.each do |vehicle| %>
+<div class="option">
+<%= image_tag 'car.png' %>
+<%= link_to(vehicle.name, user_vehicle_vehicle_fuel_purchases_path(@current_user, vehicle) ) %>
+</div>
+<% end %>
+
+<%= option "flights" %>
+
+<div class="option">
+<%= image_tag 'new.png' %>
+<%= link_to("Add account", new_user_accounts_path(@user) ) %>
+</div>
+
+<% if not @current_user.has_no_accounts %>
+<div class="option">
+<%= image_tag 'edit.png' %>
+<%= link_to("Edit accounts", edit_user_accounts_path(@user) ) %>
+</div>
+<% end %>
+
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+<p>
+This section allows you to add new data, or to manage existing data.
+</p>
+<% if @warn %>
+<p>
+The accounts to the right that have the <%= image_tag 'warning.png' %> symbol displayed next to them haven't had any data entered in over a week. The Carbon Diet works best if you enter data regularly, so why not go ahead and put some in now?
+</p>
+<% end %>
+<p>
+To add a new item to an existing account, or to view the data already in an account, select the account name on the right. To add a new account, click "Add another account", or to edit the settings for an existing account, click "Edit accounts".
+</p>
+</div>
+
+<div class="pagecontent">
+<p>
+You can also enter data on the move by using your mobile phone. If your phone has a web browser, open it up, and go to <b>http://carbondiet.org</b>. Sign in, and you'll be able to enter data wherever you are!
+</p>
+</div>
+
+<div class="pagecontent">
+<p>
+If you change supplier, have your meter reset, or change vehicle, turn off the "current" setting of your existing account, then create a new account and add the new data to that. This allows us to keep track of your data correctly when things change.
+</p>
+</div>

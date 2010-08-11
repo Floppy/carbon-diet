@@ -1,0 +1,21 @@
+<% form_for [@user, @vehicle, @purchase], {:class => "panel", :selected => "true", :title => "Add Fuel", :target => "_self"} do |f| %>
+  <fieldset>
+    <div class="row">
+      <%= f.label :amount, "Amount (#{@vehicle.vehicle_fuel_unit.abbreviation})" %>
+      <%= f.text_field :amount, :value => "" %>
+    </div>
+    <div class="row">
+      <%= f.label :purchased_on, "Date" %>
+      <%= f.date_select :purchased_on, :order => [:day, :month, :year], :use_short_month => true %>
+    </div>
+    <div class="row">
+      <%= f.label :vehicle_fuel_type, "Fuel Type" %>
+      <%= f.collection_select :vehicle_fuel_type_id, @vehicle_fuel_types, :id, :name %>
+    </div>
+    <div class="row">
+      <%= f.label :distance, "Mileage (#{@vehicle.vehicle_distance_unit.abbreviation})" %>
+      <%= f.text_field :distance, :value => "" %>
+    </div>
+  </fieldset>
+  <a class="whiteButton" type="submit" href="#">Add</a>
+<% end %>

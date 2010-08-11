@@ -14,21 +14,14 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '', :controller => "main", :action => "index"
   map.connect '/m', :controller => "main", :action => "mobile"
 
-  # Connection for charts
-  map.connect '/xml_chart/:action/:period/:user', :controller => "xml_chart" 
-
   # Connection for public profiles
   map.connect '/profile/:login', :controller => "profile", :action => "index"
 
   # Connection for admin interface
-  map.connect '/admin', :controller => "admin/index", :action => "index"
+  map.connect '/admin', :controller => "admin/dashboard", :action => "index"
 
   # Connection for group browser
   map.connect '/groups/browse/:string', :controller => "groups", :action => "browse"
-
-  # Connection for data entry controllers
-  map.connect '/data_entry/gas/:account/:action/:id', :controller => "data_entry/gas"
-  map.connect '/data_entry/vehicle_fuel/:vehicle/:action/:id', :controller => "data_entry/vehicle_fuel"
 
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
@@ -36,16 +29,35 @@ ActionController::Routing::Routes.draw do |map|
 
   # New-style resourceful routes
   map.resources :users do |user|
+    user.resource :accounts
     user.resources :flights
-    user.resources :vehicles do |vehicle|
-      vehicle.resources :fuel_purchases, :controller => "VehicleFuelPurchases"
+    user.resources :vehicles, :except => [:index, :show] do |vehicle|
+      vehicle.resources :vehicle_fuel_purchases, :as => "fuel_purchases"
     end
-    user.resources :electricity_accounts do |elec|
+    user.resources :electricity_accounts, :except => [:index, :show] do |elec|
       elec.resources :electricity_readings, :as => "readings"
     end
-    user.resources :gas_accounts do |gas|
+    user.resources :gas_accounts, :except => [:index, :show] do |gas|
       gas.resources :gas_readings, :as => "readings"
     end
+    user.resources :notes
+    user.resource :report, :member => {
+      :recent => :get,
+      :ratio => :get,
+      :recent_chart => :get,
+      :ratio_chart => :get
+    }
+    user.resources :groups, :controller => "user_groups"
+    user.resources :friends, :collection => {
+      :invite => :get,
+      :send_invitations => :post
+    }, :member => {
+      :accept => :post,
+      :reject => :post
+    }
+  end
+  map.resources :groups do |group|
+    group.resources :invitations, :controller => "group_invitations"
   end
 
   # Install the default route as the lowest priority.

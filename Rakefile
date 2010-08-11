@@ -8,3 +8,8 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+load File.join(RAILS_ROOT, Dir["vendor/plugins/tarantula/tasks/*.rake"])
+
+task :default => :spec
+

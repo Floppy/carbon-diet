@@ -1,13 +1,21 @@
 class ElectricityReading < ActiveRecord::Base
+  
   # Relationships
   belongs_to :electricity_account
+
   # Validation
   validates_numericality_of :reading_day
   validates_numericality_of :reading_night
+  validates_date :taken_on
+
   # Attributes
   attr_accessible :taken_on, :reading_day, :reading_night, :automatic
 
+  # Delegation
+  delegate :user, :to => :electricity_account
+
   protected
+  
   def validate_on_create
     # Make sure we have not already got a reading for the date entered
     existing = electricity_account.electricity_readings.find(:first, 
@@ -30,11 +38,11 @@ class ElectricityReading < ActiveRecord::Base
 
 public
 
-  def kWh_day
+  def kwh_day
     reading_day * electricity_account.electricity_unit.amount_in_kWh
   end
 
-  def kWh_night
+  def kwh_night
     reading_night * electricity_account.electricity_unit.amount_in_kWh
   end
 

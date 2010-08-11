@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="pagecontent">
-<% for supplier in @suppliers %>
+<% @suppliers.each do |supplier| %>
 <%= render :partial => "supplier", 
            :locals => { :supplier => supplier } %>
 <% end %>

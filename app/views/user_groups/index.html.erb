@@ -1,0 +1,32 @@
+<% pagetitle "My Groups", "group.png" %>
+
+<% content_for('optionbar') do %>
+  <% if @current_user %>
+    <div class="option">
+      <%= image_tag 'new.png' %>
+      <%= link_to("Create new group", new_group_path ) %>
+    </div>
+  <% end %>
+  <%= option "search" %>
+  <div class="option">
+    <%= image_tag 'search.png' %>
+    <%= link_to("Browse all groups", groups_path ) %>
+  </div>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+<% unless @current_user.group_invitations.empty? %>
+<div class="flash">
+<p>
+You have been invited to join <%= pluralize(@current_user.group_invitations.size, "group") %>:
+</p>
+<table>
+<% @current_user.group_invitations.each do |invitation| %>
+<%= group_invite_link(invitation) %>
+<% end %>
+</table>
+</div>
+<% end %>
+<%= render :partial => "/shared/grouplist" %>
+</div>

@@ -6,7 +6,14 @@ class ElectricitySupplierController < AuthenticatedController
   end
 
   def show
-    @supplier = ElectricitySupplier.find_by_id(params[:id])
+    respond_to do |format|
+      @supplier = ElectricitySupplier.find_by_id(params[:id])
+      format.html
+      format.xmlchart {
+        # Send data
+        render :layout => false
+      }
+    end
   end
 
 end

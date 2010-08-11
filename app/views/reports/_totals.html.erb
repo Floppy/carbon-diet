@@ -1,0 +1,17 @@
+<table border="1">
+<tr><th>Source</th><th>Total</th><th>Daily Average</th><th>Yearly Equivalent</th></tr>
+<% @totals.each do |item| %>
+<tr>
+<td><%=h item[:name] %></td>
+<td><%= kg(item[:data][:total]) %></td>
+<td><%= kg(item[:data][:perday],2) %></td>
+<td>
+<% if @user.people_in_household > 1 %>
+<%= tonnes(item[:data][:perannum]/@user.people_in_household,2) %>/person
+<% else %>
+<%= tonnes(item[:data][:perannum],2) %>
+<% end %>
+</td>
+</tr>
+<% end %>
+</table>

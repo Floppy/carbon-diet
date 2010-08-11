@@ -1,49 +1,38 @@
 class GasAccountsController < BelongsToUser
-  before_filter :get_account, :except => [:index, :new, :create]
-
-  def index
-    redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
-  end
+  before_filter :get_account, :except => [:new, :create]
+  before_filter :get_select_options, :except => [:destroy]
 
   def new
     @account = GasAccount.new
     # Set default values
     @account.gas_supplier = GasSupplier.default(@current_user.country)
     @account.gas_unit = @current_user.country.gas_unit
-    # Get options for select
-    get_select_options
   end
 
   def create
     @account = @user.gas_accounts.create(params[:gas_account])
     if @account.save
-      @user.update_stored_statistics!
       redirect_to user_gas_account_gas_readings_path(@user, @account)
     else
-      get_select_options
       render :action => 'new'
     end
   end
 
   def edit
-    get_select_options
   end
 
   def update
     @account.update_attributes!(params[:gas_account])
     if @account.save
-      @user.update_stored_statistics!
       redirect_to user_gas_account_gas_readings_path(@user, @account)
     else
-      get_select_options
       render :action => 'edit'
     end
   end
 
   def destroy
     @account.destroy
-    @user.update_stored_statistics!
-    redirect_to :controller => '/data_entry/index', :action => 'edit_accounts'
+    redirect_to user_accounts_path(@user)
   end
 
 protected

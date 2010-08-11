@@ -1,3 +1,5 @@
+<% pagetitle("Readings for #{@account.name}", "gas.png") %>
+
 <% content_for('optionbar') do %>
   <div class="option">
     <%= image_tag_with_tooltip 'new.png' %>
@@ -5,7 +7,7 @@
   </div>
   <%= option "back_to_add_data" %>
   <%= option "edit_gas_account", { :user => @user, :account => @account } %>
-  <div class="option" %>
+  <div class="option">
     <%= image_tag_with_tooltip('export.png') %>
     <%= link_to 'Export Data', user_gas_account_gas_readings_path(@user, @account, :format => :xml) %>
   </div>
@@ -33,7 +35,7 @@ NOTE: If the units are wrong for your meter, you can change them in the <%= link
   <th></th>
   </tr>
   
-<% for reading in @gas_readings %>
+<% @gas_readings.each do |reading| %>
   <tr id="reading<%= reading.id %>">
   <td><%=h reading.taken_on.strftime("%d %b %y") %></td>
   <td><%=h reading.reading %></td>

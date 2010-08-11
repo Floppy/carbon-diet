@@ -15,7 +15,7 @@ class Action < ActiveRecord::Base
     unless categories.empty?
       category_order = ", CASE action_category_id "
       orderid = 1
-      for category in categories
+      categories.each do |category|
         category_order += "WHEN " + orderid.to_s + " THEN " + category.id.to_s + " "
         orderid.next
       end

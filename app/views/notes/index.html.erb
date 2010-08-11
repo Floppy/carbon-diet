@@ -1,0 +1,31 @@
+<% pagetitle 'Notes', 'note.png' %>
+
+<% content_for('optionbar') do %>
+  <%= option "new_note"%>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+<%= tip_box "You can create notes to mark significant events that relate to your carbon footprint. For instance, if you turn down your thermostat, you might add a note for that date so that you can see what difference it makes later." %>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Date</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @notes.each do |note| %>
+    <tr>
+      <td><%= image_tag note.notatable.image %></td>
+      <td><%=h note.date.strftime("%d %b %y") %></td>
+      <td><%=h note.note.first(50)%><%= "..." if note.note.size > 50 %></td>
+      <td><%= link_to image_tag_with_tooltip('edit.png'), :action => 'edit', :id => note %></td>
+      <td><%= link_to image_tag_with_tooltip('delete.png'), { :action => 'destroy', :id => note}, :confirm => 'Delete this note?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @notes %>
+
+</div>

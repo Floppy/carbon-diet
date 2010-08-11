@@ -9,16 +9,7 @@ class ElectricityReadingsController < BelongsToUser
   def index
     respond_to do |format|
       format.html {
-        # Tip
-        case rand(2)
-        when 0
-          @tip = "Enter your meter readings regularly to get the most accurate results."
-        else
-          @tip = "You can use meter readings from your old electricity bills to fill in the last few years."
-        end
-        # Page name
-        @pagename = "Readings for " + @account.name
-        # Data
+        @tip = tips.rand
         @electricity_readings = @account.electricity_readings.paginate :page => params[:page], :order => 'taken_on DESC'
       }
       format.xml {
@@ -39,7 +30,6 @@ class ElectricityReadingsController < BelongsToUser
   def create
     @reading = @account.electricity_readings.create(params[:electricity_reading])
     if @reading.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_electricity_account_electricity_readings_path(@user, @account))
     else
       respond_to do |format|
@@ -56,7 +46,6 @@ class ElectricityReadingsController < BelongsToUser
   def update
     @reading.update_attributes(params[:electricity_reading])
     if @reading.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_electricity_account_electricity_readings_path(@user, @account))
     else
       render :action => 'edit'
@@ -65,7 +54,6 @@ class ElectricityReadingsController < BelongsToUser
 
   def destroy
     @reading.destroy
-    @current_user.update_stored_statistics!
     redirect_to(user_electricity_account_electricity_readings_path(@user, @account))
   end
 
@@ -111,6 +99,13 @@ private
 
   def get_elec_reading
     @reading = @account.electricity_readings.find(params[:id])
+  end
+
+  def tips
+    [
+      "Enter your meter readings regularly to get the most accurate results.",
+      "You can use meter readings from your old electricity bills to fill in the last few years."
+    ]
   end
 
 end

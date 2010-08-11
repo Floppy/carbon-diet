@@ -33,11 +33,9 @@ public
   end
   
   def resetpw
-    @pagename = "Reset password"
   end
 
   def change_password
-    @pagename = "Enter new password"
   end
 
   def login
@@ -131,7 +129,6 @@ public
   end
 
   def confirm  
-    @pagename = "Confirm details"
     # Create captcha seed and store in session
     #session[:captcha] = generate_captcha_id
     # Generate captcha URL for view
@@ -226,7 +223,6 @@ public
   def edit
     @user = @current_user
     @countries = Country.find(:all, :conditions => ["visible IS TRUE"], :order => "name")
-    @pagename = "Edit settings"
   end
  
   def update
@@ -253,14 +249,11 @@ public
       redirect_to :action => 'edit'
       return    
     end
-    # Update stats in case people in household has changed
-    @current_user.update_stored_statistics! 
     # Done
     redirect_to_main_page
   end
 
   def destroy
-    @pagename = "Delete login?"
   end
 
   def really_destroy

@@ -16,8 +16,8 @@ class ElectricityAccount < ActiveRecord::Base
     super
   end
 
-  def kg_per_kWh  
-    electricity_supplier.kg_per_kWh
+  def kg_per_kwh
+    electricity_supplier.kg_per_kwh
   end
 
   def start_date
@@ -34,11 +34,11 @@ class ElectricityAccount < ActiveRecord::Base
     last_date = 0;
     # Analyse each reading
     readings = electricity_readings.find(:all, :order => "taken_on")
-    for reading in readings
+    readings.each do |reading|
       # Calculate electricity used since last reading
-      kWh_total = reading.kWh_day
-      if reading.kWh_night 
-        kWh_total += reading.kWh_night
+      kWh_total = reading.kwh_day
+      if reading.kwh_night
+        kWh_total += reading.kwh_night
       end
       if last_kWh != 0
         kWh_used = kWh_total - last_kWh
@@ -48,7 +48,7 @@ class ElectricityAccount < ActiveRecord::Base
       # Add to result
       if (kWh_used != 0)
         days = reading.taken_on - last_date
-        co2 = kWh_used * kg_per_kWh
+        co2 = kWh_used * kg_per_kwh
         emissiondata << { :start => last_date, 
                           :end => reading.taken_on,
                           :co2 => co2, 

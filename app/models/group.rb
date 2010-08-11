@@ -6,6 +6,10 @@ class Group < ActiveRecord::Base
   has_many :comments, :as => :commentable, :order => "created_at DESC"
 
   validates_uniqueness_of :name
+
+  def to_param
+    name
+  end
   
   def after_save
     unless owner.nil?

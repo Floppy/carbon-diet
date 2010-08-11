@@ -1,4 +1,4 @@
 <div class="option">
 <%= image_tag 'note.png' %>
-<%= link_to 'Make Notes', { :controller => "notes" } %>
+<%= link_to 'Make Notes', user_notes_path(@user || @current_user) %>
 </div>

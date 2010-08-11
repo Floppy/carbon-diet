@@ -4,8 +4,12 @@ class VehicleFuelPurchase < ActiveRecord::Base
   belongs_to :vehicle_fuel_type
   # Validation
   validates_numericality_of :amount
+  validates_date :purchased_on
   # Attributes
   attr_accessible :purchased_on, :amount, :vehicle_fuel_type_id, :distance
+
+  # Delegation
+  delegate :user, :to => :vehicle
 
   def validate
     unless distance.nil?

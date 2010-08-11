@@ -1,42 +1,63 @@
 class GroupsController < ApplicationController
-  before_filter :get_current_user, :only => ["view", "browse", "feed"]
-  before_filter :check_logged_in, :except => ["view", "browse", "feed"]
+  before_filter :get_current_user
+  before_filter :get_group, :except => [:index, :new, :create]
+  before_filter :check_group_owner, :only => [:edit, :update, :destroy]
+  before_filter :check_group_member, :only => [:invite, :send_invitations]
 
-  verify :method => :post, :only => ['destroy']
-
-  def index
-    redirect_to :action => 'list'
-    return
-  end
- 
-  def list
-    @pagename = "My Groups"
-    @groups = @current_user.groups
-  end
+  include GraphFunctions
   
-  def browse
-    @pagename = "Browse Groups"
-    @subsections, @groups =  Group.browse(params[:string])
+  def index
+    @subsections, @groups =  Group.browse(params[:string],1)
   end
  
-  def view
-    @group = Group.find_by_id(params[:id])
-    @pagename = @group.name
-    @comments = @group.comments
-    # Generate league table
-    @leaguetable = []
-    @group.users.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
-    @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
-    # Generate pie chart URL
-    @pie_url = url_for(:controller => "xml_chart", :action => "pie_group", :id => @group.id)    
-  rescue
-    flash[:notice] = "Unknown group!"
-    index
+  def show
+    respond_to do |format|
+      format.html {
+        @comments = @group.comments
+        # Generate league table
+        @leaguetable = []
+        @group.users.each { |u| @leaguetable << { :user => u, :total => (u.annual_emissions > 0 and u.public) ? u.annual_emissions : 9e99 } }
+        @leaguetable = @leaguetable.sort{ |x,y| x[:total] <=> y[:total] }
+        # Generate pie chart URL
+        @pie_url = group_path(@group, :format => :xmlchart)
+      }
+      format.xmlchart {
+        srand(69)
+        # Store totals
+        @totals = []
+        @colours = []
+        total = 0.0
+        @group.users.each { |u| total += u.annual_emissions if u.public }
+        # For each account, calculate emissions
+        @group.users.each do |user|
+          # Create totals
+          @totals << {:name => user.name, :data => { :total => user.annual_emissions, :percentage => user.annual_emissions/total} } if user.public
+          # Create colours
+          @colours << random_colour
+        end
+        # Send data
+        render :file => 'shared/pie', :layout => false
+      }
+      format.atom {
+        @comments = @group.comments.find(:all, :order => "created_at DESC", :limit => 10)
+      }
+    end
+  end
+
+  def new
+    @group = Group.new
+  end
+
+  def create
+    @group = Group.create(params[:group])
+    if @group.save
+      redirect_to @group
+    else
+      render :action => "new"
+    end
   end
 
   def edit
-    @group = params[:id] ? Group.find_by_id(params[:id]) : Group.new
-    index if (@group.owner && @group.owner != @current_user)
     if request.post?      
       if verify_recaptcha(@group)
         @group.update_attributes(params[:group])
@@ -54,83 +75,33 @@ class GroupsController < ApplicationController
     end
   end
 
+  def update
+    @group.update_attributes(params[:group])
+    if @group.save
+      redirect_to @group
+    else
+      render :action => "edit"
+    end
+  end
+
   def destroy
-    group = @current_user.owned_groups.find(params[:id])
-    group.destroy
-    index
-  rescue
-    flash[:notice] = "Unknown group!"
-    index
+    @group.destroy
+    redirect_to groups_path
   end
 
-  def join
-    group = Group.find_by_id(params[:id], :conditions => ["private IS FALSE"])
-    group.add_user(@current_user)
-    redirect_to :action => 'view', :id => params[:id]
-  rescue
-    flash[:notice] = "Unknown or private group!"    
-    redirect_to :action => 'list'
+  protected
+
+  def get_group
+    @group = Group.find_by_name(params[:id])
+    raise ActiveRecord::RecordNotFound if @group.nil?
   end
 
-  def leave
-    group = Group.find(params[:id]) rescue flash[:notice] = "Unknown group!"
-    unless group.nil?
-      group.remove_user(@current_user)
-    end
-    redirect_to :action => 'view', :id => params[:id]
-  end
- 
-  def invite
-    @group = @current_user.groups.find(params[:id]) 
-    @friends = Array.new(@current_user.friends)
-    for user in @group.users
-      @friends.delete(user) 
-    end
-  rescue
-    flash[:notice] = "Unknown group!"    
-    redirect_to :action => 'list'
+  def check_group_owner
+    raise AccessDenied unless @current_user == @group.owner || @current_user.admin?
   end
 
-  def send_invitations
-    group = @current_user.groups.find(params[:id]) 
-    for friend in @current_user.friends
-      if params[:invite][friend.login] == "1"
-        # Create invitation - automatically notifies the invited person
-        GroupInvitation.create(:user => friend, :inviter => @current_user, :group => group)
-      end
-    end
-    flash[:notice] = "Invitations sent!"
-    redirect_to :action => 'view', :id => params[:id]
-  rescue
-    flash[:notice] = "Unknown group!"
-    redirect_to :action => 'list'
-  end
-
-  def invite_accept
-    invitation = @current_user.group_invitations.find(params[:id])
-    invitation.accept
-    redirect_to :action => 'list'
-  rescue
-    flash[:notice] = "Unknown invitation ID!"
-    redirect_to :action => 'list'
-  end
-  
-  def invite_reject
-    invitation = @current_user.group_invitations.find(params[:id])
-    invitation.reject
-    redirect_to :action => 'list'
-  rescue
-    flash[:notice] = "Unknown invitation ID!"
-    redirect_to :action => 'list'
-  end
-
-  def feed
-    @group = Group.find_by_id(params[:id])
-    redirect_to :action => 'list' and return if @group.nil?
-    @comments = @group.comments.find(:all, :order => "created_at DESC", :limit => 10)
-    # Send data
-    headers["Content-Type"] = "application/atom+xml"
-    render :action => 'atom.rxml', :layout => false
+  def check_group_member
+    #raise AccessDenied unless @group.has_member?(@current_user) || @current_user.admin?
   end
 
 end

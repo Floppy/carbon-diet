@@ -1,0 +1,36 @@
+<% content_for('optionbar') do %>
+  <%= option "add_data" %>
+  <%= option "daily" %>
+  <%= option "action" %>
+  <%= option "analysis" %>
+<% end %>
+
+<div class="pagecontent" >
+  <%= render :partial => "shared/xmlswfcharts",
+    :locals => { :data_url => @data_file, :width => "100%", :height => "250"  } %>
+</div>
+
+<div class="pagecontent">
+  <p>
+    Over the last year, your carbon footprint has come from:
+  </p>
+  <table border="1">
+    <% @totals.each do |item| %>
+      <% if item[:name] != "Total" %>
+        <tr>
+          <td><%=h item[:name] %></td>
+          <td><%= item[:data][:percentage].nil? ? 0 : number_with_precision(item[:data][:percentage], :precision => 0)+'%' %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="pagecontent">
+  <p>
+    Your highest individual contribution to climate change comes from <b><%=h @totals.first[:name] %></b>, so if you want to cut your carbon footprint, you should probably look at reducing that one first in order to make the most impact!
+  </p>
+  <p>
+    For some ideas on how you can reduce your carbon footprint, take a look at the <%= link_to 'actions', :controller => 'actions' %> section.
+  </p>
+</div>

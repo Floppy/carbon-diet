@@ -1,6 +1,6 @@
 <%= error_messages_for 'reading' %>
 
-<% form_for [@user, @account, @reading] do |f| %>
+<% form_for [@user, @account, @reading], :html => {:autocomplete => "off"} do |f| %>
   <table class="form">
   <% if @account.night_rate %>
     <tr>

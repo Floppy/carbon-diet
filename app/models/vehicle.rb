@@ -23,47 +23,7 @@ class Vehicle < ActiveRecord::Base
     return purchase.purchased_on
   end
 
-  def old_style_emissions
-    # Initialise result array
-    emissiondata = EmissionArray.new
-    # Analyse each purchase
-    purchases = vehicle_fuel_purchases.find(:all, :order => "purchased_on")
-    last_purchase = nil
-    for purchase in purchases
-      # Calculate fuel used since last purchase
-      unless last_purchase.nil?
-        co2 = last_purchase.kg_of_co2
-        days = purchase.purchased_on - last_purchase.purchased_on
-        start = last_purchase.purchased_on
-        start.succ
-        # Add to result
-        emissiondata << { :start => start,
-                          :end => purchase.purchased_on,
-                          :co2 => co2,
-                          :days => days.to_i,
-                          :co2_per_day => co2 / days }
-      end
-      last_purchase = purchase
-      last_date = purchase.purchased_on
-    end	
-    # Add final entry
-    if self.current and not emissiondata.empty?
-      co2_per_day = emissiondata.last[:co2_per_day]
-      days = Date::today - last_date
-      if (last_purchase.kg_of_co2 / days) < co2_per_day
-        co2_per_day = last_purchase.kg_of_co2 / days
-      end
-      emissiondata << { :start => last_date, 
-                        :end => Date::today,
-                        :co2 => co2_per_day * days, 
-                        :days => days,
-                        :co2_per_day => co2_per_day }
-    end
-    # Done
-    return emissiondata
-  end
-
-  def new_style_emissions
+  def emissions
     # Initialise result array
     emissiondata = EmissionArray.new
     # Analyse each purchase
@@ -100,10 +60,6 @@ class Vehicle < ActiveRecord::Base
     end
     # Done
     return emissiondata
-  end
-
-  def emissions
-    user.tester ? new_style_emissions : old_style_emissions
   end
 
   def has_enough_data_to_analyse

@@ -2,7 +2,7 @@
 
 <div class="sectiontitle">Top Actions</div>
 <ol>
-<% for action in @actions %>
+<% @actions.each do |action| %>
   <li>
   <%= link_to action.title, :controller => 'actions' %>
   </li>

@@ -11,7 +11,7 @@ xml.electricity_account do
     xml.hot_water @account.used_for_water
   end
   
-  for reading in @account.electricity_readings
+  @account.electricity_readings.each do |reading|
     xml.reading do
       xml.taken_on reading.taken_on.xmlschema
       xml.reading do

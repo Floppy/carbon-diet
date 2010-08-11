@@ -6,16 +6,7 @@ class GasReadingsController < BelongsToUser
   def index
     respond_to do |format|
       format.html {
-        # Tip
-        case rand(2)
-        when 0
-          @tip = "Enter your meter readings regularly to get the most accurate results."
-        else
-          @tip = "You can use meter readings from your old gas bills to fill in the last few years."
-        end
-        # Page name
-        @pagename = "Readings for " + @account.name
-        # Data
+        @tip = tips.rand
         @gas_readings = @account.gas_readings.paginate :page => params[:page], :order => "taken_on DESC"
       }
       format.xml {
@@ -36,7 +27,6 @@ class GasReadingsController < BelongsToUser
   def create
     @reading = @account.gas_readings.create(params[:gas_reading])
     if @reading.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_gas_account_gas_readings_path(@user, @account))
     else
       respond_to do |format|
@@ -53,7 +43,6 @@ class GasReadingsController < BelongsToUser
   def update
     @reading.update_attributes(params[:gas_reading])
     if @reading.save
-      @user.update_stored_statistics!
       mobile? ? redirect_to_main_page : redirect_to(user_gas_account_gas_readings_path(@user, @account))
     else
       render :action => 'edit'
@@ -62,7 +51,6 @@ class GasReadingsController < BelongsToUser
 
   def destroy
     @reading.destroy
-    @current_user.update_stored_statistics!
     redirect_to(user_gas_account_gas_readings_path(@user, @account))
   end
 
@@ -74,6 +62,13 @@ private
 
   def get_gas_reading
     @reading = @account.gas_readings.find(params[:id])
+  end
+
+  def tips
+    [
+      "Enter your meter readings regularly to get the most accurate results.",
+      "You can use meter readings from your old gas bills to fill in the last few years."
+    ]
   end
 
 end

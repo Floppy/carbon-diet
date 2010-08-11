@@ -1,7 +1,7 @@
 xml.instruct!
 xml.flights do
 
-  for flight in @flights
+  @flights.each do |flight|
     
     xml.flight do
       xml.route do

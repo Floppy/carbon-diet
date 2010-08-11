@@ -5,11 +5,8 @@ protected
 
   def get_user
     @user = User.find_by_login(params[:user_id])
-    if @user.nil?
-      render_http_code 404
-    elsif @user != @current_user && !@user.admin
-      render_http_code 401
-    end
+    render_http_code(404) if @user.nil?
+    render_http_code(401) unless @user == @current_user || (@current_user && @current_user.admin)
   end
 
 end

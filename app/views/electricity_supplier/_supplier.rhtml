@@ -2,11 +2,12 @@
 <div class="sectiontitle"><%= link_to h(supplier.name), :action => "show", :id => supplier %></div>
 <%= render :partial => "shared/xmlswfcharts",
            :locals => { :width => "50%", :height => "250",
-                        :data_url => url_for(:controller => "xml_chart", 
-                                             :action => "elec_supplier_pie",
-                                             :id => supplier.id) } %>
+                        :data_url => url_for(:controller => "electricity_supplier",
+                                             :action => "show",
+                                             :id => supplier.id,
+                                             :format => :xmlchart) } %>
 <ul>
-<li>Total: <%= kg(supplier.kg_per_kWh,2) %> / kWh</li>
+<li>Total: <%= kg(supplier.kg_per_kwh,2) %> / kWh</li>
 <% unless supplier.company_url.blank? %>
 <li>Homepage: <a href="http://<%=h supplier.company_url %>">http://<%=h supplier.company_url %></a></li>
 <% end %>

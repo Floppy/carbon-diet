@@ -45,11 +45,11 @@ function no_more_actions() {
 <div class="pagecontent">
 
 <p>
-Based on your <%= link_to 'emissions', :controller => 'report' %> over the last month, here are our top suggestions for how you can reduce your carbon footprint. If you've done (or can't do) one of these, click the appropriate button and we'll give you another one!
+Based on your <%= link_to 'emissions', user_report_path(@current_user) %> over the last month, here are our top suggestions for how you can reduce your carbon footprint. If you've done (or can't do) one of these, click the appropriate button and we'll give you another one!
 </p>
 
 <div id="actionlist">
-<% for action in @actions %>
+<% @actions.each do |action| %>
 <%= render :partial => 'action', :locals => { :action => action } %>
 <% end %>
 </div>

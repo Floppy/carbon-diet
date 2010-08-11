@@ -4,6 +4,13 @@ set :scm, "git"
 set :repository, 'git@github.com:Floppy/carbon-diet.git'
 set :deploy_via, :export
 
+set :branch do
+  default_tag = `git tag`.split("\n").last
+  tag = Capistrano::CLI.ui.ask "Tag to deploy (make sure to push the tag first): [#{default_tag}] "
+  tag = default_tag if tag.empty?
+  tag
+end
+
 set :deploy_to, '/home/carbondiet'
 set :user, 'carbondiet'
 

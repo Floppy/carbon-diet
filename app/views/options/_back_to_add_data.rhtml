@@ -1,4 +1,4 @@
 <div class="option">
 <%= image_tag 'new.png' %>
-<%= link_to 'Add Other Data', { :controller => "/data_entry/index" } %>
+<%= link_to 'Add Other Data', user_accounts_path(@user || @current_user) %>
 </div>

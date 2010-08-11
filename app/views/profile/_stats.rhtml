@@ -1,6 +1,6 @@
 <div class="sectiontitle">Carbon footprint</div>
 <table>
-<% for type in @totals %>
+<% @totals.each do |type| %>
 <tr>
 <td><%= image_tag type[:image] unless type[:image].nil?%></td>
 <td><%=h type[:name] %></td>

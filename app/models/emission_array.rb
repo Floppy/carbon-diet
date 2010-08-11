@@ -33,7 +33,7 @@ class EmissionArray < Array
       firstday = self.first[:start]
     end
     # Handle all data
-    for entry in self
+    self.each do |entry|
       if firstday > entry[:start] and firstday <= entry[:end]
         tmp = entry[:end] - firstday + 1
         total += entry[:co2_per_day] * tmp
@@ -63,7 +63,7 @@ protected
     if self.empty? or day <= self.first[:start] or day > self.last[:end]
       return nil
     end
-    for entry in self
+    self.each do |entry|
       if day > entry[:start] and day <= entry[:end]
         return entry[:co2_per_day]
       end

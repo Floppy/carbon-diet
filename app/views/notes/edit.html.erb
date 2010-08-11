@@ -1,0 +1,10 @@
+<% pagetitle("Editing Note", "note.png") %>
+
+<% content_for('optionbar') do %>
+  <%= option "save", :id => "edit_note_#{@note.id}" %>
+  <%= option "cancel" %>
+<% end %>
+
+<div class="pagecontent">
+  <%= render :partial => "form" %>
+</div>

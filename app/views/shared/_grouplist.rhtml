@@ -1,7 +1,7 @@
 <p>
-<% for group in @groups %>
+<% @groups.each do |group| %>
 <%= image_tag 'group.png' %>
-<%= link_to h(group.name), :controller => 'groups', :action => 'view', :id => group.id %> (<%= group.users.count %> members)
+<%= link_to h(group.name), group %> (<%= group.users.count %> members)
 <br/>
 <span class="smalltext"><em><%=h group.description.first(50) %>...</em></span>
 <br/>
