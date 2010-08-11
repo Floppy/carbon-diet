@@ -30,12 +30,12 @@ class GroupInvitationsControllerTest < ActionController::TestCase
 
   def test_send_invitations
     when_not_logged_in do
-      post :create, :group_id => @group.name
+      post :create, :group_id => @group.name, :invite => {'james' => '1'}
       assert_response :redirect
       assert_redirected_to '/'
     end
     when_logged_in do
-      post :create, :group_id => @group.name
+      post :create, :group_id => @group.name, :invite => {'james' => '1'}
       assert_response :redirect
       assert_redirected_to @group
     end
