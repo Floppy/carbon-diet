@@ -1,21 +1,21 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 require 'group_invitations_controller'
 
 # Re-raise errors caught by the controller.
 class GroupInvitationsController; def rescue_action(e) raise e end; end
 
-class GroupInvitationsControllerTest < ActionController::TestCase
+describe GroupInvitationsController do
 
   fixtures :groups
 
-  def setup
+  before do
     @controller = GroupInvitationsController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @group = Group.find(2)
   end
 
-  def test_invite
+  it "invite" do
     when_not_logged_in do
       get :new, :group_id => @group.name
       assert_response :redirect
@@ -28,7 +28,7 @@ class GroupInvitationsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_send_invitations
+  it "send invitations" do
     when_not_logged_in do
       post :create, :group_id => @group.name, :invite => {'james' => '1'}
       assert_response :redirect

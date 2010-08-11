@@ -1,10 +1,10 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 require 'reports_controller'
 
-class ReportsControllerTest < ActionController::TestCase
+describe ReportsController do
   fixtures :users
 
-  def setup
+  before do
     @controller = ReportsController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
@@ -15,12 +15,12 @@ class ReportsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'reports/recent_chart.amline.builder'
     assigns["data"].each do |dataset|
-      assert dataset[:data].size == period
-      assert dataset[:notes].size == period if dataset[:notes]
+      dataset[:data].size.should == period
+      dataset[:notes].size.should == period if dataset[:notes]
       if dataset[:notes]
         for note in dataset[:notes] do
-          assert !note.nil?
-          assert !note[:date].nil?
+          note.nil?.should_not == true
+          note[:date].nil?.should_not == true
         end
       end
     end
@@ -35,7 +35,7 @@ class ReportsControllerTest < ActionController::TestCase
     assert_template 'shared/pie.xmlchart.builder'
   end
 
-  def test_cannot_view_any_html_pages_if_not_logged_in
+  it "cannot view any html pages if not logged in" do
     when_not_logged_in do
       get :show, :user_id => User.find(1).login
       assert_response :redirect
@@ -46,7 +46,7 @@ class ReportsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_cannot_view_any_html_pages_if_logged_in_as_wrong_person
+  it "cannot view any html pages if logged in as wrong person" do
     when_logged_in(2) do
       get :show, :user_id => User.find(1).login
       assert_response :unauthorized
@@ -57,7 +57,7 @@ class ReportsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_can_view_html_pages_if_logged_in_as_right_person
+  it "can view html pages if logged in as right person" do
     when_logged_in(1) do
       get :show, :user_id => User.find(1).login
       assert_response :success
@@ -68,21 +68,21 @@ class ReportsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_can_view_public_charts_if_not_logged_in
+  it "can view public charts if not logged in" do
     when_not_logged_in do
       amline(1,30)
       xmlpie(1,30)
     end
   end
 
-  def test_can_view_public_charts_if_logged_in
+  it "can view public charts if logged in" do
     when_logged_in(2) do
       amline(1,30)
       xmlpie(1,30)
     end
   end
 
-  def test_cannot_view_private_charts_if_not_logged_in
+  it "cannot view private charts if not logged in" do
     when_not_logged_in do
       get :recent_chart, :period => 30, :user_id => User.find(2).login, :format => 'amline'
       assert_response :missing
@@ -93,7 +93,7 @@ class ReportsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_cannot_view_private_charts_if_not_logged_in_as_right_user
+  it "cannot view private charts if not logged in as right user" do
     when_logged_in(1) do
       get :recent_chart, :period => 30, :user_id => User.find(2).login, :format => 'amline'
       assert_response :missing
@@ -104,24 +104,24 @@ class ReportsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_can_view_private_charts_if_logged_in_as_right_user
+  it "can view private charts if logged in as right user" do
     when_logged_in(2) do
       amline(2,30)
       xmlpie(2,30)
     end
   end
 
-  def test_charts_long
+  it "charts long" do
     amline(1,1460)
     xmlpie(1,1460)
   end
 
-  def test_charts_no_data
+  it "charts no data" do
     amline(9,30)
     xmlpie(9,30)
   end
 
-  def test_line_chart_no_notes
+  it "line chart no notes" do
     amline(3,30)
   end
 
