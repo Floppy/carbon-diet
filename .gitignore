@@ -7,3 +7,4 @@ public/images/avatars/*
 db/*.db
 coverage
 tmp/*
+.DS_Store
