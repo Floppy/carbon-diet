@@ -1,4 +1,6 @@
 class ReportsController < BelongsToUser
+  skip_before_filter :check_logged_in, :only => [:recent_chart, :ratio_chart]
+  skip_before_filter :get_user, :only => [:recent_chart, :ratio_chart]
 
   include GraphFunctions
 
@@ -40,9 +42,15 @@ class ReportsController < BelongsToUser
       format.html {
         # Calculate totals
         @totals = @user.calculate_totals(365)
-        @data_file = ratio_user_report_path(@user, :format => :xmlchart, :period => 365)
+        @data_file = ratio_chart_user_report_path(@user, :format => :xmlchart, :period => 365)
         @pagename = "CO2 sources (over the last year)"
       }
+    end
+  end
+
+  def ratio_chart
+    return unless check_user
+    respond_to do |format|
       format.xmlchart {
         # Store totals
         @totals = []
@@ -66,12 +74,18 @@ class ReportsController < BelongsToUser
         period = Date.today - @start_date
         # Calculate totals
         @totals = @user.calculate_totals(period)
-        @data_file = recent_user_report_path(@user, :format => :amline, :period => period)
+        @data_file = recent_chart_user_report_path(@user, :format => :amline, :period => period)
         # Set variables for data access
-        @line_settings_url = recent_user_report_path(@user, :format => :amline_settings, :period => period)
+        @line_settings_url = recent_chart_user_report_path(@user, :format => :amline_settings, :period => period)
         @show_flight_controls = @user.flights.count > 0 ? true : false;
         @pagename = "Daily trends"
       }
+    end
+  end
+
+  def recent_chart
+    return unless check_user
+    respond_to do |format|
       format.amline {
         amline(params[:period].to_i)
         render :layout => false
@@ -178,6 +192,12 @@ class ReportsController < BelongsToUser
       end
     end
     @max = total[:values].max { |a,b| nilcomp(a,b) }
+  end
+
+  def check_user
+    @user = User.find_by_login(params[:user_id])
+    render_http_code 404 and return false unless @user.public? || @user == get_current_user
+    return true
   end
 
 end

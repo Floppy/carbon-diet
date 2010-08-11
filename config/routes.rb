@@ -41,7 +41,12 @@ ActionController::Routing::Routes.draw do |map|
       gas.resources :gas_readings, :as => "readings"
     end
     user.resources :notes
-    user.resource :report, :member => {:recent => :get, :ratio => :get}
+    user.resource :report, :member => {
+      :recent => :get,
+      :ratio => :get,
+      :recent_chart => :get,
+      :ratio_chart => :get
+    }
     user.resources :groups, :controller => "user_groups"
     user.resources :friends, :collection => {
       :invite => :get,

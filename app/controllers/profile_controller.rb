@@ -17,9 +17,9 @@ class ProfileController < ApplicationController
       format.html {
         # Get emissions data
         @period = report_period
-        @pie_url = ratio_user_report_path(@profile, :format => :xmlchart, :period => @period)
-        @line_url = recent_user_report_path(@profile, :format => :amline, :period => @period)
-        @line_settings_url = recent_user_report_path(@profile, :format => :amline_settings, :period => @period)
+        @pie_url = ratio_chart_user_report_path(@profile, :format => :xmlchart, :period => @period)
+        @line_url = recent_chart_user_report_path(@profile, :format => :amline, :period => @period)
+        @line_settings_url = recent_chart_user_report_path(@profile, :format => :amline_settings, :period => @period)
         @show_flight_controls = @profile.flights.count > 0 ? true : false;
         @totals = @profile.calculate_totals(@period)
         # Get comments
