@@ -8,8 +8,12 @@ class ProfileController < ApplicationController
       @profile = User.find_by_login_and_public(params[:login], true)
     end
     if @profile.nil?
-      flash[:notice] = "Profile not found!"
-      redirect_to :controller => 'search'
+      if params[:login].present?
+        flash[:notice] = "Profile not found!"
+        redirect_to :controller => 'search'
+      else
+        redirect_to '/'
+      end
       return
     end
     # Respond
