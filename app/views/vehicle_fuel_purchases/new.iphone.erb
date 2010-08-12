@@ -1,4 +1,4 @@
-<% form_for [@user, @vehicle, @purchase], {:class => "panel", :selected => "true", :title => "Add Fuel", :target => "_self"} do |f| %>
+<% form_for [@user, @vehicle, @purchase], :html => {:class => "panel", :selected => "true", :title => "Add Fuel", :target => "_self"} do |f| %>
   <fieldset>
     <div class="row">
       <%= f.label :amount, "Amount (#{@vehicle.vehicle_fuel_unit.abbreviation})" %>
