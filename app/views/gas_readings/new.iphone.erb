@@ -4,7 +4,7 @@
 
     <div class="row">
       <label for="gas_reading_reading"><%=h @account.gas_unit.abbreviation %></label>
-      <%= text_field 'gas_reading', 'reading', :value => "" %>
+      <input type="number" value="" size="30" name="gas_reading[reading]" id="gas_reading_reading"/>
     </div>
     <div class="row">
       <label for="gas_reading_taken_on">Date</label>

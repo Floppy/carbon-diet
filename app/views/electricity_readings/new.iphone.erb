@@ -5,17 +5,17 @@
     <% if @account.night_rate %>
       <div class="row">
         <label for="electricity_reading_reading_day">Day (<%=h @account.electricity_unit.abbreviation %>)</label>
-        <%= text_field 'electricity_reading', 'reading_day', :value => "" %>
+        <input type="number" value="" size="30" name="electricity_reading[reading_day]" id="electricity_reading_reading_day"/>
       </div>
       <div class="row">
         <label for="electricity_reading_reading_night">Night (<%=h @account.electricity_unit.abbreviation %>)</label>
-        <%= text_field 'electricity_reading', 'reading_night', :value => "" %>
+        <input type="number" value="" size="30" name="electricity_reading[reading_night]" id="electricity_reading_reading_night"/>
       </div>
     <% else %>
       <div class="row">
         <label for="electricity_reading_reading_day"><%=h @account.electricity_unit.abbreviation %></label>
-        <%= text_field 'electricity_reading', 'reading_day', :value => "" %>
-        <%= hidden_field 'electricity_reading', 'reading_night', :value => "0" %>
+        <input type="number" value="" size="30" name="electricity_reading[reading_day]" id="electricity_reading_reading_day"/>
+        <%= hidden_field 'electricity_reading', 'reading_night', :value => "0", :type => 'number' %>
       </div>
     <% end %>
     <div class="row">

@@ -2,7 +2,7 @@
   <fieldset>
     <div class="row">
       <%= f.label :amount, "Amount (#{@vehicle.vehicle_fuel_unit.abbreviation})" %>
-      <%= f.text_field :amount, :value => "" %>
+      <input type="number" value="" size="30" name="vehicle_fuel_purchase[amount]" id="vehicle_fuel_purchase_amount"/>
     </div>
     <div class="row">
       <%= f.label :purchased_on, "Date" %>
@@ -14,7 +14,7 @@
     </div>
     <div class="row">
       <%= f.label :distance, "Mileage (#{@vehicle.vehicle_distance_unit.abbreviation})" %>
-      <%= f.text_field :distance, :value => "" %>
+      <input type="number" value="" size="30" name="vehicle_fuel_purchase[distance]" id="vehicle_fuel_purchase_distance"/>
     </div>
   </fieldset>
   <a class="whiteButton" type="submit" href="#">Add</a>
