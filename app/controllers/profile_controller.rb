@@ -31,7 +31,7 @@ class ProfileController < ApplicationController
         # Get actions
         @actions = get_actions(3) if @profile == @current_user
       }
-      format.iphone { render_iphone }
+      format.iphone { render_iphone :layout => 'application' }
       format.wml
     end
   end

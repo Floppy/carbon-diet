@@ -89,9 +89,8 @@ protected
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
   end
 
-  # Special render function for iphone, checks for XHR requests and handles layout as appropriate
   def render_iphone(options = {})
-    options[:layout] = request.xhr? ? false : 'application'
+    options[:layout] ||= false
     render options
   end
 

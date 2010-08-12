@@ -5,7 +5,7 @@ class MainController < ApplicationController
     session[:next] = params[:to] unless params[:to].nil?
     respond_to do |format|
       format.html
-      format.iphone { render_iphone }
+      format.iphone { render_iphone :layout => 'application' }
       format.wml
     end
   end

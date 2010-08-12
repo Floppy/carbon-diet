@@ -31,7 +31,7 @@ class GasReadingsController < BelongsToUser
     else
       respond_to do |format|
         format.html { render :action => 'new' }
-        format.iphone { render_iphone :action => 'new' }
+        format.iphone { render_iphone :action => 'new', :layout => 'application' }
         format.wml { render :action => 'new' }
       end
     end
