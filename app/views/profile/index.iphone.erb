@@ -13,7 +13,7 @@
   <% end %>
   <% @current_user.vehicles.current.each do |vehicle| %>
     <li>
-      <%= link_to("#{image_tag 'car.png'} #{vehicle.name}", new_user_vehicle_vehicle_fuel_purchase_path(@current_user, vehicle)) %> %>
+      <%= link_to("#{image_tag 'car.png'} #{vehicle.name}", new_user_vehicle_vehicle_fuel_purchase_path(@current_user, vehicle)) %>
     </li>
   <% end %>
   <li class="group">Analysis</li>
