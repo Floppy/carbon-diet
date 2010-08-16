@@ -13,7 +13,7 @@ gas_accounts_003:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "3"
   user_id: "11"
   used_for_water: "1"
@@ -31,7 +31,7 @@ gas_accounts_004:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "4"
   user_id: "3"
   used_for_water: "1"
@@ -49,7 +49,7 @@ gas_accounts_005:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "5"
   user_id: "7"
   used_for_water: "1"
@@ -67,7 +67,7 @@ gas_accounts_006:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "6"
   user_id: "15"
   used_for_water: "1"
@@ -76,7 +76,7 @@ gas_accounts_018:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "18"
   user_id: "47"
   used_for_water: "1"
@@ -85,7 +85,7 @@ gas_accounts_007:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "7"
   user_id: "18"
   used_for_water: "1"
@@ -94,7 +94,7 @@ gas_accounts_008:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "8"
   user_id: "19"
   used_for_water: "1"
@@ -103,7 +103,7 @@ gas_accounts_010:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "10"
   user_id: "22"
   used_for_water: "1"
@@ -112,7 +112,7 @@ gas_accounts_009:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "9"
   user_id: "5"
   used_for_water: "1"
@@ -121,7 +121,7 @@ gas_accounts_011:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "11"
   user_id: "26"
   used_for_water: "1"
@@ -139,7 +139,7 @@ gas_accounts_001:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "1"
   user_id: "1"
   used_for_water: "1"
@@ -148,7 +148,7 @@ gas_accounts_013:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "13"
   user_id: "35"
   used_for_water: "1"
@@ -157,7 +157,7 @@ gas_accounts_002:
   gas_supplier_id: "1"
   current: "1"
   used_for_heating: "1"
-  gas_unit_id: "1"
+  gas_unit: m3
   id: "2"
   user_id: "8"
   used_for_water: "1"

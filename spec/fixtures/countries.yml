@@ -13,4 +13,4 @@ uk:
   vehicle_distance_unit: mi
   abbreviation: UK
   vehicle_fuel_unit: litres
-  gas_unit_id: "1"
+  gas_unit: m3
