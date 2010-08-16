@@ -1,7 +1,7 @@
 --- 
 gas_accounts_014: 
   name: npower Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit_id: "2"
@@ -10,7 +10,7 @@ gas_accounts_014:
   used_for_water: "1"
 gas_accounts_003: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -19,7 +19,7 @@ gas_accounts_003:
   used_for_water: "1"
 gas_accounts_015: 
   name: Natural Gas
-  gas_supplier_id: "2"
+  gas_supplier: standard_us
   current: "1"
   used_for_heating: "1"
   gas_unit_id: "2"
@@ -28,7 +28,7 @@ gas_accounts_015:
   used_for_water: "1"
 gas_accounts_004: 
   name: Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -37,7 +37,7 @@ gas_accounts_004:
   used_for_water: "1"
 gas_accounts_016: 
   name: Natural Gas
-  gas_supplier_id: "2"
+  gas_supplier: standard_us
   current: "0"
   used_for_heating: "0"
   gas_unit_id: "2"
@@ -46,7 +46,7 @@ gas_accounts_016:
   used_for_water: "0"
 gas_accounts_005: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -55,7 +55,7 @@ gas_accounts_005:
   used_for_water: "1"
 gas_accounts_017: 
   name: Natural Gas
-  gas_supplier_id: "2"
+  gas_supplier: standard_us
   current: "1"
   used_for_heating: "0"
   gas_unit_id: "2"
@@ -64,7 +64,7 @@ gas_accounts_017:
   used_for_water: "0"
 gas_accounts_006: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -73,7 +73,7 @@ gas_accounts_006:
   used_for_water: "1"
 gas_accounts_018: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -82,7 +82,7 @@ gas_accounts_018:
   used_for_water: "1"
 gas_accounts_007: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -91,7 +91,7 @@ gas_accounts_007:
   used_for_water: "1"
 gas_accounts_008: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -100,7 +100,7 @@ gas_accounts_008:
   used_for_water: "1"
 gas_accounts_010: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -109,7 +109,7 @@ gas_accounts_010:
   used_for_water: "1"
 gas_accounts_009: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -118,7 +118,7 @@ gas_accounts_009:
   used_for_water: "1"
 gas_accounts_011: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -127,7 +127,7 @@ gas_accounts_011:
   used_for_water: "1"
 gas_accounts_012: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit_id: "2"
@@ -136,7 +136,7 @@ gas_accounts_012:
   used_for_water: "1"
 gas_accounts_001: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -145,7 +145,7 @@ gas_accounts_001:
   used_for_water: "1"
 gas_accounts_013: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3
@@ -154,7 +154,7 @@ gas_accounts_013:
   used_for_water: "1"
 gas_accounts_002: 
   name: Natural Gas
-  gas_supplier_id: "1"
+  gas_supplier: standard_uk
   current: "1"
   used_for_heating: "1"
   gas_unit: m3

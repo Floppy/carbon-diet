@@ -1,13 +1,10 @@
---- 
-gas_suppliers_001: 
-  g_per_m3: "2170"
+standard_uk:
+  g_per_m3: 2170
   name: UK Standard
-  default: "1"
+  default: true
   country: uk 
-  id: "1"
-gas_suppliers_002: 
-  g_per_m3: "2170"
+standard_us:
+  g_per_m3: 2170
   name: US Standard
-  default: "1"
+  default: true
   country: us
-  id: "2"
