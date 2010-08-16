@@ -1,6 +1,6 @@
 us:
   name: United States
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   flag_image: flags/us.png
   vehicle_distance_unit: mi
   abbreviation: US
@@ -8,7 +8,7 @@ us:
   gas_unit_id: "2"
 uk:
   name: United Kingdom
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   flag_image: flags/gb.png
   vehicle_distance_unit: mi
   abbreviation: UK

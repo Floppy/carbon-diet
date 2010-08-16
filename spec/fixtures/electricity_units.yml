@@ -1,6 +1,4 @@
---- 
-electricity_units_001: 
+kWh: 
   name: Kilowatt-Hours
   abbreviation: kWh
-  id: "1"
-  amount_in_kWh: "1"
+  amount_in_kWh: 1
