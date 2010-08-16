@@ -4,6 +4,7 @@ describe "Action", ActiveSupport::TestCase do
   fixtures :actions
   fixtures :action_categories
   fixtures :action_overrides
+  fixtures :countries
 
   it "relationships" do
     action = actions(:turn_off_lights)
@@ -15,7 +16,7 @@ describe "Action", ActiveSupport::TestCase do
   
   it "override" do
     action = actions(:turn_off_lights)
-    action.load_random_override(1)
+    action.load_random_override(countries(:uk).id)
     action.content.should == action_overrides(:turn_off_lights).content
   end
   

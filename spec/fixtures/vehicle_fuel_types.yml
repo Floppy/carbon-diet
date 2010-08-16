@@ -1,48 +1,41 @@
 --- 
-vehicle_fuel_types_001: 
-  g_per_l: "2315"
+unleaded_uk:
+  g_per_l: 2315
   name: Unleaded
-  default: "1"
-  id: "1"
-  vehicle_fuel_class_id: "1"
-vehicle_fuel_types_002: 
-  g_per_l: "2630"
+  default: true
+  vehicle_fuel_class: unleaded_uk
+diesel_uk:
+  g_per_l: 2630
   name: Diesel
-  default: "1"
-  id: "2"
-  vehicle_fuel_class_id: "2"
-vehicle_fuel_types_003: 
-  g_per_l: "2315"
+  default: true
+  vehicle_fuel_class: diesel_uk
+lrp_uk:
+  g_per_l: 2315
   name: LRP (4 Star)
-  default: "1"
-  id: "3"
-  vehicle_fuel_class_id: "3"
-vehicle_fuel_types_004: 
-  g_per_l: "1498"
+  default: true
+  vehicle_fuel_class: lrp_uk
+lpg_uk:
+  g_per_l: 1498
   name: LPG (Autogas)
-  default: "1"
-  id: "4"
-  vehicle_fuel_class_id: "4"
-vehicle_fuel_types_005: 
-  g_per_l: "2315"
+  default: true
+  vehicle_fuel_class: lpg_uk
+gasolline_us:
+  g_per_l: 2315
   name: Gasoline
-  default: "1"
-  id: "5"
-  vehicle_fuel_class_id: "5"
-vehicle_fuel_types_006: 
-  g_per_l: "2630"
+  default: true
+  vehicle_fuel_class: gasoline_us
+diesel_us:
+  g_per_l: 2630
   name: Diesel
-  default: "1"
-  id: "6"
-  vehicle_fuel_class_id: "6"
-vehicle_fuel_types_007: 
-  g_per_l: "1498"
+  default: true
+  vehicle_fuel_class: diesel_us
+lpg_us:
+  g_per_l: 1498
   name: LPG (Autogas)
-  default: "1"
-  id: "7"
-  vehicle_fuel_class_id: "7"
-vehicle_fuel_types_easy:
-  g_per_l: "1000"
+  default: true
+  vehicle_fuel_class: lpg_us
+easy_unleaded_uk:
+  g_per_l: 1000
   name: Easy Unleaded
-  default: 1
-  vehicle_fuel_class_id: 1
+  default: 0
+  vehicle_fuel_class: unleaded_uk

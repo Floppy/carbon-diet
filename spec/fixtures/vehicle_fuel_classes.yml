@@ -1,29 +1,22 @@
 --- 
-vehicle_fuel_classes_001: 
+unleaded_uk:
   name: Unleaded
-  country_id: "1"
-  id: "1"
-vehicle_fuel_classes_002: 
+  country: uk
+diesel_uk:
   name: Diesel
-  country_id: "1"
-  id: "2"
-vehicle_fuel_classes_003: 
+  country: uk
+lrp_uk:
   name: 4 Star (LRP)
-  country_id: "1"
-  id: "3"
-vehicle_fuel_classes_004: 
+  country: uk
+lpg_uk:
   name: LPG
-  country_id: "1"
-  id: "4"
-vehicle_fuel_classes_005: 
+  country: uk
+gasoline_us:
   name: Gasoline
-  country_id: "2"
-  id: "5"
-vehicle_fuel_classes_006: 
+  country: us
+diesel_us:
   name: Diesel
-  country_id: "2"
-  id: "6"
-vehicle_fuel_classes_007: 
+  country: us
+lpg_us:
   name: LPG
-  country_id: "2"
-  id: "7"
+  country: us

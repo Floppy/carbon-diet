@@ -1,16 +1,13 @@
 --- 
-vehicle_fuel_units_001: 
+litres:
   name: Litres
   amount_in_l: "1"
   abbreviation: l
-  id: "1"
-vehicle_fuel_units_002: 
+gal_uk:
   name: Gallons (Imperial)
   amount_in_l: "4.54609"
   abbreviation: gal
-  id: "2"
-vehicle_fuel_units_003: 
+gal_us:
   name: Gallons (US)
   amount_in_l: "3.78541"
   abbreviation: gal
-  id: "3"

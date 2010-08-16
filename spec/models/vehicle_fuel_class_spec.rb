@@ -6,8 +6,8 @@ describe "VehicleFuelClass", ActiveSupport::TestCase do
   fixtures :countries
 
   it "relationships" do
-    VehicleFuelClass.find(1).vehicle_fuel_types.should_not be_nil
-    VehicleFuelClass.find(1).country.should_not be_nil
+    vehicle_fuel_classes(:unleaded_uk).vehicle_fuel_types.should_not be_nil
+    vehicle_fuel_classes(:unleaded_uk).country.should_not be_nil
   end
 
 end

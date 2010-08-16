@@ -5,7 +5,7 @@ describe "VehicleFuelType", ActiveSupport::TestCase do
   fixtures :vehicle_fuel_classes
 
   it "relationships" do
-    VehicleFuelType.find(1).vehicle_fuel_class.should_not be_nil
+    vehicle_fuel_types(:unleaded_uk).vehicle_fuel_class.should == vehicle_fuel_classes(:unleaded_uk)
   end
 
 end

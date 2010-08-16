@@ -4,7 +4,7 @@ electricity_suppliers_012:
   default: "1"
   info_url: ""
   company_url: ""
-  country_id: "2"
+  country: us
   id: "12"
   aliases: ""
 electricity_suppliers_001: 
@@ -12,7 +12,7 @@ electricity_suppliers_001:
   default: "1"
   info_url: www.electricityinfo.org/fuelmix.php
   company_url: ""
-  country_id: "1"
+  country: uk 
   id: "1"
   aliases: ""
 electricity_suppliers_002: 
@@ -20,7 +20,7 @@ electricity_suppliers_002:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=good11&year=2006
   company_url: www.good-energy.co.uk
-  country_id: "1"
+  country: uk 
   id: "2"
   aliases: ""
 electricity_suppliers_003: 
@@ -28,7 +28,7 @@ electricity_suppliers_003:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=brit11&year=2006
   company_url: www.house.co.uk
-  country_id: "1"
+  country: uk 
   id: "3"
   aliases: Centrica and Scottish Gas
 electricity_suppliers_004: 
@@ -36,7 +36,7 @@ electricity_suppliers_004:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=ecot11&year=2005
   company_url: www.ecotricity.com
-  country_id: "1"
+  country: uk 
   id: "4"
   aliases: ""
 electricity_suppliers_005: 
@@ -44,7 +44,7 @@ electricity_suppliers_005:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=edfe11&year=2006
   company_url: www.edfenergy.com
-  country_id: "1"
+  country: uk 
   id: "5"
   aliases: London Energy, Seeboard Energy, SWEB Energy, and Sainsbury's Energy
 electricity_suppliers_006: 
@@ -52,7 +52,7 @@ electricity_suppliers_006:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=gree11&year=2005
   company_url: www.greenenergy.uk.com
-  country_id: "1"
+  country: uk 
   id: "6"
   aliases: ""
 electricity_suppliers_007: 
@@ -60,7 +60,7 @@ electricity_suppliers_007:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=npow21&year=2005
   company_url: ""
-  country_id: "1"
+  country: uk 
   id: "7"
   aliases: ""
 electricity_suppliers_008: 
@@ -68,7 +68,7 @@ electricity_suppliers_008:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=npow11&year=2006
   company_url: www.npower.com
-  country_id: "1"
+  country: uk 
   id: "8"
   aliases: Calortex, Daily Telegraph, Independent Energy, MEB, Midlands Electricity, National Power, Npower Limited, Npower Northern Limited, Npower Yorkshire Limited, Npower Direct Limited and York Gas
 electricity_suppliers_009: 
@@ -76,7 +76,7 @@ electricity_suppliers_009:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=powe11&year=2006
   company_url: www.powergen.co.uk
-  country_id: "1"
+  country: uk 
   id: "9"
   aliases: Amerada, East Midlands Electricity, Eastern Electricity, E.ON UK, Midlands Gas, Norweb Energy, Sterling Gas, Tesco Energy, and TXU Energi
 electricity_suppliers_010: 
@@ -84,7 +84,7 @@ electricity_suppliers_010:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=scot21&year=2006
   company_url: www.scottish-southern.co.uk
-  country_id: "1"
+  country: uk 
   id: "10"
   aliases: Atlantic Electric and Gas, Scottish Hydro-Electric, Southern Electric, and SWALEC
 electricity_suppliers_011: 
@@ -92,6 +92,6 @@ electricity_suppliers_011:
   default: "0"
   info_url: www.electricityinfo.org/supplierdata.php?supplier_code=scot11&year=2006
   company_url: www.scottishpower.com
-  country_id: "1"
+  country: uk 
   id: "11"
   aliases: AA, Beacon, Ideal and Lloyds Ideal

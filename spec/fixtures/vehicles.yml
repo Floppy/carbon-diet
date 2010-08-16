@@ -1,14 +1,14 @@
 vehicle_for_emissions_test:
   name: Ambulance
-  vehicle_distance_unit_id: "1"
-  current: "1"
-  vehicle_fuel_unit_id: "1"
-  vehicle_fuel_class_id: "1"
+  vehicle_distance_unit: km
+  current: true
+  vehicle_fuel_unit: litres
+  vehicle_fuel_class: unleaded_uk
   user_id: "1"
 vehicle_with_no_purchases:
   name: Fire Engine
-  vehicle_distance_unit_id: "1"
-  current: "1"
-  vehicle_fuel_unit_id: "1"
-  vehicle_fuel_class_id: "1"
+  vehicle_distance_unit: km
+  current: true
+  vehicle_fuel_unit: litres
+  vehicle_fuel_class: unleaded_uk
   user_id: "1"
