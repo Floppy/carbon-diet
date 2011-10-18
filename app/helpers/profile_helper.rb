@@ -47,10 +47,10 @@ module ProfileHelper
     # Get comment data
     user.authored_comments.find(:all, :limit => limit, :order => "created_at DESC", :conditions => ["NOT (commentable_type = 'User' AND commentable_id = ?)", user.id]).each do |comment|
       case comment.commentable_type
-      when "User" :
+      when "User"
         name = comment.commentable == user ? "his" : comment.commentable.name + "'s"
         text = "wrote a comment on " + (comment.commentable.public ? link_to(h(name), :controller => "/profile", :login => comment.commentable.login, :anchor => "comment#{comment.id}") : h(name)) + " profile"
-      when "Group" :
+      when "Group"
         text = "wrote a comment in the " + link_to(h(comment.commentable.name), group_path(comment.commentable, :anchor => "comment#{comment.id}")) + " group"
       else
         raise "Unknown commentable type!"
