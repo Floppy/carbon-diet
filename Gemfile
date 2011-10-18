@@ -5,6 +5,7 @@ gem 'active_scaffold'
 gem 'airbrake'
 gem 'rails_legacy_mapper'
 gem 'validates_timeliness'
+gem 'multipass'
 
 # Gems used only for assets and not required
 # in production environments by default.
