@@ -8,3 +8,5 @@ db/*.db
 coverage
 tmp/*
 .DS_Store
+
+*.sqlite3
