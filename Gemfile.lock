@@ -65,6 +65,8 @@ GEM
       activesupport (= 3.1.1)
       bundler (~> 1.0)
       railties (= 3.1.1)
+    rails_legacy_mapper (1.0.0)
+      rails (~> 3.1.0.beta)
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -107,5 +109,6 @@ DEPENDENCIES
   active_scaffold
   airbrake
   rails (= 3.1.1)
+  rails_legacy_mapper
   rspec-rails
   sqlite3
