@@ -43,9 +43,9 @@ namespace :symlink do
 end
 
 namespace :copy do
-  desc "Make copy of database yaml" 
+  desc "Make copy of database yaml"
   task :dbconfig do
-    run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+    run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
   desc "Make copy of settings yaml"
   task :settings do
@@ -58,4 +58,5 @@ Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-
   $: << File.join(vendored_notifier, 'lib')
 end
 
-require 'hoptoad_notifier/capistrano'
+require './config/boot'
+require 'airbrake/capistrano'
