@@ -14,6 +14,7 @@ gem 'airbrake'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails'
 end
 
 # To use ActiveModel has_secure_password
