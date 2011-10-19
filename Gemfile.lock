@@ -107,6 +107,7 @@ GEM
     tzinfo (0.3.30)
     validates_timeliness (3.0.7)
       timeliness (~> 0.3.3)
+    will_paginate (3.0.2)
 
 PLATFORMS
   ruby
@@ -120,3 +121,4 @@ DEPENDENCIES
   rspec-rails
   sqlite3
   validates_timeliness
+  will_paginate
