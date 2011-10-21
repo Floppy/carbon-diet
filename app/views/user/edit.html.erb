@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="pagecontent">
-  <% form_tag({ :action => 'update' }, { :multipart => true, :id => "user_form" }) do %>
+  <%= form_tag({ :action => 'update' }, { :multipart => true, :id => "user_form" }) do %>
     <div class="sectiontitle">General</div>
     <p>
       <label for="country_id">Which country do you live in?</label>

@@ -1,7 +1,7 @@
 <%= pagetitle "Delete login?" %>
 
 <% content_for('optionbar') do %>
-  <% form_tag :action => 'really_destroy' do %> 
+  <%= form_tag :action => 'really_destroy' do %> 
     <div class="option">
       <%= image_tag 'delete.png' %>
       <%= submit_tag 'Yes, delete my data!' %>

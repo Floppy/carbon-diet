@@ -6,7 +6,7 @@ Comments
 <a name="comments"></a>
 <% if post %>
 <p>
-<% form_tag :controller => 'comments', :action => 'post' do %>
+<%= form_tag :controller => 'comments', :action => 'post' do %>
 <%= hidden_field 'comment', 'commentable_id', :value => @profile ? @profile.id : @group.id %>
 <%= hidden_field 'comment', 'commentable_type', :value => @profile ? "User" : "Group" %>
 <%= text_area 'comment', 'text', :rows => 2, :style => "width: 99%" %><br/>

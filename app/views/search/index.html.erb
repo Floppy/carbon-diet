@@ -8,7 +8,7 @@
   <br/>
   <span class="smalltext"><em>Hint: You can search for public users by their login name, display name, or the whole of their email address. You can search for groups using any part of their title or description.</em></span>
   <p>
-    <% form_tag :action => 'index' do %>
+    <%= form_tag :action => 'index' do %>
     <%= image_tag 'search.png' %>
     <%= text_field :search, :string, :value => (params[:search].nil? ? "" : params[:search][:string]) %>
     <%= submit_tag 'Search' %>

@@ -16,7 +16,7 @@ If we don't have information for your country in the Carbon Diet, you can use th
 country, press the button, and we'll see what we can do!
 </p>
 <p>
-<% form_tag do %>
+<%= form_tag do %>
 <%= select_tag 'country', country_options_for_select %>
 <%= submit_tag 'Submit Request' %>
 <% end %>

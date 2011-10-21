@@ -12,7 +12,7 @@ change your password straight away! If you haven't given us your email, then
 let us know using the help button above and we'll sort you out.
 </p>
 <p>
-<% form_tag :action => 'doreset' do %>
+<%= form_tag :action => 'doreset' do %>
 <table>
 <tr><td>Username:</td><td><%= text_field 'user', 'login'  %></td></tr>
 <tr><td></td><td><%= submit_tag 'Reset Password' %></td></tr>
