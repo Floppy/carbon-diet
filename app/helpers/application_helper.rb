@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def help(text)
-    '<span class="help">' + image_tag('help.png') + '<span>' + text + '</span></span>'
+    ('<span class="help">' + image_tag('help.png') + '<span>' + h(text) + '</span></span>').html_safe
   end
 
   def friend_link(user, small=false)
