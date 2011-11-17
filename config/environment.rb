@@ -37,7 +37,7 @@ Rails::Initializer.run do |config|
   # See Rails::Configuration for more options
   config.gem 'will_paginate', :version => '~> 2.3.12'
   #config.gem 'validates_timeliness' using plugin for now for newer code with fixes in
-  config.gem 'hoptoad_notifier'
+  config.gem 'airbrake'
   config.gem 'multipass'
 
 end
