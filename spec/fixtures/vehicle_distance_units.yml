@@ -1,11 +1,8 @@
---- 
-vehicle_distance_units_001: 
+km:
   name: Kilometres
   abbreviation: km
-  id: "1"
-  amount_in_km: "1"
-vehicle_distance_units_002: 
+  amount_in_km: 1
+mi:
   name: Miles
   abbreviation: mi
-  id: "2"
-  amount_in_km: "1.60934"
+  amount_in_km: 1.60934

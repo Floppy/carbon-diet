@@ -1,5 +1,5 @@
 turn_off_lights:
   action: turn_off_lights
-  country_id: 1
+  country: uk
   content: Turn off your lights
   paid_for: true

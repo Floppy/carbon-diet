@@ -1,19 +1,16 @@
---- 
-countries_002: 
+us:
   name: United States
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   flag_image: flags/us.png
-  vehicle_distance_unit_id: "2"
+  vehicle_distance_unit: mi
   abbreviation: US
-  vehicle_fuel_unit_id: "3"
-  gas_unit_id: "2"
-  id: "2"
-countries_001: 
+  vehicle_fuel_unit: gal_us
+  gas_unit: ft3
+uk:
   name: United Kingdom
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   flag_image: flags/gb.png
-  vehicle_distance_unit_id: "2"
+  vehicle_distance_unit: mi
   abbreviation: UK
-  vehicle_fuel_unit_id: "1"
-  gas_unit_id: "1"
-  id: "1"
+  vehicle_fuel_unit: litres
+  gas_unit: m3

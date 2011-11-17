@@ -16,4 +16,12 @@ describe Vehicle do
     emissions[1][:co2_per_day].should be_close(8, 1e-9)
   end
 
+  it "should provide access to date of most recent data" do
+    vehicles(:vehicle_for_emissions_test).date_of_newest_data.should == Date.today
+  end
+
+  it "should have a sensible default for date of most recent data" do
+    vehicles(:vehicle_with_no_purchases).date_of_newest_data.should == 100.years.ago.to_date
+  end
+
 end

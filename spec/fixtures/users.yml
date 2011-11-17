@@ -7,7 +7,7 @@ users_037:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "37"
   password_change_code: 
   region_id: 
@@ -25,7 +25,7 @@ users_026:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "26"
   password_change_code: 
   region_id: 
@@ -43,7 +43,7 @@ users_015:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "15"
   password_change_code: 
   region_id: 
@@ -61,7 +61,7 @@ users_004:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "4"
   password_change_code: 
   region_id: 
@@ -79,7 +79,7 @@ users_038:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "38"
   password_change_code: 
   region_id: 
@@ -97,7 +97,7 @@ users_027:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "27"
   password_change_code: 
   region_id: 
@@ -133,7 +133,7 @@ users_005:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "5"
   password_change_code: 
   region_id: 
@@ -151,7 +151,7 @@ users_039:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "39"
   password_change_code: 
   region_id: 
@@ -169,7 +169,7 @@ users_028:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "28"
   password_change_code: 
   region_id: 
@@ -187,7 +187,7 @@ users_017:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "17"
   password_change_code: 
   region_id: 
@@ -205,7 +205,7 @@ users_006:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "6"
   password_change_code: 
   region_id: 
@@ -223,7 +223,7 @@ users_040:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "40"
   password_change_code: 
   region_id: 
@@ -241,7 +241,7 @@ users_041:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "41"
   password_change_code: 
   region_id: 
@@ -259,7 +259,7 @@ users_030:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "30"
   password_change_code: 
   region_id: 
@@ -277,7 +277,7 @@ users_029:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "29"
   password_change_code: 
   region_id: 
@@ -295,7 +295,7 @@ users_018:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "18"
   password_change_code: 
   region_id: 
@@ -313,7 +313,7 @@ users_007:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "7"
   password_change_code: 
   region_id: 
@@ -331,7 +331,7 @@ users_042:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "43"
   password_change_code: 
   region_id: 
@@ -349,7 +349,7 @@ users_031:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "31"
   password_change_code: 
   region_id: 
@@ -367,7 +367,7 @@ users_020:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "20"
   password_change_code: 
   region_id: 
@@ -385,7 +385,7 @@ users_019:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "19"
   password_change_code: 
   region_id: 
@@ -403,7 +403,7 @@ users_008:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "8"
   password_change_code: 
   region_id: 
@@ -421,7 +421,7 @@ users_043:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "44"
   password_change_code: 
   region_id: 
@@ -439,7 +439,7 @@ users_032:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "32"
   password_change_code: 
   region_id: 
@@ -493,7 +493,7 @@ users_009:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "9"
   password_change_code: 
   region_id: 
@@ -511,7 +511,7 @@ users_044:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "45"
   password_change_code: 
   region_id: 
@@ -529,7 +529,7 @@ users_033:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "33"
   password_change_code: 
   region_id: 
@@ -547,7 +547,7 @@ users_022:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "22"
   password_change_code: 
   region_id: 
@@ -565,7 +565,7 @@ users_011:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "11"
   password_change_code: 
   region_id: 
@@ -583,7 +583,7 @@ users_045:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "46"
   password_change_code: 
   region_id: 
@@ -619,7 +619,7 @@ users_023:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "23"
   password_change_code: 
   region_id: 
@@ -637,7 +637,7 @@ users_012:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "12"
   password_change_code: 
   region_id: 
@@ -655,7 +655,7 @@ users_001:
   reminded_at: 
   password_salt: ON7kzeqr
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "1"
   password_change_code: 
   region_id: 
@@ -673,7 +673,7 @@ users_046:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "47"
   password_change_code: 
   region_id: 
@@ -691,7 +691,7 @@ users_035:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "35"
   password_change_code: 
   region_id: 
@@ -727,7 +727,7 @@ users_013:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "13"
   password_change_code: 
   region_id: 
@@ -745,7 +745,7 @@ users_002:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "2"
   password_change_code: 
   region_id: 
@@ -763,7 +763,7 @@ users_036:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "36"
   password_change_code: 
   region_id: 
@@ -781,7 +781,7 @@ users_025:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "2"
+  country: us
   id: "25"
   password_change_code: 
   region_id: 
@@ -799,7 +799,7 @@ users_014:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "14"
   password_change_code: 
   region_id: 
@@ -817,7 +817,7 @@ users_003:
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
-  country_id: "1"
+  country: uk 
   id: "3"
   password_change_code: 
   region_id: 

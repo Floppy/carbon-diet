@@ -68,7 +68,7 @@ describe "Note", ActiveSupport::TestCase do
 
   it "add note to vehicle" do
     # Set up
-    account = Vehicle.find(1)
+    account = vehicles(:vehicle_for_emissions_test)
     # Create note
     note = Note.new
     note.note = "test note"
@@ -76,10 +76,9 @@ describe "Note", ActiveSupport::TestCase do
     # Store, attached to user
     assert(account.notes << note)
     # Check note was added
-    user = User.find(1)
-    user.vehicles.first.notes.size.should == 1
-    user.vehicles.first.notes.first.note.should == "test note"
-    user.vehicles.first.notes.first.date.should == Date.today
+    account.notes.size.should == 1
+    account.notes.first.note.should == "test note"
+    account.notes.first.date.should == Date.today
   end
 
   it "aggregate notes" do
@@ -99,7 +98,7 @@ describe "Note", ActiveSupport::TestCase do
     # Store, attached to account
     assert(account.notes << note)
     # Set up
-    account = Vehicle.find(1)
+    account = vehicles(:vehicle_for_emissions_test)
     # Create note
     note = Note.new
     note.note = "test note"
@@ -156,11 +155,11 @@ describe "Note", ActiveSupport::TestCase do
     note.note = "test note"
     note.date = Date.today
     # Store, attached to account
-    assert(Vehicle.find(1).notes << note)
+    assert(vehicles(:vehicle_for_emissions_test).notes << note)
     # Should be 3 notes in system
     Note.find(:all).size.should == 3
     # Remove account
-    Vehicle.find(1).destroy
+    vehicles(:vehicle_for_emissions_test).destroy
     # Should be 2 notes in system
     Note.find(:all).size.should == 2
   end

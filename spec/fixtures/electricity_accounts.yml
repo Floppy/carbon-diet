@@ -2,7 +2,7 @@
 electricity_accounts_017: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "6"
@@ -12,7 +12,7 @@ electricity_accounts_017:
 electricity_accounts_006: 
   name: Electricity
   night_rate: "1"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "2"
@@ -22,7 +22,7 @@ electricity_accounts_006:
 electricity_accounts_018: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "4"
@@ -32,7 +32,7 @@ electricity_accounts_018:
 electricity_accounts_007: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "9"
@@ -42,7 +42,7 @@ electricity_accounts_007:
 electricity_accounts_019: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "12"
@@ -52,7 +52,7 @@ electricity_accounts_019:
 electricity_accounts_008: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "5"
@@ -62,7 +62,7 @@ electricity_accounts_008:
 electricity_accounts_020: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "12"
@@ -72,7 +72,7 @@ electricity_accounts_020:
 electricity_accounts_009: 
   name: Electricity
   night_rate: "1"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "9"
@@ -82,7 +82,7 @@ electricity_accounts_009:
 electricity_accounts_021: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "12"
@@ -92,7 +92,7 @@ electricity_accounts_021:
 electricity_accounts_010: 
   name: Electricity
   night_rate: "1"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "11"
@@ -102,7 +102,7 @@ electricity_accounts_010:
 electricity_accounts_022: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "12"
@@ -112,7 +112,7 @@ electricity_accounts_022:
 electricity_accounts_011: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "9"
@@ -122,7 +122,7 @@ electricity_accounts_011:
 electricity_accounts_023: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "1"
@@ -132,7 +132,7 @@ electricity_accounts_023:
 electricity_accounts_012: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "5"
@@ -142,7 +142,7 @@ electricity_accounts_012:
 electricity_accounts_001: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "2"
@@ -152,7 +152,7 @@ electricity_accounts_001:
 electricity_accounts_013: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "12"
@@ -162,7 +162,7 @@ electricity_accounts_013:
 electricity_accounts_002: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "1"
@@ -172,7 +172,7 @@ electricity_accounts_002:
 electricity_accounts_014: 
   name: Electricity
   night_rate: "1"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "1"
@@ -182,7 +182,7 @@ electricity_accounts_014:
 electricity_accounts_003: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "8"
@@ -192,7 +192,7 @@ electricity_accounts_003:
 electricity_accounts_015: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "12"
@@ -202,7 +202,7 @@ electricity_accounts_015:
 electricity_accounts_004: 
   name: Electricity
   night_rate: "0"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "3"
@@ -212,7 +212,7 @@ electricity_accounts_004:
 electricity_accounts_016: 
   name: Electricity
   night_rate: "1"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "5"
@@ -222,7 +222,7 @@ electricity_accounts_016:
 electricity_accounts_005: 
   name: Electricity
   night_rate: "1"
-  electricity_unit_id: "1"
+  electricity_unit: kWh
   current: "1"
   used_for_heating: "0"
   electricity_supplier_id: "2"
