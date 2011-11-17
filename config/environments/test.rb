@@ -18,8 +18,8 @@ config.action_controller.perform_caching             = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-config.gem 'rspec', :lib => false
-config.gem 'rspec-rails', :lib => false
+config.gem 'rspec', :lib => false, :version => '~> 1.3'
+config.gem 'rspec-rails', :lib => false, :version => '~> 1.3'
 config.gem 'factory_girl'
 config.gem 'tarantula', :lib => 'relevance/tarantula'
 
