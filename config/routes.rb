@@ -8,7 +8,7 @@ CarbonDiet::Application.routes.draw do
   match '/profile/:login' => 'profile#index'
 
   # Connection for admin interface
-  match '/admin' => 'admin/dashboard#index'
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   # Resources
   resources :users do

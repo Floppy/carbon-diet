@@ -4,7 +4,6 @@
   <title><%= render :partial => "/sites/#{APP_CONFIG[:style]}/title" %><%=h ": " + @pagename if not @pagename.blank? %><%=h ": " + @content_for_pagename if not @content_for_pagename.blank? %></title>
   <%= stylesheet_link_tag 'common/common', APP_CONFIG[:style] %>
   <%= javascript_include_tag :defaults %>
-  <%= active_scaffold_includes %>
   <script type="text/javascript"><%= @content_for_page_scripts %></script>
   <!--[if IE]>
   <%= stylesheet_link_tag 'common/ie' %>
