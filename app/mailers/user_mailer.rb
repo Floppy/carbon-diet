@@ -1,47 +1,56 @@
 class UserMailer < ActionMailer::Base
+  default :from => 'info@carbondiet.org'
 
   def reminder(user, sent_at = Time.now)
-    setup('A reminder from the Carbon Diet', user.confirmed_email, sent_at)
-    body :user => user
+    @user = user
+    mail  :subject => 'A reminder from the Carbon Diet', 
+          :to => user.confirmed_email, 
+          :sent_on => sent_at
   end
 
   def password_change(email, url, sent_at = Time.now)
-    setup('Carbon Diet: Password change request', email, sent_at)
-    body :url => url
+    @url = url
+    mail  :subject => 'Carbon Diet: Password change request', 
+          :to => email, 
+          :sent_on => sent_at
   end
 
   def group_invitation(group, user, sent_at = Time.now)
-    setup('Carbon Diet: Group invitation', user.email, sent_at)
-    body :group => group, :user => user
+    @group = group
+    @user = user
+    mail  :subject => 'Carbon Diet: Group invitation', 
+          :to => user.email, 
+          :sent_on => sent_at
   end
 
   def friend_request(user, friend, sent_at = Time.now)
-    setup('Carbon Diet: Friend request', friend.confirmed_email, sent_at)
-    body :user => user, :friend => friend
+    @friend = friend
+    @user = user
+    mail  :subject => 'Carbon Diet: Friend request', 
+          :to => friend.confirmed_email, 
+          :sent_on => sent_at
   end
 
   def comment_notification(user, commenter, sent_at = Time.now)
-    setup('Carbon Diet: Someone wrote a comment on your profile!', user.email, sent_at)
-    body :commenter => commenter.name
+    @commenter = commenter.name
+    mail  :subject => 'Carbon Diet: Someone wrote a comment on your profile!', 
+          :to => user.email, 
+          :sent_on => sent_at
   end
 
   def email_confirmation(user, sent_at = Time.now)
-    setup('Carbon Diet: Please confirm your email address', user.email, sent_at)
-    body :code => user.confirmation_code
+    @code = user.confirmation_code
+    mail  :subject => 'Carbon Diet: Please confirm your email address', 
+          :to => user.email, 
+          :sent_on => sent_at
   end
 
   def friend_invitation(from, email, group, sent_at = Time.now)
-    setup('An invitation to join The Carbon Diet', email, sent_at)
-    body :sender => from, :group => group
-  end
-
-private
-
-  def setup(subj, email, sent_at)
-    subject subj
-    recipients email
-    from 'info@carbondiet.org'
-    sent_on sent_at
+    @sender = from
+    @group = group
+    mail  :subject => 'An invitation to join The Carbon Diet', 
+          :to => email, 
+          :sent_on => sent_at
   end
 
 end
