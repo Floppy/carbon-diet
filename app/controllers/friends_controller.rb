@@ -1,3 +1,5 @@
+require 'graph_functions'
+
 class FriendsController < BelongsToUser
   before_filter :get_friend, :except => [:index, :send_invitations, :invite]
 

@@ -1,5 +1,5 @@
 class CommentsController < AuthenticatedController
-  verify :method => :post, :only => [ :post ], :redirect_to => { :controller => "main", :action => "index" }
+  #verify :method => :post, :only => [ :post ], :redirect_to => { :controller => "main", :action => "index" }
 
   def post
     # Create comment

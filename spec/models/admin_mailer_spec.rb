@@ -6,7 +6,7 @@ describe "AdminMailer", ActiveSupport::TestCase do
 
   fixtures :users
 
-  include ActionMailer::Quoting
+  #include ActionMailer::Quoting
 
   before do
     ActionMailer::Base.delivery_method = :test

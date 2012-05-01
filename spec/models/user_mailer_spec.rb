@@ -7,7 +7,7 @@ describe "UserMailer", ActiveSupport::TestCase do
   fixtures :users
   fixtures :groups
 
-  include ActionMailer::Quoting
+  #include ActionMailer::Quoting
 
   before do
     ActionMailer::Base.delivery_method = :test

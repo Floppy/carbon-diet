@@ -2,11 +2,11 @@ class UserController < ApplicationController
   before_filter :check_logged_in, :only => [ :logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation ]  
   before_filter :check_not_logged_in, :except => [ :logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation, :confirm_email ]
   before_filter :check_form_data, :only => [:auth]
-  filter_parameter_logging :password
+  #filter_parameter_logging :password
   
-  verify :method => :post, 
-         :only => [:doreset, :signup, :auth, :really_destroy, :update], 
-         :redirect_to => { :action => :login }
+  #verify :method => :post, 
+  #       :only => [:doreset, :signup, :auth, :really_destroy, :update], 
+  #       :redirect_to => { :action => :login }
 
 private
 
