@@ -20,7 +20,7 @@ class CommentsController < AuthenticatedController
     if ((comment.commentable_type == "User") && (comment.commentable_id != @current_user.id))
       notify_user = User.find_by_id(comment.commentable_id)
       if notify_user.notify_profile_comments && notify_user.confirmed_email
-        UserMailer.deliver_comment_notification(notify_user, @current_user)
+        UserMailer.comment_notification(notify_user, @current_user).deliver
       end
     end
     # Redirect

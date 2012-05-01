@@ -116,7 +116,7 @@ class User < ActiveRecord::Base
       # Create hashed version of email address for confirmation code
       self.confirmation_code = Digest::SHA256.hexdigest(self.email + self.password_salt)
       # Send confirmation email
-      UserMailer.deliver_email_confirmation(self)
+      UserMailer.email_confirmation(self).deliver
     end
   end  
 
@@ -246,7 +246,7 @@ class User < ActiveRecord::Base
     return unless needs_reminding?
     # Send reminder if there is an email address confirmed
     unless self.confirmed_email.nil? or self.login.blank? # Can't send reminder to people without a login, because we can't save the reminder time
-      UserMailer.deliver_reminder(self)
+      UserMailer.reminder(self).deliver
       # Store todays date in reminder field
       self.reminded_at = Time::now
       self.save!
@@ -310,7 +310,7 @@ class User < ActiveRecord::Base
       friends << friend 
       # Send email to friend
       unless friend.confirmed_email.nil? or friend.notify_friend_requests == false
-        UserMailer.deliver_friend_request(self, friend)
+        UserMailer.friend_request(self, friend).deliver
       end
     end
   end
