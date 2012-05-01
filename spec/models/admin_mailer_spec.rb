@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 describe "AdminMailer", ActiveSupport::TestCase do
   FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
