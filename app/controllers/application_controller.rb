@@ -105,7 +105,7 @@ protected
 
   def render_http_code(code)
     @code = code
-    render :status => code, :file => File.join(RAILS_ROOT, 'public', "#{code}.html")
+    render :status => code, :file => File.join(Rails.root, 'public', "#{code}.html")
   end
 
 end

@@ -24,7 +24,7 @@ module Relevance
       puts msg if verbose
     end
     def rails_root
-      ::RAILS_ROOT
+      ::Rails.root
     end
     def verbose
       ENV["VERBOSE"]

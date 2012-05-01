@@ -37,7 +37,7 @@ Tarantula into your Rails app.
 You can then add the following line into your Rakefile, which will allow your application to discover 
 Tarantula's rake tasks.
 
-  load File.join(RAILS_ROOT, Dir["vendor/gems/relevance-tarantula-*/tasks/*.rake"])
+  load File.join(Rails.root, Dir["vendor/gems/relevance-tarantula-*/tasks/*.rake"])
 
 === Crawling Your App
 
