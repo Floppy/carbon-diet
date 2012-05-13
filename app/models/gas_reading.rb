@@ -5,7 +5,7 @@ class GasReading < ActiveRecord::Base
   validates :reading, :numericality => true
   validates_date :taken_on
   validates :taken_on, :uniqueness => {:scope => :gas_account}
-  validates :validate_order
+  validate :validate_order, :on => [:create, :update]
   # Attributes
   attr_accessible :taken_on, :reading
 
