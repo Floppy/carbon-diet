@@ -20,9 +20,11 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'cucumber-rails', :require => false
   gem 'rspec-rails'
-end
-
-group :test do
+  gem 'guard-rspec'
+  gem 'spork-rails'
+  gem 'guard-spork'
+  gem 'growl'
   gem 'simplecov', :require => false
 end
