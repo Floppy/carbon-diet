@@ -4,9 +4,11 @@ class ElectricityReading < ActiveRecord::Base
   belongs_to :electricity_account
 
   # Validation
-  validates_numericality_of :reading_day
-  validates_numericality_of :reading_night
+  validates :reading_day, :numericality => true
+  validates :reading_night, :numericality => true
   validates_date :taken_on
+  validates :taken_on, :uniqueness => {:scope => :gas_account}
+  validates :validate_order
 
   # Attributes
   attr_accessible :taken_on, :reading_day, :reading_night, :automatic
@@ -16,13 +18,7 @@ class ElectricityReading < ActiveRecord::Base
 
   protected
   
-  def validate_on_create
-    # Make sure we have not already got a reading for the date entered
-    existing = electricity_account.electricity_readings.find(:first, 
-                                                             :conditions => ["taken_on = ?", taken_on]) 
-    errors.add("You can only enter one reading per day!", "Edit the existing entry if that's what you really meant to do.") unless existing.nil?
-  end
-  def validate
+  def validate_order
     # Find reading immediately before this one, and the one immediately after
     previous = electricity_account.electricity_readings.find(:first, 
                                                              :conditions => ["taken_on < ?", taken_on],
