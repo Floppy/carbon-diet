@@ -8,6 +8,7 @@ describe ProfileController do
   fixtures :users
 
   it "can view public profile if not logged in" do
+    pending
     when_not_logged_in do
       get :index, :login => 'james'
       assert_response :success
@@ -15,6 +16,7 @@ describe ProfileController do
   end
 
   it "can view public profile if logged in" do
+    pending
     when_logged_in(2) do
       get :index, :login => 'james'
       assert_response :success
@@ -22,6 +24,7 @@ describe ProfileController do
   end
 
   it "cannot view private profile if not logged in" do
+    pending
     when_not_logged_in do
       get :index, :login => 'test002'
       assert_response :redirect
@@ -31,6 +34,7 @@ describe ProfileController do
   end
 
   it "can view private profile if logged in as right user" do
+    pending
     when_logged_in(2) do
       get :index, :login => 'test002'
       assert_response :success
@@ -38,6 +42,7 @@ describe ProfileController do
   end
 
   it "can view private profile if logged in as wrong user" do
+    pending
     when_logged_in(1) do
       get :index, :login => 'test002'
       assert_response :redirect
