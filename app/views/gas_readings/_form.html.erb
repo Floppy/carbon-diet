@@ -1,6 +1,6 @@
 <%= error_messages_for 'reading' %>
 
-<% form_for [@user, @account, @reading], :html => {:autocomplete => "off"} do |f| %>
+<%= form_for [@user, @account, @reading], :html => {:autocomplete => "off"} do |f| %>
   <table class="form">
     <tr>
       <td><%= f.label :reading, "Reading (#{@account.gas_unit.abbreviation})"%></td>
