@@ -30,11 +30,12 @@ function no_more_actions() {
   <% unless @actions.empty? %>
     <div class="option" id="getmore">
     <%= image_tag 'action.png' %>
-    <%= link_to_remote('Get another action', 
+    <%= link_to('Get another action', 
                        :update => 'actionlist',
                        :position => :bottom,
                        :complete => 'item_added()',
-                       :url => { :action => 'another' }) %>
+                       :url => { :action => 'another' },
+                       :remote => true) %>
     </div>
   <% end %>
   <%= option "completed_actions" %>
