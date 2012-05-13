@@ -13,7 +13,7 @@ class ElectricityReadingsController < BelongsToUser
         @electricity_readings = @account.electricity_readings.paginate :page => params[:page], :order => 'taken_on DESC'
       }
       format.xml {
-        @electricity_readings = @account.electricity_readings.find(:all, :order => "taken_on DESC")
+        @electricity_readings = @account.electricity_readings.order("taken_on DESC")
       }
     end
   end
@@ -74,9 +74,9 @@ class ElectricityReadingsController < BelongsToUser
         date = Date.parse(entry.elements['date'].text)
         value = entry.elements['value'].text
         # Is there already a reading for today?
-        break if @account.electricity_readings.find(:first, :conditions => {:taken_on => date})
+        break if @account.electricity_readings.where(:taken_on => date).first
         # If not, find a reading for yesterday and add today's figure onto it
-        previous = @account.electricity_readings.find(:first, :conditions => {:taken_on => date - 1})
+        previous = @account.electricity_readings.where(:taken_on => date - 1).first
         if previous
           kwh = previous.kWh_day + value.to_i
           reading = kwh / @account.electricity_unit.amount_in_kWh

@@ -21,7 +21,7 @@ class ElectricityAccount < ActiveRecord::Base
   end
 
   def start_date
-    reading = electricity_readings.find(:first, :order => "taken_on")
+    reading = electricity_readings.order("taken_on").first
     return Date::today if reading.nil?
     return reading.taken_on
   end
@@ -33,7 +33,7 @@ class ElectricityAccount < ActiveRecord::Base
     last_kWh = 0;
     last_date = 0;
     # Analyse each reading
-    readings = electricity_readings.find(:all, :order => "taken_on")
+    readings = electricity_readings.order("taken_on")
     readings.each do |reading|
       # Calculate electricity used since last reading
       kWh_total = reading.kwh_day
@@ -90,7 +90,7 @@ class ElectricityAccount < ActiveRecord::Base
   end
 
   def date_of_newest_data
-    reading = electricity_readings.find(:first, :order => "taken_on DESC", :limit => 1) 
+    reading = electricity_readings.order("taken_on DESC").limit(1).first
     if reading.nil?
       return 100.years.ago.to_date
     else

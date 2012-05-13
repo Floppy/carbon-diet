@@ -10,7 +10,7 @@ class GasReadingsController < BelongsToUser
         @gas_readings = @account.gas_readings.paginate :page => params[:page], :order => "taken_on DESC"
       }
       format.xml {
-        @gas_readings = @account.gas_readings.find(:all, :order => "taken_on DESC")
+        @gas_readings = @account.gas_readings.order("taken_on DESC")
       }
     end
   end

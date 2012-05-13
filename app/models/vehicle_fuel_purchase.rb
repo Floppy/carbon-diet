@@ -14,12 +14,8 @@ class VehicleFuelPurchase < ActiveRecord::Base
   def validate
     unless distance.nil?
       # Find distance immediately before this one, and the one immediately after
-      previous = vehicle.vehicle_fuel_purchases.find(:first, 
-                                                     :conditions => ["purchased_on < ? AND distance IS NOT NULL", purchased_on],
-                                                     :order => "purchased_on DESC") 
-      subsequent = vehicle.vehicle_fuel_purchases.find(:first, 
-                                                      :conditions => ["purchased_on > ? AND distance IS NOT NULL", purchased_on],
-                                                      :order => "purchased_on ASC") 
+      previous = vehicle.vehicle_fuel_purchases.where("purchased_on < ? AND distance IS NOT NULL", purchased_on).order("purchased_on DESC").first
+      subsequent = vehicle.vehicle_fuel_purchases.where("purchased_on > ? AND distance IS NOT NULL", purchased_on).order("purchased_on ASC").first
       # Check distances, make sure they're in sequence
       errors.add("Distance is lower than its preceeding value!", "Are you sure it's correct?") unless previous.nil? || previous.distance <= distance
       errors.add("Distance is higher than its subsequent value!", "Are you sure it's correct?") unless subsequent.nil? || subsequent.distance >= distance

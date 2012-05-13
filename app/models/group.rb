@@ -38,9 +38,7 @@ class Group < ActiveRecord::Base
   def self.search(search)    
     search = search.downcase
     like = "%" + search + "%"
-    Group.find(:all, 
-               :conditions => ["LOWER(name) LIKE ? OR LOWER(description) LIKE ?", like, like],
-               :order => "name")
+    Group.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", like, like).order(:name)
   end
   
   def self.browse(string, limit=20)
@@ -62,10 +60,7 @@ class Group < ActiveRecord::Base
   def self.find_by_start_of_name(string, countonly=false)
     select = "COUNT(name) AS count" if countonly
     conditions = ["LOWER(name) LIKE ?", string.downcase + "%"] unless string.empty?
-    Group.find(:all, 
-               :conditions => conditions,
-               :order => "name",
-               :select => select )
+    Group.where(conditions).order(:name).select(select)
   end
 
 end

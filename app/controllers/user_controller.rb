@@ -222,7 +222,7 @@ public
 
   def edit
     @user = @current_user
-    @countries = Country.find(:all, :conditions => ["visible IS TRUE"], :order => "name")
+    @countries = Country.).where(:visible => true).order(:name)
   end
  
   def update

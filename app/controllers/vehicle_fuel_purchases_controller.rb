@@ -11,7 +11,7 @@ class VehicleFuelPurchasesController < BelongsToUser
         @purchases = @vehicle.vehicle_fuel_purchases.paginate :page => params[:page], :order => "purchased_on DESC"
       }
       format.xml {
-        @purchases = @vehicle.vehicle_fuel_purchases.find(:all, :order => "purchased_on DESC")
+        @purchases = @vehicle.vehicle_fuel_purchases.order("purchased_on DESC")
       }
     end
   end

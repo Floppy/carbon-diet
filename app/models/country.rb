@@ -25,7 +25,7 @@ class Country < ActiveRecord::Base
     other.abbreviation = "?"
     countries << other
     # Get the rest from the DB
-    countries += self.find(:all, :order => "name")
+    countries += self.order("name")
   end
 
 end

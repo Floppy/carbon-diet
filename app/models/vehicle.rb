@@ -18,7 +18,7 @@ class Vehicle < ActiveRecord::Base
   end
 
   def start_date
-    purchase = vehicle_fuel_purchases.find(:first, :order => "purchased_on")
+    purchase = vehicle_fuel_purchases.order("purchased_on")
     return Date::today if purchase.nil?
     return purchase.purchased_on
   end
@@ -27,7 +27,7 @@ class Vehicle < ActiveRecord::Base
     # Initialise result array
     emissiondata = EmissionArray.new
     # Analyse each purchase
-    purchases = vehicle_fuel_purchases.find(:all, :order => "purchased_on")
+    purchases = vehicle_fuel_purchases.order("purchased_on")
     purchases.each_index do |x|
       # Calculate fuel used since last purchase
       purchase = purchases[x]
@@ -76,7 +76,7 @@ class Vehicle < ActiveRecord::Base
   end
 
   def date_of_newest_data
-    purchase = vehicle_fuel_purchases.find(:first, :order => "purchased_on DESC", :limit => 1)
+    purchase = vehicle_fuel_purchases.order("purchased_on DESC").limit(1).first
     if purchase.nil?
       return 100.years.ago.to_date
     else

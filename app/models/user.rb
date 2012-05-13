@@ -6,19 +6,19 @@ class User < ActiveRecord::Base
   belongs_to :country
   has_many :electricity_accounts do
     def current
-      find :all, :conditions => {:current => true}
+      where(:current => true)
     end
   end
   has_many :electricity_readings, :through => :electricity_accounts
   has_many :gas_accounts do
     def current
-      find :all, :conditions => {:current => true}
+      where(:current => true)
     end
   end
   has_many :gas_readings, :through => :gas_accounts
   has_many :vehicles do
     def current
-      find :all, :conditions => {:current => true}
+      where(:current => true)
     end
   end
   has_many :vehicle_fuel_purchases, :through => :vehicles
@@ -121,9 +121,9 @@ class User < ActiveRecord::Base
   end  
 
   def self.authenticate(login, passwd)
-    user = User.find(:first, :conditions => ["login = ?", login.downcase])
+    user = User.where(:login => login.downcase).first
     if user.nil?
-      user = User.find(:first, :conditions => ['email = ?', login])
+      user = User.where(:email => login).first
     end
     if user.nil?      
       return :no_such_user    
@@ -272,9 +272,7 @@ class User < ActiveRecord::Base
   def self.find_public(search)    
     search = search.downcase
     like = "%" + search + "%"
-    User.find(:all, 
-              :conditions => ["public IS TRUE AND (login LIKE ? OR LOWER(email) = ? OR LOWER(display_name) LIKE ?)", like, search, like],
-              :order => "login")
+    User.where("public IS TRUE AND (login LIKE ? OR LOWER(email) = ? OR LOWER(display_name) LIKE ?)", like, search, like).order(:login)
   end
 
   def calculate_totals(period)
@@ -351,10 +349,10 @@ class User < ActiveRecord::Base
 
   def all_notes(limit = nil)
     all_notes_array = []
-    all_notes_array += notes.find(:all, :limit => limit, :order => "date DESC")
-    electricity_accounts.each { |acc| all_notes_array += acc.notes.find(:all, :limit => limit, :order => "date DESC") }
-    gas_accounts.each { |acc| all_notes_array += acc.notes.find(:all, :limit => limit, :order => "date DESC") }
-    vehicles.each { |acc| all_notes_array += acc.notes.find(:all, :limit => limit, :order => "date DESC") }
+    all_notes_array += notes.limit(limit).order("date DESC")
+    electricity_accounts.each { |acc| all_notes_array += acc.notes.limit(limit).order("date DESC") }
+    gas_accounts.each { |acc| all_notes_array += acc.notes.limit(limit).order("date DESC") }
+    vehicles.each { |acc| all_notes_array += acc.notes.limit(limit).order("date DESC") }
     return all_notes_array.sort{ |x,y| y.date <=> x.date }
   end
 
@@ -438,7 +436,7 @@ public
     # Initialise result array
     emissiondata = EmissionArray.new
     # Analyse each reading
-    flights.find(:all, :order => "outbound_on").each do |flight|
+    flights.order("outbound_on").each do |flight|
       # Add to result array
       days = flight.return_on ? (flight.return_on - flight.outbound_on + 1) : 1
       co2 = flight.kg_of_co2
@@ -469,7 +467,7 @@ public
     ]
     breakdown = {}
     breakdown[:entries] = {:value => electricity_readings.count(:conditions => {:automatic => false})+gas_readings.count+vehicle_fuel_purchases.count+flights.count, :description => "measurement"}
-    breakdown[:actions] = {:value => actions.find(:all).inject(0){|t,x| t += x.points}, :description => "actions"}
+    breakdown[:actions] = {:value => actions.inject(0){|t,x| t += x.points}, :description => "actions"}
     breakdown[:sociability] = {:value => (friends.count+groups.count)*2, :description => "sociability"}
     breakdown[:gossip] = {:value => comments.count, :description => "gossip"}
     emissions_limit = -(breakdown.inject(0){|sum,(k,v)| sum += v[:value]} / 2)

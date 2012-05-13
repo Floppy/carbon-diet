@@ -27,7 +27,7 @@ class ProfileController < ApplicationController
         @show_flight_controls = @profile.flights.count > 0 ? true : false;
         @totals = @profile.calculate_totals(@period)
         # Get comments
-        @comments = @profile.comments.find(:all, :limit => 5)
+        @comments = @profile.comments.limit(5)
         # Get actions
         @actions = get_actions(3) if @profile == @current_user
       }
@@ -38,7 +38,7 @@ class ProfileController < ApplicationController
 
   def feed
     @user = User.find_by_guid(params[:id])
-    @comments = @user.comments.find(:all, :order => "created_at DESC", :limit => 10)
+    @comments = @user.comments.order("created_at DESC").limit(10)
     # Send data
     headers["Content-Type"] = "application/atom+xml"
     render :action => 'atom.rxml', :layout => false

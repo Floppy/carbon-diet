@@ -11,10 +11,7 @@ class Airport < ActiveRecord::Base
   def self.search(text, limit = 10)
     likestart = "#{text}%".downcase
     likesub = '%' + likestart
-    Airport.find(:all,
-                 :limit => limit,
-                 :order => "icao_code ASC",
-                 :conditions => ["LOWER(icao_code) LIKE ? OR LOWER(iata_code) LIKE ? OR LOWER(name) LIKE ? OR LOWER(location) LIKE ? OR LOWER(country) LIKE ?", likestart, likestart, likesub, likesub, likestart])
+    Airport.limit(limit).order('icao_code ASC').where("LOWER(icao_code) LIKE ? OR LOWER(iata_code) LIKE ? OR LOWER(name) LIKE ? OR LOWER(location) LIKE ? OR LOWER(country) LIKE ?", likestart, likestart, likesub, likesub, likestart)
   end
  
   def self.import_from_partow_net_db   

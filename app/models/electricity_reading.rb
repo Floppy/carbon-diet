@@ -20,11 +20,8 @@ class ElectricityReading < ActiveRecord::Base
   
   def validate_order
     # Find reading immediately before this one, and the one immediately after
-    previous = electricity_account.electricity_readings.find(:first, 
-                                                             :conditions => ["taken_on < ?", taken_on],
-                                                             :order => "taken_on DESC") 
-    subsequent = electricity_account.electricity_readings.find(:first, 
-                                                               :conditions => ["taken_on > ?", taken_on])
+    previous = electricity_account.electricity_readings.where("taken_on < ?", taken_on).order("taken_on DESC").first
+    subsequent = electricity_account.electricity_readings.where("taken_on > ?", taken_on).order("taken_on ASC").first
     # Check readings, make sure they're in sequence
     errors.add("Day reading (#{reading_day}) is lower than its preceeding value (#{previous.reading_day})!", "Are you sure it's correct?") unless previous.nil? || previous.reading_day <= reading_day
     errors.add("Day reading (#{reading_day})  is higher than its subsequent value! (#{subsequent.reading_day})", "Are you sure it's correct?") unless subsequent.nil? || subsequent.reading_day >= reading_day

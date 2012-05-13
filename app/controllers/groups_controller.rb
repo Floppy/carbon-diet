@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
         render :file => 'shared/pie', :layout => false
       }
       format.atom {
-        @comments = @group.comments.find(:all, :order => "created_at DESC", :limit => 10)
+        @comments = @group.comments.order("created_at DESC").limit(10)
       }
     end
   end
