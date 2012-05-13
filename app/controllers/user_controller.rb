@@ -222,7 +222,7 @@ public
 
   def edit
     @user = @current_user
-    @countries = Country.).where(:visible => true).order(:name)
+    @countries = Country.where(:visible => true).order(:name)
   end
  
   def update
