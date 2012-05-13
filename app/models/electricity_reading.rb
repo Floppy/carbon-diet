@@ -8,7 +8,7 @@ class ElectricityReading < ActiveRecord::Base
   validates :reading_night, :numericality => true
   validates_date :taken_on
   validates :taken_on, :uniqueness => {:scope => :gas_account}
-  validates :validate_order
+  validates :validate_order, :on => [:create, :update]
 
   # Attributes
   attr_accessible :taken_on, :reading_day, :reading_night, :automatic
