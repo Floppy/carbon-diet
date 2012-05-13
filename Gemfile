@@ -7,6 +7,7 @@ gem 'validates_timeliness'
 gem 'multipass'
 gem 'will_paginate'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem "recaptcha", :require => "recaptcha/rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
