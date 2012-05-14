@@ -60,9 +60,9 @@
 <% end %>
 
 <div class="cd-content">
-<% if @content_for_optionbar %>
+  <% if content_for('optionbar').present? %>
   <div class="optionbar">
-  <%= yield :optionbar %>
+    <%= yield('optionbar') %>
   </div>
 <% end %>
 <div>
