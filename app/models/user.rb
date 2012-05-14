@@ -305,7 +305,7 @@ class User < ActiveRecord::Base
   def add_friend(friend)
     # Add to friends list
     unless (friends.include?(friend) or unapproved_friends.include?(friend))
-      friends << friend 
+      unapproved_friendships.create(:friend => friend, :approved => false)
       # Send email to friend
       unless friend.confirmed_email.nil? or friend.notify_friend_requests == false
         UserMailer.friend_request(self, friend).deliver
@@ -315,16 +315,17 @@ class User < ActiveRecord::Base
 
   def remove_friend(friend)
     # Remove friendship relation
-    approved_friendships.find_by_friend_id(friend.id).destroy rescue nil
+    approved_friendships.find_by_friend_id(friend.id).destroy
   end
 
   def approve_friend_request(friend)
     # Approve the original friend link
-    unapproved_befriendships.find_by_user_id(friend.id).approve rescue nil
-    # Add a reciprocal link to the friend
-    friends << friend unless friends.include?(friend)
-    # Auto-approve the reciprocal link
-    unapproved_friendships.find_by_friend_id(friend.id).approve rescue nil
+    friendship = unapproved_befriendships.find_by_user_id(friend.id)
+    if friendship
+      friendship.approve
+      # Add a reciprocal link to the friend
+      approved_friendships.create(:friend => friend, :approved => true)
+    end
   end
   
   def reject_friend_request(friend)

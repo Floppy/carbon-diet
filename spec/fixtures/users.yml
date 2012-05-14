@@ -737,7 +737,7 @@ users_013:
   login: "test013"
   created_at: 2007-05-30 00:00:00
   email: test013@example.com
-users_002: 
+alice:
   updated_at: 2007-07-03 18:47:12
   confirmation_code: 
   tester: "1"
@@ -751,10 +751,10 @@ users_002:
   region_id: 
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
-  display_name: Test002
-  login: test002
+  display_name: Alice
+  login: alice
   created_at: 2007-05-04 00:00:00
-  email: test002@example.com
+  email: alice@example.com
 users_036: 
   updated_at: 
   confirmation_code: 
@@ -809,7 +809,7 @@ users_014:
   login: "test014"
   created_at: 2007-06-04 00:00:00
   email: test014@example.com
-users_003: 
+bob: 
   updated_at: 2007-07-06 14:19:48
   confirmation_code: 
   tester: "1"
@@ -823,7 +823,7 @@ users_003:
   region_id: 
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
-  display_name: Test003
-  login: test003
+  display_name: Bob
+  login: bob
   created_at: 2007-05-04 00:00:00
-  email: test003@example.com
+  email: bob@example.com
