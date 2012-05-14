@@ -3,5 +3,5 @@ end
 class ActionController::Unauthorized < StandardError
 end
 
-ActionDispatch::ShowExceptions.rescue_responses.update('ActionController::Forbidden' => :forbidden)
-ActionDispatch::ShowExceptions.rescue_responses.update('ActionController::Unauthorized' => :unauthorized)
+CarbonDiet::Application.config.action_dispatch.rescue_responses.update('ActionController::Forbidden' => :forbidden)
+CarbonDiet::Application.config.action_dispatch.rescue_responses.update('ActionController::Unauthorized' => :unauthorized)
