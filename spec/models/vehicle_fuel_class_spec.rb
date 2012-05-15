@@ -10,4 +10,8 @@ describe "VehicleFuelClass", ActiveSupport::TestCase do
     vehicle_fuel_classes(:unleaded_uk).country.should_not be_nil
   end
 
+  it 'generates a friendly label' do
+    vehicle_fuel_classes(:unleaded_uk).to_label.should == 'Unleaded (UK)'
+  end
+
 end
