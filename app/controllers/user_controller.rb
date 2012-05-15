@@ -232,8 +232,8 @@ public
       return
     end
     # Store new password if set
-    unless params[:user][:new_password].blank?
-      if params[:user][:new_password] == params[:user][:new_password_confirmation]      
+    unless params[:password][:new_password].blank?
+      if params[:password][:new_password] == params[:user][:new_password_confirmation]      
         @current_user.password = params[:user][:new_password]
       else
         flash[:notice] = 'Password not confirmed correctly! Please try again!'
