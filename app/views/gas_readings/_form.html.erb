@@ -1,4 +1,4 @@
-<%= error_messages_for 'reading' %>
+<%= render "shared/error_messages", :target => @reading %>
 
 <%= form_for [@user, @account, @reading], :html => {:autocomplete => "off"} do |f| %>
   <table class="form">

@@ -6,7 +6,7 @@
 <div class="option">
 <% if elec_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'electricity.png' %>
-<%= link_to(elec_account.name, user_electricity_account_electricity_readings_path(@current_user, elec_account) ) %>
+<%= link_to(elec_account.name, user_electricity_account_readings_path(@current_user, elec_account) ) %>
 </div>
 <% end %>
 
@@ -14,7 +14,7 @@
 <div class="option">
 <% if gas_account.needs_more_data %><% @warn = true %><%= image_tag 'warning.png' %><% end %>
 <%= image_tag 'gas.png' %>
-<%= link_to(gas_account.name, user_gas_account_gas_readings_path(@current_user, gas_account) ) %>
+<%= link_to(gas_account.name, user_gas_account_readings_path(@current_user, gas_account) ) %>
 </div>
 <% end %>
 

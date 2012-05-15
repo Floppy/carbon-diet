@@ -2,12 +2,12 @@
   <li class="group">Add Data</li>
   <% @current_user.electricity_accounts.current.each do |account| %>
     <li>
-      <%= link_to("#{image_tag 'electricity.png'} #{account.name}", new_user_electricity_account_electricity_reading_path(@current_user, account)) %>
+      <%= link_to("#{image_tag 'electricity.png'} #{account.name}", new_user_electricity_account_reading_path(@current_user, account)) %>
     </li>
   <% end %>
   <% @current_user.gas_accounts.current.each do |account| %>
     <li>
-      <%= link_to("#{image_tag 'gas.png'} #{account.name}", new_user_gas_account_gas_reading_path(@current_user, account)) %>
+      <%= link_to("#{image_tag 'gas.png'} #{account.name}", new_user_gas_account_reading_path(@current_user, account)) %>
     </li>
   <% end %>
   <% @current_user.vehicles.current.each do |vehicle| %>

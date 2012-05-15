@@ -1,4 +1,4 @@
-<%= error_messages_for 'vehicle' %>
+<%= render "shared/error_messages", :target => @vehicle %>
 
 <%= form_for [@user, @vehicle], :html => {:autocomplete => "off"} do |f| %>
   <table class="form">

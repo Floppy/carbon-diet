@@ -3,13 +3,13 @@
 <% content_for('optionbar') do %>
   <div class="option">
     <%= image_tag_with_tooltip 'new.png' %>
-    <%= link_to 'Enter new reading', new_user_electricity_account_electricity_reading_path(@user, @account) %>
+    <%= link_to 'Enter new reading', new_user_electricity_account_reading_path(@user, @account) %>
   </div>
   <%= option "back_to_add_data" %>
   <%= option "edit_elec_account", { :user => @user, :account => @account } %>
   <div class="option">
     <%= image_tag_with_tooltip('export.png') %>
-    <%= link_to 'Export Data', user_electricity_account_electricity_readings_path(@user, @account, :format => :xml) %>
+    <%= link_to 'Export Data', user_electricity_account_readings_path(@user, @account, :format => :xml) %>
   </div>
   <% if @electricity_readings.size > 1 %>
     <%= option "analysis" %>
@@ -51,8 +51,8 @@ NOTE: If the units are wrong for your meter, you can change them in the <%= link
   <td><%=h reading.reading_day %></td>
 <% end %>
   <td><%= image_tag_with_tooltip('automatic.png') if reading.automatic %></td>
-  <td><%= link_to image_tag_with_tooltip('edit.png'), edit_user_electricity_account_electricity_reading_path(@user, @account, reading) %></td>
-  <td><%= link_to image_tag_with_tooltip('delete.png'), user_electricity_account_electricity_reading_path(@user, @account, reading), :confirm => 'Delete this reading?', :method => :delete %></td>
+  <td><%= link_to image_tag_with_tooltip('edit.png'), edit_user_electricity_account_reading_path(@user, @account, reading) %></td>
+  <td><%= link_to image_tag_with_tooltip('delete.png'), user_electricity_account_reading_path(@user, @account, reading), :confirm => 'Delete this reading?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

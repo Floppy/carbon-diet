@@ -1,6 +1,6 @@
 <big>New Electricity Reading</big>
 
-<%= error_messages_for 'electricity_reading' %>
+<%= render "shared/error_messages", :target => @reading %>
 
 <fieldset>
   <% if @account.night_rate %>
@@ -25,7 +25,7 @@
   </p>
   <p>
     <do type="accept" label="Save">
-      <go method="post" href="<%= user_electricity_account_electricity_readings_path(@user, @account) %>">
+      <go method="post" href="<%= user_electricity_account_readings_path(@user, @account) %>">
         <postfield name="electricity_reading[reading_day]" value="$reading_day"/>
         <postfield name="electricity_reading[reading_night]" value="$reading_night"/>
         <postfield name="electricity_reading[taken_on(3i)]" value="$day"/>
