@@ -9,7 +9,7 @@ class ElectricityReadingsController < BelongsToUser
   def index
     respond_to do |format|
       format.html {
-        @tip = tips.rand
+        @tip = tips.sample
         @electricity_readings = @account.electricity_readings.paginate :page => params[:page], :order => 'taken_on DESC'
       }
       format.xml {
