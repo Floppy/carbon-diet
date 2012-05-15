@@ -12,7 +12,7 @@ class GasAccountsController < BelongsToUser
   def create
     @account = @user.gas_accounts.create(params[:gas_account])
     if @account.save
-      redirect_to user_gas_account_gas_readings_path(@user, @account)
+      redirect_to user_gas_account_readings_path(@user, @account)
     else
       render :action => 'new'
     end
@@ -24,7 +24,7 @@ class GasAccountsController < BelongsToUser
   def update
     @account.update_attributes!(params[:gas_account])
     if @account.save
-      redirect_to user_gas_account_gas_readings_path(@user, @account)
+      redirect_to user_gas_account_readings_path(@user, @account)
     else
       render :action => 'edit'
     end

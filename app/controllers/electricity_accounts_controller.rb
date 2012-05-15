@@ -12,7 +12,7 @@ class ElectricityAccountsController < BelongsToUser
   def create
     @account = @user.electricity_accounts.create(params[:electricity_account])
     if @account.save
-      redirect_to user_electricity_account_electricity_readings_path(@user, @account)
+      redirect_to user_electricity_account_readings_path(@user, @account)
     else
       render :action => 'new'
     end
@@ -24,7 +24,7 @@ class ElectricityAccountsController < BelongsToUser
   def update
     @account.update_attributes!(params[:electricity_account])
     if @account.save
-      redirect_to user_electricity_account_electricity_readings_path(@user, @account)
+      redirect_to user_electricity_account_readings_path(@user, @account)
     else
       render :action => 'edit'
     end

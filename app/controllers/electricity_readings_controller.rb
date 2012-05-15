@@ -30,7 +30,7 @@ class ElectricityReadingsController < BelongsToUser
   def create
     @reading = @account.electricity_readings.create(params[:electricity_reading])
     if @reading.save
-      mobile? ? redirect_to_main_page : redirect_to(user_electricity_account_electricity_readings_path(@user, @account))
+      mobile? ? redirect_to_main_page : redirect_to(user_electricity_account_readings_path(@user, @account))
     else
       respond_to do |format|
         format.html { render :action => 'new' }
@@ -46,7 +46,7 @@ class ElectricityReadingsController < BelongsToUser
   def update
     @reading.update_attributes(params[:electricity_reading])
     if @reading.save
-      mobile? ? redirect_to_main_page : redirect_to(user_electricity_account_electricity_readings_path(@user, @account))
+      mobile? ? redirect_to_main_page : redirect_to(user_electricity_account_readings_path(@user, @account))
     else
       render :action => 'edit'
     end
@@ -54,7 +54,7 @@ class ElectricityReadingsController < BelongsToUser
 
   def destroy
     @reading.destroy
-    redirect_to(user_electricity_account_electricity_readings_path(@user, @account))
+    redirect_to(user_electricity_account_readings_path(@user, @account))
   end
 
   def currentcost
