@@ -86,7 +86,7 @@ class ElectricityAccount < ActiveRecord::Base
     categories << ActionCategory.find_by_name("Electricity")
     categories << ActionCategory.find_by_name("Heating") if used_for_heating 
     categories << ActionCategory.find_by_name("Hot Water") if used_for_water
-    return categories
+    return categories.compact
   end
 
   def date_of_newest_data

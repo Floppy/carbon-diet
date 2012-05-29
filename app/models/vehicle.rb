@@ -73,6 +73,7 @@ class Vehicle < ActiveRecord::Base
   def action_categories
     categories = []
     categories << ActionCategory.find_by_name("Travel")
+    return categories.compact
   end
 
   def date_of_newest_data
