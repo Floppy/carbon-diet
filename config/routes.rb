@@ -18,10 +18,10 @@ CarbonDiet::Application.routes.draw do
       resources :vehicle_fuel_purchases, :as => "fuel_purchases"
     end
     resources :electricity_accounts, :except => [:index, :show] do
-      resources :electricity_readings, :as => "readings"
+      resources :electricity_readings
     end
     resources :gas_accounts, :except => [:index, :show] do
-      resources :gas_readings, :as => "readings"
+      resources :gas_readings
     end
     resources :notes
     resource :report do
