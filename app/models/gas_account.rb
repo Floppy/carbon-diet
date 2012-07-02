@@ -21,7 +21,7 @@ class GasAccount < ActiveRecord::Base
   end
 
   def start_date
-    reading = gas_readings.order("taken_on")
+    reading = gas_readings.order("taken_on").first
     return Date::today if reading.nil?
     return reading.taken_on
   end
