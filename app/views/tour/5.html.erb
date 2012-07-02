@@ -19,12 +19,12 @@ Signing up is easy, so why not register now and start cutting your carbon footpr
 </p>
 <% end %>
 <p>
-<%= link_to image_tag('prev.png') + "Back", :action => '4' %>
+  <%= link_to image_tag('prev.png') + " Back", :action => '4' %>
 |
 <% if @current_user.nil? %>
-<%= link_to "Sign Up" + image_tag('next.png'), :controller => 'user', :action => 'login' %>
+<%= link_to "Sign Up ".html_safe + image_tag('next.png'), :controller => 'user', :action => 'login' %>
 <% else %>
-<%= link_to "Done" + image_tag('next.png'), :controller => 'profile', :login => @current_user.login %>
+<%= link_to "Done ".html_safe + image_tag('next.png'), :controller => 'profile', :login => @current_user.login %>
 <% end %>
 </p>
 </div>
