@@ -15,7 +15,7 @@ CarbonDiet::Application.routes.draw do
     resource :accounts
     resources :flights
     resources :vehicles, :except => [:index, :show] do
-      resources :vehicle_fuel_purchases, :as => "fuel_purchases"
+      resources :vehicle_fuel_purchases
     end
     resources :electricity_accounts, :except => [:index, :show] do
       resources :electricity_readings
