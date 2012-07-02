@@ -17,7 +17,7 @@ class Airport < ActiveRecord::Base
   def self.import_from_partow_net_db   
     file = open("GlobalAirportDatabase.txt")          
     # For each line in the file
-    file.read.each { |line|
+    file.each do |line|
       # Split into data fields
       fields = line.split(':')
       # Insert into database if sufficient data is present
@@ -34,7 +34,7 @@ class Airport < ActiveRecord::Base
       unless (airport.latitude == 0.0 or airport.longitude == 0.0)
         airport.save!
       end
-    }
+    end
   end
 
 end
