@@ -25,7 +25,7 @@
   </p>
   <p>
     <do type="accept" label="Save">
-      <go method="post" href="<%= user_electricity_account_readings_path(@user, @account) %>">
+      <go method="post" href="<%= user_electricity_account_electricity_readings_path(@user, @account) %>">
         <postfield name="electricity_reading[reading_day]" value="$reading_day"/>
         <postfield name="electricity_reading[reading_night]" value="$reading_night"/>
         <postfield name="electricity_reading[taken_on(3i)]" value="$day"/>

@@ -13,7 +13,7 @@
   </p>
   <p>
     <do type="accept" label="Save">
-      <go method="post" href="<%= user_gas_account_readings_path(@user, @account) %>">
+      <go method="post" href="<%= user_gas_account_gas_readings_path(@user, @account) %>">
         <postfield name="gas_reading[reading]" value="$reading"/>
         <postfield name="gas_reading[taken_on(3i)]" value="$day"/>
         <postfield name="gas_reading[taken_on(2i)]" value="$month"/>
