@@ -18,7 +18,7 @@ class Vehicle < ActiveRecord::Base
   end
 
   def start_date
-    purchase = vehicle_fuel_purchases.order("purchased_on")
+    purchase = vehicle_fuel_purchases.order("purchased_on").first
     return Date::today if purchase.nil?
     return purchase.purchased_on
   end
