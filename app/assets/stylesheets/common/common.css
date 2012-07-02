@@ -138,7 +138,7 @@ div.sectiontitle {
 /* Groups */
 
 li.group {
-  list-style-image: url(/images/group.png);
+  list-style-image: url(/assets/group.png);
 }
 
 /* Option boxes */
@@ -369,11 +369,11 @@ div.fullwidth {
 }
 
 li.subsection {
-  list-style-image: url(/images/folder_closed.png);
+  list-style-image: url(/assets/folder_closed.png);
 }
 
 li.subsection-open {
-  list-style-image: url(/images/folder_open.png);
+  list-style-image: url(/assets/folder_open.png);
 }
 
 div.minibutton {
