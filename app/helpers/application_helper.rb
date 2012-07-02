@@ -3,11 +3,11 @@ module ApplicationHelper
   include WmlHelper
 
   def kg(amount,precision=0)
-    "<b>" + (amount ? number_with_precision(amount, :precision => precision) : "?") + "</b> kg"
+    ("<b>" + (amount ? number_with_precision(amount, :precision => precision) : "?") + "</b> kg").html_safe
   end
 
   def tonnes(amount,precision=0, abbreviate=false)
-    "<b>" + (amount ? number_with_precision(amount.to_f/1000, :precision => precision) : "?") + "</b>" + (abbreviate ? "t" : " tonnes")
+    ("<b>" + (amount ? number_with_precision(amount.to_f/1000, :precision => precision) : "?") + "</b>" + (abbreviate ? "t" : " tonnes")).html_safe
   end
 
   def image_tag_with_tooltip(location, options={})
