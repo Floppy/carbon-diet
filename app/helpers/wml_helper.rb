@@ -34,6 +34,7 @@ module WmlHelper
       end
     end
     wml << "</select>"
+    wml.html_safe
   end
 
 end
