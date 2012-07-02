@@ -1,4 +1,4 @@
 <div class="option">
 <%= image_tag 'chart_pie.png' %>
-<%= link_to("CO<span class='sub'>2</span> sources", ratio_user_report_path(@user || @current_user) ) %>
+<%= link_to("CO<span class='sub'>2</span> sources".html_safe, ratio_user_report_path(@user || @current_user) ) %>
 </div>
