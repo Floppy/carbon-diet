@@ -49,9 +49,9 @@ module ProfileHelper
       case comment.commentable_type
       when "User"
         name = comment.commentable == user ? "his" : comment.commentable.name + "'s"
-        text = "wrote a comment on " + (comment.commentable.public ? link_to(h(name), :controller => "/profile", :login => comment.commentable.login, :anchor => "comment#{comment.id}") : h(name)) + " profile"
+        text = "wrote a comment on ".html_safe + (comment.commentable.public ? link_to(h(name), :controller => "/profile", :login => comment.commentable.login, :anchor => "comment#{comment.id}") : h(name)) + " profile"
       when "Group"
-        text = "wrote a comment in the " + link_to(h(comment.commentable.name), group_path(comment.commentable, :anchor => "comment#{comment.id}")) + " group"
+        text = "wrote a comment in the ".html_safe + link_to(h(comment.commentable.name), group_path(comment.commentable, :anchor => "comment#{comment.id}")) + " group"
       else
         raise "Unknown commentable type!"
       end
@@ -61,13 +61,13 @@ module ProfileHelper
     end
     # Get comment data
     user.comments.limit(limit).order("created_at DESC").each do |comment|
-      text = ""
+      text = "".html_safe
       if comment.user != user 
         text += (comment.user.public ? link_to(h(comment.user.name), :controller => "/profile", :login => comment.user.login) : h(comment.user.name)) + ' '
       end
-      text += "wrote a "
+      text += "wrote a ".html_safe
       text += link_to('comment', :anchor => "comment#{comment.id}")
-      text += " on this profile"
+      text += " on this profile".html_safe
       feed << {:image => 'comment.png', 
                :when => comment.created_at.to_time,
                :text => text}
