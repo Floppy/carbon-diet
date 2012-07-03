@@ -97,11 +97,11 @@ class GroupsController < ApplicationController
   end
 
   def check_group_owner
-    raise AccessDenied unless @current_user == @group.owner || @current_user.admin?
+    render :status => :forbidden and return unless @current_user == @group.owner || @current_user.admin?
   end
 
   def check_group_member
-    #raise AccessDenied unless @group.has_member?(@current_user) || @current_user.admin?
+    render :status => :forbidden and return unless @group.has_member?(@current_user) || @current_user.admin?
   end
 
 end
