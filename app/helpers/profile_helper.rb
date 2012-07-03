@@ -24,25 +24,25 @@ module ProfileHelper
     user.completed_actions.limit(limit).order("created_at DESC").where(:done => true).each do |action|
       feed << {:image => 'action.png', 
                :when => action.created_at, 
-               :text => "agreed to do the action " + link_to(h(action.action.title), :controller => "/actions", :action => 'view', :id => action.action.id)}
+               :text => "agreed to do the action ".html_safe + link_to(h(action.action.title), :controller => "/actions", :action => 'view', :id => action.action.id)}
     end
     # Get friends data
     user.approved_friendships.limit(limit).order("created_at DESC").each do |friendship|
       feed << {:image => 'user.png', 
                :when => friendship.created_at, 
-               :text => "made friends with " + (friendship.friend.public ? link_to(h(friendship.friend.name), :controller => "/profile", :login => friendship.friend.login) : h(friendship.friend.name))}
+               :text => "made friends with ".html_safe + (friendship.friend.public ? link_to(h(friendship.friend.name), :controller => "/profile", :login => friendship.friend.login) : h(friendship.friend.name))}
     end
     # Get groups data
     user.group_memberships.limit(limit).order("created_at DESC").each do |group|
       feed << {:image => 'group.png', 
                :when => group.created_at, 
-               :text => "joined the group " + link_to(h(group.group.name), group_path(group.group))}
+               :text => "joined the group ".html_safe + link_to(h(group.group.name), group_path(group.group))}
     end
     # Get note data
     user.all_notes(limit).each do |note|
       feed << {:image => 'note.png', 
                :when => note.date.to_time,
-               :text => "wrote a note: '" + h(note.note) + "'"}
+               :text => "wrote a note: '".html_safe + h(note.note) + "'"}
     end
     # Get comment data
     user.authored_comments.limit(limit).order("created_at DESC").where("NOT (commentable_type = 'User' AND commentable_id = ?)", user.id).each do |comment|
