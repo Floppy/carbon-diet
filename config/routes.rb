@@ -30,7 +30,7 @@ CarbonDiet::Application.routes.draw do
       get :recent_chart
       get :ratio_chart
     end
-    resources :groups
+    resources :groups, :controller => 'UserGroups'
     resources :friends do
       get :invite, :on => :collection
       post :send_invitation, :on => :collection
