@@ -58,7 +58,6 @@ describe ReportsController do
   end
 
   it "can view html pages if logged in as right person" do
-    pending
     when_logged_in(1) do
       get :show, :user_id => User.find(1).login
       assert_response :success
@@ -70,7 +69,6 @@ describe ReportsController do
   end
 
   it "can view public charts if not logged in" do
-    pending
     when_not_logged_in do
       amline(1,30)
       xmlpie(1,30)
@@ -78,7 +76,6 @@ describe ReportsController do
   end
 
   it "can view public charts if logged in" do
-    pending
     when_logged_in(2) do
       amline(1,30)
       xmlpie(1,30)
@@ -86,7 +83,6 @@ describe ReportsController do
   end
 
   it "cannot view private charts if not logged in" do
-    pending
     when_not_logged_in do
       get :recent_chart, :period => 30, :user_id => User.find(2).login, :format => 'amline'
       assert_response :missing
@@ -109,7 +105,6 @@ describe ReportsController do
   end
 
   it "can view private charts if logged in as right user" do
-    pending
     when_logged_in(2) do
       amline(2,30)
       xmlpie(2,30)
@@ -117,19 +112,16 @@ describe ReportsController do
   end
 
   it "charts long" do
-    pending
     amline(1,1460)
     xmlpie(1,1460)
   end
 
   it "charts no data" do
-    pending
     amline(9,30)
     xmlpie(9,30)
   end
 
   it "line chart no notes" do
-    pending
     amline(3,30)
   end
 

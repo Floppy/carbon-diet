@@ -21,7 +21,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "reminder" do
-    pending 'actionmailer fixes'
     user = User.find(1)
     @expected.subject = 'A reminder from the Carbon Diet'
     @expected.from    = 'info@carbondiet.org'
@@ -32,7 +31,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "password change" do
-    pending 'actionmailer fixes'
     # Change user password
     srand(42)
     User.find(1).reset_password
@@ -46,7 +44,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "group invitation" do
-    pending 'actionmailer fixes'
     @expected.subject = 'Carbon Diet: Group invitation'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'james@carbondiet.org'
@@ -56,7 +53,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "friend request" do
-    pending 'actionmailer fixes'
     user = User.find(2)
     friend = User.find(1)
     @expected.subject = 'Carbon Diet: Friend request'
@@ -68,7 +64,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "comment notification" do
-    pending 'actionmailer fixes'
     @expected.subject    = 'Carbon Diet: Someone wrote a comment on your profile!'
     @expected.from       = 'info@carbondiet.org'
     @expected.to         = 'james@carbondiet.org'
@@ -78,7 +73,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "email confirmation" do
-    pending 'actionmailer fixes'
     # Set email confirmation code
     user = User.find(44)
     user.email  = "james@carbondiet.org"
@@ -93,7 +87,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "friend invitation" do
-    pending 'actionmailer fixes'
     @expected.subject    = 'An invitation to join The Carbon Diet'
     @expected.from       = 'info@carbondiet.org'
     @expected.to         = 'james@carbondiet.org'
@@ -103,7 +96,6 @@ describe "UserMailer", ActiveSupport::TestCase do
   end
 
   it "friend invitation with group" do
-    pending 'actionmailer fixes'
     @expected.subject    = 'An invitation to join The Carbon Diet'
     @expected.from       = 'info@carbondiet.org'
     @expected.to         = 'james@carbondiet.org'

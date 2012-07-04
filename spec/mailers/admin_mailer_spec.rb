@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe "AdminMailer", ActiveSupport::TestCase do
-  pending 'fixing mailers'
 
   FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
   CHARSET = "utf-8"
@@ -21,7 +20,6 @@ describe "AdminMailer", ActiveSupport::TestCase do
   end
 
   it "new signup" do
-    pending 'actionmailer fixes'
     @expected.subject = 'Carbon Diet: New user signed up!'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'
@@ -31,7 +29,6 @@ describe "AdminMailer", ActiveSupport::TestCase do
   end
 
   it "country request" do
-    pending 'actionmailer fixes'
     @expected.subject = 'Carbon Diet: Country request!'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'
