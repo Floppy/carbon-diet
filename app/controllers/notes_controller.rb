@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class NotesController < BelongsToUser
   before_filter :get_note, :except => [:index, :new, :create]
 

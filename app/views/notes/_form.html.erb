@@ -1,5 +1,6 @@
+<%= render "shared/error_messages", :target => @note %>
+
 <%= form_for [@user, @note] do |f| %>
-  <%= f.error_messages %>
   <table class="form">
     <tr>
       <td><%= f.label :date %></td>
