@@ -15,7 +15,6 @@
       <div class="row">
         <label for="electricity_reading_reading_day"><%=h @account.electricity_unit.abbreviation %></label>
         <input type="number" value="" size="30" name="electricity_reading[reading_day]" id="electricity_reading_reading_day"/>
-        <%= hidden_field 'electricity_reading', 'reading_night', :value => "0", :type => 'number' %>
       </div>
     <% end %>
     <div class="row">

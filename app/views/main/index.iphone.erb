@@ -1,4 +1,8 @@
-<%= form_tag({:controller => '/user', :action => 'auth', :params => {:invite => params[:invite], :group => params[:group]}}, {:class => "panel", :selected => "true", :title => "Carbon Diet", :target => "_self"}) do %>
+<div id='login' selected="true" title="Log In" class="panel">
+  <div style='text-align: center'>
+    <img src='assets/default/textlogo.png'/>
+  </div>
+  <%= form_tag({:controller => '/user', :action => 'auth', :params => {:invite => params[:invite], :group => params[:group]}}, {:class => 'panel', :target => "_self"}) do %>
   <fieldset>
     <div class="row">
       <label for="username">Username</label>
@@ -8,7 +12,11 @@
       <label for="password">Password</label>
       <%= password_field 'user', 'password' %>
     </div>
+    <div class="row">
+      <label for="remember">Remember Me</label>
+      <%= check_box 'user', 'remember', :checked => true %>
+    </div>
   </fieldset>
   <a class="whiteButton" type="submit" href="#">Log In</a>
 <% end %>
-
+</div>

@@ -1,29 +1,26 @@
-<ul title="Carbon Diet" selected="true">
+<ul id='profile' title="Carbon Diet" selected="true">
   <li class="group">Add Data</li>
   <% @current_user.electricity_accounts.current.each do |account| %>
     <li>
-      <%= link_to("#{image_tag 'electricity.png'} #{account.name}", new_user_electricity_account_electricity_reading_path(@current_user, account)) %>
+      <%= link_to("#{image_tag 'electricity.png'} #{account.name}".html_safe, new_user_electricity_account_electricity_reading_path(@current_user, account)) %>
     </li>
   <% end %>
   <% @current_user.gas_accounts.current.each do |account| %>
     <li>
-      <%= link_to("#{image_tag 'gas.png'} #{account.name}", new_user_gas_account_gas_reading_path(@current_user, account)) %>
+      <%= link_to("#{image_tag 'gas.png'} #{account.name}".html_safe, new_user_gas_account_gas_reading_path(@current_user, account)) %>
     </li>
   <% end %>
   <% @current_user.vehicles.current.each do |vehicle| %>
     <li>
-      <%= link_to("#{image_tag 'car.png'} #{vehicle.name}", new_user_vehicle_vehicle_fuel_purchase_path(@current_user, vehicle)) %>
+      <%= link_to("#{image_tag 'car.png'} #{vehicle.name}".html_safe, new_user_vehicle_vehicle_fuel_purchase_path(@current_user, vehicle)) %>
     </li>
   <% end %>
   <li class="group">Analysis</li>
   <li>
-    <%= link_to "#{image_tag 'chart_pie.png'} Totals", user_report_path(@current_user) %>
+    <%= link_to "#{image_tag 'chart_pie.png'} Totals".html_safe, user_report_path(@current_user) %>
   </li>
   <li class="group">Help</li>
   <li>
-    <%= link_to "#{image_tag 'help.png'} Help", "/help" %>
-  </li>
-  <li>
-    <%= link_to "#{image_tag 'delete.png'} Log Out", "/user/logout", :target => "_self" %>
+    <%= link_to "#{image_tag 'help.png'} Help".html_safe, "/help" %>
   </li>
 </ul>
