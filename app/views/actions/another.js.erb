@@ -1,0 +1,13 @@
+<% if @action %>
+  $("action<%= @action.id %>").blindUp();
+<% end %>
+
+<% unless @actions.empty? %>
+  <% @display = "style='display:none;'" %>
+  <% content = render :partial => 'action', :collection => @actions %>
+  $("actionlist").insert({ bottom: "<%= escape_javascript content %>" });
+  <% @actions.each do |a| %>
+    $("action<%= a.id %>").slideDown();
+  <% end %>
+  item_added();
+<% end %>

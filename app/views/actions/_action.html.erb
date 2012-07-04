@@ -12,20 +12,12 @@
     <div class="clearleft"></div>
     <div class="left">
       <%= form_tag({ :action => 'complete', :id => action, :done => true }, 
-                   :update => 'actionlist',
-                   :position => :bottom,
-                   #:loading => visual_effect(:blindUp, 'action' + action.id.to_s),
-                   :complete => 'item_added()',
                    :remote => true) do %>
       <%= submit_tag "I have done / will do this!" %>
       <% end %>
     </div>
     <div class="right">
       <%= form_tag({ :action => 'complete', :id => action, :done => false}, 
-                   :update => 'actionlist',
-                   :position => :bottom,
-                   #:loading => visual_effect(:blindUp, 'action' + action.id.to_s),
-                   :complete => 'item_added()',
                    :confirm => 'Are you sure you can\'t do this? Press OK if you\'re sure and we won\'t suggest it again!', 
                    :remote => true ) do %>
       <%= submit_tag "I can't do this!" %>
