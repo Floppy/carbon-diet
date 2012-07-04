@@ -19,7 +19,8 @@ protected
         reset_session
       end      
     elsif cookies[:login_token]
-      @current_user = User.find_by_id_and_login_key(*cookies[:login_token].split(";"))
+      id, login_key = *cookies[:login_token].split(";")
+      @current_user = User.where(:id => id, :login_key => login_key).first
       unless @current_user.nil?
         session[:user_id] = @current_user.id
         @current_user.last_login_at = Time.now
