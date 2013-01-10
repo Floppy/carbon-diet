@@ -2,7 +2,7 @@ The Carbon Diet
 ---------------
 
 http://www.carbondiet.org
-Copyright (C) 2007-9 James Smith (james@floppy.org.uk)
+Copyright (C) 2007-12 James Smith (james@floppy.org.uk)
 
 About
 -----
@@ -24,13 +24,13 @@ so we can integrate your improvements!
 Requirements
 ------------
 
-Ruby on Rails 2.1.2
+Ruby on Rails 2.3.15
 
 Installation
 ------------
 
 Copy database.example.yml to database.yml, and edit to set the correct details.
-Copy hoptoad.example.yml to hoptoad.yml, and add your own Hoptoad API key.
+Copy settings.example.yml to settings.yml, and add your own details.
 Run rake db:migrate to set up the database
 Run script/server and go to http://localhost:3000 for more details.
 
