@@ -15,29 +15,38 @@ describe InvitationsController do
     @group = Group.find(2)
   end
 
-  it "invite" do
+  it "redirect when not logged in" do
     when_not_logged_in do
       get :new, :group_id => @group.name
       assert_response :redirect
       assert_redirected_to '/'
     end
-    when_logged_in do
+  end
+  
+  it "invite when logged in" do
+    when_logged_in(1) do
       get :new, :group_id => @group.name
       assert_response :success
       assert_template 'new'
     end
   end
 
-  it "send invitations" do
-    when_not_logged_in do
-      post :create, :group_id => @group.name, :invite => {'james' => '1'}
-      assert_response :redirect
-      assert_redirected_to '/'
+  context "send invitations" do
+    
+    it "redirect when not logged in" do
+      when_not_logged_in do
+        post :create, :group_id => @group.name, :invite => {'james' => '1'}
+        assert_response :redirect
+        assert_redirected_to '/'
+      end
     end
-    when_logged_in do
-      post :create, :group_id => @group.name, :invite => {'james' => '1'}
-      assert_response :redirect
-      assert_redirected_to @group
+    
+    it "send when logged in" do
+      when_logged_in(1) do
+        post :create, :group_id => @group.name, :invite => {'james' => '1'}
+        assert_response :redirect
+        assert_redirected_to @group
+      end
     end
   end
 end
