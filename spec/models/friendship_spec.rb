@@ -12,7 +12,6 @@ describe Friendship do
     end
 
     it "adds a friend correctly" do
-      puts Friendship.all.inspect
       # Bob should appear in Alice's unapproved friends list
       @alice.friends.should_not include(@bob)
       @alice.unapproved_friends.should include(@bob)
