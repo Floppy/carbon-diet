@@ -6,7 +6,7 @@ The Carbon Diet can help you to fight climate change by tracking your
 carbon footprint from day to day, and by comparing your footprint with 
 your friends! You can sign up for free by clicking the link below:
 
-http://www.carbondiet.org?invite=<%= @sender.id %><%= "&group=#{@group}" if @group != "0" %>
+http://www.carbondiet.org?invite=<%= @sender.id %><%= "&group=#{@group}".html_safe if @group != "0" %>
 
 If you're not interested, please ignore this email. We have not stored your 
 email address and will not contact you again unless someone else invites you!

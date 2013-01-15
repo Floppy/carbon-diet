@@ -25,7 +25,7 @@ describe "AdminMailer", ActiveSupport::TestCase do
     @expected.to      = 'info@carbondiet.org'
     @expected.body    = read_fixture('new_signup')
     @expected.date    = Time.now
-    assert_equal @expected.encoded, AdminMailer.create_new_signup("james", @expected.date).encoded
+    assert_equal @expected.body.encoded, AdminMailer.new_signup("james", @expected.date).body.encoded
   end
 
   it "country request" do
@@ -34,7 +34,7 @@ describe "AdminMailer", ActiveSupport::TestCase do
     @expected.to      = 'info@carbondiet.org'
     @expected.body    = read_fixture('country_request')
     @expected.date    = Time.now
-    assert_equal @expected.encoded, AdminMailer.create_country_request(User.find(1), "United Kingdom", @expected.date).encoded
+    assert_equal @expected.body.encoded, AdminMailer.country_request(User.find(1), "United Kingdom", @expected.date).body.encoded
   end
 
   private
