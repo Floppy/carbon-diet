@@ -6,7 +6,7 @@ class InvitationsController; def rescue_action(e) raise e end; end
 
 describe InvitationsController do
 
-  fixtures :groups
+  fixtures :users, :groups, :group_memberships
 
   before do
     @controller = InvitationsController.new
