@@ -2,12 +2,7 @@ require 'spec_helper'
 
 describe "AdminMailer", ActiveSupport::TestCase do
 
-  FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
-  CHARSET = "utf-8"
-
   fixtures :users
-
-  #include ActionMailer::Quoting
 
   before do
     ActionMailer::Base.delivery_method = :test
@@ -23,7 +18,7 @@ describe "AdminMailer", ActiveSupport::TestCase do
     @expected.subject = 'Carbon Diet: New user signed up!'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'
-    @expected.body    = read_fixture('new_signup')
+    @expected.body    = read_mail_fixture('admin_mailer', 'new_signup')
     @expected.date    = Time.now
     assert_equal @expected.body.encoded, AdminMailer.new_signup("james", @expected.date).body.encoded
   end
@@ -32,17 +27,9 @@ describe "AdminMailer", ActiveSupport::TestCase do
     @expected.subject = 'Carbon Diet: Country request!'
     @expected.from    = 'info@carbondiet.org'
     @expected.to      = 'info@carbondiet.org'
-    @expected.body    = read_fixture('country_request')
+    @expected.body    = read_mail_fixture('admin_mailer', 'country_request')
     @expected.date    = Time.now
     assert_equal @expected.body.encoded, AdminMailer.country_request(User.find(1), "United Kingdom", @expected.date).body.encoded
   end
 
-  private
-    def read_fixture(action)
-      IO.readlines("#{FIXTURES_PATH}/admin_mailer/#{action}")
-    end
-
-    def encode(subject)
-      quoted_printable(subject, CHARSET)
-    end
 end

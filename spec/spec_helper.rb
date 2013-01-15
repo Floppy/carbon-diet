@@ -51,6 +51,10 @@ Spork.prefork do
     yield
   end  
 
+  def read_mail_fixture(mailer, action)
+    IO.readlines(File.join(File.dirname(__FILE__), 'fixtures', mailer, action))
+  end
+
 end
 
 Spork.each_run do
