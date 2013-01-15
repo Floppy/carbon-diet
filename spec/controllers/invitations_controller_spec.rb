@@ -1,15 +1,15 @@
 require 'spec_helper'
-require 'group_invitations_controller'
+require 'invitations_controller'
 
 # Re-raise errors caught by the controller.
-class GroupInvitationsController; def rescue_action(e) raise e end; end
+class InvitationsController; def rescue_action(e) raise e end; end
 
-describe GroupInvitationsController do
+describe InvitationsController do
 
   fixtures :groups
 
   before do
-    @controller = GroupInvitationsController.new
+    @controller = InvitationsController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     @group = Group.find(2)
