@@ -32,7 +32,7 @@ describe ProfileController do
 
   it "can view private profile if logged in as right user" do
     when_logged_in(2) do
-      get :index, :login => 'test002'
+      get :index, :login => 'alice'
       assert_response :success
     end
   end
