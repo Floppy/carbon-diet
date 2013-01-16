@@ -21,6 +21,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'spork-rails'
