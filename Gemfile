@@ -29,4 +29,9 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'af'
+end
+
+group :production do
+  gem 'mysql2'
 end
