@@ -485,7 +485,7 @@ public
 
   # initialize the multipass object
   def self.multipass
-    @multipass ||= MultiPass.new(APP_CONFIG['multipass']['site'], APP_CONFIG['multipass']['api_key'])
+    @multipass ||= MultiPass.new('carbondiet', ENV['MULTIPASS_API_KEY'])
   end
 
   # create a multipass for this user object

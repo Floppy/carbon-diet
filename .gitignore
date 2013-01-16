@@ -12,3 +12,4 @@ tmp/*
 *.sqlite3
 /vendor/cache/
 /public/assets/
+/config/.powrc
