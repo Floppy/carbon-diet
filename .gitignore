@@ -10,3 +10,5 @@ tmp/*
 .DS_Store
 
 *.sqlite3
+/vendor/cache/
+/public/assets/
