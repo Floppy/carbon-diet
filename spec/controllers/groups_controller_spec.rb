@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 require 'groups_controller'
 
 # Re-raise errors caught by the controller.

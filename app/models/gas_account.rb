@@ -21,7 +21,7 @@ class GasAccount < ActiveRecord::Base
   end
 
   def start_date
-    reading = gas_readings.find(:first, :order => "taken_on")
+    reading = gas_readings.order("taken_on").first
     return Date::today if reading.nil?
     return reading.taken_on
   end
@@ -33,7 +33,7 @@ class GasAccount < ActiveRecord::Base
     last_m3 = 0;
     last_date = 0;
     # Analyse each reading
-    readings = gas_readings.find(:all, :order => "taken_on")
+    readings = gas_readings.order("taken_on")
     readings.each do |reading|
       # Calculate gas used since last reading
       if last_m3 != 0
@@ -81,11 +81,11 @@ class GasAccount < ActiveRecord::Base
     categories = []
     categories << ActionCategory.find_by_name("Heating") if used_for_heating 
     categories << ActionCategory.find_by_name("Hot Water") if used_for_water
-    return categories
+    return categories.compact
   end
 
   def date_of_newest_data
-    reading = gas_readings.find(:first, :order => "taken_on DESC", :limit => 1) 
+    reading = gas_readings.order("taken_on DESC").limit(1).first
     if reading.nil?
       return 100.years.ago.to_date
     else

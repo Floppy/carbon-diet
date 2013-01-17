@@ -8,3 +8,8 @@ db/*.db
 coverage
 tmp/*
 .DS_Store
+
+*.sqlite3
+/vendor/cache/
+/public/assets/
+/.powrc

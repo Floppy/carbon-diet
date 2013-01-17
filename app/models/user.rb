@@ -6,19 +6,19 @@ class User < ActiveRecord::Base
   belongs_to :country
   has_many :electricity_accounts do
     def current
-      find :all, :conditions => {:current => true}
+      where(:current => true)
     end
   end
   has_many :electricity_readings, :through => :electricity_accounts
   has_many :gas_accounts do
     def current
-      find :all, :conditions => {:current => true}
+      where(:current => true)
     end
   end
   has_many :gas_readings, :through => :gas_accounts
   has_many :vehicles do
     def current
-      find :all, :conditions => {:current => true}
+      where(:current => true)
     end
   end
   has_many :vehicle_fuel_purchases, :through => :vehicles
@@ -116,14 +116,14 @@ class User < ActiveRecord::Base
       # Create hashed version of email address for confirmation code
       self.confirmation_code = Digest::SHA256.hexdigest(self.email + self.password_salt)
       # Send confirmation email
-      UserMailer.deliver_email_confirmation(self)
+      UserMailer.email_confirmation(self).deliver
     end
   end  
 
   def self.authenticate(login, passwd)
-    user = User.find(:first, :conditions => ["login = ?", login.downcase])
+    user = User.where(:login => login.downcase).first
     if user.nil?
-      user = User.find(:first, :conditions => ['email = ?', login])
+      user = User.where(:email => login).first
     end
     if user.nil?      
       return :no_such_user    
@@ -137,30 +137,10 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-  def avatar=(file)
-    unless file.blank?
-      # Resize avatar and write to filesystem
-      img = MiniMagick::Image.from_blob(file.read)
-      img.format 'png'
-      img.resize '100x100'
-      img.write("#{RAILS_ROOT}/public/images/avatars/#{login}.png")
-      img.resize '32x32'
-      img.write("#{RAILS_ROOT}/public/images/avatars/thumbnails/#{login}.png")
-      # Set avatar flag
-      write_attribute('has_avatar', true)
-    end
-  end
   
   def avatar(small=false)
-    if has_avatar
-      # Generate path
-      path = "avatars/"
-      path += "thumbnails/" if small
-      # Create avatar URL
-      path + self.login + ".png"
-    elsif email
-      "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=#{small ? 32 : 80}&d=wavatar"
+    if email
+      "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=#{small ? 32 : 80}&d=monsterid"
     else
       small ? "avatar32.png" : "avatar80.png"
     end
@@ -188,8 +168,8 @@ class User < ActiveRecord::Base
     comments.each { |x| x.destroy }
     # Remove avatar images
     if has_avatar
-      FileUtils.remove("#{RAILS_ROOT}/public/images/avatars/#{login}.png")
-      FileUtils.remove("#{RAILS_ROOT}/public/images/avatars/thumbnails/#{login}.png")
+      FileUtils.remove("#{Rails.root}/public/images/avatars/#{login}.png")
+      FileUtils.remove("#{Rails.root}/public/images/avatars/thumbnails/#{login}.png")
     end
     # Call base
     super
@@ -246,7 +226,7 @@ class User < ActiveRecord::Base
     return unless needs_reminding?
     # Send reminder if there is an email address confirmed
     unless self.confirmed_email.nil? or self.login.blank? # Can't send reminder to people without a login, because we can't save the reminder time
-      UserMailer.deliver_reminder(self)
+      UserMailer.reminder(self).deliver
       # Store todays date in reminder field
       self.reminded_at = Time::now
       self.save!
@@ -272,9 +252,7 @@ class User < ActiveRecord::Base
   def self.find_public(search)    
     search = search.downcase
     like = "%" + search + "%"
-    User.find(:all, 
-              :conditions => ["public IS TRUE AND (login LIKE ? OR LOWER(email) = ? OR LOWER(display_name) LIKE ?)", like, search, like],
-              :order => "login")
+    User.where(:public => true).where("(login LIKE ? OR LOWER(email) = ? OR LOWER(display_name) LIKE ?)", like, search, like).order(:login)
   end
 
   def calculate_totals(period)
@@ -307,26 +285,27 @@ class User < ActiveRecord::Base
   def add_friend(friend)
     # Add to friends list
     unless (friends.include?(friend) or unapproved_friends.include?(friend))
-      friends << friend 
+      unapproved_friendships.create(:friend => friend, :approved => false)
       # Send email to friend
       unless friend.confirmed_email.nil? or friend.notify_friend_requests == false
-        UserMailer.deliver_friend_request(self, friend)
+        UserMailer.friend_request(self, friend).deliver
       end
     end
   end
 
   def remove_friend(friend)
     # Remove friendship relation
-    approved_friendships.find_by_friend_id(friend.id).destroy rescue nil
+    approved_friendships.find_by_friend_id(friend.id).destroy
   end
 
   def approve_friend_request(friend)
     # Approve the original friend link
-    unapproved_befriendships.find_by_user_id(friend.id).approve rescue nil
-    # Add a reciprocal link to the friend
-    friends << friend unless friends.include?(friend)
-    # Auto-approve the reciprocal link
-    unapproved_friendships.find_by_friend_id(friend.id).approve rescue nil
+    friendship = unapproved_befriendships.find_by_user_id(friend.id)
+    if friendship
+      friendship.approve
+      # Add a reciprocal link to the friend
+      approved_friendships.create(:friend => friend, :approved => true)
+    end
   end
   
   def reject_friend_request(friend)
@@ -351,10 +330,10 @@ class User < ActiveRecord::Base
 
   def all_notes(limit = nil)
     all_notes_array = []
-    all_notes_array += notes.find(:all, :limit => limit, :order => "date DESC")
-    electricity_accounts.each { |acc| all_notes_array += acc.notes.find(:all, :limit => limit, :order => "date DESC") }
-    gas_accounts.each { |acc| all_notes_array += acc.notes.find(:all, :limit => limit, :order => "date DESC") }
-    vehicles.each { |acc| all_notes_array += acc.notes.find(:all, :limit => limit, :order => "date DESC") }
+    all_notes_array += notes.limit(limit).order("date DESC")
+    electricity_accounts.each { |acc| all_notes_array += acc.notes.limit(limit).order("date DESC") }
+    gas_accounts.each { |acc| all_notes_array += acc.notes.limit(limit).order("date DESC") }
+    vehicles.each { |acc| all_notes_array += acc.notes.limit(limit).order("date DESC") }
     return all_notes_array.sort{ |x,y| y.date <=> x.date }
   end
 
@@ -368,7 +347,7 @@ class User < ActiveRecord::Base
     days = Date::today - date_of_first_data
     days = 365 if days > 365
     self.annual_emission_total = calculate_totals(days).last[:data][:perannum] / people_in_household
-    self.save(false) if save
+    self.save(:validate => false) if save
   end
 
   def needs_reminding?
@@ -438,7 +417,7 @@ public
     # Initialise result array
     emissiondata = EmissionArray.new
     # Analyse each reading
-    flights.find(:all, :order => "outbound_on").each do |flight|
+    flights.order("outbound_on").each do |flight|
       # Add to result array
       days = flight.return_on ? (flight.return_on - flight.outbound_on + 1) : 1
       co2 = flight.kg_of_co2
@@ -469,7 +448,7 @@ public
     ]
     breakdown = {}
     breakdown[:entries] = {:value => electricity_readings.count(:conditions => {:automatic => false})+gas_readings.count+vehicle_fuel_purchases.count+flights.count, :description => "measurement"}
-    breakdown[:actions] = {:value => actions.find(:all).inject(0){|t,x| t += x.points}, :description => "actions"}
+    breakdown[:actions] = {:value => actions.inject(0){|t,x| t += x.points}, :description => "actions"}
     breakdown[:sociability] = {:value => (friends.count+groups.count)*2, :description => "sociability"}
     breakdown[:gossip] = {:value => comments.count, :description => "gossip"}
     emissions_limit = -(breakdown.inject(0){|sum,(k,v)| sum += v[:value]} / 2)
@@ -486,7 +465,7 @@ public
 
   # initialize the multipass object
   def self.multipass
-    @multipass ||= MultiPass.new(APP_CONFIG['multipass']['site'], APP_CONFIG['multipass']['api_key'])
+    @multipass ||= MultiPass.new('carbondiet', ENV['MULTIPASS_API_KEY'])
   end
 
   # create a multipass for this user object

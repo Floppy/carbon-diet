@@ -1,7 +1,7 @@
 class Note < ActiveRecord::Base
   belongs_to :notatable, :polymorphic => true  
   validates_presence_of :notatable_id, :notatable_type, :note, :date
-  attr_accessible :note, :date
+  attr_accessible :note, :date, :notatable_string
 
   def notatable_string=(string)
     self.notatable_type, self.notatable_id = string.split(';')

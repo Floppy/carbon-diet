@@ -13,7 +13,7 @@ class HelpController < ApplicationController
   def country_request
     if request.post?
       # Send email with country request in it
-      AdminMailer.deliver_country_request(@current_user, params[:country])
+      AdminMailer.ountry_request(@current_user, params[:country]).deliver
     end
   end
 

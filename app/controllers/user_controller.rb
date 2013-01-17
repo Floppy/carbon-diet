@@ -2,11 +2,11 @@ class UserController < ApplicationController
   before_filter :check_logged_in, :only => [ :logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation ]  
   before_filter :check_not_logged_in, :except => [ :logout, :set_login, :edit, :update, :destroy, :really_destroy, :resend_confirmation, :confirm_email ]
   before_filter :check_form_data, :only => [:auth]
-  filter_parameter_logging :password
+  #filter_parameter_logging :password
   
-  verify :method => :post, 
-         :only => [:doreset, :signup, :auth, :really_destroy, :update], 
-         :redirect_to => { :action => :login }
+  #verify :method => :post, 
+  #       :only => [:doreset, :signup, :auth, :really_destroy, :update], 
+  #       :redirect_to => { :action => :login }
 
 private
 
@@ -149,7 +149,7 @@ public
       session[:password] = nil
       session[:login] = nil
       # Send a new user signup notification to the admin
-      AdminMailer.deliver_new_signup(user.login)
+      AdminMailer.new_signup(user.login).deliver
       # Auto-add friends and groups
       if params[:invite]
         friend = User.find(params[:invite]) rescue nil
@@ -192,7 +192,7 @@ public
       flash[:notice] = "Username not found!"
     elsif not user.confirmed_email.nil?
       user.reset_password
-      UserMailer.deliver_password_change(user.confirmed_email, url_for(:action => 'change_password', :code => user.password_change_code))
+      UserMailer.password_change(user.confirmed_email, url_for(:action => 'change_password', :code => user.password_change_code)).deliver
       flash[:notice] = "Instructions for changing your password have been sent to you via email."
     else
       flash[:notice] = "Unfortunately, we don't have your email address on file! Please send us a message via the help button above and we will sort you out."
@@ -222,7 +222,7 @@ public
 
   def edit
     @user = @current_user
-    @countries = Country.find(:all, :conditions => ["visible IS TRUE"], :order => "name")
+    @countries = Country.where(:visible => true).order(:name)
   end
  
   def update
@@ -232,8 +232,8 @@ public
       return
     end
     # Store new password if set
-    unless params[:user][:new_password].blank?
-      if params[:user][:new_password] == params[:user][:new_password_confirmation]      
+    unless params[:password][:new_password].blank?
+      if params[:password][:new_password] == params[:user][:new_password_confirmation]      
         @current_user.password = params[:user][:new_password]
       else
         flash[:notice] = 'Password not confirmed correctly! Please try again!'
@@ -264,7 +264,7 @@ public
   
   def resend_confirmation
     flash[:notice] = 'Confirmation email resent! Check your email!'
-    UserMailer.deliver_email_confirmation(@current_user) if @current_user.confirmation_code
+    UserMailer.email_confirmation(@current_user).deliver if @current_user.confirmation_code
     redirect_to_main_page
   end  
   

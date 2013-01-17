@@ -1,6 +1,6 @@
-<%= error_messages_for 'flight' %>
+<%= render "shared/error_messages", :target => @flight %>
 
-<% form_for [@user, @flight] do |f| %>
+<%= form_for [@user, @flight] do |f| %>
   <!--[form:flight]-->
   <table class="form">
   <tr>

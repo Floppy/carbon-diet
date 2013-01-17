@@ -1,14 +1,13 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  require 'md5'
   include WmlHelper
 
   def kg(amount,precision=0)
-    "<b>" + (amount ? number_with_precision(amount, :precision => precision) : "?") + "</b> kg"
+    ("<b>" + (amount ? number_with_precision(amount, :precision => precision) : "?") + "</b> kg").html_safe
   end
 
   def tonnes(amount,precision=0, abbreviate=false)
-    "<b>" + (amount ? number_with_precision(amount.to_f/1000, :precision => precision) : "?") + "</b>" + (abbreviate ? "t" : " tonnes")
+    ("<b>" + (amount ? number_with_precision(amount.to_f/1000, :precision => precision) : "?") + "</b>" + (abbreviate ? "t" : " tonnes")).html_safe
   end
 
   def image_tag_with_tooltip(location, options={})
@@ -25,7 +24,7 @@ module ApplicationHelper
   end
 
   def help(text)
-    '<span class="help">' + image_tag('help.png') + '<span>' + text + '</span></span>'
+    ('<span class="help">' + image_tag('help.png') + '<span>' + h(text) + '</span></span>').html_safe
   end
 
   def friend_link(user, small=false)
@@ -42,7 +41,7 @@ module ApplicationHelper
   end
 
   def whitelabel_content(file)
-    render :partial => "/sites/#{APP_CONFIG[:style]}/#{file}"
+    render :partial => "/sites/#{CarbonDiet::Application.style}/#{file}"
   rescue
     nil
   end

@@ -1,0 +1,201 @@
+/* Global settings */
+
+body {
+  font-family: arial,sans-serif;
+}
+
+a {
+  color: black;
+}
+
+/* Header */
+
+div.cd-header {
+  background-color: white;
+} 
+
+/* Page name */
+
+div.pagename {
+  line-height: 1.2em;
+}
+
+table.pagename {
+  background-color: #7fc07f;
+}
+
+td.pagename_left {
+  background-image: url(default/header_background_left.png);
+  width: 10px;
+}
+
+td.pagename_middle {
+  background-image: url(default/header_background_middle.png);
+  color: white;
+  font-weight: bold;
+}
+
+td.pagename_right {
+  background-image: url(default/header_background_right.png);
+  width: 10px;
+}
+
+/* Link bar */
+
+div.cd-linkbar {
+  border-bottom: 3px solid black;
+  font-size: 0.75em;
+}
+
+.cd-linkbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* User info box */
+
+div.userinfo {
+  font-size: 0.75em;
+  background-color: beige;
+  border: 1px solid black;
+}
+
+/* Flash warnings */
+
+.flash {  
+  border: 2px solid red;
+  background-color: #f0f0f0;
+}
+
+/* Content area */
+
+div.cd-content {
+  background-color: #f3fff3;
+}
+
+/* Page content */
+
+div.pagecontent {
+  background-color: white;
+  border: 1px solid #7fc07f;
+  height: 1%; /* Fix for IE6 peekaboo bug on some pages */
+}
+
+div.sectiontitle {
+  font-size: 0.8em;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+/* Option boxes */
+
+div.option {
+  background-color: #7fc07f;
+  background-image: url(default/button_background.png);
+  color: white;
+}
+
+.option a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Login box */
+
+div.logincontent {
+  background-image: url(default/earth-background.png);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 1px solid black;
+}
+
+div.login {
+  background-color: #7fc07f;
+  border: 1px solid black;
+  color: white;
+}
+
+.login a {
+  color: white;
+}
+
+/* Tagline */
+
+div.tagline {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #3f7f3f;
+}
+
+/* Actions */
+
+div.actiontitle {
+  background: #7fc07f;
+  border: 1px solid black;
+  border-bottom: 0px;
+  color: white;
+}
+
+div.actioncontent {
+  background: #f3fff3;
+  border: 1px solid black;
+}
+
+/* Comments */
+
+table.comment {
+  border: 1px solid #eeeeee;
+}
+
+table.comment span.byline {
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+/* Tour */
+
+div.tour {
+  background-color: white;
+  border: 1px solid black;
+}
+
+/* Tips */
+
+table.tip {
+  background-color: #f3fff3;
+  border: 1px solid black;
+  text-align: center;
+  color: black;
+}
+
+table.tip td {
+  text-align: left;
+}
+
+/* Help */
+
+span.help:hover span {
+    border: 1px solid black;
+    background-color: beige;
+	color: black;
+	font-size: 0.75em;
+}
+
+/* Minibuttons */
+
+div.minibutton {
+	text-align: center;
+	width: 32px;
+	line-height: 20px;
+	background-image: url(default/small_button_background.png);
+}
+
+/* Footer */
+
+div.cd-footer {
+  border-top: 3px solid black;
+  font-size: 0.65em;
+}

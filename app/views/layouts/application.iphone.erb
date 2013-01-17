@@ -1,17 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta id="viewport" name ="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <title>Carbon Diet</title>
-  <%= stylesheet_link_tag 'iui' %>
-  <%= javascript_include_tag 'iui', 'prototype', 'application' %>
-  <link rel="apple-touch-icon" href="/images/iphone_icon.png"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <meta name="apple-mobile-web-app-capable" content="no"/>
+  <link rel="stylesheet" href="iui/iui.css" type="text/css" />
+  <link rel="stylesheet" href="iui/t/default/default-theme.css" type="text/css"/>
+  <script type="application/x-javascript" src="iui/iui.js"></script>
+  <link rel="apple-touch-icon" href="/assets/iphone_icon.png"/>
+  <link rel="apple-touch-startup-image" href="/assets/iphone_startup_logo.png"/>
 </head>
 <body>
   <div class="toolbar">
     <h1 id="pageTitle">Carbon Diet</h1>
     <a id="backButton" class="button" href="#"></a>
+    <% if @current_user %>
+      <a class="button" href="/user/logout" target="_self">Log Out</a>
+    <% end %>
   </div>
   <%= yield %>
 </body>

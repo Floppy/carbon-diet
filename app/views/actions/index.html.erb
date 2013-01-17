@@ -1,0 +1,68 @@
+<% content_for("page_scripts") do -%>
+function get_lastelement(n)
+{
+  var x=n.lastChild;
+  while (x.nodeType!=1)
+  {
+    x=x.previousSibling;
+  }
+  return x;
+}
+function item_added() {
+  var div = document.getElementById('actionlist');
+  var item = get_lastelement(div);
+  if (item.id == "endoflist")
+    no_more_actions();
+  else
+    Effect.BlindDown(item);
+}
+function no_more_actions() {
+  var getmore = document.getElementById('getmore');
+  if (getmore.style.display != "none")
+    Effect.BlindUp(getmore);
+  var nomore = document.getElementById('nomore');
+  if (nomore.style.display == "none")
+    Effect.BlindDown(nomore);
+}
+<% end -%>
+
+<% content_for('optionbar') do %>
+  <% unless @actions.empty? %>
+    <div class="option" id="getmore">
+    <%= image_tag 'action.png' %>
+    <%= link_to('Get another action', { :action => 'another' }, :remote => true) %>
+    </div>
+  <% end %>
+  <%= option "completed_actions" %>
+  <%= option "analysis" %>
+  <%= option "home" %>
+<% end %>
+
+<div class="pagecontent">
+
+<p>
+Based on your <%= link_to 'emissions', user_report_path(@current_user) %> over the last month, here are our top suggestions for how you can reduce your carbon footprint. If you've done (or can't do) one of these, click the appropriate button and we'll give you another one!
+</p>
+
+<div id="actionlist">
+<% @actions.each do |action| %>
+<%= render :partial => 'action', :locals => { :action => action } %>
+<% end %>
+</div>
+
+<p>
+The <%= image_tag 'level.png' %> icon next to an action shows how complex it is.
+<%= image_tag 'level.png' %> is easy and cheap, 
+<%= image_tag 'level.png' %><%= image_tag 'level.png' %><%= image_tag 'level.png' %><%= image_tag 'level.png' %><%= image_tag 'level.png' %> is difficult or expensive.
+</p>
+
+<div class="action" <% unless @actions.empty? %>style="display:none;"<% end %> id="nomore">
+  <div>
+  <div class="actiontitle">No more actions!</div>
+    <div class="actioncontent">
+      Unfortunately, we don't have any more ideas for you right now. Check back later, or submit your own ideas in the <a href="http://forum.carbondiet.org">Forum</a>!
+    </div>
+  </div>
+</div>
+
+</div>

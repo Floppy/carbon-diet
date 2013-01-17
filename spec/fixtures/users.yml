@@ -3,7 +3,7 @@ users_037:
   updated_at: 2007-07-04 19:25:26
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -21,7 +21,7 @@ users_026:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -39,7 +39,7 @@ users_015:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -57,7 +57,7 @@ users_004:
   updated_at: 2007-07-03 11:01:12
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -75,7 +75,7 @@ users_038:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -93,7 +93,7 @@ users_027:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -111,7 +111,7 @@ users_016:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -129,7 +129,7 @@ users_005:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -147,7 +147,7 @@ users_039:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -165,7 +165,7 @@ users_028:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -183,7 +183,7 @@ users_017:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -201,7 +201,7 @@ users_006:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -219,7 +219,7 @@ users_040:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -237,7 +237,7 @@ users_041:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -255,7 +255,7 @@ users_030:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -273,7 +273,7 @@ users_029:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -291,7 +291,7 @@ users_018:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -309,7 +309,7 @@ users_007:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -327,7 +327,7 @@ users_042:
   updated_at: 2007-07-04 20:09:29
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -345,7 +345,7 @@ users_031:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -363,7 +363,7 @@ users_020:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -381,7 +381,7 @@ users_019:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -399,7 +399,7 @@ users_008:
   updated_at: 2007-07-03 17:10:45
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -417,7 +417,7 @@ users_043:
   updated_at: 2007-07-05 11:53:26
   confirmation_code: ec3c381a1cf45be7a5b088d4008075b09469d253ca09037b4b59a10d6956e28a
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -435,7 +435,7 @@ users_032:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -453,7 +453,7 @@ users_021:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -471,7 +471,7 @@ users_010:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -489,7 +489,7 @@ users_009:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "1"
+  public: true
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -507,7 +507,7 @@ users_044:
   updated_at: 2007-07-05 15:41:53
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -525,7 +525,7 @@ users_033:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -543,7 +543,7 @@ users_022:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -561,7 +561,7 @@ users_011:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -579,7 +579,7 @@ users_045:
   updated_at: 2007-07-06 12:03:57
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -597,7 +597,7 @@ users_034:
   updated_at: 
   confirmation_code: c65d8a42fe3d83791ab828215c0ec3cbed8e09c350eef25dc718d64c28e3d5d7
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -615,7 +615,7 @@ users_023:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -633,7 +633,7 @@ users_012:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -651,7 +651,7 @@ users_001:
   updated_at: 2007-07-05 09:51:11
   confirmation_code: 
   tester: "1"
-  public: "1"
+  public: true
   reminded_at: 
   password_salt: ON7kzeqr
   admin: "0"
@@ -669,7 +669,7 @@ users_046:
   updated_at: 2007-07-10 11:02:27
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -687,7 +687,7 @@ users_035:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -705,7 +705,7 @@ users_024:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -723,7 +723,7 @@ users_013:
   updated_at: 
   confirmation_code: 
   tester: "0"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -737,11 +737,11 @@ users_013:
   login: "test013"
   created_at: 2007-05-30 00:00:00
   email: test013@example.com
-users_002: 
+alice:
   updated_at: 2007-07-03 18:47:12
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -751,15 +751,15 @@ users_002:
   region_id: 
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
-  display_name: Test002
-  login: test002
+  display_name: Alice
+  login: alice
   created_at: 2007-05-04 00:00:00
-  email: test002@example.com
+  email: alice@example.com
 users_036: 
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -777,7 +777,7 @@ users_025:
   updated_at: 
   confirmation_code: 
   tester: 
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -795,7 +795,7 @@ users_014:
   updated_at: 
   confirmation_code: 
   tester: "1"
-  public: "0"
+  public: false
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -809,11 +809,11 @@ users_014:
   login: "test014"
   created_at: 2007-06-04 00:00:00
   email: test014@example.com
-users_003: 
+bob: 
   updated_at: 2007-07-06 14:19:48
   confirmation_code: 
   tester: "1"
-  public: "1"
+  public: true
   reminded_at: 
   password_salt: Q1OfiKti
   admin: "0"
@@ -823,7 +823,7 @@ users_003:
   region_id: 
   password_hash: 2cbf550eb1407ef7c22dc7f6776c272a8de35f796afa74fed522a3206d8461a1
   reminder_frequency: "0"
-  display_name: Test003
-  login: test003
+  display_name: Bob
+  login: bob
   created_at: 2007-05-04 00:00:00
-  email: test003@example.com
+  email: bob@example.com

@@ -1,9 +1,13 @@
-Factory.define :user do |u|
-  u.login 'bob'
-end
+FactoryGirl.define do
 
-Factory.define :user_with_email, :class => 'user' do |u|
-  u.login 'bob'
-  u.email 'bob@example.com'
-  u.confirmation_code 'code'
+  factory :user do
+    login { Faker::Internet.user_name.gsub('.','').gsub('_','').gsub(' ','') }
+  end
+
+  factory :user_with_email, :class => 'user' do
+    login { Faker::Internet.user_name.gsub('.','').gsub('_','').gsub(' ','') }
+    email { Faker::Internet.email }
+    confirmation_code { SecureRandom.hex }
+  end
+
 end

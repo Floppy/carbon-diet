@@ -1,6 +1,6 @@
 <big>New Electricity Reading</big>
 
-<%= error_messages_for 'electricity_reading' %>
+<%= render "shared/error_messages", :target => @reading %>
 
 <fieldset>
   <% if @account.night_rate %>

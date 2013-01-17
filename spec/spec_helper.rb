@@ -1,64 +1,63 @@
-# This file is copied to ~/spec when you run 'ruby script/generate rspec'
-# from the project root directory.
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environment'))
-require 'spec/autorun'
-require 'spec/rails'
+require 'rubygems'
+require 'spork'
+require 'simplecov'
+#uncomment the following line to use spork with the debugger
+#require 'spork/ext/ruby-debug'
 
-# Uncomment the next line to use webrat's matchers
-#require 'webrat/integrations/rspec-rails'
+Spork.prefork do
 
-# Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
-Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
+  SimpleCov.start 'rails'
 
-Spec::Runner.configure do |config|
-  # If you're not using ActiveRecord you should remove these
-  # lines, delete config/database.yml and disable :active_record
-  # in your config/boot.rb
-  config.use_transactional_fixtures = true
-  config.use_instantiated_fixtures  = false
+  # This file is copied to spec/ when you run 'rails generate rspec:install'
+  ENV["RAILS_ENV"] ||= 'test'
+  require File.expand_path("../../config/environment", __FILE__)
+  require 'rspec/rails'
+  require 'rspec/autorun'
 
-  # == Fixtures
-  #
-  # You can declare fixtures for each example_group like this:
-  #   describe "...." do
-  #     fixtures :table_a, :table_b
-  #
-  # Alternatively, if you prefer to declare them only once, you can
-  # do so right here. Just uncomment the next line and replace the fixture
-  # names with your fixtures.
-  #
-  # config.global_fixtures = :table_a, :table_b
-  #
-  # If you declare global fixtures, be aware that they will be declared
-  # for all of your examples, even those that don't use them.
-  #
-  # You can also declare which fixtures to use (for example fixtures for test/fixtures):
-  #
-  # config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
-  #
-  # == Mock Framework
-  #
-  # RSpec uses its own mocking framework by default. If you prefer to
-  # use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
-  #
-  # == Notes
-  #
-  # For more information take a look at Spec::Runner::Configuration and Spec::Runner
+  # Requires supporting ruby files with custom matchers and macros, etc,
+  # in spec/support/ and its subdirectories.
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
+  RSpec.configure do |config|
+    # == Mock Framework
+    #
+    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
+    #
+    # config.mock_with :mocha
+    # config.mock_with :flexmock
+    # config.mock_with :rr
+
+    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+    config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+    # If you're not using ActiveRecord, or you'd prefer not to run each of your
+    # examples within a transaction, remove the following line or assign false
+    # instead of true.
+    config.use_transactional_fixtures = true
+  
+    # If true, the base class of anonymous controllers will be inferred
+    # automatically. This will be the default behavior in future versions of
+    # rspec-rails.
+    config.infer_base_class_for_anonymous_controllers = false
+  end
+
+  # Add more helper methods to be used by all tests here...
+  def when_logged_in(user_id = 1)
+    @request.session[:user_id] = user_id
+    yield
+  end
+  def when_not_logged_in
+    @request.session[:user_id] = nil
+    yield
+  end  
+
+  def read_mail_fixture(mailer, action)
+    IO.readlines(File.join(File.dirname(__FILE__), 'fixtures', mailer, action))
+  end
+
 end
 
-# Add more helper methods to be used by all tests here...
-def when_logged_in(user_id = 1)
-  @request.session[:user_id] = user_id
-  yield
-end
+Spork.each_run do
+  # This code will be run each time you run your specs.
 
-def when_not_logged_in
-  @request.session[:user_id] = nil
-  yield
 end

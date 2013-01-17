@@ -1,15 +1,15 @@
 purchase_20_days_ago:
   amount: 40
   vehicle: vehicle_for_emissions_test
-  purchased_on: "<%= 15.days.ago.to_date %>"
+  purchased_on: "<%= 16.days.ago.to_date %>"
   vehicle_fuel_type: easy_unleaded_uk
 purchase_10_days_ago:
   amount: 30
   vehicle: vehicle_for_emissions_test
-  purchased_on: "<%= 5.days.ago.to_date %>"
+  purchased_on: "<%= 6.days.ago.to_date %>"
   vehicle_fuel_type: easy_unleaded_uk
 purchase_0_days_ago:
   amount: 40
   vehicle: vehicle_for_emissions_test
-  purchased_on: "<%= 0.days.ago.to_date %>"
+  purchased_on: "<%= 1.day.ago %>"
   vehicle_fuel_type: easy_unleaded_uk

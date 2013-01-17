@@ -1,66 +1,51 @@
-ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
+CarbonDiet::Application.routes.draw do
   
-  # Sample of regular route:
-  # map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # You can have the root of your site routed by hooking up '' 
-  # -- just remember to delete public/index.html.
-  map.connect '', :controller => "main", :action => "index"
-  map.connect '/m', :controller => "main", :action => "mobile"
+  root :to => 'main#index'
+  
+  match '/m' => 'main#mobile'
 
   # Connection for public profiles
-  map.connect '/profile/:login', :controller => "profile", :action => "index"
+  match '/profile/:login' => 'profile#index'
 
   # Connection for admin interface
-  map.connect '/admin', :controller => "admin/dashboard", :action => "index"
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
+  # Resources
+  resources :users do
+    resource :accounts
+    resources :flights
+    resources :vehicles, :except => [:index, :show] do
+      resources :vehicle_fuel_purchases
+    end
+    resources :electricity_accounts, :except => [:index, :show] do
+      resources :electricity_readings
+    end
+    resources :gas_accounts, :except => [:index, :show] do
+      resources :gas_readings
+    end
+    resources :notes
+    resource :report do
+      get :recent
+      get :ratio
+      get :recent_chart
+      get :ratio_chart
+    end
+    resources :groups, :controller => 'UserGroups'
+    resources :friends do
+      get :invite, :on => :collection
+      post :send_invitation, :on => :collection
+      post :accept, :on => :member
+      post :reject, :on => :member
+    end
+  end
+  resources :groups do
+    resources :invitations
+  end
+  
   # Connection for group browser
-  map.connect '/groups/browse/:string', :controller => "groups", :action => "browse"
-
-  # Allow downloading Web Service WSDL as a file with an extension
-  # instead of a file named 'wsdl'
-  map.connect ':controller/service.wsdl', :action => 'wsdl'
-
-  # New-style resourceful routes
-  map.resources :users do |user|
-    user.resource :accounts
-    user.resources :flights
-    user.resources :vehicles, :except => [:index, :show] do |vehicle|
-      vehicle.resources :vehicle_fuel_purchases, :as => "fuel_purchases"
-    end
-    user.resources :electricity_accounts, :except => [:index, :show] do |elec|
-      elec.resources :electricity_readings, :as => "readings"
-    end
-    user.resources :gas_accounts, :except => [:index, :show] do |gas|
-      gas.resources :gas_readings, :as => "readings"
-    end
-    user.resources :notes
-    user.resource :report, :member => {
-      :recent => :get,
-      :ratio => :get,
-      :recent_chart => :get,
-      :ratio_chart => :get
-    }
-    user.resources :groups, :controller => "user_groups"
-    user.resources :friends, :collection => {
-      :invite => :get,
-      :send_invitations => :post
-    }, :member => {
-      :accept => :post,
-      :reject => :post
-    }
-  end
-  map.resources :groups do |group|
-    group.resources :invitations, :controller => "group_invitations"
-  end
+  match '/groups/browse/:string' => 'groups#browse'
 
   # Install the default route as the lowest priority.
-  map.connect ':controller/:action/:id.:format'
-  map.connect ':controller/:action/:id'
+  match ':controller(/:action(/:id(.:format)))'
+
 end

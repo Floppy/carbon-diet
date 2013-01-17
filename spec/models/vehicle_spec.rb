@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
 describe Vehicle do
 
@@ -11,13 +11,13 @@ describe Vehicle do
     vehicle.vehicle_fuel_purchases.count.should be(3)
     emissions = vehicle.emissions
     # The first emissions period should use 3 litres per day, giving 3 kg of co2 per day
-    emissions[0][:co2_per_day].should be_close(3, 1e-9)
+    emissions[0][:co2_per_day].should be_within(1e-9).of(3)
     # The second emissions period should use 8 litres per day, giving 8 kg of co2 per day
-    emissions[1][:co2_per_day].should be_close(8, 1e-9)
+    emissions[1][:co2_per_day].should be_within(1e-9).of(8)
   end
 
   it "should provide access to date of most recent data" do
-    vehicles(:vehicle_for_emissions_test).date_of_newest_data.should == Date.today
+    vehicles(:vehicle_for_emissions_test).date_of_newest_data.should == 1.day.ago.to_date
   end
 
   it "should have a sensible default for date of most recent data" do

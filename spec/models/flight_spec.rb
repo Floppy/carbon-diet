@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 
-describe "Flight", ActiveSupport::TestCase do
+describe "Flight" do
   fixtures :flights
   fixtures :airports
   fixtures :flight_factors

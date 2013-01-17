@@ -1,5 +1,7 @@
-<% form_for [@user, @vehicle, @purchase] do |f| %>
-  <%= f.error_messages %>
+<%= render "shared/error_messages", :target => @purchase %>
+
+<%= form_for [@user, @vehicle, @purchase] do |f| %>
+
   <table class="form">
     <tr>
       <td><%= f.label :amount, "Amount (#{@vehicle.vehicle_fuel_unit.abbreviation})"%></td>

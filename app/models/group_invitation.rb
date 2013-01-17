@@ -17,7 +17,7 @@ class GroupInvitation < ActiveRecord::Base
   end
  
   def send_notification_email
-    UserMailer.deliver_group_invitation(group, user) if user.confirmed_email
+    UserMailer.group_invitation(group, user).deliver if user.confirmed_email
   end
   
 end

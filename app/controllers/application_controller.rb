@@ -19,7 +19,8 @@ protected
         reset_session
       end      
     elsif cookies[:login_token]
-      @current_user = User.find_by_id_and_login_key(*cookies[:login_token].split(";"))
+      id, login_key = *cookies[:login_token].split(";")
+      @current_user = User.where(:id => id, :login_key => login_key).first
       unless @current_user.nil?
         session[:user_id] = @current_user.id
         @current_user.last_login_at = Time.now
@@ -86,7 +87,7 @@ protected
   end
 
   def iphone?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)|(AppleWebKit\/.+Mobile)/]
   end
 
   def render_iphone(options = {})
@@ -105,7 +106,7 @@ protected
 
   def render_http_code(code)
     @code = code
-    render :status => code, :file => File.join(RAILS_ROOT, 'public', "#{code}.html")
+    render :status => code, :file => File.join(Rails.root, 'public', "#{code}"), :formats => [:html]
   end
 
 end

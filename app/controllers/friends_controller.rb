@@ -1,3 +1,5 @@
+require 'graph_functions'
+
 class FriendsController < BelongsToUser
   before_filter :get_friend, :except => [:index, :send_invitations, :invite]
 
@@ -68,7 +70,7 @@ class FriendsController < BelongsToUser
     10.times do |i|
       email = params[:email]["user#{i}"]
       unless email.blank? or email !~ /^$|^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i        
-        sent += 1 if UserMailer.deliver_friend_invitation(@current_user, email, params[:group][:id])
+        sent += 1 if UserMailer.friend_invitation(@current_user, email, params[:group][:id]).deliver
       end
     end
     if sent > 0

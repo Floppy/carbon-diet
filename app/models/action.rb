@@ -8,6 +8,7 @@ class Action < ActiveRecord::Base
   validates_presence_of :content
   # Attributes
   attr_accessible :title, :content, :image, :level, :action_category_id
+  attr_reader :paid_for
 
   def self.find_for_user(user, categories, num, offset=0)
     category_order = ""
@@ -26,11 +27,11 @@ class Action < ActiveRecord::Base
   end
 
   def load_random_override(country_id)
-    override = action_overrides.find(:first, :conditions => ["country_id = ? OR country_id = 0", country_id], :order => "RAND()")
-    self.content = override.content
-    self.paid_for = override.paid_for
-  rescue
-    nil
+    override = action_overrides.where("country_id = ? OR country_id = 0", country_id).shuffle.first
+    if override
+      self.content = override.content
+      @paid_for = override.paid_for
+    end
   end
 
   def points

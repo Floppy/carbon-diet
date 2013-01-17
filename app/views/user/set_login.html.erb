@@ -1,0 +1,19 @@
+<%= pagetitle "Choose login name" %>
+
+<% content_for('optionbar') do %>
+  <%= option "login" %>
+<% end %>
+
+<div class="pagecontent">
+<p>
+IMPORTANT: The Carbon Diet is changing! We don't require an email address for login any more, as we're changing over to a username system instead. This is to give you all better privacy, and it makes more sense for some of the upcoming site changes as well.
+</p>
+<p>
+Because you were one of the first to sign up, we don't have a username for you, so we need you to choose one now. This is the name that you should use to log in from now on instead of your email address. Thanks for doing this, and sorry for the inconvenience!
+</p>
+<p>
+<%= form_tag :action => 'set_login' do %>
+New Username: <%= text_field 'user', 'login' %> <%= submit_tag 'Set Username' %>
+<% end %>
+</p>
+</div>

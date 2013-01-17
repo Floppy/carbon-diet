@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 require 'reports_controller'
 
 describe ReportsController do
@@ -13,7 +13,7 @@ describe ReportsController do
   def amline(user,period)
     get :recent_chart, :period => period, :user_id => User.find(user).login, :format => 'amline'
     assert_response :success
-    assert_template 'reports/recent_chart.amline.builder'
+    assert_template 'reports/recent_chart'
     assigns["data"].each do |dataset|
       dataset[:data].size.should == period
       dataset[:notes].size.should == period if dataset[:notes]
@@ -26,13 +26,13 @@ describe ReportsController do
     end
     get :recent_chart, :period => period, :user_id => User.find(user).login, :format => 'amline_settings'
     assert_response :success
-    assert_template 'reports/recent_chart.amline_settings.builder'
+    assert_template 'reports/recent_chart'
   end
 
   def xmlpie(user, period)
     get :ratio_chart, :period => period, :user_id => User.find(user).login, :format => 'xmlchart'
     assert_response :success
-    assert_template 'shared/pie.xmlchart.builder'
+    assert_template 'shared/pie'
   end
 
   it "cannot view any html pages if not logged in" do

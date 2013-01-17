@@ -1,0 +1,31 @@
+<%= pagetitle "Confirm details" %>
+
+<% content_for('optionbar') do %>
+  <div class="option">
+    <%= image_tag 'help.png' %>
+    <%= link_to 'Privacy policy', { :controller => '/help', :action => 'index'}, { :target => '_blank' } %>
+  </div>
+  <%= option "login" %>
+<% end %>
+
+<div class="pagecontent">
+<p>
+We don't know that username, so you must be new here! Please confirm the password that you want to use.
+</p>
+<p>
+In order to deliver the Carbon Diet service, we do need to store your information on our server. We promise not to pass it on to anyone unless forced to legally, or you tell us to.
+To see our full privacy policy, click the link on the right.
+</p>
+<p>
+If you are in the USA, you must be over the age of 13 to use the Carbon Diet (because of <a href="http://en.wikipedia.org/wiki/COPPA">this</a>). By signing up, you are stating that you are over this age and that 
+we are legally allowed to store your information.
+</p>
+<p>
+<%= form_tag :action => 'signup', :invite => params[:invite], :group => params[:group] do %>
+<table>
+<tr><td>Confirm Password:</td><td><%= password_field 'user', 'password_confirmation' %></td></tr>
+<tr><td></td><td><%= submit_tag 'Confirm' %></td></tr>
+</table>
+<% end %>
+</p>
+</div>

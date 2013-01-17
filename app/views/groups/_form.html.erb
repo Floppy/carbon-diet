@@ -1,5 +1,6 @@
-<% form_for @group do |f| %>
-  <%= f.error_messages %>
+<%= render "shared/error_messages", :target => @group %>
+
+<%= form_for @group do |f| %>
   <table class="form">
     <tr>
       <td><%= f.label :name %></td>

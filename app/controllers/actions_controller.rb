@@ -20,22 +20,19 @@ class ActionsController < ApplicationController
   def complete
     completed_action = CompletedAction.new
     completed_action.user = @current_user
-    completed_action.action = Action.find(params[:id])
+    @action = Action.find(params[:id])
+    completed_action.action = @action
     completed_action.done = params[:done]
     completed_action.save
     session[:num_actions] -= 1 rescue nil
-    another
+    @actions = get_actions(1, session[:num_actions])
+    session[:num_actions] += 1 rescue nil
+    render :action => 'another'
   end
   
   def another    
     @actions = get_actions(1, session[:num_actions])
     session[:num_actions] += 1 rescue nil
-    if @actions.empty?
-      render :text => '<div class="clear" id="endoflist">&nbsp;</div>'
-    else
-      @display = "style='display:none;'"
-      render :partial => 'action', :collection => @actions
-    end
   end
 
   def completed

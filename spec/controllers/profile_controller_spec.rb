@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require 'spec_helper'
 require 'profile_controller'
 
 # Re-raise errors caught by the controller.
@@ -32,14 +32,14 @@ describe ProfileController do
 
   it "can view private profile if logged in as right user" do
     when_logged_in(2) do
-      get :index, :login => 'test002'
+      get :index, :login => 'alice'
       assert_response :success
     end
   end
 
   it "can view private profile if logged in as wrong user" do
     when_logged_in(1) do
-      get :index, :login => 'test002'
+      get :index, :login => 'alice'
       assert_response :redirect
       assert_redirected_to '/search'
       flash[:notice].should == 'Profile not found!'

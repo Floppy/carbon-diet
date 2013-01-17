@@ -24,7 +24,7 @@ class EmissionArray < Array
   end
 
   def calculate_total_over_period(days)
-    return 0 if self.empty? 
+    return { :total => 0, :days => 0, :perday => 0, :perannum => 0 } if self.empty? 
     total = 0.0
     dayscounted = 0
     firstday = Date::today - days
@@ -51,7 +51,7 @@ class EmissionArray < Array
 
   def calculate_total()
     if self.empty? 
-      return 0
+      return { :total => 0, :days => 0, :perday => 0, :perannum => 0 }
     end
     days = Date::today - self.first[:start]
     self.calculate_total_over_period(days)
