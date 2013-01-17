@@ -12,7 +12,7 @@
 <% end %>
 </b><br/>
 <% unless @profile.country.nil? %>
-<%= image_tag @profile.flag %>
+<%= image_tag @profile.flag if @profile.flag.present? %>
 <span class="smalltext"><%=h @profile.country.name %></span>
 <% end %>
 <br />

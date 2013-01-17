@@ -39,7 +39,7 @@
           <%= image_tag(user.avatar(true)) %>
           <%= link_to h(user.login), :controller => 'profile', :action => 'index', :login => user.login %>
           <% unless user.display_name.nil? or user.display_name.blank? %> - <%=h user.display_name %><% end %>
-          <%= image_tag user.flag %>
+          <%= image_tag user.flag if user.flag.present? %>
           <br/>
         <% end %>
       </p>

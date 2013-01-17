@@ -23,7 +23,7 @@
     <span><%= link_to("Log In or Sign Up", { :controller => "/main", :action => "index" } ) %></span>
   <% else %>
     <%= image_tag @current_user.image %>
-    <%= image_tag @current_user.flag %>
+    <%= image_tag @current_user.flag if @current_user.flag.present? %>
     <%= link_to h(@current_user.name), :controller => '/profile', :login => @current_user.login %>
     <br/>
     <%= link_to("Settings", { :controller => "/user", :action => "edit" } ) %>
