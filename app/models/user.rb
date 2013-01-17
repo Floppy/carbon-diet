@@ -140,7 +140,7 @@ class User < ActiveRecord::Base
   
   def avatar(small=false)
     if email
-      "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=#{small ? 32 : 80}&d=wavatar"
+      "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=#{small ? 32 : 80}&d=monsterid"
     else
       small ? "avatar32.png" : "avatar80.png"
     end
