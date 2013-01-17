@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'af'
+  gem 'caldecott', '~> 0.0.5'
 end
 
 group :production do
