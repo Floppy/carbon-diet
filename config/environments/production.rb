@@ -46,12 +46,16 @@ CarbonDiet::Application.configure do
   config.assets.precompile += %w( application-default.css application-ie.css )
 
   # Disable delivery errors if you bad email addresses should just be ignored
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "localhost",
-    :port => 25,
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
     :domain => "carbondiet.org",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
 
   # Enable threaded mode
