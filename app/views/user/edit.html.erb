@@ -33,9 +33,8 @@
       <%= help 'This name will be public and searchable, but you can leave it blank if you want to.' %>
     </p>
     <p>
-      <div class="left" style="margin-right: 10px;"><%= image_tag(@user.avatar) %></div>
-      <label for="user_avatar">Upload a new image to show on your profile <span class="smalltext"><em>(will be scaled to max 100x100. Or, enter your email below, and we'll use your <a href="http://www.gravatar.com">Gravatar</a> if you have one)</em></span>: </label><br/>
-      <%= file_field 'user', 'avatar' %>
+      <div class="left" style="margin-right: 10px;"><%= image_tag(@user.avatar) %></div>      
+      <label for="user_avatar">Change your avatar at <a href="http://www.gravatar.com">Gravatar.com</a></label>
       <div class="clearleft">&nbsp;</div>
     </p>
     <div class="sectiontitle">Email</div>

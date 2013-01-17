@@ -137,29 +137,9 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-  def avatar=(file)
-    unless file.blank?
-      # Resize avatar and write to filesystem
-      img = MiniMagick::Image.from_blob(file.read)
-      img.format 'png'
-      img.resize '100x100'
-      img.write("#{Rails.root}/public/images/avatars/#{login}.png")
-      img.resize '32x32'
-      img.write("#{Rails.root}/public/images/avatars/thumbnails/#{login}.png")
-      # Set avatar flag
-      write_attribute('has_avatar', true)
-    end
-  end
   
   def avatar(small=false)
-    if has_avatar
-      # Generate path
-      path = "avatars/"
-      path += "thumbnails/" if small
-      # Create avatar URL
-      path + self.login + ".png"
-    elsif email
+    if email
       "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest(email)}&size=#{small ? 32 : 80}&d=wavatar"
     else
       small ? "avatar32.png" : "avatar80.png"
