@@ -166,11 +166,6 @@ class User < ActiveRecord::Base
     # Remove all comments
     authored_comments.each { |x| x.destroy }
     comments.each { |x| x.destroy }
-    # Remove avatar images
-    if has_avatar
-      FileUtils.remove("#{Rails.root}/public/images/avatars/#{login}.png")
-      FileUtils.remove("#{Rails.root}/public/images/avatars/thumbnails/#{login}.png")
-    end
     # Call base
     super
   end

@@ -241,14 +241,6 @@ public
         return
       end
     end
-    # Store avatar manually - doesn't automatically happen in update_attributes
-    begin
-      @current_user.avatar = params[:user][:avatar]
-    rescue
-      flash[:notice] = 'Image upload failed! Please check that you are uploading a valid image file!'
-      redirect_to :action => 'edit'
-      return    
-    end
     # Done
     redirect_to_main_page
   end
