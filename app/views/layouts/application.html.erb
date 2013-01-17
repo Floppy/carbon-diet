@@ -2,11 +2,11 @@
 <html>
 <head>
   <title><%= render :partial => "/sites/#{CarbonDiet::Application.style}/title" %><%=h ": " + @pagename if not @pagename.blank? %><%=h ": " + @content_for_pagename if not @content_for_pagename.blank? %></title>
-  <%= stylesheet_link_tag 'common/common', CarbonDiet::Application.style %>
+  <%= stylesheet_link_tag "application-#{CarbonDiet::Application.style}" %>
   <%= javascript_include_tag "application" %>
   <script type="text/javascript"><%= @content_for_page_scripts %></script>
   <!--[if IE]>
-  <%= stylesheet_link_tag 'common/ie' %>
+  <%= stylesheet_link_tag 'application-ie' %>
   <![endif]-->  
   <%= yield :feed %>
   <link rel="shortcut icon" href="/assets/<%= CarbonDiet::Application.style %>/favicon.ico" />
