@@ -22,3 +22,11 @@ Feature: iPhone interface
     And I should see "Ambulance"
     And I should see "Fire Engine"
     And I should not see "Blog"
+
+  @javascript
+  Scenario: iPhone electricity data entry page
+    Given I am using Mobile Safari
+    And I am logged in as "James" with password "testing"
+#    When I follow "Electricity"
+#    Then I should see "Reading"
+#    And I should see "Date"
