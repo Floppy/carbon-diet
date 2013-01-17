@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def whitelabel_content(file)
-    render :partial => "/sites/#{ENV['STYLE']}/#{file}"
+    render :partial => "/sites/#{CarbonDiet::Application.style}/#{file}"
   rescue
     nil
   end
