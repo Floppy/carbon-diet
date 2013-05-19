@@ -2,7 +2,11 @@ The Carbon Diet
 ---------------
 
 http://www.carbondiet.org
-Copyright (C) 2007-12 James Smith (james@floppy.org.uk)
+Copyright (C) 2007-13 James Smith (james@floppy.org.uk)
+
+[![Build Status](https://travis-ci.org/Floppy/carbon-diet.png?branch=master)](https://travis-ci.org/Floppy/carbon-diet)
+[![Dependency Status](https://gemnasium.com/Floppy/carbon-diet.png)](https://gemnasium.com/Floppy/carbon-diet)
+[![Code Climate](https://codeclimate.com/github/Floppy/carbon-diet.png)](https://codeclimate.com/github/Floppy/carbon-diet)
 
 About
 -----
@@ -11,10 +15,10 @@ The Carbon Diet is a web application designed to facilitate accurate social
 carbon footprinting. The master version of the site is at http://www.carbondiet.org,
 but you are free to install your own copies elsewhere, as long as:
 
-1) You leave the "powered by" notice in the footer intact.
-2) You leave the existing content in the "help/about" section. You may add your
+1. You leave the "powered by" notice in the footer intact.
+2. You leave the existing content in the "help/about" section. You may add your
    own, but please leave the existing stuff intact.
-3) You rebrand the site so it does not look the same as http://www.carbondiet.org.
+3. You rebrand the site so it does not look the same as http://www.carbondiet.org.
 
 You can change the source code, but you must make the modified source code
 available to users of your modified site. See the license section below for
@@ -24,7 +28,7 @@ so we can integrate your improvements!
 Requirements
 ------------
 
-Ruby on Rails 2.3.15
+Ruby on Rails 3.2.13
 
 Installation
 ------------
@@ -49,11 +53,11 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program (see the COPYING file).  If not, see
-<http://www.gnu.org/licenses/>.
+http://www.gnu.org/licenses/.
 
 Exceptions:
 
-You may not use the look and feel of the http://www.carbondiet.org on your
+You may not use the look and feel of http://www.carbondiet.org on your
 own installation, including the Carbon Diet logo. You may not call your
 installation "The Carbon Diet", you need another name. Derivates are OK though
 ("Bob's Carbon Diet").
@@ -61,11 +65,10 @@ installation "The Carbon Diet", you need another name. Derivates are OK though
 Subcomponents
 -------------
 
-Most of the icons used on the site are from the Silk icon set
-(http://www.famfamfam.com/lab/icons/silk/)
+Most of the icons used on the site are from the [Silk icon set](http://www.famfamfam.com/lab/icons/silk/)
 
-Most of the larger images are from the Tango project (http://tango.freedesktop.org/).
+Most of the larger images are from the [Tango project](http://tango.freedesktop.org/).
 
-Flash-based charting functionality is done with amCharts (http://www.amcharts.com/)
+Flash-based charting functionality is done with [amCharts](http://www.amcharts.com/)
 
 See the websites of these projects for license details for the relevant content.
