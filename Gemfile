@@ -33,6 +33,7 @@ group :development, :test do
   gem 'faker'
   gem 'af'
   gem 'caldecott', '~> 0.0.5'
+  gem 'poltergeist'
 end
 
 group :production do

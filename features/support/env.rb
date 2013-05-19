@@ -6,11 +6,19 @@
 
 require 'cucumber/rails'
 
+require 'capybara/poltergeist'
+
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
+
+Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {debug: false})
+end
+
+Capybara.javascript_driver = :poltergeist
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 
@@ -56,4 +64,3 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
-
