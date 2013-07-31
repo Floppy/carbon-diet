@@ -199,3 +199,13 @@ div.cd-footer {
   border-top: 3px solid black;
   font-size: 0.65em;
 }
+
+/* Alert */
+
+div.alert {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #fcc;
+}
