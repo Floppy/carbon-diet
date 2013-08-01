@@ -1,15 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 <head>
-  <title><%= render :partial => "/sites/#{CarbonDiet::Application.style}/title" %><%=h ": " + @pagename if not @pagename.blank? %><%=h ": " + @content_for_pagename if not @content_for_pagename.blank? %></title>
-  <%= stylesheet_link_tag "application-#{CarbonDiet::Application.style}" %>
+  <title><%= render :partial => "/shared/title" %><%=h ": " + @pagename if not @pagename.blank? %><%=h ": " + @content_for_pagename if not @content_for_pagename.blank? %></title>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <script type="text/javascript"><%= @content_for_page_scripts %></script>
   <!--[if IE]>
   <%= stylesheet_link_tag 'application-ie' %>
   <![endif]-->  
   <%= yield :feed %>
-  <link rel="shortcut icon" href="/assets/<%= CarbonDiet::Application.style %>/favicon.ico" />
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
   <meta name="Keywords" content="carbon calculator, carbon footprint, climate change, global warming"/>
   <meta name="Description" content="Saving the planet, together! Calculate your daily carbon footprint, take action to reduce it, and share it with the world!"/>
   <meta name="Author" content="James Smith"/>
@@ -33,7 +33,7 @@
 <% end %>
 
 <div class="cd-header">
-	<%= whitelabel_content 'header' %>
+	<%= render :partial => "/shared/header"
 
 	<div class='alert'>
 		We're changing the Carbon Diet, to focus on the energy tracking aspects! Energy-saving actions and social features (friends, groups, and comments) will be REMOVED soon. See the <a href='http://carbondiet.blogspot.co.uk/2013/08/removing-social-features.html'>blog post</a> for details.
@@ -41,7 +41,7 @@
 </div>
 
 <div class="cd-linkbar">
-<%= render :partial => "/sites/#{CarbonDiet::Application.style}/linkbar" %>
+<%= render :partial => "/shared/linkbar" %>
 </div>
 
 <% if flash[:notice] %>

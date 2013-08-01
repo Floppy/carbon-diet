@@ -8,7 +8,7 @@
 <%= render :partial => 'shared/linktab', :locals => {:image => 'search.png', :link => link_to("Search", :controller => "/search")} %>
 <%= render :partial => 'shared/linktab', :locals => {:image => 'blog.png', :link => link_to("Blog", "http://carbondiet.blogspot.com")} %>
 <% if @current_user %>
-  <%= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => link_to("Discuss", "http://support.carbondiet.org/discussions?sso=#{CGI.escape(@current_user.multipass)}")} %>
+  <%#= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => link_to("Discuss", "http://support.carbondiet.org/discussions?sso=#{CGI.escape(@current_user.multipass)}")} %>
 <% else %>
   <%= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => link_to("Discuss", "http://support.carbondiet.org/discussions")} %>
 <% end %>
@@ -17,7 +17,7 @@
   <%= render :partial => 'shared/linktab', :locals => {:image => 'admin.png', :link => link_to("Admin", :controller => "/admin/dashboard")} %>
 <% end %>
 <% if @current_user %>
-  <%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", "http://support.carbondiet.org/faqs?sso=#{CGI.escape(@current_user.multipass)}", :id => "help-link" )} %>
+  <%#= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", "http://support.carbondiet.org/faqs?sso=#{CGI.escape(@current_user.multipass)}", :id => "help-link" )} %>
 <% else %>
   <%= render :partial => 'shared/linktab', :locals => {:float => :right, :image => 'help.png', :link => link_to("Help", "http://support.carbondiet.org/faqs", :id => "help-link" )} %>
 <% end %>

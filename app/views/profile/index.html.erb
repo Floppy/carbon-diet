@@ -16,11 +16,10 @@
 <% end %>
 
 <div class="pagecontent">
-  <%= whitelabel_content 'profile/banner' %>
   <div class="leftcolumn">
     <%= render :partial => 'userinfo' %>
     <%= render :partial => 'help' %>
-    <%= whitelabel_content 'profile/content' %>
+    <%= render :partial => 'content' %>
     <%= render :partial => 'newsfeed' %>
   </div>
   <div class="rightcolumn">

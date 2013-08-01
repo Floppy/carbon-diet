@@ -36,10 +36,4 @@ module ApplicationHelper
     @content_for_pageicon = image_tag(icon) if icon
   end
 
-  def whitelabel_content(file)
-    render :partial => "/sites/#{CarbonDiet::Application.style}/#{file}"
-  rescue
-    nil
-  end
-
 end
