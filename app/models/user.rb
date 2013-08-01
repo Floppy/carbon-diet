@@ -349,31 +349,6 @@ public
     login
   end
 
-  def points # Experimental
-    ranges = [
-      [0,1,"Newborn"],
-      [1,10,"Beginner"],
-      [10,25,"Apprentice"],
-      [25,50,"Adept"],
-      [50,100,"Master"],
-      [100,250,"Expert"],
-      [250,500,"Genius"],
-      [500,1e100,"Wizard"]
-    ]
-    breakdown = {}
-    breakdown[:entries] = {:value => electricity_readings.count(:conditions => {:automatic => false})+gas_readings.count+vehicle_fuel_purchases.count+flights.count, :description => "measurement"}
-    emissions_limit = -(breakdown.inject(0){|sum,(k,v)| sum += v[:value]} / 2)
-    breakdown[:emissions] = {:value => [-((annual_emissions>1000?annual_emissions-1000:annual_emissions)/10).to_i,emissions_limit].max, :description => "emissions"}
-    total = breakdown.inject(0){|sum,(k,v)| sum += v[:value]}
-    level = ranges.find{|x| total >= x[0] && total < x[1]}
-    {
-      :total => total,
-      :breakdown => breakdown,
-      :level => level,
-      :percentage => level != ranges.last ? (((total - level[0]).to_f / (level[1] - level[0]).to_f) * 100).to_i : 100
-    }
-  end
-
   # initialize the multipass object
   def self.multipass
     @multipass ||= MultiPass.new('carbondiet', ENV['MULTIPASS_API_KEY'])
