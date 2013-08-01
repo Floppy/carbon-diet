@@ -77,13 +77,6 @@ class GasAccount < ActiveRecord::Base
     gas_readings.count
   end
 
-  def action_categories
-    categories = []
-    categories << ActionCategory.find_by_name("Heating") if used_for_heating 
-    categories << ActionCategory.find_by_name("Hot Water") if used_for_water
-    return categories.compact
-  end
-
   def date_of_newest_data
     reading = gas_readings.order("taken_on DESC").limit(1).first
     if reading.nil?

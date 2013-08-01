@@ -1,7 +1,6 @@
 <% content_for('optionbar') do %>
   <%= option "add_data" %>
   <%= option "daily" %>
-  <%= option "action" %>
   <%= option "analysis" %>
 <% end %>
 
@@ -29,8 +28,5 @@
 <div class="pagecontent">
   <p>
     Your highest individual contribution to climate change comes from <b><%=h @totals.first[:name] %></b>, so if you want to cut your carbon footprint, you should probably look at reducing that one first in order to make the most impact!
-  </p>
-  <p>
-    For some ideas on how you can reduce your carbon footprint, take a look at the <%= link_to 'actions', :controller => 'actions' %> section.
   </p>
 </div>

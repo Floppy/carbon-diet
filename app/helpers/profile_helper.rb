@@ -20,12 +20,6 @@ module ProfileHelper
                :when => purchase.purchased_on.to_time, 
                :text => "bought some fuel for '" + h(purchase.vehicle.name) + "'"}
     end
-    # Get completed action data
-    user.completed_actions.limit(limit).order("created_at DESC").where(:done => true).each do |action|
-      feed << {:image => 'action.png', 
-               :when => action.created_at, 
-               :text => "agreed to do the action ".html_safe + link_to(h(action.action.title), :controller => "/actions", :action => 'view', :id => action.action.id)}
-    end
     # Get friends data
     user.approved_friendships.limit(limit).order("created_at DESC").each do |friendship|
       feed << {:image => 'user.png', 

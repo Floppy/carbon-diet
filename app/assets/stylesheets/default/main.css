@@ -130,31 +130,6 @@ div.tagline {
   color: #3f7f3f;
 }
 
-/* Actions */
-
-div.actiontitle {
-  background: #7fc07f;
-  border: 1px solid black;
-  border-bottom: 0px;
-  color: white;
-}
-
-div.actioncontent {
-  background: #f3fff3;
-  border: 1px solid black;
-}
-
-/* Comments */
-
-table.comment {
-  border: 1px solid #eeeeee;
-}
-
-table.comment span.byline {
-  font-size: 0.75em;
-  font-style: italic;
-}
-
 /* Tour */
 
 div.tour {

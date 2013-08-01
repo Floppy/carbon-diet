@@ -70,12 +70,6 @@ class Vehicle < ActiveRecord::Base
     vehicle_fuel_purchases.count
   end
 
-  def action_categories
-    categories = []
-    categories << ActionCategory.find_by_name("Travel")
-    return categories.compact
-  end
-
   def date_of_newest_data
     purchase = vehicle_fuel_purchases.order("purchased_on DESC").limit(1).first
     if purchase.nil?

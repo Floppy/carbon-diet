@@ -1,10 +1,6 @@
 /* Holly-hack for IE peekaboo bug */
 
 /* Hides from IE5-mac \*/
-html .actioncontent { 
-  height: 0.01%;
-} 
-
 div .peekaboofix { 
   height: 0.01%;
 } 
