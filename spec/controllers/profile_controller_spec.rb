@@ -24,9 +24,7 @@ describe ProfileController do
   it "cannot view private profile if not logged in" do
     when_not_logged_in do
       get :index, :login => 'test002'
-      assert_response :redirect
-      assert_redirected_to '/search'
-      flash[:notice].should == 'Profile not found!'
+      assert_response :not_found
     end
   end
 
@@ -40,9 +38,7 @@ describe ProfileController do
   it "can view private profile if logged in as wrong user" do
     when_logged_in(1) do
       get :index, :login => 'alice'
-      assert_response :redirect
-      assert_redirected_to '/search'
-      flash[:notice].should == 'Profile not found!'
+      assert_response :not_found
     end
   end
 

@@ -30,7 +30,7 @@
     <p>
       <label for="user_display_name">How would you like your name to be shown on your profile? <span class="smalltext"><em>(optional)</em></span></label>
       <%= text_field 'user', 'display_name', :size => 20 %>
-      <%= help 'This name will be public and searchable, but you can leave it blank if you want to.' %>
+      <%= help 'This name will be public, but you can leave it blank if you want to.' %>
     </p>
     <p>
       <div class="left" style="margin-right: 10px;"><%= image_tag(@user.avatar) %></div>      
@@ -47,7 +47,7 @@
       <% if @current_user.confirmation_code %>
         <%= image_tag 'false.png' %> unconfirmed!
       <% end %>
-      <%= help 'This will not be shown to anyone, but people can find you by searching for it.' %>
+      <%= help 'This will not be shown to anyone.' %>
     </p>
     <p>
       Would you like us to email you...

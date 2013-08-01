@@ -5,7 +5,6 @@
     <%= render :partial => 'shared/linktab', :locals => {:image => 'home.png', :link => link_to("Profile", :controller => "/profile", :login => @current_user.login)} %>
   <% end %>
 <% end %>
-<%= render :partial => 'shared/linktab', :locals => {:image => 'search.png', :link => link_to("Search", :controller => "/search")} %>
 <%= render :partial => 'shared/linktab', :locals => {:image => 'blog.png', :link => link_to("Blog", "http://carbondiet.blogspot.com")} %>
 <% if @current_user %>
   <%#= render :partial => 'shared/linktab', :locals => {:image => 'forum.png', :link => link_to("Discuss", "http://support.carbondiet.org/discussions?sso=#{CGI.escape(@current_user.multipass)}")} %>

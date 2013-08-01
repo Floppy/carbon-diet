@@ -194,12 +194,6 @@ class User < ActiveRecord::Base
     'user.png'
   end
 
-  def self.find_public(search)    
-    search = search.downcase
-    like = "%" + search + "%"
-    User.where(:public => true).where("(login LIKE ? OR LOWER(email) = ? OR LOWER(display_name) LIKE ?)", like, search, like).order(:login)
-  end
-
   def calculate_totals(period)
     # Calculate start date
     start = Date::today - period + 1

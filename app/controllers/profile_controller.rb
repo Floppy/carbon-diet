@@ -9,8 +9,7 @@ class ProfileController < ApplicationController
     end
     if @profile.nil?
       if params[:login].present?
-        flash[:notice] = "Profile not found!"
-        redirect_to :controller => 'search'
+        render_http_code(404)
       else
         redirect_to '/'
       end
