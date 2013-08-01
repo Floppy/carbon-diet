@@ -23,8 +23,6 @@ class User < ActiveRecord::Base
   end
   has_many :vehicle_fuel_purchases, :through => :vehicles
   has_many :flights
-  has_many :completed_actions
-  has_many :actions, :through => :completed_actions
   has_many :group_memberships
   has_many :groups, :through => :group_memberships
   has_many :group_invitations
@@ -152,8 +150,6 @@ class User < ActiveRecord::Base
     gas_accounts.each { |x| x.destroy }
     vehicles.each { |x| x.destroy }
     flights.each { |x| x.destroy }
-    # Remove completed actions
-    completed_actions.each { |x| x.destroy }
     # Remove friend relations
     approved_friendships.each { |x| x.destroy }
     unapproved_friendships.each { |x| x.destroy }
@@ -395,7 +391,7 @@ private
     # For each account, calculate emissions
     accounts.each do |account|
       # Find the emissions for the account
-      emissions << {:name => account.name, :image => account.image, :data => account.emissions, :categories => account.action_categories}
+      emissions << {:name => account.name, :image => account.image, :data => account.emissions}
     end
     return emissions    
   end
@@ -443,7 +439,6 @@ public
     ]
     breakdown = {}
     breakdown[:entries] = {:value => electricity_readings.count(:conditions => {:automatic => false})+gas_readings.count+vehicle_fuel_purchases.count+flights.count, :description => "measurement"}
-    breakdown[:actions] = {:value => actions.inject(0){|t,x| t += x.points}, :description => "actions"}
     breakdown[:sociability] = {:value => (friends.count+groups.count)*2, :description => "sociability"}
     breakdown[:gossip] = {:value => comments.count, :description => "gossip"}
     emissions_limit = -(breakdown.inject(0){|sum,(k,v)| sum += v[:value]} / 2)

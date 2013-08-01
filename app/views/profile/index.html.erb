@@ -6,7 +6,6 @@
       <%= option "add_data" %>
       <% if @current_user.has_enough_data_to_analyse %>
         <%= option "analysis" %>
-        <%= option "action" %>
       <% end %>
     <% end %>
     <%= option "add_note" %>
@@ -42,7 +41,6 @@
     <%= render :partial => 'warnings' %>
     <% if @profile.has_enough_data_to_analyse %>    
       <%= render :partial => 'line' %>
-      <%= render :partial => 'actions' %>
       <%= render :partial => 'stats' %>
       <%= render :partial => 'pie' %>
     <% end %>

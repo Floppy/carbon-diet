@@ -28,8 +28,6 @@ class ProfileController < ApplicationController
         @totals = @profile.calculate_totals(@period)
         # Get comments
         @comments = @profile.comments.limit(5)
-        # Get actions
-        @actions = get_actions(3) if @profile == @current_user
       }
       format.iphone { render_iphone :layout => 'application' }
       format.wml

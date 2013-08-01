@@ -61,22 +61,6 @@ protected
     redirect_to(:controller => "/main", :action => "index")
   end
 
-  def get_actions(num, offset=0)
-    return if @current_user.nil?
-    totals = @current_user.calculate_totals(28)
-    categories = []
-    totals.each do |item|
-      if item[:name] != "Total"
-        item[:categories].each do |category|
-          categories << category unless categories.include?(category)
-        end
-      end
-    end
-    actions = Action.find_for_user(@current_user, categories, num, offset)
-    # Load override content
-    actions.each { |action| action.load_random_override(@current_user.country_id) }
-  end
-
   def detect_mobile_platforms
     if iphone?
       request.format = :iphone
