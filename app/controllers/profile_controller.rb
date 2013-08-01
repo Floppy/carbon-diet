@@ -26,20 +26,10 @@ class ProfileController < ApplicationController
         @line_settings_url = recent_chart_user_report_path(@profile, :format => :amline_settings, :period => @period)
         @show_flight_controls = @profile.flights.count > 0 ? true : false;
         @totals = @profile.calculate_totals(@period)
-        # Get comments
-        @comments = @profile.comments.limit(5)
       }
       format.iphone { render_iphone :layout => 'application' }
       format.wml
     end
-  end
-
-  def feed
-    @user = User.find_by_guid(params[:id])
-    @comments = @user.comments.order("created_at DESC").limit(10)
-    # Send data
-    headers["Content-Type"] = "application/atom+xml"
-    render :action => 'atom.rxml', :layout => false
   end
 
 private

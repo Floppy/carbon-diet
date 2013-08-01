@@ -1,5 +1,0 @@
-<%= render :partial => "/shared/comments", :locals => { :source => @profile, 
-                                                        :post => ((@profile == @current_user) or (@current_user and @current_user.friends.include?(@profile))),
-                                                        :feed_controller => @current_user ? 'profile' : nil,
-                                                        :feed_action => @current_user ? 'feed' : nil,
-                                                        :feed_id => @current_user ? @current_user.get_guid! : nil} %>

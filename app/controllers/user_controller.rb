@@ -67,7 +67,7 @@ public
           session[:login] = params[:user][:login]
           session[:password] = params[:user][:password]
           # Go to confirmation
-          redirect_to(:action => "confirm", :params => {:invite => params[:invite], :group => params[:group]})
+          redirect_to(:action => "confirm")
         else
           flash[:notice] = "Please enter a valid username (letters, numbers and underscores only)"
           redirect_to_login_page
@@ -150,15 +150,6 @@ public
       session[:login] = nil
       # Send a new user signup notification to the admin
       AdminMailer.new_signup(user.login).deliver
-      # Auto-add friends and groups
-      if params[:invite]
-        friend = User.find(params[:invite]) rescue nil
-        user.add_friend(friend) if friend
-      end
-      if params[:group]
-        group = Group.find(params[:group]) rescue nil
-        group.add_user(user) if group
-      end
       # Log the user in
       session[:user_id] = user.id 
       # Store last login time

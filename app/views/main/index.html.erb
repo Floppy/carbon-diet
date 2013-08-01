@@ -3,7 +3,7 @@
     <b>Log In or Sign Up</b><br/>
     If you're new here, enter the details you'd like to use below.
   </p>
-  <%= form_tag :controller => '/user', :action => 'auth', :params => {:invite => params[:invite], :group => params[:group]} do %>
+  <%= form_tag :controller => '/user', :action => 'auth' do %>
     <p>
       Username:
       <%= text_field 'user', 'login', :size=> '10' %>

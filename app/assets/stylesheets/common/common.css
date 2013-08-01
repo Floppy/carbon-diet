@@ -135,11 +135,6 @@ div.sectiontitle {
   margin-bottom: 5px;
 }
 
-/* Groups */
-
-li.group {
-  list-style-image: url(/assets/group.png);
-}
 
 /* Option boxes */
 
@@ -179,33 +174,6 @@ div.login {
   padding-bottom: 3px;
 }
 
-/* Comments */
-
-table.comment {
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-table.comment td {
-  border: 0px;
-  text-align: left;
-  padding-left: 3px;
-  padding-right: 3px;
-}
-
-table.comment td.image {
-  width: 32px;
-  vertical-align: top;
-}
-
-table.comment td.delete {
-  width: 16px;
-  vertical-align: bottom;
-}
-
 /* Tour */
 
 div.tour {
@@ -233,13 +201,6 @@ table.tip {
 
 table.tip td {
   text-align: left;
-}
-
-/* Profile pages */
-div.friend {
-  float: left;
-  text-align: center;
-  margin: 5px;
 }
 
 /* Footer */

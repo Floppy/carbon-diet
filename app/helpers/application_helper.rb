@@ -27,10 +27,6 @@ module ApplicationHelper
     ('<span class="help">' + image_tag('help.png') + '<span>' + h(text) + '</span></span>').html_safe
   end
 
-  def friend_link(user, small=false)
-    render :partial => "/shared/friend_link", :locals => { :user => user, :small => small }
-  end
-  
   def option(name, locals = {})
     render :partial => "/options/" + name, :locals => locals
   end

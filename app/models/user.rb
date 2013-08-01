@@ -23,44 +23,8 @@ class User < ActiveRecord::Base
   end
   has_many :vehicle_fuel_purchases, :through => :vehicles
   has_many :flights
-  has_many :group_memberships
-  has_many :groups, :through => :group_memberships
-  has_many :group_invitations
-  has_many :sent_group_invitations, :class_name => 'GroupInvitation', :foreign_key => 'inviter_id'
-  has_many :owned_groups, :class_name => 'Group', :foreign_key => 'owner_id'
   has_many :notes, :as => :notatable
-  has_many :authored_comments, :class_name => 'Comment', :order => "created_at DESC"
-  has_many :comments, :as => :commentable, :order => "created_at DESC"
-  # Friendships - aargh, complicated!
-  has_many :approved_friendships,
-    :foreign_key =>       'user_id',
-    :class_name =>        'Friendship',
-    :conditions =>        { :approved => true }
-  has_many :unapproved_friendships,
-    :foreign_key =>       'user_id',
-    :class_name =>        'Friendship',
-    :conditions =>        { :approved => false }
-  has_many :approved_befriendships,
-    :foreign_key =>       'friend_id',
-    :class_name =>        'Friendship',
-    :conditions =>        { :approved => true }
-  has_many :unapproved_befriendships,
-    :foreign_key =>       'friend_id',
-    :class_name =>        'Friendship',
-    :conditions =>        { :approved => false }
-  has_many :friends,
-    :through => :approved_friendships,
-    :source => :friend
-  has_many :unapproved_friends,
-    :through => :unapproved_friendships,
-    :source => :friend
-  has_many :fans,
-    :through => :approved_befriendships,
-    :source => :user
-  has_many :unapproved_fans,
-    :through => :unapproved_befriendships,
-    :source => :user
-      
+
   # Validation
   validates_uniqueness_of :login
   validates_format_of :email, :with => /^$|^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
@@ -68,7 +32,7 @@ class User < ActiveRecord::Base
   validates_numericality_of :people_in_household
   # Attributes
   attr_accessible :display_name, :country_id, :public, :reminder_frequency 
-  attr_accessible :reminded_at, :email, :notify_friend_requests, :notify_profile_comments, :people_in_household
+  attr_accessible :reminded_at, :email, :people_in_household
 
   def get_guid!
     if self.guid.nil?
@@ -150,18 +114,8 @@ class User < ActiveRecord::Base
     gas_accounts.each { |x| x.destroy }
     vehicles.each { |x| x.destroy }
     flights.each { |x| x.destroy }
-    # Remove friend relations
-    approved_friendships.each { |x| x.destroy }
-    unapproved_friendships.each { |x| x.destroy }
-    approved_befriendships.each { |x| x.destroy }
-    unapproved_befriendships.each { |x| x.destroy }
-    # Remove group memberships
-    group_memberships.each { |x| x.destroy }
     # Remove notes
     notes.each { |x| x.destroy }
-    # Remove all comments
-    authored_comments.each { |x| x.destroy }
-    comments.each { |x| x.destroy }
     # Call base
     super
   end
@@ -271,37 +225,6 @@ class User < ActiveRecord::Base
     totals.each { |x| total_total += x[:data][:total]; total_perday += x[:data][:perday]; total_perannum += x[:data][:perannum] }
     totals << { :name => "Total", :image => 'chart_pie.png', :data => { :total => total_total, :percentage => 100, :perday => total_perday, :perannum => total_perannum } }
     return totals
-  end
-
-  def add_friend(friend)
-    # Add to friends list
-    unless (friends.include?(friend) or unapproved_friends.include?(friend))
-      unapproved_friendships.create(:friend => friend, :approved => false)
-      # Send email to friend
-      unless friend.confirmed_email.nil? or friend.notify_friend_requests == false
-        UserMailer.friend_request(self, friend).deliver
-      end
-    end
-  end
-
-  def remove_friend(friend)
-    # Remove friendship relation
-    approved_friendships.find_by_friend_id(friend.id).destroy
-  end
-
-  def approve_friend_request(friend)
-    # Approve the original friend link
-    friendship = unapproved_befriendships.find_by_user_id(friend.id)
-    if friendship
-      friendship.approve
-      # Add a reciprocal link to the friend
-      approved_friendships.create(:friend => friend, :approved => true)
-    end
-  end
-  
-  def reject_friend_request(friend)
-    # Reject the original friend link
-    unapproved_befriendships.find_by_user_id(friend.id).reject
   end
 
   def reset_login_key!
@@ -439,8 +362,6 @@ public
     ]
     breakdown = {}
     breakdown[:entries] = {:value => electricity_readings.count(:conditions => {:automatic => false})+gas_readings.count+vehicle_fuel_purchases.count+flights.count, :description => "measurement"}
-    breakdown[:sociability] = {:value => (friends.count+groups.count)*2, :description => "sociability"}
-    breakdown[:gossip] = {:value => comments.count, :description => "gossip"}
     emissions_limit = -(breakdown.inject(0){|sum,(k,v)| sum += v[:value]} / 2)
     breakdown[:emissions] = {:value => [-((annual_emissions>1000?annual_emissions-1000:annual_emissions)/10).to_i,emissions_limit].max, :description => "emissions"}
     total = breakdown.inject(0){|sum,(k,v)| sum += v[:value]}

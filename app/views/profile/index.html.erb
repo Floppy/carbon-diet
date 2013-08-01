@@ -11,17 +11,7 @@
     <%= option "add_note" %>
     <%= option "settings" %>
   <% else %>
-    <%= option "search" %>
-    <% unless @current_user.nil? || @current_user.friends.include?(@profile) %>
-      <%= option "add_friend" %>
-    <% end %>
     <%= option "home" %>
-  <% end %>
-<% end %>
-
-<% if @profile==@current_user %>
-  <% content_for('feed') do %>
-    <%= auto_discovery_link_tag(:atom, {:action => 'feed', :id => @current_user.get_guid!, :format => 'xml'} ) %>
   <% end %>
 <% end %>
 
@@ -33,9 +23,6 @@
     <%= whitelabel_content 'profile/content' %>
     <%= render :partial => 'points' %>
     <%= render :partial => 'newsfeed' %>
-    <%= render :partial => 'friends' %>
-    <%= render :partial => 'groups' %>
-    <%= render :partial => 'comments' %>
   </div>
   <div class="rightcolumn">
     <%= render :partial => 'warnings' %>

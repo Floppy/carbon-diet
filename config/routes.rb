@@ -30,20 +30,7 @@ CarbonDiet::Application.routes.draw do
       get :recent_chart
       get :ratio_chart
     end
-    resources :groups, :controller => 'UserGroups'
-    resources :friends do
-      get :invite, :on => :collection
-      post :send_invitation, :on => :collection
-      post :accept, :on => :member
-      post :reject, :on => :member
-    end
   end
-  resources :groups do
-    resources :invitations
-  end
-  
-  # Connection for group browser
-  match '/groups/browse/:string' => 'groups#browse'
 
   # Install the default route as the lowest priority.
   match ':controller(/:action(/:id(.:format)))'

@@ -15,41 +15,10 @@ class UserMailer < ActionMailer::Base
           :date => sent_at
   end
 
-  def group_invitation(group, user, sent_at = Time.now)
-    @group = group
-    @user = user
-    mail  :subject => 'Carbon Diet: Group invitation', 
-          :to => user.email, 
-          :date => sent_at
-  end
-
-  def friend_request(user, friend, sent_at = Time.now)
-    @friend = friend
-    @user = user
-    mail  :subject => 'Carbon Diet: Friend request', 
-          :to => friend.confirmed_email, 
-          :date => sent_at
-  end
-
-  def comment_notification(user, commenter, sent_at = Time.now)
-    @commenter = commenter.name
-    mail  :subject => 'Carbon Diet: Someone wrote a comment on your profile!', 
-          :to => user.email, 
-          :date => sent_at
-  end
-
   def email_confirmation(user, sent_at = Time.now)
     @code = user.confirmation_code
     mail  :subject => 'Carbon Diet: Please confirm your email address', 
           :to => user.email, 
-          :date => sent_at
-  end
-
-  def friend_invitation(from, email, group, sent_at = Time.now)
-    @sender = from
-    @group = group
-    mail  :subject => 'An invitation to join The Carbon Diet', 
-          :to => email, 
           :date => sent_at
   end
 

@@ -21,7 +21,7 @@ If you are in the USA, you must be over the age of 13 to use the Carbon Diet (be
 we are legally allowed to store your information.
 </p>
 <p>
-<%= form_tag :action => 'signup', :invite => params[:invite], :group => params[:group] do %>
+<%= form_tag :action => 'signup' do %>
 <table>
 <tr><td>Confirm Password:</td><td><%= password_field 'user', 'password_confirmation' %></td></tr>
 <tr><td></td><td><%= submit_tag 'Confirm' %></td></tr>
