@@ -51,7 +51,7 @@ protected
 
   def redirect_to_main_page
     if get_current_user
-      redirect_to(:controller => "/profile")
+      redirect_to @current_user
     else
       redirect_to(:controller => "/main", :action => "index")
     end

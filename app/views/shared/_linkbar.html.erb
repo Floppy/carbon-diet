@@ -2,7 +2,7 @@
   <% if @current_user.nil? %>
     <%= render :partial => 'shared/linktab', :locals => {:image => 'home.png', :link => link_to("Log In", :controller => "/main", :action => "index")} %>
   <% else %>
-    <%= render :partial => 'shared/linktab', :locals => {:image => 'home.png', :link => link_to("Profile", :controller => "/profile", :login => @current_user.login)} %>
+    <%= render :partial => 'shared/linktab', :locals => {:image => 'home.png', :link => link_to("Profile", @current_user)} %>
   <% end %>
 <% end %>
 <%= render :partial => 'shared/linktab', :locals => {:image => 'blog.png', :link => link_to("Blog", "http://carbondiet.blogspot.com")} %>

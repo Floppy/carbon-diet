@@ -350,7 +350,7 @@ public
 
   # create a multipass for this user object
   def multipass
-    self.class.multipass.encode(:email => email, :name => name, :expires => 30.minutes.from_now, :external_url => "http://www.carbondiet.org/profile/#{login}")
+    self.class.multipass.encode(:email => email, :name => name, :expires => 30.minutes.from_now, :external_url => "http://www.carbondiet.org/users/#{login}")
   end
 
 private

@@ -22,7 +22,7 @@ Then, with graphs showing how your footprint varies over days, months, and years
 <% if @current_user.nil? %>
 <%= link_to "Sign Up ".html_safe + image_tag('next.png'), :controller => 'user', :action => 'login' %>
 <% else %>
-<%= link_to "Done ".html_safe + image_tag('next.png'), :controller => 'profile', :login => @current_user.login %>
+<%= link_to "Done ".html_safe + image_tag('next.png'), @current_user %>
 <% end %>
 </p>
 </div>

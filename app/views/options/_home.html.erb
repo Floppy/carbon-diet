@@ -3,6 +3,6 @@
 <% if @current_user.nil? %>
 <%= link_to("Log In", { :controller => "/main" } ) %>
 <% else %>
-<%= link_to("My Profile", { :controller => "/main" } ) %>
+<%= link_to("My Profile", @current_user ) %>
 <% end %>
 </div>

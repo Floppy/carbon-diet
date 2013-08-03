@@ -5,7 +5,8 @@ CarbonDiet::Application.routes.draw do
   match '/m' => 'main#mobile'
 
   # Connection for public profiles
-  match '/profile/:login' => 'profile#index'
+  get '/profile/:id', to: redirect('/users/%{id}')
+  get '/profile' => 'users#legacy_profile_redirect'
 
   # Connection for admin interface
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'

@@ -24,7 +24,7 @@
   <% else %>
     <%= image_tag @current_user.image %>
     <%= image_tag @current_user.flag if @current_user.flag.present? %>
-    <%= link_to h(@current_user.name), :controller => '/profile', :login => @current_user.login %>
+    <%= link_to h(@current_user.name), @current_user %>
     <br/>
     <%= link_to("Settings", { :controller => "/user", :action => "edit" } ) %>
     <span><%= link_to("Log Out", { :controller => "/user", :action => "logout" } ) %></span>

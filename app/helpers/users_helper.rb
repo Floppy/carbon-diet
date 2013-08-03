@@ -1,4 +1,4 @@
-module ProfileHelper
+module UsersHelper
 
   def news_feed(user, limit=10)
     feed = []
