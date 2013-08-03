@@ -4,7 +4,7 @@ CarbonDiet::Application.routes.draw do
   
   match '/m' => 'main#mobile'
 
-  # Connection for public profiles
+  # Connection for legacy profile routes
   get '/profile/:id', to: redirect('/users/%{id}')
   get '/profile' => 'users#legacy_profile_redirect'
 

@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
   def legacy_profile_redirect
     if @current_user
-      redirect_to @current_user
+      redirect_to @current_user, :status => :moved_permanently
     else
-      redirect_to '/'
+      redirect_to '/', :status => :moved_permanently
     end
   end
 
