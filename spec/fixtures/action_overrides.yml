@@ -1,5 +1,0 @@
-turn_off_lights:
-  action: turn_off_lights
-  country: uk
-  content: Turn off your lights
-  paid_for: true
