@@ -21,7 +21,7 @@ e = ElectricityUnit.create     :name          => "Kilowatt-Hours",
 
 c = Country.create             :name                     => 'United Kingdom',
                                :abbreviation             => 'UK',
-                               :flag_image               => 'gb.png',
+                               :flag_image               => 'flags/gb.png',
                                :vehicle_distance_unit_id => v.id,
                                :vehicle_fuel_unit_id     => f.id,
                                :electricity_unit_id      => e.id,
