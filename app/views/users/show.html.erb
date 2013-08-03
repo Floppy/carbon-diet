@@ -20,15 +20,17 @@
     <%= render :partial => 'userinfo' %>
     <%= render :partial => 'help' %>
     <%= render :partial => 'content' %>
-    <%= render :partial => 'newsfeed' %>
+    <%= render :partial => 'stats' %>
+    <% if @profile.has_enough_data_to_analyse %>    
+      <%= render :partial => 'pie' %>
+    <% end %>
   </div>
   <div class="rightcolumn">
     <%= render :partial => 'warnings' %>
     <% if @profile.has_enough_data_to_analyse %>    
       <%= render :partial => 'line' %>
-      <%= render :partial => 'stats' %>
-      <%= render :partial => 'pie' %>
     <% end %>
+    <%= render :partial => 'newsfeed' %>
   </div>
   <div class="clear">&nbsp;</div>
 </div>
