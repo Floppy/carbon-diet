@@ -2,7 +2,7 @@
 gas_accounts_014: 
   name: npower Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit_id: "2"
   id: "14"
@@ -11,7 +11,7 @@ gas_accounts_014:
 gas_accounts_003: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "3"
@@ -20,7 +20,7 @@ gas_accounts_003:
 gas_accounts_015: 
   name: Natural Gas
   gas_supplier: standard_us
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit_id: "2"
   id: "15"
@@ -29,7 +29,7 @@ gas_accounts_015:
 gas_accounts_004: 
   name: Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "4"
@@ -38,7 +38,7 @@ gas_accounts_004:
 gas_accounts_016: 
   name: Natural Gas
   gas_supplier: standard_us
-  current: "0"
+  current: false
   used_for_heating: "0"
   gas_unit_id: "2"
   id: "16"
@@ -47,7 +47,7 @@ gas_accounts_016:
 gas_accounts_005: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "5"
@@ -56,7 +56,7 @@ gas_accounts_005:
 gas_accounts_017: 
   name: Natural Gas
   gas_supplier: standard_us
-  current: "1"
+  current: true
   used_for_heating: "0"
   gas_unit_id: "2"
   id: "17"
@@ -65,7 +65,7 @@ gas_accounts_017:
 gas_accounts_006: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "6"
@@ -74,7 +74,7 @@ gas_accounts_006:
 gas_accounts_018: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "18"
@@ -83,7 +83,7 @@ gas_accounts_018:
 gas_accounts_007: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "7"
@@ -92,7 +92,7 @@ gas_accounts_007:
 gas_accounts_008: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "8"
@@ -101,7 +101,7 @@ gas_accounts_008:
 gas_accounts_010: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "10"
@@ -110,7 +110,7 @@ gas_accounts_010:
 gas_accounts_009: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "9"
@@ -119,7 +119,7 @@ gas_accounts_009:
 gas_accounts_011: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "11"
@@ -128,7 +128,7 @@ gas_accounts_011:
 gas_accounts_012: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit_id: "2"
   id: "12"
@@ -137,7 +137,7 @@ gas_accounts_012:
 gas_accounts_001: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "1"
@@ -146,7 +146,7 @@ gas_accounts_001:
 gas_accounts_013: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "13"
@@ -155,7 +155,7 @@ gas_accounts_013:
 gas_accounts_002: 
   name: Natural Gas
   gas_supplier: standard_uk
-  current: "1"
+  current: true
   used_for_heating: "1"
   gas_unit: m3
   id: "2"
