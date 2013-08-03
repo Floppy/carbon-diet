@@ -1,5 +1,4 @@
 require 'digest/sha2'
-require 'mini_magick'
 
 class User < ActiveRecord::Base
   # Relationships
