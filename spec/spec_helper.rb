@@ -1,12 +1,12 @@
 require 'rubygems'
 require 'spork'
-require 'simplecov'
+require 'coveralls'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
 Spork.prefork do
 
-  SimpleCov.start 'rails'
+  Coveralls.wear_merged! 'rails'
 
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'

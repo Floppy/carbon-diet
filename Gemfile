@@ -27,7 +27,7 @@ group :development, :test do
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'growl'
-  gem 'simplecov', :require => false
+  gem 'coveralls'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'af'

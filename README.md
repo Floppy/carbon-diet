@@ -5,6 +5,7 @@ http://www.carbondiet.org
 Copyright (C) 2007-13 James Smith (james@floppy.org.uk)
 
 [![Build Status](https://travis-ci.org/Floppy/carbon-diet.png?branch=master)](https://travis-ci.org/Floppy/carbon-diet)
+[![Coverage Status](https://coveralls.io/repos/Floppy/carbon-diet/badge.png)](https://coveralls.io/r/Floppy/carbon-diet)
 [![Dependency Status](https://gemnasium.com/Floppy/carbon-diet.png)](https://gemnasium.com/Floppy/carbon-diet)
 [![Code Climate](https://codeclimate.com/github/Floppy/carbon-diet.png)](https://codeclimate.com/github/Floppy/carbon-diet)
 
