@@ -87,7 +87,7 @@ protected
   end
 
   def iphone?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)|(AppleWebKit\/.+Mobile)/]
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"] =~ /iPhone/
   end
 
   def render_iphone(options = {})
