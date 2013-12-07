@@ -6,7 +6,7 @@ gem 'airbrake'
 gem 'validates_timeliness'
 gem 'multipass'
 gem 'will_paginate'
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin'
 gem "recaptcha", :require => "recaptcha/rails"
 gem "mini_magick"
 gem 'whenever'
