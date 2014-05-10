@@ -1,5 +1,4 @@
 before_script:
   - cp config/database.travis.yml config/database.yml
   - mysql -e 'create database myapp_test;'
-  - rake db:schema:load
-  
+  - bundle exec rake db:schema:load
