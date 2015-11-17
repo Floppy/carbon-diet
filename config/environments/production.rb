@@ -67,4 +67,8 @@ CarbonDiet::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.middleware.use(Rack::Tracker) do
+    handler :google_analytics, { tracker: 'UA-2310810-1', anonymize_ip: true }
+  end
 end

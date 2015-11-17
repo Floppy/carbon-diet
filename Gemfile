@@ -10,6 +10,7 @@ gem 'rails_admin'
 gem "recaptcha", :require => "recaptcha/rails"
 gem "mini_magick"
 gem 'whenever'
+gem 'rack-tracker'
 
 # Gems used only for assets and not required
 # in production environments by default.

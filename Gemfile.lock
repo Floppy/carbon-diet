@@ -195,6 +195,10 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack-tracker (1.1.0)
+      activesupport (>= 3.0)
+      rack (>= 1.4)
+      tilt (>= 1.4)
     rails (3.2.18)
       actionmailer (= 3.2.18)
       actionpack (= 3.2.18)
@@ -323,6 +327,7 @@ DEPENDENCIES
   multipass
   mysql2
   poltergeist
+  rack-tracker
   rails (~> 3.2.3)
   rails_admin
   recaptcha
