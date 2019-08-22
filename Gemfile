@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.3'
+gem 'rails', '~> 3.2.22'
 gem 'active_scaffold'
 gem 'airbrake'
 gem 'validates_timeliness'
